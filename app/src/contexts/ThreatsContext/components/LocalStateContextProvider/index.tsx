@@ -14,38 +14,36 @@
   limitations under the License.
  ******************************************************************************************************************** */
 
-import { FC, PropsWithChildren, useCallback, useState } from 'react';
-import { TemplateThreatStatement } from '../../../../customTypes';
-import { useGlobalSetupContext } from '../../../GlobalSetupContext/context';
-import { LocalStateContextProviderBaseProps } from '../../../types';
-import { ThreatsContext } from '../../context';
-import useThreatExamples from '../../hooks/useThreatExamples';
-import useThreats from '../../hooks/useThreats';
-import { ThreatsContextProviderProps } from '../../types';
+import { FC, PropsWithChildren, useCallback, useState } from "react";
+import { TemplateThreatStatement } from "../../../../customTypes";
+import { useGlobalSetupContext } from "../../../GlobalSetupContext/context";
+import { LocalStateContextProviderBaseProps } from "../../../types";
+import { ThreatsContext } from "../../context";
+import useThreatExamples from "../../hooks/useThreatExamples";
+import useThreats from "../../hooks/useThreats";
+import { ThreatsContextProviderProps } from "../../types";
 
-const ThreatsContextProvider: FC<PropsWithChildren<
-ThreatsContextProviderProps & LocalStateContextProviderBaseProps<TemplateThreatStatement[]>>> = ({
-  children,
-  initialValue,
-  onThreatListView,
-  onThreatEditorView,
-}) => {
-  const [editingStatement,
-    setEditingStatement] = useState<TemplateThreatStatement | null>(null);
+const ThreatsContextProvider: FC<
+  PropsWithChildren<
+    ThreatsContextProviderProps &
+      LocalStateContextProviderBaseProps<TemplateThreatStatement[]>
+  >
+> = ({ children, initialValue, onThreatListView, onThreatEditorView }) => {
+  const [editingStatement, setEditingStatement] =
+    useState<TemplateThreatStatement | null>(null);
 
-  const [statementList,
-    setStatementList] = useState<TemplateThreatStatement[]>(initialValue || []);
+  const [statementList, setStatementList] = useState<TemplateThreatStatement[]>(
+    initialValue || [],
+  );
 
-  const [filteredStatementList,
-    setFilteredStatementList] = useState<TemplateThreatStatement[]>(initialValue || []);
+  const [filteredStatementList, setFilteredStatementList] = useState<
+    TemplateThreatStatement[]
+  >(initialValue || []);
 
   const { composerMode } = useGlobalSetupContext();
 
-  const {
-    threatStatementExamples,
-    perFieldExamples,
-    previousInputs,
-  } = useThreatExamples(statementList);
+  const { threatStatementExamples, perFieldExamples, previousInputs } =
+    useThreatExamples(statementList);
 
   const {
     view,
@@ -75,29 +73,34 @@ ThreatsContextProviderProps & LocalStateContextProviderBaseProps<TemplateThreatS
     setEditingStatement(null);
   }, []);
 
-  return (<ThreatsContext.Provider value={{
-    view,
-    editingStatement,
-    statementList,
-    setStatementList,
-    filteredStatementList,
-    setFilteredStatementList,
-    threatStatementExamples: threatStatementExamples as TemplateThreatStatement[],
-    perFieldExamples,
-    previousInputs,
-    setView,
-    setEditingStatement,
-    addStatement: handleAddStatement,
-    removeStatement: handlRemoveStatement,
-    editStatement: handleEditStatement,
-    saveStatement: handleSaveStatement,
-    removeAllStatements: handleRemoveAllStatements,
-    onDeleteWorkspace: handleDeleteWorkspace,
-    onThreatListView,
-    onThreatEditorView,
-  }}>
-    {children}
-  </ThreatsContext.Provider>);
+  return (
+    <ThreatsContext.Provider
+      value={{
+        view,
+        editingStatement,
+        statementList,
+        setStatementList,
+        filteredStatementList,
+        setFilteredStatementList,
+        threatStatementExamples:
+          threatStatementExamples as TemplateThreatStatement[],
+        perFieldExamples,
+        previousInputs,
+        setView,
+        setEditingStatement,
+        addStatement: handleAddStatement,
+        removeStatement: handlRemoveStatement,
+        editStatement: handleEditStatement,
+        saveStatement: handleSaveStatement,
+        removeAllStatements: handleRemoveAllStatements,
+        onDeleteWorkspace: handleDeleteWorkspace,
+        onThreatListView,
+        onThreatEditorView,
+      }}
+    >
+      {children}
+    </ThreatsContext.Provider>
+  );
 };
 
 export default ThreatsContextProvider;

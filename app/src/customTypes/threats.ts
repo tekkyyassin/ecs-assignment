@@ -14,71 +14,93 @@
   limitations under the License.
  ******************************************************************************************************************** */
 
-import { z } from 'zod';
-import { EntityBaseSchema } from './entities';
-import { SINGLE_FIELD_INPUT_MAX_LENGTH, LEVEL_HIGH, LEVEL_MEDIUM, LEVEL_LOW, LEVEL_NOT_SET } from '../configs';
+import { z } from "zod";
+import { EntityBaseSchema } from "./entities";
+import {
+  SINGLE_FIELD_INPUT_MAX_LENGTH,
+  LEVEL_HIGH,
+  LEVEL_MEDIUM,
+  LEVEL_LOW,
+  LEVEL_NOT_SET,
+} from "../configs";
 
-export const ThreatStatementDisplayTokenSchema = z.object({
-  /**
-   * the html tag type for the content. If not type is specified. <span> will be used.
-   */
-  type: z.union([z.literal('b'), z.literal('span')]).optional(),
-  /**
-    * The tooltip content of the node.
-    */
-  tooltip: z.string().max(30).optional(),
-  /**
-    * The text content of the node.
-    */
-  content: z.string().max(SINGLE_FIELD_INPUT_MAX_LENGTH),
-}).strict();
+export const ThreatStatementDisplayTokenSchema = z
+  .object({
+    /**
+     * the html tag type for the content. If not type is specified. <span> will be used.
+     */
+    type: z.union([z.literal("b"), z.literal("span")]).optional(),
+    /**
+     * The tooltip content of the node.
+     */
+    tooltip: z.string().max(30).optional(),
+    /**
+     * The text content of the node.
+     */
+    content: z.string().max(SINGLE_FIELD_INPUT_MAX_LENGTH),
+  })
+  .strict();
 
-export type ThreatStatementDisplayToken = z.infer<typeof ThreatStatementDisplayTokenSchema>;
+export type ThreatStatementDisplayToken = z.infer<
+  typeof ThreatStatementDisplayTokenSchema
+>;
 
-export const ThreatStatementImpactedGoalItem = z.string().max(SINGLE_FIELD_INPUT_MAX_LENGTH);
+export const ThreatStatementImpactedGoalItem = z
+  .string()
+  .max(SINGLE_FIELD_INPUT_MAX_LENGTH);
 
-export const ThreatStatementImpactedAssetItem = z.string().max(SINGLE_FIELD_INPUT_MAX_LENGTH);
+export const ThreatStatementImpactedAssetItem = z
+  .string()
+  .max(SINGLE_FIELD_INPUT_MAX_LENGTH);
 
 export const TemplateThreatStatementSchema = EntityBaseSchema.extend({
   /**
-    * Source of the threat.
-    */
+   * Source of the threat.
+   */
   threatSource: z.string().max(SINGLE_FIELD_INPUT_MAX_LENGTH).optional(),
   /**
-    * Prerequisites of the threat.
-    */
+   * Prerequisites of the threat.
+   */
   prerequisites: z.string().max(SINGLE_FIELD_INPUT_MAX_LENGTH).optional(),
   /**
-    * Threat action.
-    */
+   * Threat action.
+   */
   threatAction: z.string().max(SINGLE_FIELD_INPUT_MAX_LENGTH).optional(),
   /**
-    * Impact of the threat.
-    */
+   * Impact of the threat.
+   */
   threatImpact: z.string().max(SINGLE_FIELD_INPUT_MAX_LENGTH).optional(),
   /**
-    * Impacted goal of the threat.
-    */
+   * Impacted goal of the threat.
+   */
   impactedGoal: ThreatStatementImpactedGoalItem.array().optional(),
   /**
-    * Impacted assets of the threat.
-    */
+   * Impacted assets of the threat.
+   */
   impactedAssets: ThreatStatementImpactedAssetItem.array().optional(),
   /**
-    * The full rendered statement as string.
-    */
-  statement: z.string().max(SINGLE_FIELD_INPUT_MAX_LENGTH * 7).optional(),
+   * The full rendered statement as string.
+   */
+  statement: z
+    .string()
+    .max(SINGLE_FIELD_INPUT_MAX_LENGTH * 7)
+    .optional(),
   /**
-    * The custom templates applied to the threat statement.
-    */
+   * The custom templates applied to the threat statement.
+   */
   customTemplate: z.string().max(SINGLE_FIELD_INPUT_MAX_LENGTH).optional(),
   /**
-    * A list of displayed statement token
-    */
-  displayedStatement: z.union([ThreatStatementDisplayTokenSchema, z.string()]).array().optional(),
+   * A list of displayed statement token
+   */
+  displayedStatement: z
+    .union([ThreatStatementDisplayTokenSchema, z.string()])
+    .array()
+    .optional(),
 }).strict();
 
-export type TemplateThreatStatement = z.infer<typeof TemplateThreatStatementSchema>;
+export type TemplateThreatStatement = z.infer<
+  typeof TemplateThreatStatementSchema
+>;
 
 export interface ThreatFieldData {
   fieldId: number;
@@ -96,8 +118,12 @@ export interface ThreatStatementListFilter {
   linkedMitigations?: boolean;
   linkedControls?: boolean;
   linkedAssumptions?: boolean;
-  priority?: typeof LEVEL_HIGH | typeof LEVEL_MEDIUM | typeof LEVEL_LOW | typeof LEVEL_NOT_SET;
-  stride?: 'S' | 'T' | 'R' | 'I' | 'D' | 'E' | 'LM' | typeof LEVEL_NOT_SET;
+  priority?:
+    | typeof LEVEL_HIGH
+    | typeof LEVEL_MEDIUM
+    | typeof LEVEL_LOW
+    | typeof LEVEL_NOT_SET;
+  stride?: "S" | "T" | "R" | "I" | "D" | "E" | "LM" | typeof LEVEL_NOT_SET;
 }
 
 export interface ThreatStatementFormat {
@@ -111,14 +137,14 @@ export const PerFieldExampleSchema = z.object({
   /**Example string */
   example: z.string(),
   /**
-  * The statement Id.
-  * For now, use the array index.
-  * In future, if the examples are downloaded online, should change to use threatStatementId.
-  */
+   * The statement Id.
+   * For now, use the array index.
+   * In future, if the examples are downloaded online, should change to use threatStatementId.
+   */
   fromId: z.number(),
   /**
-    * The stride from the statement.
-    */
+   * The stride from the statement.
+   */
   stride: z.string().array().optional(),
 });
 

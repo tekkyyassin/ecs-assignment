@@ -14,11 +14,11 @@
   limitations under the License.
  ******************************************************************************************************************** */
 
-import { ReactNode, FC, useEffect } from 'react';
-import useLocalStorageState from 'use-local-storage-state';
-import { v4 as uuidv4 } from 'uuid';
-import { LOCAL_STORAGE_KEY_THREATS_LIST_MIGRATION } from '../../configs/localStorageKeys';
-import { useThreatsContext } from '../../contexts/ThreatsContext/context';
+import { ReactNode, FC, useEffect } from "react";
+import useLocalStorageState from "use-local-storage-state";
+import { v4 as uuidv4 } from "uuid";
+import { LOCAL_STORAGE_KEY_THREATS_LIST_MIGRATION } from "../../configs/localStorageKeys";
+import { useThreatsContext } from "../../contexts/ThreatsContext/context";
 
 export interface WorkspacesMigrationProps {
   children: ReactNode;
@@ -28,11 +28,19 @@ export interface WorkspacesMigrationProps {
  * Migrates the old workspaces list to the new format
  */
 const ThreatsMigration: FC<WorkspacesMigrationProps> = ({ children }) => {
-  const { statementList, setStatementList, editingStatement, setEditingStatement } = useThreatsContext();
+  const {
+    statementList,
+    setStatementList,
+    editingStatement,
+    setEditingStatement,
+  } = useThreatsContext();
 
-  const [migrated, setMigrated] = useLocalStorageState<boolean>(LOCAL_STORAGE_KEY_THREATS_LIST_MIGRATION, {
-    defaultValue: false,
-  });
+  const [migrated, setMigrated] = useLocalStorageState<boolean>(
+    LOCAL_STORAGE_KEY_THREATS_LIST_MIGRATION,
+    {
+      defaultValue: false,
+    },
+  );
 
   // Temporarily tracking Workspace data structure migration
   useEffect(() => {
@@ -48,14 +56,25 @@ const ThreatsMigration: FC<WorkspacesMigrationProps> = ({ children }) => {
             id: uuidv4(),
           }));
           // @ts-ignore
-          editingStatement && !isNaN(editingStatement.id) && setEditingStatement(prevT => newList.find(x => x.numericId === prevT.id));
+          editingStatement &&
+            !isNaN(editingStatement.id) &&
+            setEditingStatement((prevT) =>
+              newList.find((x) => x.numericId === prevT.id),
+            );
           return newList;
         });
       }
 
       setMigrated(true);
     }
-  }, [statementList, migrated, editingStatement, setEditingStatement, setMigrated, setStatementList]);
+  }, [
+    statementList,
+    migrated,
+    editingStatement,
+    setEditingStatement,
+    setMigrated,
+    setStatementList,
+  ]);
 
   return migrated && children ? <>{children}</> : null;
 };

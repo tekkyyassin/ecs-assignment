@@ -14,14 +14,14 @@
   limitations under the License.
  ******************************************************************************************************************** */
 
-import { FC, PropsWithChildren, useCallback } from 'react';
-import useLocalStorageState from 'use-local-storage-state';
-import { LOCAL_STORAGE_KEY_CONTROL_LIST } from '../../../../configs/localStorageKeys';
-import { ControlProfile } from '../../../../customTypes';
-import removeLocalStorageKey from '../../../../utils/removeLocalStorageKey';
-import { ControlProfilesContext } from '../../context';
-import { ControlProfilesContextProviderProps } from '../../types';
-import useControlProfiles from '../../useControlProfiles';
+import { FC, PropsWithChildren, useCallback } from "react";
+import useLocalStorageState from "use-local-storage-state";
+import { LOCAL_STORAGE_KEY_CONTROL_LIST } from "../../../../configs/localStorageKeys";
+import { ControlProfile } from "../../../../customTypes";
+import removeLocalStorageKey from "../../../../utils/removeLocalStorageKey";
+import { ControlProfilesContext } from "../../context";
+import { ControlProfilesContextProviderProps } from "../../types";
+import useControlProfiles from "../../useControlProfiles";
 
 const getLocalStorageKey = (workspaceId: string | null) => {
   if (workspaceId) {
@@ -31,18 +31,19 @@ const getLocalStorageKey = (workspaceId: string | null) => {
   return LOCAL_STORAGE_KEY_CONTROL_LIST;
 };
 
-const ControlProfilesLocalStorageContextProvider: FC<PropsWithChildren<ControlProfilesContextProviderProps>> = ({
-  children,
-  workspaceId: currentWorkspaceId,
-}) => {
-  const [controlProfileList, setControlProfileList, { removeItem }] = useLocalStorageState<ControlProfile[]>(getLocalStorageKey(currentWorkspaceId), {
-    defaultValue: [],
-  });
+const ControlProfilesLocalStorageContextProvider: FC<
+  PropsWithChildren<ControlProfilesContextProviderProps>
+> = ({ children, workspaceId: currentWorkspaceId }) => {
+  const [controlProfileList, setControlProfileList, { removeItem }] =
+    useLocalStorageState<ControlProfile[]>(
+      getLocalStorageKey(currentWorkspaceId),
+      {
+        defaultValue: [],
+      },
+    );
 
-  const {
-    handlRemoveControlProfile,
-    handleSaveControlProfile,
-  } = useControlProfiles(controlProfileList, setControlProfileList);
+  const { handlRemoveControlProfile, handleSaveControlProfile } =
+    useControlProfiles(controlProfileList, setControlProfileList);
 
   const handleRemoveAllControlProfiles = useCallback(async () => {
     removeItem();
@@ -55,16 +56,20 @@ const ControlProfilesLocalStorageContextProvider: FC<PropsWithChildren<ControlPr
     }, 1000);
   }, []);
 
-  return (<ControlProfilesContext.Provider value={{
-    controlProfileList,
-    setControlProfileList,
-    removeControlProfile: handlRemoveControlProfile,
-    saveControlProfile: handleSaveControlProfile,
-    removeAllControlProfiles: handleRemoveAllControlProfiles,
-    onDeleteWorkspace: handleDeleteWorkspace,
-  }}>
-    {children}
-  </ControlProfilesContext.Provider>);
+  return (
+    <ControlProfilesContext.Provider
+      value={{
+        controlProfileList,
+        setControlProfileList,
+        removeControlProfile: handlRemoveControlProfile,
+        saveControlProfile: handleSaveControlProfile,
+        removeAllControlProfiles: handleRemoveAllControlProfiles,
+        onDeleteWorkspace: handleDeleteWorkspace,
+      }}
+    >
+      {children}
+    </ControlProfilesContext.Provider>
+  );
 };
 
 export default ControlProfilesLocalStorageContextProvider;

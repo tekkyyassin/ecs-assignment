@@ -14,8 +14,8 @@
   limitations under the License.
  ******************************************************************************************************************** */
 
-import Multiselect from '@cloudscape-design/components/multiselect';
-import React, { FC, useMemo } from 'react';
+import Multiselect from "@cloudscape-design/components/multiselect";
+import React, { FC, useMemo } from "react";
 
 export interface TagSelectorProps {
   allTags: string[];
@@ -34,24 +34,26 @@ const TagSelector: FC<TagSelectorProps> = ({
     });
   }, [allTags]);
 
-  return (<Multiselect
-    selectedOptions={selectedTags.map(ia => ({
-      label: ia,
-      value: ia,
-    }))}
-    onChange={({ detail }) =>
-      setSelectedTags(detail.selectedOptions?.map(o => o.value || '') || [])
-    }
-    deselectAriaLabel={e => `Remove ${e.label}`}
-    options={sortedTags.map(g => ({
-      label: g,
-      value: g,
-    }))}
-    filteringType="auto"
-    placeholder="Filtered by tags"
-    selectedAriaLabel="Selected"
-    tokenLimit={3}
-  />);
+  return (
+    <Multiselect
+      selectedOptions={selectedTags.map((ia) => ({
+        label: ia,
+        value: ia,
+      }))}
+      onChange={({ detail }) =>
+        setSelectedTags(detail.selectedOptions?.map((o) => o.value || "") || [])
+      }
+      deselectAriaLabel={(e) => `Remove ${e.label}`}
+      options={sortedTags.map((g) => ({
+        label: g,
+        value: g,
+      }))}
+      filteringType="auto"
+      placeholder="Filtered by tags"
+      selectedAriaLabel="Selected"
+      tokenLimit={3}
+    />
+  );
 };
 
 export default TagSelector;

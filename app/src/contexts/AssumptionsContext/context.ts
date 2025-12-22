@@ -14,9 +14,9 @@
   limitations under the License.
  ******************************************************************************************************************** */
 
-import { useContext, createContext } from 'react';
-import { Assumption } from '../../customTypes';
-export type View = 'list' | 'editor';
+import { useContext, createContext } from "react";
+import { Assumption } from "../../customTypes";
+export type View = "list" | "editor";
 
 export interface AssumptionsContextApi {
   assumptionList: Assumption[];
@@ -29,17 +29,18 @@ export interface AssumptionsContextApi {
 
 const initialState: AssumptionsContextApi = {
   assumptionList: [],
-  setAssumptionList: () => { },
-  removeAssumption: () => { },
+  setAssumptionList: () => {},
+  removeAssumption: () => {},
   saveAssumption: () => ({
-    id: 'new',
+    id: "new",
     numericId: -1,
-    content: '',
+    content: "",
   }),
   removeAllAssumptions: () => Promise.resolve(),
   onDeleteWorkspace: () => Promise.resolve(),
 };
 
-export const AssumptionsContext = createContext<AssumptionsContextApi>(initialState);
+export const AssumptionsContext =
+  createContext<AssumptionsContextApi>(initialState);
 
 export const useAssumptionsContext = () => useContext(AssumptionsContext);

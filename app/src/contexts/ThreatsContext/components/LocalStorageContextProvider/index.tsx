@@ -14,16 +14,19 @@
   limitations under the License.
  ******************************************************************************************************************** */
 
-import { FC, PropsWithChildren, useCallback, useEffect } from 'react';
-import useLocalStorageState from 'use-local-storage-state';
-import { LOCAL_STORAGE_KEY_STATEMENT_LIST, LOCAL_STORAGE_KEY_EDITING_STATEMENT } from '../../../../configs/localStorageKeys';
-import { TemplateThreatStatement } from '../../../../customTypes';
-import removeLocalStorageKey from '../../../../utils/removeLocalStorageKey';
-import { useGlobalSetupContext } from '../../../GlobalSetupContext/context';
-import { ThreatsContext } from '../../context';
-import useThreatExamples from '../../hooks/useThreatExamples';
-import useThreats from '../../hooks/useThreats';
-import { ThreatsContextProviderProps } from '../../types';
+import { FC, PropsWithChildren, useCallback, useEffect } from "react";
+import useLocalStorageState from "use-local-storage-state";
+import {
+  LOCAL_STORAGE_KEY_STATEMENT_LIST,
+  LOCAL_STORAGE_KEY_EDITING_STATEMENT,
+} from "../../../../configs/localStorageKeys";
+import { TemplateThreatStatement } from "../../../../customTypes";
+import removeLocalStorageKey from "../../../../utils/removeLocalStorageKey";
+import { useGlobalSetupContext } from "../../../GlobalSetupContext/context";
+import { ThreatsContext } from "../../context";
+import useThreatExamples from "../../hooks/useThreatExamples";
+import useThreats from "../../hooks/useThreats";
+import { ThreatsContextProviderProps } from "../../types";
 
 const getLocalStorageKey = (workspaceId: string | null) => {
   if (workspaceId) {
@@ -33,37 +36,48 @@ const getLocalStorageKey = (workspaceId: string | null) => {
   return LOCAL_STORAGE_KEY_STATEMENT_LIST;
 };
 
-const ThreatsContextProvider: FC<PropsWithChildren<ThreatsContextProviderProps>> = ({
+const ThreatsContextProvider: FC<
+  PropsWithChildren<ThreatsContextProviderProps>
+> = ({
   children,
   workspaceId: currentWorkspaceId,
   onThreatListView,
   onThreatEditorView,
 }) => {
-  const [editingStatement,
+  const [
+    editingStatement,
     setEditingStatement,
-    { removeItem: removeEditingStatement }] = useLocalStorageState<TemplateThreatStatement | null>(LOCAL_STORAGE_KEY_EDITING_STATEMENT, {
-    defaultValue: null,
-  });
+    { removeItem: removeEditingStatement },
+  ] = useLocalStorageState<TemplateThreatStatement | null>(
+    LOCAL_STORAGE_KEY_EDITING_STATEMENT,
+    {
+      defaultValue: null,
+    },
+  );
 
-  const [statementList,
-    setStatementList,
-    { removeItem: removeStatementList }] = useLocalStorageState<TemplateThreatStatement[]>(getLocalStorageKey(currentWorkspaceId), {
-    defaultValue: [],
-  });
+  const [statementList, setStatementList, { removeItem: removeStatementList }] =
+    useLocalStorageState<TemplateThreatStatement[]>(
+      getLocalStorageKey(currentWorkspaceId),
+      {
+        defaultValue: [],
+      },
+    );
 
-  const [filteredStatementList,
+  const [
+    filteredStatementList,
     setFilteredStatementList,
-    { removeItem: removeFilteredStatementList }] = useLocalStorageState<TemplateThreatStatement[]>(getLocalStorageKey(currentWorkspaceId), {
-    defaultValue: [],
-  });
+    { removeItem: removeFilteredStatementList },
+  ] = useLocalStorageState<TemplateThreatStatement[]>(
+    getLocalStorageKey(currentWorkspaceId),
+    {
+      defaultValue: [],
+    },
+  );
 
   const { composerMode, hasVisitBefore } = useGlobalSetupContext();
 
-  const {
-    threatStatementExamples,
-    perFieldExamples,
-    previousInputs,
-  } = useThreatExamples(statementList);
+  const { threatStatementExamples, perFieldExamples, previousInputs } =
+    useThreatExamples(statementList);
 
   const {
     view,
@@ -89,49 +103,71 @@ const ThreatsContextProvider: FC<PropsWithChildren<ThreatsContextProviderProps>>
     removeStatementList();
     removeFilteredStatementList();
     removeEditingStatement();
-  }, [removeEditingStatement, removeStatementList, removeFilteredStatementList]);
+  }, [
+    removeEditingStatement,
+    removeStatementList,
+    removeFilteredStatementList,
+  ]);
 
-  const handleDeleteWorkspace = useCallback(async (workspaceId: string) => {
-    setEditingStatement(null);
-    window.setTimeout(() => {
-      // to delete after the workspace is switched. Otherwise the default value is set again.
-      removeLocalStorageKey(getLocalStorageKey(workspaceId));
-    }, 1000);
-  }, [setEditingStatement]);
+  const handleDeleteWorkspace = useCallback(
+    async (workspaceId: string) => {
+      setEditingStatement(null);
+      window.setTimeout(() => {
+        // to delete after the workspace is switched. Otherwise the default value is set again.
+        removeLocalStorageKey(getLocalStorageKey(workspaceId));
+      }, 1000);
+    },
+    [setEditingStatement],
+  );
 
   useEffect(() => {
-    if ((composerMode === 'EditorOnly' && !editingStatementExist)
-      || (composerMode === 'ThreatsOnly'
-        && !hasVisitBefore
-        && !editingStatementExist
-        && lenStatementList === 0 && !currentWorkspaceId)) {
+    if (
+      (composerMode === "EditorOnly" && !editingStatementExist) ||
+      (composerMode === "ThreatsOnly" &&
+        !hasVisitBefore &&
+        !editingStatementExist &&
+        lenStatementList === 0 &&
+        !currentWorkspaceId)
+    ) {
       handleAddStatement();
     }
-  }, [composerMode, editingStatementExist, hasVisitBefore, lenStatementList, currentWorkspaceId, handleAddStatement]);
+  }, [
+    composerMode,
+    editingStatementExist,
+    hasVisitBefore,
+    lenStatementList,
+    currentWorkspaceId,
+    handleAddStatement,
+  ]);
 
-  return (<ThreatsContext.Provider value={{
-    view,
-    editingStatement,
-    statementList,
-    setStatementList,
-    filteredStatementList,
-    setFilteredStatementList,
-    threatStatementExamples: threatStatementExamples as TemplateThreatStatement[],
-    perFieldExamples,
-    previousInputs,
-    setView,
-    setEditingStatement,
-    addStatement: handleAddStatement,
-    removeStatement: handlRemoveStatement,
-    editStatement: handleEditStatement,
-    saveStatement: handleSaveStatement,
-    removeAllStatements: handleRemoveAllStatements,
-    onDeleteWorkspace: handleDeleteWorkspace,
-    onThreatListView,
-    onThreatEditorView,
-  }}>
-    {children}
-  </ThreatsContext.Provider>);
+  return (
+    <ThreatsContext.Provider
+      value={{
+        view,
+        editingStatement,
+        statementList,
+        setStatementList,
+        filteredStatementList,
+        setFilteredStatementList,
+        threatStatementExamples:
+          threatStatementExamples as TemplateThreatStatement[],
+        perFieldExamples,
+        previousInputs,
+        setView,
+        setEditingStatement,
+        addStatement: handleAddStatement,
+        removeStatement: handlRemoveStatement,
+        editStatement: handleEditStatement,
+        saveStatement: handleSaveStatement,
+        removeAllStatements: handleRemoveAllStatements,
+        onDeleteWorkspace: handleDeleteWorkspace,
+        onThreatListView,
+        onThreatEditorView,
+      }}
+    >
+      {children}
+    </ThreatsContext.Provider>
+  );
 };
 
 export default ThreatsContextProvider;

@@ -14,11 +14,11 @@
   limitations under the License.
  ******************************************************************************************************************** */
 
-import { FC, useCallback, useEffect, useState } from 'react';
-import { useAssumptionLinksContext } from '../../../contexts/AssumptionLinksContext/context';
-import { useMitigationsContext } from '../../../contexts/MitigationsContext/context';
-import { AssumptionLink } from '../../../customTypes';
-import MitigationLinkView from '../../mitigations/MitigationLinkView';
+import { FC, useCallback, useEffect, useState } from "react";
+import { useAssumptionLinksContext } from "../../../contexts/AssumptionLinksContext/context";
+import { useMitigationsContext } from "../../../contexts/MitigationsContext/context";
+import { AssumptionLink } from "../../../customTypes";
+import MitigationLinkView from "../../mitigations/MitigationLinkView";
 
 export interface AssumptionThreatLinkProps {
   assumptionId: string;
@@ -33,42 +33,50 @@ const AssumptionThreatLinkComponent: FC<AssumptionThreatLinkProps> = ({
   const { getAssumptionEntityLinks } = useAssumptionLinksContext();
 
   useEffect(() => {
-    const _assumptionLinks = getAssumptionEntityLinks(assumptionId, 'Mitigation');
+    const _assumptionLinks = getAssumptionEntityLinks(
+      assumptionId,
+      "Mitigation",
+    );
     setAssumptionLinks(_assumptionLinks || []);
   }, [getAssumptionEntityLinks, assumptionId]);
 
-  const {
-    addAssumptionLink,
-    removeAssumptionLink,
-  } = useAssumptionLinksContext();
+  const { addAssumptionLink, removeAssumptionLink } =
+    useAssumptionLinksContext();
 
-  const handleAddMitigationLink = useCallback((mitigationIdOrNewMitigation: string) => {
-    if (mitigationList.find(m => m.id === mitigationIdOrNewMitigation)) {
-      addAssumptionLink({
-        linkedId: mitigationIdOrNewMitigation,
-        assumptionId,
-        type: 'Mitigation',
-      });
-    } else {
-      const newMitigation = saveMitigation({
-        numericId: -1,
-        content: mitigationIdOrNewMitigation,
-        id: 'new',
-      });
-      addAssumptionLink({
-        type: 'Mitigation',
-        linkedId: newMitigation.id,
-        assumptionId,
-      });
-    }
-  }, [assumptionId, mitigationList, addAssumptionLink, saveMitigation]);
+  const handleAddMitigationLink = useCallback(
+    (mitigationIdOrNewMitigation: string) => {
+      if (mitigationList.find((m) => m.id === mitigationIdOrNewMitigation)) {
+        addAssumptionLink({
+          linkedId: mitigationIdOrNewMitigation,
+          assumptionId,
+          type: "Mitigation",
+        });
+      } else {
+        const newMitigation = saveMitigation({
+          numericId: -1,
+          content: mitigationIdOrNewMitigation,
+          id: "new",
+        });
+        addAssumptionLink({
+          type: "Mitigation",
+          linkedId: newMitigation.id,
+          assumptionId,
+        });
+      }
+    },
+    [assumptionId, mitigationList, addAssumptionLink, saveMitigation],
+  );
 
-  return (<MitigationLinkView
-    mitigationList={mitigationList}
-    linkedMitigationIds={assumptionLinks.map(ml => ml.linkedId)}
-    onAddMitigationLink={handleAddMitigationLink}
-    onRemoveMitigationLink={(mitigationId) => removeAssumptionLink(assumptionId, mitigationId)}
-  />);
+  return (
+    <MitigationLinkView
+      mitigationList={mitigationList}
+      linkedMitigationIds={assumptionLinks.map((ml) => ml.linkedId)}
+      onAddMitigationLink={handleAddMitigationLink}
+      onRemoveMitigationLink={(mitigationId) =>
+        removeAssumptionLink(assumptionId, mitigationId)
+      }
+    />
+  );
 };
 
 export default AssumptionThreatLinkComponent;

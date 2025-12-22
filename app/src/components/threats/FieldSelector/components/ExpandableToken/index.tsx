@@ -14,9 +14,9 @@
   limitations under the License.
  ******************************************************************************************************************** */
 
-import Button from '@cloudscape-design/components/button';
-import { FC, ReactNode } from 'react';
-import Tooltip from '../../../../generic/Tooltip';
+import Button from "@cloudscape-design/components/button";
+import { FC, ReactNode } from "react";
+import Tooltip from "../../../../generic/Tooltip";
 
 export interface ExpandableTokenProps {
   onClick?: () => void;
@@ -29,9 +29,15 @@ const ExpandableToken: FC<ExpandableTokenProps> = ({
   onClick,
   tooltip,
 }) => {
-  return (<Tooltip tooltip={tooltip}>
-    <Button iconName={expanded ? 'treeview-collapse' : 'treeview-expand'} variant="icon" onClick={onClick}/>
-  </Tooltip>);
+  return (
+    <Tooltip tooltip={tooltip}>
+      <Button
+        iconName={expanded ? "treeview-collapse" : "treeview-expand"}
+        variant="icon"
+        onClick={onClick}
+      />
+    </Tooltip>
+  );
 };
 
 export default ExpandableToken;

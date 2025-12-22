@@ -14,19 +14,22 @@
   limitations under the License.
  ******************************************************************************************************************** */
 
-import { FC, PropsWithChildren, useCallback, useState } from 'react';
-import { MitigationLink } from '../../../../customTypes';
-import { LocalStateContextProviderBaseProps } from '../../../types';
-import { MitigationLinksContext } from '../../context';
-import { MitigationLinksContextProviderProps } from '../../types';
-import useMitigationLinks from '../../useMitigationLinks';
+import { FC, PropsWithChildren, useCallback, useState } from "react";
+import { MitigationLink } from "../../../../customTypes";
+import { LocalStateContextProviderBaseProps } from "../../../types";
+import { MitigationLinksContext } from "../../context";
+import { MitigationLinksContextProviderProps } from "../../types";
+import useMitigationLinks from "../../useMitigationLinks";
 
-const MitigationLinksLocalStateContextProvider: FC<PropsWithChildren<
-MitigationLinksContextProviderProps & LocalStateContextProviderBaseProps<MitigationLink[]>>> = ({
-  children,
-  initialValue,
-}) => {
-  const [mitigationLinkList, setMitigationLinkList] = useState<MitigationLink[]>(initialValue || []);
+const MitigationLinksLocalStateContextProvider: FC<
+  PropsWithChildren<
+    MitigationLinksContextProviderProps &
+      LocalStateContextProviderBaseProps<MitigationLink[]>
+  >
+> = ({ children, initialValue }) => {
+  const [mitigationLinkList, setMitigationLinkList] = useState<
+    MitigationLink[]
+  >(initialValue || []);
 
   const {
     handlRemoveMitigationLink,
@@ -47,23 +50,28 @@ MitigationLinksContextProviderProps & LocalStateContextProviderBaseProps<Mitigat
     setMitigationLinkList([]);
   }, []);
 
-  return (<MitigationLinksContext.Provider value={{
-    mitigationLinkList,
-    setMitigationLinkList,
-    getLinkedMitigationLinks: handleGetLinkedMitigationLinks,
-    getMitigtaionThreatLinks: handleGetMitigationThreatLinks,
-    removeMitigationLink: handlRemoveMitigationLink,
-    removeMitigationLinksByMitigationId: handlRemoveMitigationLinksByMitigationId,
-    removeMitigationLinksByLinkedEntityId: handlRemoveMitigationLinksByLinkedEntityId,
-    removeMitigationLinks: handleRemoveMitigationLinks,
-    addMitigationLink: handleAddMitigationLink,
-    addMitigationLinks: handleAddMitigationLinks,
-    removeAllMitigationLinks: handleRemoveAllMitigationLinks,
-    onDeleteWorkspace: handleDeleteWorkspace,
-  }}>
-    {children}
-  </MitigationLinksContext.Provider>);
+  return (
+    <MitigationLinksContext.Provider
+      value={{
+        mitigationLinkList,
+        setMitigationLinkList,
+        getLinkedMitigationLinks: handleGetLinkedMitigationLinks,
+        getMitigtaionThreatLinks: handleGetMitigationThreatLinks,
+        removeMitigationLink: handlRemoveMitigationLink,
+        removeMitigationLinksByMitigationId:
+          handlRemoveMitigationLinksByMitigationId,
+        removeMitigationLinksByLinkedEntityId:
+          handlRemoveMitigationLinksByLinkedEntityId,
+        removeMitigationLinks: handleRemoveMitigationLinks,
+        addMitigationLink: handleAddMitigationLink,
+        addMitigationLinks: handleAddMitigationLinks,
+        removeAllMitigationLinks: handleRemoveAllMitigationLinks,
+        onDeleteWorkspace: handleDeleteWorkspace,
+      }}
+    >
+      {children}
+    </MitigationLinksContext.Provider>
+  );
 };
 
 export default MitigationLinksLocalStateContextProvider;
-

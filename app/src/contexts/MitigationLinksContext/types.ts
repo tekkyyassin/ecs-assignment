@@ -14,7 +14,6 @@
   limitations under the License.
  ******************************************************************************************************************** */
 
-import { ContextProviderBaseProps } from '../types';
+import { ContextProviderBaseProps } from "../types";
 
-export interface MitigationLinksContextProviderProps extends ContextProviderBaseProps {
-}
+export interface MitigationLinksContextProviderProps extends ContextProviderBaseProps {}

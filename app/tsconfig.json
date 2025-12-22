@@ -8,11 +8,7 @@
     "experimentalDecorators": true,
     "inlineSourceMap": true,
     "inlineSources": true,
-    "lib": [
-      "dom",
-      "dom.iterable",
-      "esnext"
-    ],
+    "lib": ["dom", "dom.iterable", "esnext"],
     "module": "commonjs",
     "noEmitOnError": false,
     "noFallthroughCasesInSwitch": true,
@@ -37,9 +33,6 @@
     "emitDecoratorMetadata": true,
     "jsx": "react-jsx"
   },
-  "include": [
-    "src/**/*.ts",
-    "src"
-  ],
+  "include": ["src/**/*.ts", "src"],
   "exclude": []
 }

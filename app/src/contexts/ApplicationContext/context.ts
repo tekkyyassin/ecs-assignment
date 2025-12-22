@@ -14,8 +14,8 @@
   limitations under the License.
  ******************************************************************************************************************** */
 
-import { useContext, createContext } from 'react';
-import { ApplicationInfo } from '../../customTypes';
+import { useContext, createContext } from "react";
+import { ApplicationInfo } from "../../customTypes";
 
 export interface ApplicationInfoContextApi {
   applicationInfo: ApplicationInfo;
@@ -26,8 +26,8 @@ export interface ApplicationInfoContextApi {
 
 const initialState: ApplicationInfoContextApi = {
   applicationInfo: {
-    description: '',
-    securityCategory: 'CCCS Medium',
+    description: "",
+    securityCategory: "CCCS Medium",
     useIaaS: false,
     usePaaS: false,
     useSaaS: false,
@@ -37,11 +37,13 @@ const initialState: ApplicationInfoContextApi = {
     useCompute: false,
     useNetwork: false,
   },
-  setApplicationInfo: () => { },
+  setApplicationInfo: () => {},
   removeApplicationInfo: () => Promise.resolve(),
   onDeleteWorkspace: () => Promise.resolve(),
 };
 
-export const ApplicationInfoContext = createContext<ApplicationInfoContextApi>(initialState);
+export const ApplicationInfoContext =
+  createContext<ApplicationInfoContextApi>(initialState);
 
-export const useApplicationInfoContext = () => useContext(ApplicationInfoContext);
+export const useApplicationInfoContext = () =>
+  useContext(ApplicationInfoContext);

@@ -14,20 +14,31 @@
   limitations under the License.
  ******************************************************************************************************************** */
 
-import { useMemo } from 'react';
-import { useApplicationInfoContext } from '../../contexts/ApplicationContext';
-import { useArchitectureInfoContext } from '../../contexts/ArchitectureContext';
-import { useAssumptionsContext } from '../../contexts/AssumptionsContext';
-import { useDataflowInfoContext } from '../../contexts/DataflowContext';
-import { useDiagramInfoContext } from '../../contexts/DiagramContext';
-import { useFlowContext } from '../../contexts/FlowContext';
-import { useMitigationsContext } from '../../contexts/MitigationsContext';
-import { useControlsContext } from '../../contexts/ControlsContext';
-import { useControlProfilesContext } from '../../contexts/ControlProfilesContext';
-import { useThreatsContext } from '../../contexts/ThreatsContext';
-import { HasContentDetails } from '../../customTypes';
-import { hasApplicationName, hasApplicationInfo, hasArchitectureInfo, hasAssumptions, hasDiagramInfo, hasDataflowInfo, hasMitigations, hasControls, hasControlProfiles, hasThreats, hasFlow } from '../../utils/hasContent';
-
+import { useMemo } from "react";
+import { useApplicationInfoContext } from "../../contexts/ApplicationContext";
+import { useArchitectureInfoContext } from "../../contexts/ArchitectureContext";
+import { useAssumptionsContext } from "../../contexts/AssumptionsContext";
+import { useDataflowInfoContext } from "../../contexts/DataflowContext";
+import { useDiagramInfoContext } from "../../contexts/DiagramContext";
+import { useFlowContext } from "../../contexts/FlowContext";
+import { useMitigationsContext } from "../../contexts/MitigationsContext";
+import { useControlsContext } from "../../contexts/ControlsContext";
+import { useControlProfilesContext } from "../../contexts/ControlProfilesContext";
+import { useThreatsContext } from "../../contexts/ThreatsContext";
+import { HasContentDetails } from "../../customTypes";
+import {
+  hasApplicationName,
+  hasApplicationInfo,
+  hasArchitectureInfo,
+  hasAssumptions,
+  hasDiagramInfo,
+  hasDataflowInfo,
+  hasMitigations,
+  hasControls,
+  hasControlProfiles,
+  hasThreats,
+  hasFlow,
+} from "../../utils/hasContent";
 
 const useHasContent = () => {
   const { applicationInfo } = useApplicationInfoContext();
@@ -56,7 +67,7 @@ const useHasContent = () => {
       threats: hasThreats(statementList),
     };
 
-    const sum = Object.values(details).some(x => x);
+    const sum = Object.values(details).some((x) => x);
 
     return [sum, details];
   }, [

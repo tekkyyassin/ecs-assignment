@@ -14,22 +14,26 @@
   limitations under the License.
  ******************************************************************************************************************** */
 
-import { FC } from 'react';
-import { useDataflowInfoContext } from '../../../contexts/DataflowContext/context';
-import { DataflowInfoSchema, EditableComponentBaseProps } from '../../../customTypes';
-import BaseDiagramInfo from '../../generic/BaseDiagramInfo';
-
+import { FC } from "react";
+import { useDataflowInfoContext } from "../../../contexts/DataflowContext/context";
+import {
+  DataflowInfoSchema,
+  EditableComponentBaseProps,
+} from "../../../customTypes";
+import BaseDiagramInfo from "../../generic/BaseDiagramInfo";
 
 const DataflowInfo: FC<EditableComponentBaseProps> = (props) => {
   const { dataflowInfo, setDataflowInfo } = useDataflowInfoContext();
-  return <BaseDiagramInfo
-    {...props}
-    headerTitle='Dataflow'
-    diagramTitle=''
-    entity={dataflowInfo}
-    onConfirm={(diagram) => setDataflowInfo(diagram)}
-    validateData={DataflowInfoSchema.shape.description.safeParse}
-  />;
+  return (
+    <BaseDiagramInfo
+      {...props}
+      headerTitle="Dataflow"
+      diagramTitle=""
+      entity={dataflowInfo}
+      onConfirm={(diagram) => setDataflowInfo(diagram)}
+      validateData={DataflowInfoSchema.shape.description.safeParse}
+    />
+  );
 };
 
 export default DataflowInfo;

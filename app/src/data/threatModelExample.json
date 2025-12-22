@@ -56,54 +56,54 @@
     }
   ],
   "controls": [
-   {
-     "id": "9958E054-E8F5-40A2-AB66-402092AEB9F4",
-     "numericId": 4,
-     "content": "AC-2(2): Account Management | Removal of Temporary / Emergency Accounts",
-     "metadata": [
-       {
-         "key": "Comments",
-         "value": "\tACCOUNT MANAGEMENT | REMOVAL OF TEMPORARY / EMERGENCY ACCOUNTS\nThe information system automatically disables temporary and emergency accounts after no more than 30 days for both temporary and emergency accounts."
-       },
-       {
-         "key": "STRIDE",
-         "value": ["E"]
-       }
-     ],
-     "tags": [
-       "Technical",
-       "CCCS Medium",
-       "CSP Full Stack",
-       "CSP Stacked PaaS",
-       "CSP Stacked SaaS",
-       "Client IaaS / PaaS"
-     ]
-   },
-   {
-     "id": "C2F186B1-30AB-48F2-B281-820FF86EC927",
-     "numericId": 5,
-     "content": "AC-2(3): Account Management | Disable Inactive Accounts",
-     "metadata": [
-       {
-         "key": "Comments",
-         "value": "\tACCOUNT MANAGEMENT | DISABLE INACTIVE ACCOUNTS\nThe information system automatically disables inactive accounts after 90 days."
-       },
-       {
-         "key": "STRIDE",
-         "value": ["E"]
-       }
-     ],
-     "tags": [
-       "Technical",
-       "CCCS Medium",
-       "CSP Full Stack",
-       "CSP Stacked PaaS",
-       "CSP Stacked SaaS",
-       "Client IaaS / PaaS"
-     ]
-   }
+    {
+      "id": "9958E054-E8F5-40A2-AB66-402092AEB9F4",
+      "numericId": 4,
+      "content": "AC-2(2): Account Management | Removal of Temporary / Emergency Accounts",
+      "metadata": [
+        {
+          "key": "Comments",
+          "value": "\tACCOUNT MANAGEMENT | REMOVAL OF TEMPORARY / EMERGENCY ACCOUNTS\nThe information system automatically disables temporary and emergency accounts after no more than 30 days for both temporary and emergency accounts."
+        },
+        {
+          "key": "STRIDE",
+          "value": ["E"]
+        }
+      ],
+      "tags": [
+        "Technical",
+        "CCCS Medium",
+        "CSP Full Stack",
+        "CSP Stacked PaaS",
+        "CSP Stacked SaaS",
+        "Client IaaS / PaaS"
+      ]
+    },
+    {
+      "id": "C2F186B1-30AB-48F2-B281-820FF86EC927",
+      "numericId": 5,
+      "content": "AC-2(3): Account Management | Disable Inactive Accounts",
+      "metadata": [
+        {
+          "key": "Comments",
+          "value": "\tACCOUNT MANAGEMENT | DISABLE INACTIVE ACCOUNTS\nThe information system automatically disables inactive accounts after 90 days."
+        },
+        {
+          "key": "STRIDE",
+          "value": ["E"]
+        }
+      ],
+      "tags": [
+        "Technical",
+        "CCCS Medium",
+        "CSP Full Stack",
+        "CSP Stacked PaaS",
+        "CSP Stacked SaaS",
+        "Client IaaS / PaaS"
+      ]
+    }
   ],
- "mitigations": [
+  "mitigations": [
     {
       "id": "baa86fce-6e2a-406b-a10e-79c30cf94589",
       "numericId": 19,
@@ -138,9 +138,7 @@
           "value": "Implementation in code -  [Custom security headers within CloudFront](https://github.com/awslabs/threat-composer/blob/6023777f95ede74d63bf95d0a0fac8f7787d8b35/packages/threat-composer-infra/src/application-stack.ts#L66)"
         }
       ],
-      "tags": [
-        "XSS"
-      ],
+      "tags": ["XSS"],
       "content": "Custom security headers (including HTTP Strict Transport Security)"
     },
     {
@@ -153,9 +151,7 @@
           "value": "Implementation in code - [Content Security Policy](https://github.com/awslabs/threat-composer/blob/d1c3848fafb129d19de17db1484cca7055e56a1b/packages/threat-composer-app/public/index.html#L14)"
         }
       ],
-      "tags": [
-        "XSS"
-      ],
+      "tags": ["XSS"],
       "content": "CSP (Content Security Policy)"
     },
     {
@@ -168,9 +164,7 @@
           "value": "HTTPS is configured as enforced - [documentation](https://docs.github.com/en/pages/getting-started-with-github-pages/securing-your-github-pages-site-with-https)"
         }
       ],
-      "tags": [
-        "MiTM"
-      ],
+      "tags": ["MiTM"],
       "content": "TLS provided by GitHub Pages"
     },
     {
@@ -601,18 +595,14 @@
         },
         {
           "key": "STRIDE",
-          "value": [
-            "I"
-          ]
+          "value": ["I"]
         }
       ],
       "threatSource": "threat actor",
       "prerequisites": "with knowledge of a browser image render vulnerability",
       "threatAction": "trick a user into importing a malicious JSON file containing malicious BASE64 images",
       "threatImpact": "exfiltration the contents of local storage to and end-point controlled by the actor",
-      "impactedGoal": [
-        "confidentiality"
-      ],
+      "impactedGoal": ["confidentiality"],
       "impactedAssets": [
         "threats",
         "mitigations",
@@ -670,14 +660,10 @@
         },
         {
           "key": "STRIDE",
-          "value": [
-            "D"
-          ]
+          "value": ["D"]
         }
       ],
-      "tags": [
-        "DoS"
-      ],
+      "tags": ["DoS"],
       "threatSource": "threat actor",
       "prerequisites": "that can trick a user into importing a JSON file",
       "threatAction": "input a unexpected data schema",
@@ -719,28 +705,20 @@
       "metadata": [
         {
           "key": "STRIDE",
-          "value": [
-            "T"
-          ]
+          "value": ["T"]
         },
         {
           "key": "Priority",
           "value": "Low"
         }
       ],
-      "tags": [
-        "XSS"
-      ],
+      "tags": ["XSS"],
       "threatSource": "threat actor",
       "prerequisites": "with access the browser DOM (e.g. via Dev Tools)",
       "threatAction": "disable client-side input validation regex",
       "threatImpact": "allowing them to demonstrate a Cross-site Script (XSS) vulnerability",
-      "impactedGoal": [
-        "integrity"
-      ],
-      "impactedAssets": [
-        "threat composer"
-      ],
+      "impactedGoal": ["integrity"],
+      "impactedAssets": ["threat composer"],
       "statement": "A threat actor with access the browser DOM (e.g. via Dev Tools) can disable client-side input validation regex, which leads to allowing them to demonstrate a Cross-site Script (XSS) vulnerability, resulting in reduced integrity of threat composer",
       "displayedStatement": [
         "A ",
@@ -792,23 +770,15 @@
         },
         {
           "key": "STRIDE",
-          "value": [
-            "D"
-          ]
+          "value": ["D"]
         }
       ],
-      "tags": [
-        "DoS"
-      ],
+      "tags": ["DoS"],
       "threatSource": "threat actor",
       "prerequisites": "with access the browser DOM (e.g. via Dev Tools)",
       "threatAction": "can input a datatype not expected by the code",
-      "impactedGoal": [
-        "availability"
-      ],
-      "impactedAssets": [
-        "threat composer"
-      ],
+      "impactedGoal": ["availability"],
+      "impactedAssets": ["threat composer"],
       "statement": "A threat actor with access the browser DOM (e.g. via Dev Tools) can can input a datatype not expected by the code, resulting in reduced availability of threat composer",
       "displayedStatement": [
         "A ",
@@ -854,18 +824,14 @@
         },
         {
           "key": "STRIDE",
-          "value": [
-            "I"
-          ]
+          "value": ["I"]
         }
       ],
       "threatSource": "valid user",
       "prerequisites": "who has forked and modified the source code to include their own data (e.g. additional example threat statements)",
       "threatAction": "deploy Threat composer without network restrictions or authentication",
       "threatImpact": "discovery of the additional data by an adversary",
-      "impactedGoal": [
-        "confidentiality"
-      ],
+      "impactedGoal": ["confidentiality"],
       "statement": "A valid user who has forked and modified the source code to include their own data (e.g. additional example threat statements) can deploy Threat composer without network restrictions or authentication, which leads to discovery of the additional data by an adversary, resulting in reduced confidentiality",
       "displayedStatement": [
         "A ",
@@ -911,23 +877,15 @@
         },
         {
           "key": "STRIDE",
-          "value": [
-            "T"
-          ]
+          "value": ["T"]
         }
       ],
-      "tags": [
-        "Supply Chain"
-      ],
+      "tags": ["Supply Chain"],
       "threatSource": "threat actor",
       "threatAction": "take advantage of security vulnerability within a 3rd party package used by Threat Composer",
       "threatImpact": "",
-      "impactedGoal": [
-        "integrity"
-      ],
-      "impactedAssets": [
-        "threat composer"
-      ],
+      "impactedGoal": ["integrity"],
+      "impactedAssets": ["threat composer"],
       "statement": "A threat actor can take advantage of security vulnerability within a 3rd party package used by Threat Composer, resulting in reduced integrity of threat composer",
       "displayedStatement": [
         "A ",
@@ -973,15 +931,10 @@
         },
         {
           "key": "STRIDE",
-          "value": [
-            "I",
-            "T"
-          ]
+          "value": ["I", "T"]
         }
       ],
-      "tags": [
-        "Supply Chain"
-      ],
+      "tags": ["Supply Chain"],
       "threatSource": "threat actor",
       "prerequisites": "",
       "threatAction": "raise a PR (Pull Request) on the source within the Threat Composer GitHub repo",
@@ -1033,24 +986,18 @@
       "metadata": [
         {
           "key": "STRIDE",
-          "value": [
-            "T"
-          ]
+          "value": ["T"]
         },
         {
           "key": "Priority",
           "value": "Medium"
         }
       ],
-      "tags": [
-        "XSS"
-      ],
+      "tags": ["XSS"],
       "threatSource": "security researcher",
       "threatAction": "provide malicious input (e.g. script tags) into the Threat Composer UI",
       "threatImpact": "to them finding and demonstrating an XSS vulnerability which they make public via social media",
-      "impactedAssets": [
-        "threat composer"
-      ],
+      "impactedAssets": ["threat composer"],
       "statement": "A security researcher can provide malicious input (e.g. script tags) into the Threat Composer UI, which leads to to them finding and demonstrating an XSS vulnerability which they make public via social media, negatively impacting threat composer",
       "displayedStatement": [
         "A ",
@@ -1092,24 +1039,18 @@
       "metadata": [
         {
           "key": "STRIDE",
-          "value": [
-            "I"
-          ]
+          "value": ["I"]
         },
         {
           "key": "Priority",
           "value": "High"
         }
       ],
-      "tags": [
-        "XSS"
-      ],
+      "tags": ["XSS"],
       "threatSource": "threat actor",
       "prerequisites": "that can trick a user into importing a malicious JSON file containing script tags (or similar)",
       "threatAction": "exfiltrate the contents of local storage using XSS",
-      "impactedGoal": [
-        "confidentiality"
-      ],
+      "impactedGoal": ["confidentiality"],
       "impactedAssets": [
         "threats",
         "mitigations",
@@ -1157,28 +1098,20 @@
       "metadata": [
         {
           "key": "STRIDE",
-          "value": [
-            "T"
-          ]
+          "value": ["T"]
         },
         {
           "key": "Priority",
           "value": "High"
         }
       ],
-      "tags": [
-        "Supply Chain"
-      ],
+      "tags": ["Supply Chain"],
       "threatSource": "threat actor",
       "prerequisites": "who has access to a dependent software package on a npm remote registry (e.g. yarnpkg.com, npmjs.com)",
       "threatAction": "inject malicious code into the CI/CD process",
       "threatImpact": "untrusted code running in a users browser",
-      "impactedGoal": [
-        "integrity"
-      ],
-      "impactedAssets": [
-        "threat composer"
-      ],
+      "impactedGoal": ["integrity"],
+      "impactedAssets": ["threat composer"],
       "statement": "A threat actor who has access to a dependent software package on a npm remote registry (e.g. yarnpkg.com, npmjs.com) can inject malicious code into the CI/CD process, which leads to untrusted code running in a users browser, resulting in reduced integrity of threat composer",
       "displayedStatement": [
         "A ",
@@ -1226,28 +1159,20 @@
       "metadata": [
         {
           "key": "STRIDE",
-          "value": [
-            "D"
-          ]
+          "value": ["D"]
         },
         {
           "key": "Priority",
           "value": "Low"
         }
       ],
-      "tags": [
-        "DDoS"
-      ],
+      "tags": ["DDoS"],
       "threatSource": "threat actor",
       "prerequisites": "with a network path to the CloudFront distribution",
       "threatAction": "submit a large number of resource intensive requests",
       "threatImpact": "unnecessary and/or excessive costs",
-      "impactedGoal": [
-        "economy"
-      ],
-      "impactedAssets": [
-        "threat composer"
-      ],
+      "impactedGoal": ["economy"],
+      "impactedAssets": ["threat composer"],
       "statement": "A threat actor with a network path to the CloudFront distribution can submit a large number of resource intensive requests, which leads to unnecessary and/or excessive costs, resulting in reduced economy of threat composer",
       "displayedStatement": [
         "A ",
@@ -1295,27 +1220,19 @@
       "metadata": [
         {
           "key": "STRIDE",
-          "value": [
-            "D"
-          ]
+          "value": ["D"]
         },
         {
           "key": "Priority",
           "value": "Low"
         }
       ],
-      "tags": [
-        "DDoS"
-      ],
+      "tags": ["DDoS"],
       "threatSource": "threat actor",
       "threatAction": "create or orchestrate a distributed denial of service attack against the CloudFront Distribution serving the static content",
       "threatImpact": "to the web tool being unresponsive to callers",
-      "impactedGoal": [
-        "availability"
-      ],
-      "impactedAssets": [
-        "threat composer"
-      ],
+      "impactedGoal": ["availability"],
+      "impactedAssets": ["threat composer"],
       "statement": "A threat actor can create or orchestrate a distributed denial of service attack against the CloudFront Distribution serving the static content, which leads to to the web tool being unresponsive to callers, resulting in reduced availability of threat composer",
       "displayedStatement": [
         "A ",
@@ -1363,24 +1280,18 @@
       "metadata": [
         {
           "key": "STRIDE",
-          "value": [
-            "S"
-          ]
+          "value": ["S"]
         },
         {
           "key": "Priority",
           "value": "Low"
         }
       ],
-      "tags": [
-        "Social Engineering"
-      ],
+      "tags": ["Social Engineering"],
       "threatSource": "threat actor",
       "prerequisites": "with possession of a similar domain name",
       "threatAction": "trick our users into interacting with an illegitimate endpoint",
-      "impactedGoal": [
-        "confidentiality"
-      ],
+      "impactedGoal": ["confidentiality"],
       "impactedAssets": [
         "threats",
         "mitigations",
@@ -1428,25 +1339,19 @@
       "metadata": [
         {
           "key": "STRIDE",
-          "value": [
-            "T"
-          ]
+          "value": ["T"]
         },
         {
           "key": "Priority",
           "value": "Medium"
         }
       ],
-      "tags": [
-        "Least Privilege"
-      ],
+      "tags": ["Least Privilege"],
       "threatSource": "external threat actor",
       "prerequisites": "who has a sufficiently privileged IAM Principal in the AWS account",
       "threatAction": "modify the configuration of the CloudFront distribution",
       "threatImpact": "the distribution serving content from an origin that is unexpected or contains malicious content",
-      "impactedGoal": [
-        "integrity"
-      ],
+      "impactedGoal": ["integrity"],
       "impactedAssets": [
         "code running in the user's browser",
         "application configuration"
@@ -1498,25 +1403,19 @@
       "metadata": [
         {
           "key": "STRIDE",
-          "value": [
-            "I"
-          ]
+          "value": ["I"]
         },
         {
           "key": "Priority",
           "value": "High"
         }
       ],
-      "tags": [
-        "Least Privilege"
-      ],
+      "tags": ["Least Privilege"],
       "threatSource": "threat actor",
       "prerequisites": "with write access to the objects hosted on the static asset S3 Bucket",
       "threatAction": "modify the code",
       "threatImpact": "exfiltration of user-supplied input to an attacker controlled endpoint",
-      "impactedGoal": [
-        "confidentiality"
-      ],
+      "impactedGoal": ["confidentiality"],
       "impactedAssets": [
         "threats",
         "mitigations",
@@ -1570,24 +1469,18 @@
       "metadata": [
         {
           "key": "STRIDE",
-          "value": [
-            "I"
-          ]
+          "value": ["I"]
         },
         {
           "key": "Priority",
           "value": "Low"
         }
       ],
-      "tags": [
-        "MiTB"
-      ],
+      "tags": ["MiTB"],
       "threatSource": "threat actor",
       "prerequisites": "who is in a person-in-the-browser position",
       "threatAction": "read or modify locally stored user input",
-      "impactedGoal": [
-        "confidentiality"
-      ],
+      "impactedGoal": ["confidentiality"],
       "impactedAssets": [
         "threats",
         "mitigations",
@@ -1635,24 +1528,18 @@
       "metadata": [
         {
           "key": "STRIDE",
-          "value": [
-            "I"
-          ]
+          "value": ["I"]
         },
         {
           "key": "Priority",
           "value": "Low"
         }
       ],
-      "tags": [
-        "MiTB"
-      ],
+      "tags": ["MiTB"],
       "threatSource": "threat actor",
       "prerequisites": "with local access to a web browser used by a valid user",
       "threatAction": "read local storage",
-      "impactedGoal": [
-        "confidentiality"
-      ],
+      "impactedGoal": ["confidentiality"],
       "impactedAssets": [
         "threats",
         "mitigations",
@@ -1704,22 +1591,15 @@
         },
         {
           "key": "STRIDE",
-          "value": [
-            "T",
-            "I"
-          ]
+          "value": ["T", "I"]
         }
       ],
-      "tags": [
-        "MiTM"
-      ],
+      "tags": ["MiTM"],
       "threatSource": "threat actor",
       "prerequisites": "who is in a person-in-the-middle position between the User and the hosting endpoint",
       "threatAction": "tamper with, or replace the downloaded client-side code",
       "threatImpact": "to exfiltrating user-specified input to an attacker controlled endpoint",
-      "impactedGoal": [
-        "confidentiality"
-      ],
+      "impactedGoal": ["confidentiality"],
       "impactedAssets": [
         "threats",
         "mitigations",

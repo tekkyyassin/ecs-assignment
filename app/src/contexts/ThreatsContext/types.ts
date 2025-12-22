@@ -14,12 +14,12 @@
   limitations under the License.
  ******************************************************************************************************************** */
 
-import { ViewNavigationEvent } from '../../customTypes';
-import { ContextProviderBaseProps } from '../types';
+import { ViewNavigationEvent } from "../../customTypes";
+import { ContextProviderBaseProps } from "../types";
 
-export type View = 'list' | 'editor';
+export type View = "list" | "editor";
 
 export interface ThreatsContextProviderProps extends ContextProviderBaseProps {
-  onThreatListView?: ViewNavigationEvent['onThreatListView'];
-  onThreatEditorView?: ViewNavigationEvent['onThreatEditorView'];
+  onThreatListView?: ViewNavigationEvent["onThreatListView"];
+  onThreatEditorView?: ViewNavigationEvent["onThreatEditorView"];
 }

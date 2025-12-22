@@ -17,14 +17,18 @@
 const renderArrayField = (input?: string[], includesOr?: boolean): string => {
   const inputLen = input?.length;
   if (!input || inputLen === 0) {
-    return '';
+    return "";
   }
 
   if (inputLen === 1) {
     return input[0];
   }
 
-  return input.slice(0, input.length - 1).join(', ') + (includesOr ? ' and/or ' : ' and ') + input[input.length-1];
+  return (
+    input.slice(0, input.length - 1).join(", ") +
+    (includesOr ? " and/or " : " and ") +
+    input[input.length - 1]
+  );
 };
 
 export default renderArrayField;

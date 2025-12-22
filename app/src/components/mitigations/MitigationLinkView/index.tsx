@@ -14,14 +14,16 @@
   limitations under the License.
  ******************************************************************************************************************** */
 
-import Autosuggest from '@cloudscape-design/components/autosuggest';
-import ExpandableSection, { ExpandableSectionProps } from '@cloudscape-design/components/expandable-section';
-import TokenGroup from '@cloudscape-design/components/token-group';
-import React, { FC, useMemo } from 'react';
-import { Mitigation } from '../../../customTypes';
+import Autosuggest from "@cloudscape-design/components/autosuggest";
+import ExpandableSection, {
+  ExpandableSectionProps,
+} from "@cloudscape-design/components/expandable-section";
+import TokenGroup from "@cloudscape-design/components/token-group";
+import React, { FC, useMemo } from "react";
+import { Mitigation } from "../../../customTypes";
 
 export interface MitigationLinkProps {
-  variant?: ExpandableSectionProps['variant'];
+  variant?: ExpandableSectionProps["variant"];
   linkedMitigationIds: string[];
   mitigationList: Mitigation[];
   onAddMitigationLink: (mitigationId: string) => void;
@@ -35,60 +37,65 @@ const MitigationLinkComponent: FC<MitigationLinkProps> = ({
   onAddMitigationLink,
   onRemoveMitigationLink,
 }) => {
-  const [searchValue, setSearchValue] = React.useState('');
+  const [searchValue, setSearchValue] = React.useState("");
 
   const linkedMitigations = useMemo(() => {
-    return mitigationList.filter(al => linkedMitigationIds.includes(al.id));
+    return mitigationList.filter((al) => linkedMitigationIds.includes(al.id));
   }, [linkedMitigationIds, mitigationList]);
 
   const filteredMitigations = useMemo(() => {
-    const mitigations = mitigationList.filter(x => !linkedMitigationIds.includes(x.id));
+    const mitigations = mitigationList.filter(
+      (x) => !linkedMitigationIds.includes(x.id),
+    );
 
     if (!searchValue) {
       return mitigations;
     }
 
-    return mitigations.filter(x => x.content.toLowerCase().indexOf(searchValue.toLowerCase()) >= 0);
+    return mitigations.filter(
+      (x) => x.content.toLowerCase().indexOf(searchValue.toLowerCase()) >= 0,
+    );
   }, [searchValue, mitigationList, linkedMitigationIds]);
 
-  return (<ExpandableSection
-    variant={variant}
-    headingTagOverride={variant === 'container' ? 'h3' : undefined}
-    headerText={`Linked mitigations (${linkedMitigations.length})`}>
-    <Autosuggest
-      onChange={({ detail }) => setSearchValue(detail.value)}
-      value={searchValue}
-      options={filteredMitigations.map(x => ({
-        value: x.id,
-        label: x.content,
-      }))}
-      onSelect={({ detail }) => {
-        onAddMitigationLink(detail.value);
-        setSearchValue('');
-      }}
-      filteringType='manual'
-      enteredTextLabel={value => `Add new mitigation: "${value}"`}
-      placeholder="Search mitigation"
-      empty="No matches found"
-    />
-    <div
-      style={{
-        display: 'flex',
-      }}
+  return (
+    <ExpandableSection
+      variant={variant}
+      headingTagOverride={variant === "container" ? "h3" : undefined}
+      headerText={`Linked mitigations (${linkedMitigations.length})`}
     >
-      <TokenGroup
-        items={
-          linkedMitigations.map(x => ({
+      <Autosuggest
+        onChange={({ detail }) => setSearchValue(detail.value)}
+        value={searchValue}
+        options={filteredMitigations.map((x) => ({
+          value: x.id,
+          label: x.content,
+        }))}
+        onSelect={({ detail }) => {
+          onAddMitigationLink(detail.value);
+          setSearchValue("");
+        }}
+        filteringType="manual"
+        enteredTextLabel={(value) => `Add new mitigation: "${value}"`}
+        placeholder="Search mitigation"
+        empty="No matches found"
+      />
+      <div
+        style={{
+          display: "flex",
+        }}
+      >
+        <TokenGroup
+          items={linkedMitigations.map((x) => ({
             label: x.content,
             dismissLabel: `Unlink mitigation ${x.numericId}`,
-          }))
-        }
-        onDismiss={({ detail: { itemIndex } }) => {
-          onRemoveMitigationLink(linkedMitigations[itemIndex].id);
-        }}
-      />
-    </div>
-  </ExpandableSection>);
+          }))}
+          onDismiss={({ detail: { itemIndex } }) => {
+            onRemoveMitigationLink(linkedMitigations[itemIndex].id);
+          }}
+        />
+      </div>
+    </ExpandableSection>
+  );
 };
 
 export default MitigationLinkComponent;

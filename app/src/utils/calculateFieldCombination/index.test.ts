@@ -14,16 +14,16 @@
   limitations under the License.
  ******************************************************************************************************************** */
 
-import calculateFieldCombination from '.';
-import { TemplateThreatStatement } from '../../customTypes';
+import calculateFieldCombination from ".";
+import { TemplateThreatStatement } from "../../customTypes";
 
-describe('calculateFieldCombination', () => {
-  test('should return the field combination score', async () => {
+describe("calculateFieldCombination", () => {
+  test("should return the field combination score", async () => {
     const statement: TemplateThreatStatement = {
-      id: 'TEST_01',
+      id: "TEST_01",
       numericId: -1,
-      threatSource: 'threat actor',
-      threatAction: 'perform a threat action',
+      threatSource: "threat actor",
+      threatAction: "perform a threat action",
     };
 
     expect(calculateFieldCombination(statement).fieldCombination).toBe(5);

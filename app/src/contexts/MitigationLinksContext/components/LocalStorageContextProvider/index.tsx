@@ -14,14 +14,14 @@
   limitations under the License.
  ******************************************************************************************************************** */
 
-import { FC, PropsWithChildren, useCallback } from 'react';
-import useLocalStorageState from 'use-local-storage-state';
-import { LOCAL_STORAGE_KEY_MITIGATION_LINK_LIST } from '../../../../configs/localStorageKeys';
-import { MitigationLink } from '../../../../customTypes';
-import removeLocalStorageKey from '../../../../utils/removeLocalStorageKey';
-import { MitigationLinksContext } from '../../context';
-import { MitigationLinksContextProviderProps } from '../../types';
-import useMitigationLinks from '../../useMitigationLinks';
+import { FC, PropsWithChildren, useCallback } from "react";
+import useLocalStorageState from "use-local-storage-state";
+import { LOCAL_STORAGE_KEY_MITIGATION_LINK_LIST } from "../../../../configs/localStorageKeys";
+import { MitigationLink } from "../../../../customTypes";
+import removeLocalStorageKey from "../../../../utils/removeLocalStorageKey";
+import { MitigationLinksContext } from "../../context";
+import { MitigationLinksContextProviderProps } from "../../types";
+import useMitigationLinks from "../../useMitigationLinks";
 
 const getLocalStorageKey = (workspaceId: string | null) => {
   if (workspaceId) {
@@ -31,14 +31,16 @@ const getLocalStorageKey = (workspaceId: string | null) => {
   return LOCAL_STORAGE_KEY_MITIGATION_LINK_LIST;
 };
 
-
-const MitigationLinksLocalStorageContextProvider: FC<PropsWithChildren<MitigationLinksContextProviderProps>> = ({
-  children,
-  workspaceId: currentWorkspaceId,
-}) => {
-  const [mitigationLinkList, setMitigationLinkList, { removeItem }] = useLocalStorageState<MitigationLink[]>(getLocalStorageKey(currentWorkspaceId), {
-    defaultValue: [],
-  });
+const MitigationLinksLocalStorageContextProvider: FC<
+  PropsWithChildren<MitigationLinksContextProviderProps>
+> = ({ children, workspaceId: currentWorkspaceId }) => {
+  const [mitigationLinkList, setMitigationLinkList, { removeItem }] =
+    useLocalStorageState<MitigationLink[]>(
+      getLocalStorageKey(currentWorkspaceId),
+      {
+        defaultValue: [],
+      },
+    );
 
   const {
     handlRemoveMitigationLink,
@@ -62,23 +64,28 @@ const MitigationLinksLocalStorageContextProvider: FC<PropsWithChildren<Mitigatio
     }, 1000);
   }, []);
 
-  return (<MitigationLinksContext.Provider value={{
-    mitigationLinkList,
-    setMitigationLinkList,
-    getLinkedMitigationLinks: handleGetLinkedMitigationLinks,
-    getMitigtaionThreatLinks: handleGetMitigationThreatLinks,
-    removeMitigationLink: handlRemoveMitigationLink,
-    removeMitigationLinksByMitigationId: handlRemoveMitigationLinksByMitigationId,
-    removeMitigationLinksByLinkedEntityId: handlRemoveMitigationLinksByLinkedEntityId,
-    removeMitigationLinks: handleRemoveMitigationLinks,
-    addMitigationLink: handleAddMitigationLink,
-    addMitigationLinks: handleAddMitigationLinks,
-    removeAllMitigationLinks: handleRemoveAllMitigationLinks,
-    onDeleteWorkspace: handleDeleteWorkspace,
-  }}>
-    {children}
-  </MitigationLinksContext.Provider>);
+  return (
+    <MitigationLinksContext.Provider
+      value={{
+        mitigationLinkList,
+        setMitigationLinkList,
+        getLinkedMitigationLinks: handleGetLinkedMitigationLinks,
+        getMitigtaionThreatLinks: handleGetMitigationThreatLinks,
+        removeMitigationLink: handlRemoveMitigationLink,
+        removeMitigationLinksByMitigationId:
+          handlRemoveMitigationLinksByMitigationId,
+        removeMitigationLinksByLinkedEntityId:
+          handlRemoveMitigationLinksByLinkedEntityId,
+        removeMitigationLinks: handleRemoveMitigationLinks,
+        addMitigationLink: handleAddMitigationLink,
+        addMitigationLinks: handleAddMitigationLinks,
+        removeAllMitigationLinks: handleRemoveAllMitigationLinks,
+        onDeleteWorkspace: handleDeleteWorkspace,
+      }}
+    >
+      {children}
+    </MitigationLinksContext.Provider>
+  );
 };
 
 export default MitigationLinksLocalStorageContextProvider;
-

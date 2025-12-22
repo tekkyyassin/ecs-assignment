@@ -14,72 +14,110 @@
   limitations under the License.
  ******************************************************************************************************************** */
 
-import { useCallback } from 'react';
-import { ControlLink } from '../../customTypes';
+import { useCallback } from "react";
+import { ControlLink } from "../../customTypes";
 
-export const isSameControlLink = (entity1: ControlLink, entity2: ControlLink) => {
-  return entity1.controlId === entity2.controlId
-      && entity1.linkedId === entity2.linkedId;
+export const isSameControlLink = (
+  entity1: ControlLink,
+  entity2: ControlLink,
+) => {
+  return (
+    entity1.controlId === entity2.controlId &&
+    entity1.linkedId === entity2.linkedId
+  );
 };
 
 const useControlLinks = (
   controlLinkList: ControlLink[],
   setControlLinkList: React.Dispatch<React.SetStateAction<ControlLink[]>>,
 ) => {
-  const handlRemoveControlLink = useCallback((controlId: string, linkedEntityId: string) => {
-    setControlLinkList((prevList) => prevList.filter(x => !(
-      x.controlId === controlId && x.linkedId === linkedEntityId
-    )));
-  }, [setControlLinkList]);
-
-  const handleRemoveControlLinks = useCallback((controlLinks: ControlLink[]) => {
-    setControlLinkList((prevList) => {
-      return prevList.filter(pl =>
-        controlLinks.findIndex(ml => isSameControlLink(ml, pl)) < 0);
-    });
-  }, [setControlLinkList]);
-
-  const handlRemoveControlLinksByControlId = useCallback(async (controlId: string) => {
-    setControlLinkList((prevList) => prevList.filter(x => !(
-      x.controlId === controlId
-    )));
-  }, [setControlLinkList]);
-
-  const handlRemoveControlLinksByLinkedEntityId = useCallback(async (linkedEntityId: string) => {
-    setControlLinkList((prevList) => prevList.filter(x => !(
-      x.linkedId === linkedEntityId
-    )));
-  }, [setControlLinkList]);
-
-  const handleAddControlLink = useCallback((controlLink: ControlLink) => {
-    setControlLinkList((prevList) => {
-      const foundIndex = prevList.findIndex(st =>
-        st.controlId === controlLink.controlId &&
-            st.linkedId === controlLink.linkedId,
+  const handlRemoveControlLink = useCallback(
+    (controlId: string, linkedEntityId: string) => {
+      setControlLinkList((prevList) =>
+        prevList.filter(
+          (x) => !(x.controlId === controlId && x.linkedId === linkedEntityId),
+        ),
       );
-      if (foundIndex < 0) {
-        return [...prevList, controlLink];
-      };
+    },
+    [setControlLinkList],
+  );
 
-      return [...prevList];
-    });
-  }, [setControlLinkList]);
+  const handleRemoveControlLinks = useCallback(
+    (controlLinks: ControlLink[]) => {
+      setControlLinkList((prevList) => {
+        return prevList.filter(
+          (pl) => controlLinks.findIndex((ml) => isSameControlLink(ml, pl)) < 0,
+        );
+      });
+    },
+    [setControlLinkList],
+  );
 
-  const handleAddControlLinks = useCallback((controlLinks: ControlLink[]) => {
-    setControlLinkList((prevList) => {
-      const filteredLinks = controlLinks.filter(al =>
-        prevList.findIndex(pl => pl.controlId === al.controlId && pl.linkedId === al.controlId) < 0);
-      return [...prevList, ...filteredLinks];
-    });
-  }, [setControlLinkList]);
+  const handlRemoveControlLinksByControlId = useCallback(
+    async (controlId: string) => {
+      setControlLinkList((prevList) =>
+        prevList.filter((x) => !(x.controlId === controlId)),
+      );
+    },
+    [setControlLinkList],
+  );
 
-  const handleGetLinkedControlLinks = useCallback((linkedEntityId: string) => {
-    return controlLinkList.filter(x => x.linkedId === linkedEntityId);
-  }, [controlLinkList]);
+  const handlRemoveControlLinksByLinkedEntityId = useCallback(
+    async (linkedEntityId: string) => {
+      setControlLinkList((prevList) =>
+        prevList.filter((x) => !(x.linkedId === linkedEntityId)),
+      );
+    },
+    [setControlLinkList],
+  );
 
-  const handleGetControlThreatLinks = useCallback((controlId: string) => {
-    return controlLinkList.filter(x => x.controlId === controlId);
-  }, [controlLinkList]);
+  const handleAddControlLink = useCallback(
+    (controlLink: ControlLink) => {
+      setControlLinkList((prevList) => {
+        const foundIndex = prevList.findIndex(
+          (st) =>
+            st.controlId === controlLink.controlId &&
+            st.linkedId === controlLink.linkedId,
+        );
+        if (foundIndex < 0) {
+          return [...prevList, controlLink];
+        }
+
+        return [...prevList];
+      });
+    },
+    [setControlLinkList],
+  );
+
+  const handleAddControlLinks = useCallback(
+    (controlLinks: ControlLink[]) => {
+      setControlLinkList((prevList) => {
+        const filteredLinks = controlLinks.filter(
+          (al) =>
+            prevList.findIndex(
+              (pl) =>
+                pl.controlId === al.controlId && pl.linkedId === al.controlId,
+            ) < 0,
+        );
+        return [...prevList, ...filteredLinks];
+      });
+    },
+    [setControlLinkList],
+  );
+
+  const handleGetLinkedControlLinks = useCallback(
+    (linkedEntityId: string) => {
+      return controlLinkList.filter((x) => x.linkedId === linkedEntityId);
+    },
+    [controlLinkList],
+  );
+
+  const handleGetControlThreatLinks = useCallback(
+    (controlId: string) => {
+      return controlLinkList.filter((x) => x.controlId === controlId);
+    },
+    [controlLinkList],
+  );
 
   return {
     handlRemoveControlLink,

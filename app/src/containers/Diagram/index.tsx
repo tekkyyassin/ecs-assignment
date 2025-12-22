@@ -13,22 +13,24 @@
   See the License for the specific language governing permissions and
   limitations under the License.
  ******************************************************************************************************************** */
-import { FC } from 'react';
-import DiagramComponent from '../../components/diagram/DiagramInfo';
-import WorkspaceContextAggregator from '../../contexts/WorkspaceContextAggregator';
+import { FC } from "react";
+import DiagramComponent from "../../components/diagram/DiagramInfo";
+import WorkspaceContextAggregator from "../../contexts/WorkspaceContextAggregator";
 
 export interface DiagramProps {
   workspaceId?: string;
 }
 
 const Diagram: FC<DiagramProps> = ({ workspaceId }) => {
-  return (<WorkspaceContextAggregator
-    workspaceId={workspaceId || null}
-    composerMode='Full'
-    requiredGlobalSetupContext
-  >
-    <DiagramComponent/>
-  </WorkspaceContextAggregator>);
+  return (
+    <WorkspaceContextAggregator
+      workspaceId={workspaceId || null}
+      composerMode="Full"
+      requiredGlobalSetupContext
+    >
+      <DiagramComponent />
+    </WorkspaceContextAggregator>
+  );
 };
 
 export default Diagram;

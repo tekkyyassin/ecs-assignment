@@ -14,24 +14,29 @@
   limitations under the License.
  ******************************************************************************************************************** */
 
-import { FC, PropsWithChildren } from 'react';
-import ApplicationLocalStateContextProvider from './components/LocalStateContextProvider';
-import ApplicationLocalStorageContextProvider from './components/LocalStorageContextProvider';
-import { useApplicationInfoContext } from './context';
-import { ApplicationContextProviderProps } from './types';
-import { EXAMPLE_WORKSPACE_ID } from '../../configs/constants';
-import { useExampleContext } from '../ExampleContext';
+import { FC, PropsWithChildren } from "react";
+import ApplicationLocalStateContextProvider from "./components/LocalStateContextProvider";
+import ApplicationLocalStorageContextProvider from "./components/LocalStorageContextProvider";
+import { useApplicationInfoContext } from "./context";
+import { ApplicationContextProviderProps } from "./types";
+import { EXAMPLE_WORKSPACE_ID } from "../../configs/constants";
+import { useExampleContext } from "../ExampleContext";
 
-const ApplicationContextProvider: FC<PropsWithChildren<ApplicationContextProviderProps>> = (props) => {
+const ApplicationContextProvider: FC<
+  PropsWithChildren<ApplicationContextProviderProps>
+> = (props) => {
   const { applicationInfo } = useExampleContext();
 
-  return props.workspaceId === EXAMPLE_WORKSPACE_ID ?
-    (<ApplicationLocalStateContextProvider initialValue={applicationInfo} {...props} />) :
-    (<ApplicationLocalStorageContextProvider {...props} />);
+  return props.workspaceId === EXAMPLE_WORKSPACE_ID ? (
+    <ApplicationLocalStateContextProvider
+      initialValue={applicationInfo}
+      {...props}
+    />
+  ) : (
+    <ApplicationLocalStorageContextProvider {...props} />
+  );
 };
 
 export default ApplicationContextProvider;
 
-export {
-  useApplicationInfoContext,
-};
+export { useApplicationInfoContext };

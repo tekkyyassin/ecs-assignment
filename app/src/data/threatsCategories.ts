@@ -14,7 +14,4 @@
   limitations under the License.
  ******************************************************************************************************************** */
 
-export const technicalThreats = [
-  'Cryptanalysis',
-];
-
+export const technicalThreats = ["Cryptanalysis"];

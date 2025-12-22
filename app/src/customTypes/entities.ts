@@ -14,7 +14,7 @@
   limitations under the License.
  ******************************************************************************************************************** */
 
-import { z } from 'zod';
+import { z } from "zod";
 import {
   FREE_TEXT_INPUT_MAX_LENGTH,
   SINGLE_FIELD_INPUT_SMALL_MAX_LENGTH,
@@ -25,34 +25,51 @@ import {
   REGEX_CONTENT_IMAGE_BASE64,
   IMAGE_BASE64_MAX_LENGTH,
   IMAGE_URL_MAX_LENGTH,
-} from '../configs';
-import STRIDE from '../data/stride';
+} from "../configs";
+import STRIDE from "../data/stride";
 
-export const TagSchema = z.string().nonempty().max(SINGLE_FIELD_INPUT_TAG_MAX_LENGTH);
+export const TagSchema = z
+  .string()
+  .nonempty()
+  .max(SINGLE_FIELD_INPUT_TAG_MAX_LENGTH);
 
-export const MetadataCommentSchema = z.string().max(FREE_TEXT_INPUT_SMALL_MAX_LENGTH);
+export const MetadataCommentSchema = z
+  .string()
+  .max(FREE_TEXT_INPUT_SMALL_MAX_LENGTH);
 
-export const MetadataSchema = z.object({
-  key: z.string().max(SINGLE_FIELD_INPUT_SMALL_MAX_LENGTH),
-  value: z.union([z.string(), z.array(z.string())]),
-}).strict().refine((data) => {
-  if (data.key === 'Comments') {
-    return MetadataCommentSchema.safeParse(data.value).success;
-  }
+export const MetadataSchema = z
+  .object({
+    key: z.string().max(SINGLE_FIELD_INPUT_SMALL_MAX_LENGTH),
+    value: z.union([z.string(), z.array(z.string())]),
+  })
+  .strict()
+  .refine(
+    (data) => {
+      if (data.key === "Comments") {
+        return MetadataCommentSchema.safeParse(data.value).success;
+      }
 
-  if (data.key === 'STRIDE') {
-    return Array.isArray(data.value) && data.value.every(v => STRIDE.map(s => s.value).includes(v));
-  }
+      if (data.key === "STRIDE") {
+        return (
+          Array.isArray(data.value) &&
+          data.value.every((v) => STRIDE.map((s) => s.value).includes(v))
+        );
+      }
 
-  if (data.key === 'Priority') {
-    return typeof data.value === 'string' && LEVEL_SELECTOR_OPTIONS.map(o => o.value).includes(data.value);
-  }
+      if (data.key === "Priority") {
+        return (
+          typeof data.value === "string" &&
+          LEVEL_SELECTOR_OPTIONS.map((o) => o.value).includes(data.value)
+        );
+      }
 
-  return false;
-}, (data) => ({
-  message: `Invalid key ${data.key} with value ${JSON.stringify(data.value)}`,
-  path: [data.key],
-}));
+      return false;
+    },
+    (data) => ({
+      message: `Invalid key ${data.key} with value ${JSON.stringify(data.value)}`,
+      path: [data.key],
+    }),
+  );
 
 export const EntityBaseSchema = z.object({
   /**
@@ -89,28 +106,47 @@ export const ContentEntityBaseSchema = EntityBaseSchema.extend({
 
 export type ContentEntityBase = z.infer<typeof ContentEntityBaseSchema>;
 
-export const EntityLinkBaseSchema = z.object({
-});
+export const EntityLinkBaseSchema = z.object({});
 
 export type EntityLinkBase = z.infer<typeof EntityLinkBaseSchema>;
 
-export const ImageUrlSchema = z.string().max(IMAGE_URL_MAX_LENGTH).regex(REGEX_CONTENT_IMAGE_URL).optional();
-export const ImageBase64Schema = z.string().max(IMAGE_BASE64_MAX_LENGTH).regex(REGEX_CONTENT_IMAGE_BASE64).optional();
+export const ImageUrlSchema = z
+  .string()
+  .max(IMAGE_URL_MAX_LENGTH)
+  .regex(REGEX_CONTENT_IMAGE_URL)
+  .optional();
+export const ImageBase64Schema = z
+  .string()
+  .max(IMAGE_BASE64_MAX_LENGTH)
+  .regex(REGEX_CONTENT_IMAGE_BASE64)
+  .optional();
 
-export const BaseImageInfoSchema = z.object({
-  /**
-   * The base64 encoded image or src of the image
-   */
-  image: z.string().optional().refine((data) => {
-    return !data || ImageUrlSchema.safeParse(data).success || ImageBase64Schema.safeParse(data).success;
-  }, {
-    message: 'Invalid image format',
-    path: [],
-  }),
-  /**
-   * The description of the architecture diagram
-   */
-  description: z.string().max(FREE_TEXT_INPUT_MAX_LENGTH).optional(),
-}).strict();
+export const BaseImageInfoSchema = z
+  .object({
+    /**
+     * The base64 encoded image or src of the image
+     */
+    image: z
+      .string()
+      .optional()
+      .refine(
+        (data) => {
+          return (
+            !data ||
+            ImageUrlSchema.safeParse(data).success ||
+            ImageBase64Schema.safeParse(data).success
+          );
+        },
+        {
+          message: "Invalid image format",
+          path: [],
+        },
+      ),
+    /**
+     * The description of the architecture diagram
+     */
+    description: z.string().max(FREE_TEXT_INPUT_MAX_LENGTH).optional(),
+  })
+  .strict();
 
 export type BaseImageInfo = z.infer<typeof BaseImageInfoSchema>;

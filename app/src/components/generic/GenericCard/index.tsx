@@ -14,19 +14,25 @@
   limitations under the License.
  ******************************************************************************************************************** */
 
-
 /** @jsxImportSource @emotion/react */
-import { DeleteConfirmationDialog } from '@aws-northstar/ui';
-import Button from '@cloudscape-design/components/button';
-import Container from '@cloudscape-design/components/container';
-import Header from '@cloudscape-design/components/header';
-import SpaceBetween from '@cloudscape-design/components/space-between';
-import * as awsui from '@cloudscape-design/design-tokens';
-import { css } from '@emotion/react';
-import { FC, PropsWithChildren, useMemo, useRef, ReactNode, useState } from 'react';
-import Tags from './components/Tags';
-import getMobileMediaQuery from '../../../utils/getMobileMediaQuery';
-import Tooltip from '../Tooltip';
+import { DeleteConfirmationDialog } from "@aws-northstar/ui";
+import Button from "@cloudscape-design/components/button";
+import Container from "@cloudscape-design/components/container";
+import Header from "@cloudscape-design/components/header";
+import SpaceBetween from "@cloudscape-design/components/space-between";
+import * as awsui from "@cloudscape-design/design-tokens";
+import { css } from "@emotion/react";
+import {
+  FC,
+  PropsWithChildren,
+  useMemo,
+  useRef,
+  ReactNode,
+  useState,
+} from "react";
+import Tags from "./components/Tags";
+import getMobileMediaQuery from "../../../utils/getMobileMediaQuery";
+import Tooltip from "../Tooltip";
 
 export interface GenericCardProps {
   header: string;
@@ -43,10 +49,10 @@ export interface GenericCardProps {
 
 const styles = {
   header: css({
-    display: 'inline-flex',
-    alignItems: 'center',
+    display: "inline-flex",
+    alignItems: "center",
     [getMobileMediaQuery()]: {
-      display: 'block',
+      display: "block",
       marginTop: awsui.spaceScaledS,
     },
   }),
@@ -54,13 +60,13 @@ const styles = {
     marginRight: awsui.spaceScaledS,
     marginLeft: awsui.spaceScaledS,
     [getMobileMediaQuery()]: {
-      marginLeft: '0px',
+      marginLeft: "0px",
     },
   }),
   info: css({
     marginLeft: awsui.spaceScaledS,
     [getMobileMediaQuery()]: {
-      marginLeft: '0px',
+      marginLeft: "0px",
     },
   }),
 };
@@ -81,38 +87,65 @@ const GenericCard: FC<PropsWithChildren<GenericCardProps>> = ({
   const [removeDialogVisible, setRemoveDialogVisible] = useState(false);
 
   const actions = useMemo(() => {
-    return (<SpaceBetween direction='horizontal' size='s'>
-      {onRemove && <Tooltip tooltip='Remove From Workspace'><Button onClick={() => setRemoveDialogVisible(true)} variant='icon' iconName='remove' /></Tooltip>}
-      {onEdit && <Tooltip tooltip='Edit'><Button onClick={() => onEdit?.(entityId)} variant='icon' iconName='edit' /></Tooltip>}
-      {moreActions}
-    </SpaceBetween>);
+    return (
+      <SpaceBetween direction="horizontal" size="s">
+        {onRemove && (
+          <Tooltip tooltip="Remove From Workspace">
+            <Button
+              onClick={() => setRemoveDialogVisible(true)}
+              variant="icon"
+              iconName="remove"
+            />
+          </Tooltip>
+        )}
+        {onEdit && (
+          <Tooltip tooltip="Edit">
+            <Button
+              onClick={() => onEdit?.(entityId)}
+              variant="icon"
+              iconName="edit"
+            />
+          </Tooltip>
+        )}
+        {moreActions}
+      </SpaceBetween>
+    );
   }, [onRemove, onEdit, entityId, moreActions]);
 
-  return (<div ref={ref}>
-    <Container
-      header={<Header actions={actions}
-      ><div css={styles.header}>
-          {header}
-          <div css={styles.info}>{info}</div>
-          <div css={styles.tags}><Tags
-            tags={tags}
-            entityId={entityId}
-            onAddTagToEntity={onAddTagToEntity}
-            onRemoveTagFromEntity={onRemoveTagFromEntity}
-          /></div>
-        </div></Header>}
-    >
-      {children}
-    </Container>
-    {removeDialogVisible && <DeleteConfirmationDialog
-      variant='confirmation'
-      title={`Remove ${header}?`}
-      visible={removeDialogVisible}
-      onCancelClicked={() => setRemoveDialogVisible(false)}
-      onDeleteClicked={() => onRemove?.(entityId)}
-      deleteButtonText='Remove'
-    ></DeleteConfirmationDialog>}
-  </div>);
+  return (
+    <div ref={ref}>
+      <Container
+        header={
+          <Header actions={actions}>
+            <div css={styles.header}>
+              {header}
+              <div css={styles.info}>{info}</div>
+              <div css={styles.tags}>
+                <Tags
+                  tags={tags}
+                  entityId={entityId}
+                  onAddTagToEntity={onAddTagToEntity}
+                  onRemoveTagFromEntity={onRemoveTagFromEntity}
+                />
+              </div>
+            </div>
+          </Header>
+        }
+      >
+        {children}
+      </Container>
+      {removeDialogVisible && (
+        <DeleteConfirmationDialog
+          variant="confirmation"
+          title={`Remove ${header}?`}
+          visible={removeDialogVisible}
+          onCancelClicked={() => setRemoveDialogVisible(false)}
+          onDeleteClicked={() => onRemove?.(entityId)}
+          deleteButtonText="Remove"
+        ></DeleteConfirmationDialog>
+      )}
+    </div>
+  );
 };
 
 export default GenericCard;

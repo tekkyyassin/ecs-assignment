@@ -14,8 +14,8 @@
   limitations under the License.
  ******************************************************************************************************************** */
 
-import { z } from 'zod';
-import { ContentEntityBaseSchema, EntityLinkBaseSchema } from './entities';
+import { z } from "zod";
+import { ContentEntityBaseSchema, EntityLinkBaseSchema } from "./entities";
 
 export const ControlSchema = ContentEntityBaseSchema.extend({}).strict();
 

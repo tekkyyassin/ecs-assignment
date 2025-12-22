@@ -14,9 +14,11 @@
   limitations under the License.
  ******************************************************************************************************************** */
 
-import ButtonDropdown, { ButtonDropdownProps } from '@cloudscape-design/components/button-dropdown';
-import { CancelableEventHandler } from '@cloudscape-design/components/internal/events';
-import { FC, useCallback } from 'react';
+import ButtonDropdown, {
+  ButtonDropdownProps,
+} from "@cloudscape-design/components/button-dropdown";
+import { CancelableEventHandler } from "@cloudscape-design/components/internal/events";
+import { FC, useCallback } from "react";
 
 export interface GenericListMoreActionsProps {
   enabledRemoveAll: boolean;
@@ -27,29 +29,33 @@ const GenericListMoreActions: FC<GenericListMoreActionsProps> = ({
   enabledRemoveAll,
   onRemoveAll,
 }) => {
-  const handleMoreActions: CancelableEventHandler<ButtonDropdownProps.ItemClickDetails> = useCallback(({ detail }) => {
-    switch (detail.id) {
-      case 'removeAll':
-        onRemoveAll?.();
-        break;
-      default:
-        console.log('Unknown action', detail.id);
-    }
-  }, [
-    onRemoveAll,
-  ]);
-  return <ButtonDropdown
-    items={[
-      {
-        id: 'removeAll',
-        text: 'Remove all statements',
-        disabled: !enabledRemoveAll,
+  const handleMoreActions: CancelableEventHandler<ButtonDropdownProps.ItemClickDetails> =
+    useCallback(
+      ({ detail }) => {
+        switch (detail.id) {
+          case "removeAll":
+            onRemoveAll?.();
+            break;
+          default:
+            console.log("Unknown action", detail.id);
+        }
       },
-    ]}
-    ariaLabel="More actions"
-    variant="icon"
-    onItemClick={handleMoreActions}
-  />;
+      [onRemoveAll],
+    );
+  return (
+    <ButtonDropdown
+      items={[
+        {
+          id: "removeAll",
+          text: "Remove all statements",
+          disabled: !enabledRemoveAll,
+        },
+      ]}
+      ariaLabel="More actions"
+      variant="icon"
+      onItemClick={handleMoreActions}
+    />
+  );
 };
 
 export default GenericListMoreActions;

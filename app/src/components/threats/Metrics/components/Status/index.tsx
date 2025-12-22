@@ -15,14 +15,14 @@
  ******************************************************************************************************************** */
 
 /** @jsxImportSource @emotion/react */
-import StatusIndicator from '@cloudscape-design/components/status-indicator';
-import { css } from '@emotion/react';
-import { FC } from 'react';
+import StatusIndicator from "@cloudscape-design/components/status-indicator";
+import { css } from "@emotion/react";
+import { FC } from "react";
 
 const styles = css({
-  background: 'transparent',
-  border: 'none !important',
-  cursor: 'pointer',
+  background: "transparent",
+  border: "none !important",
+  cursor: "pointer",
 });
 
 export interface StatusProps {
@@ -32,7 +32,13 @@ export interface StatusProps {
 }
 
 const Status: FC<StatusProps> = ({ completed, label, onClick }) => {
-  return (<button css={styles} onClick={onClick}><StatusIndicator type={completed ? 'success' : 'stopped'}>{label}</StatusIndicator></button>);
+  return (
+    <button css={styles} onClick={onClick}>
+      <StatusIndicator type={completed ? "success" : "stopped"}>
+        {label}
+      </StatusIndicator>
+    </button>
+  );
 };
 
 export default Status;

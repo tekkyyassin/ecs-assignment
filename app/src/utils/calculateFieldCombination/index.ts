@@ -14,9 +14,12 @@
   limitations under the License.
  ******************************************************************************************************************** */
 
-import { TemplateThreatStatement } from '../../customTypes';
-import { threatFieldTypeMapping, ThreatFieldTypes } from '../../customTypes/threatFieldTypes';
-import threatFieldData from '../../data/threatFieldData';
+import { TemplateThreatStatement } from "../../customTypes";
+import {
+  threatFieldTypeMapping,
+  ThreatFieldTypes,
+} from "../../customTypes/threatFieldTypes";
+import threatFieldData from "../../data/threatFieldData";
 
 const calculateFieldCombination = (statement: TemplateThreatStatement) => {
   let fieldCombination = 0;
@@ -24,7 +27,7 @@ const calculateFieldCombination = (statement: TemplateThreatStatement) => {
   Object.keys(threatFieldTypeMapping).forEach((key) => {
     const value = statement[threatFieldTypeMapping[key as ThreatFieldTypes]];
     if (value) {
-      if (typeof value === 'string') {
+      if (typeof value === "string") {
         fieldCombination += threatFieldData[key].fieldId;
         filledField.push(key);
       } else if (Array.isArray(value) && value.length > 0) {

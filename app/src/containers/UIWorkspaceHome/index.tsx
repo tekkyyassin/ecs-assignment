@@ -13,7 +13,7 @@
   See the License for the specific language governing permissions and
   limitations under the License.
  ******************************************************************************************************************** */
-import WorkspaceHome from '../../containers/WorkspaceHome';
+import WorkspaceHome from "../../containers/WorkspaceHome";
 
 const UIWorkspaceHome = () => {
   return <WorkspaceHome />;

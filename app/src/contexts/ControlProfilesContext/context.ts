@@ -14,9 +14,9 @@
   limitations under the License.
  ******************************************************************************************************************** */
 
-import { useContext, createContext } from 'react';
-import { ControlProfile } from '../../customTypes';
-export type View = 'list' | 'editor';
+import { useContext, createContext } from "react";
+import { ControlProfile } from "../../customTypes";
+export type View = "list" | "editor";
 
 export interface ControlProfilesContextApi {
   controlProfileList: ControlProfile[];
@@ -29,16 +29,18 @@ export interface ControlProfilesContextApi {
 
 const initialState: ControlProfilesContextApi = {
   controlProfileList: [],
-  setControlProfileList: () => { },
-  removeControlProfile: () => { },
+  setControlProfileList: () => {},
+  removeControlProfile: () => {},
   saveControlProfile: () => ({
-    schema: 'new',
+    schema: "new",
     controls: [],
   }),
   removeAllControlProfiles: () => Promise.resolve(),
   onDeleteWorkspace: () => Promise.resolve(),
 };
 
-export const ControlProfilesContext = createContext<ControlProfilesContextApi>(initialState);
+export const ControlProfilesContext =
+  createContext<ControlProfilesContextApi>(initialState);
 
-export const useControlProfilesContext = () => useContext(ControlProfilesContext);
+export const useControlProfilesContext = () =>
+  useContext(ControlProfilesContext);

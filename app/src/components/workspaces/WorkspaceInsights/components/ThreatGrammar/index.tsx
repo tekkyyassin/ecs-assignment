@@ -25,18 +25,18 @@ import {
   Icon,
   BarChart,
   BarChartProps,
-} from '@cloudscape-design/components';
+} from "@cloudscape-design/components";
 import {
   colorChartsPaletteCategorical2,
   colorChartsPaletteCategorical1,
-} from '@cloudscape-design/design-tokens';
-import { useState, useMemo } from 'react';
+} from "@cloudscape-design/design-tokens";
+import { useState, useMemo } from "react";
 import {
   ALL_LEVELS,
   LEVEL_SELECTOR_OPTIONS_INCLUDING_ALL,
-} from '../../../../../configs';
-import { useThreatsContext } from '../../../../../contexts/ThreatsContext';
-import filterThreatsByMetadata from '../../../../../utils/filterThreatsByMetadata';
+} from "../../../../../configs";
+import { useThreatsContext } from "../../../../../contexts/ThreatsContext";
+import filterThreatsByMetadata from "../../../../../utils/filterThreatsByMetadata";
 
 const ThreatGrammar = () => {
   const { statementList, addStatement } = useThreatsContext();
@@ -46,7 +46,7 @@ const ThreatGrammar = () => {
   );
 
   const filteredStatementList = useMemo(() => {
-    return filterThreatsByMetadata(statementList, 'Priority', selectedPriority);
+    return filterThreatsByMetadata(statementList, "Priority", selectedPriority);
   }, [statementList, selectedPriority]);
 
   const countThreatSource = useMemo(
@@ -93,34 +93,34 @@ const ThreatGrammar = () => {
     [filteredStatementList],
   );
 
-  let barSeries: BarChartProps<string>['series'] = [
+  let barSeries: BarChartProps<string>["series"] = [
     {
-      title: 'Inputs for mitigation',
-      type: 'bar',
+      title: "Inputs for mitigation",
+      type: "bar",
       data: [
-        { x: 'Threat source', y: countThreatSource },
+        { x: "Threat source", y: countThreatSource },
         {
-          x: 'Prerequisites',
+          x: "Prerequisites",
           y: countPrerequisites,
         },
         {
-          x: 'Threat action',
+          x: "Threat action",
           y: countThreatAction,
         },
       ],
       color: colorChartsPaletteCategorical2,
     },
     {
-      title: 'Inputs for prioritisation',
-      type: 'bar',
+      title: "Inputs for prioritisation",
+      type: "bar",
       data: [
-        { x: 'Threat impact', y: countThreatImpact },
+        { x: "Threat impact", y: countThreatImpact },
         {
-          x: 'Impacted goal',
+          x: "Impacted goal",
           y: countImpactedGoal,
         },
         {
-          x: 'Impacted assets',
+          x: "Impacted assets",
           y: countImpactedAssets,
         },
       ],
@@ -141,7 +141,9 @@ const ThreatGrammar = () => {
           <Box variant="p" color="text-body-secondary">
             Start by adding a threat to this workspace
           </Box>
-          <Button variant="primary" onClick={() => addStatement()}>Add a threat</Button>
+          <Button variant="primary" onClick={() => addStatement()}>
+            Add a threat
+          </Button>
         </Box>
       ) : (
         <div>

@@ -14,10 +14,14 @@
   limitations under the License.
  ******************************************************************************************************************** */
 
-import { useContext, createContext } from 'react';
-import { PerFieldExample, TemplateThreatStatement, ThreatStatementListFilter } from '../../customTypes';
-import threatStatementExamplesData from '../../data/threatStatementExamples.json';
-export type View = 'list' | 'editor';
+import { useContext, createContext } from "react";
+import {
+  PerFieldExample,
+  TemplateThreatStatement,
+  ThreatStatementListFilter,
+} from "../../customTypes";
+import threatStatementExamplesData from "../../data/threatStatementExamples.json";
+export type View = "list" | "editor";
 
 export type PerFieldExamplesType = {
   threat_source: string[];
@@ -26,7 +30,7 @@ export type PerFieldExamplesType = {
   threat_impact: PerFieldExample[];
   impacted_goal: string[][];
   impacted_assets: string[];
-}
+};
 
 export const DEFAULT_PER_FIELD_EXAMPLES = {
   threat_source: [],
@@ -48,7 +52,9 @@ export interface ThreatsContextApi {
   perFieldExamples: PerFieldExamplesType;
   previousInputs: PerFieldExamplesType;
   setView: React.Dispatch<React.SetStateAction<View>>;
-  setEditingStatement: React.Dispatch<React.SetStateAction<TemplateThreatStatement | null>>;
+  setEditingStatement: React.Dispatch<
+    React.SetStateAction<TemplateThreatStatement | null>
+  >;
   addStatement: (idToCopy?: string) => void;
   removeStatement: (id: string) => void;
   editStatement: (id: string) => void;
@@ -60,21 +66,21 @@ export interface ThreatsContextApi {
 }
 
 const initialState: ThreatsContextApi = {
-  view: 'list',
+  view: "list",
   editingStatement: null,
   statementList: [],
-  setStatementList: () => { },
+  setStatementList: () => {},
   filteredStatementList: [],
-  setFilteredStatementList: () => { },
+  setFilteredStatementList: () => {},
   threatStatementExamples: threatStatementExamplesData,
   perFieldExamples: DEFAULT_PER_FIELD_EXAMPLES,
   previousInputs: DEFAULT_PER_FIELD_EXAMPLES,
-  setView: () => { },
-  setEditingStatement: () => { },
-  addStatement: () => { },
-  removeStatement: () => { },
-  saveStatement: () => { },
-  editStatement: () => { },
+  setView: () => {},
+  setEditingStatement: () => {},
+  addStatement: () => {},
+  removeStatement: () => {},
+  saveStatement: () => {},
+  editStatement: () => {},
   removeAllStatements: () => Promise.resolve(),
   onDeleteWorkspace: () => Promise.resolve(),
 };

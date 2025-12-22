@@ -13,25 +13,32 @@
   See the License for the specific language governing permissions and
   limitations under the License.
  ******************************************************************************************************************** */
-import TopNavigation, { TopNavigationProps } from '@cloudscape-design/components/top-navigation';
-import { applyMode, Mode, applyDensity, Density } from '@cloudscape-design/global-styles';
-import { FC, useMemo, useState, useEffect } from 'react';
+import TopNavigation, {
+  TopNavigationProps,
+} from "@cloudscape-design/components/top-navigation";
+import {
+  applyMode,
+  Mode,
+  applyDensity,
+  Density,
+} from "@cloudscape-design/global-styles";
+import { FC, useMemo, useState, useEffect } from "react";
 
 /**
  * Props for Top Navigation Header
  */
 export interface NavHeaderProps extends Partial<TopNavigationProps> {
   /**
-     * The title of the app.
-     */
+   * The title of the app.
+   */
   title: string;
   /**
-     * The src of the logo.
-     */
+   * The src of the logo.
+   */
   logo?: string;
   /**
-     * The href that the header links to
-     */
+   * The href that the header links to
+   */
   href: string;
 }
 
@@ -44,60 +51,60 @@ const NavHeader: FC<NavHeaderProps> = ({ title, href, logo, ...props }) => {
   const utilities: TopNavigationProps.Utility[] = useMemo(() => {
     const menu: TopNavigationProps.Utility[] = [
       {
-        type: 'menu-dropdown',
-        iconName: 'settings',
-        ariaLabel: 'Settings',
-        title: 'Settings',
+        type: "menu-dropdown",
+        iconName: "settings",
+        ariaLabel: "Settings",
+        title: "Settings",
         items: [
           {
-            id: 'theme',
-            text: 'Theme',
+            id: "theme",
+            text: "Theme",
             items: [
               {
-                id: 'theme.light',
-                text: 'Light',
+                id: "theme.light",
+                text: "Light",
                 disabled: theme === Mode.Light,
-                disabledReason: 'currently selected',
+                disabledReason: "currently selected",
               },
               {
-                id: 'theme.dark',
-                text: 'Dark',
+                id: "theme.dark",
+                text: "Dark",
                 disabled: theme === Mode.Dark,
-                disabledReason: 'currently selected',
+                disabledReason: "currently selected",
               },
             ],
           },
           {
-            id: 'density',
-            text: 'Density',
+            id: "density",
+            text: "Density",
             items: [
               {
-                id: 'density.comfortable',
-                text: 'Comfortable',
+                id: "density.comfortable",
+                text: "Comfortable",
                 disabled: density === Density.Comfortable,
-                disabledReason: 'currently selected',
+                disabledReason: "currently selected",
               },
               {
-                id: 'density.compact',
-                text: 'Compact',
+                id: "density.compact",
+                text: "Compact",
                 disabled: density === Density.Compact,
-                disabledReason: 'currently selected',
+                disabledReason: "currently selected",
               },
             ],
           },
         ],
         onItemClick: (e) => {
           switch (e.detail.id) {
-            case 'theme.light':
+            case "theme.light":
               setTheme(Mode.Light);
               break;
-            case 'theme.dark':
+            case "theme.dark":
               setTheme(Mode.Dark);
               break;
-            case 'density.comfortable':
+            case "density.comfortable":
               setDensity(Density.Comfortable);
               break;
-            case 'density.compact':
+            case "density.compact":
               setDensity(Density.Compact);
               break;
             default:
@@ -119,19 +126,31 @@ const NavHeader: FC<NavHeaderProps> = ({ title, href, logo, ...props }) => {
   }, [density]);
 
   return (
-    <div style={{ position: 'fixed', top: 0, left: 0, right: 0, zIndex: 1002, margin: 0 }}>
+    <div
+      style={{
+        position: "fixed",
+        top: 0,
+        left: 0,
+        right: 0,
+        zIndex: 1002,
+        margin: 0,
+      }}
+    >
       <TopNavigation
         {...props}
         utilities={utilities}
-        i18nStrings={{ overflowMenuTitleText: title, overflowMenuTriggerText: title }}
+        i18nStrings={{
+          overflowMenuTitleText: title,
+          overflowMenuTriggerText: title,
+        }}
         identity={{
           title: title,
           href: href,
           logo: logo
             ? {
-              src: logo,
-              alt: title,
-            }
+                src: logo,
+                alt: title,
+              }
             : undefined,
         }}
       />

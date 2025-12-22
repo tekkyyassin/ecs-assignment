@@ -101,7 +101,5 @@
       }
     }
   },
-  "implicitDependencies": [
-    "threat-composer"
-  ]
+  "implicitDependencies": ["threat-composer"]
 }

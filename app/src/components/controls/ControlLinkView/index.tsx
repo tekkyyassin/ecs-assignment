@@ -14,14 +14,16 @@
   limitations under the License.
  ******************************************************************************************************************** */
 
-import Autosuggest from '@cloudscape-design/components/autosuggest';
-import ExpandableSection, { ExpandableSectionProps } from '@cloudscape-design/components/expandable-section';
-import TokenGroup from '@cloudscape-design/components/token-group';
-import React, { FC, useMemo } from 'react';
-import { Control } from '../../../customTypes';
+import Autosuggest from "@cloudscape-design/components/autosuggest";
+import ExpandableSection, {
+  ExpandableSectionProps,
+} from "@cloudscape-design/components/expandable-section";
+import TokenGroup from "@cloudscape-design/components/token-group";
+import React, { FC, useMemo } from "react";
+import { Control } from "../../../customTypes";
 
 export interface ControlLinkProps {
-  variant?: ExpandableSectionProps['variant'];
+  variant?: ExpandableSectionProps["variant"];
   linkedControlIds: string[];
   controlList: Control[];
   onAddControlLink: (controlId: string) => void;
@@ -35,60 +37,65 @@ const ControlLinkComponent: FC<ControlLinkProps> = ({
   onAddControlLink,
   onRemoveControlLink,
 }) => {
-  const [searchValue, setSearchValue] = React.useState('');
+  const [searchValue, setSearchValue] = React.useState("");
 
   const linkedControls = useMemo(() => {
-    return controlList.filter(al => linkedControlIds.includes(al.id));
+    return controlList.filter((al) => linkedControlIds.includes(al.id));
   }, [linkedControlIds, controlList]);
 
   const filteredControls = useMemo(() => {
-    const controls = controlList.filter(x => !linkedControlIds.includes(x.id));
+    const controls = controlList.filter(
+      (x) => !linkedControlIds.includes(x.id),
+    );
 
     if (!searchValue) {
       return controls;
     }
 
-    return controls.filter(x => x.content.toLowerCase().indexOf(searchValue.toLowerCase()) >= 0);
+    return controls.filter(
+      (x) => x.content.toLowerCase().indexOf(searchValue.toLowerCase()) >= 0,
+    );
   }, [searchValue, controlList, linkedControlIds]);
 
-  return (<ExpandableSection
-    variant={variant}
-    headingTagOverride={variant === 'container' ? 'h3' : undefined}
-    headerText={`Linked controls (${linkedControls.length})`}>
-    <Autosuggest
-      onChange={({ detail }) => setSearchValue(detail.value)}
-      value={searchValue}
-      options={filteredControls.map(x => ({
-        value: x.id,
-        label: x.content,
-      }))}
-      onSelect={({ detail }) => {
-        onAddControlLink(detail.value);
-        setSearchValue('');
-      }}
-      filteringType='manual'
-      enteredTextLabel={value => `Add new control: "${value}"`}
-      placeholder="Search control"
-      empty="No matches found"
-    />
-    <div
-      style={{
-        display: 'flex',
-      }}
+  return (
+    <ExpandableSection
+      variant={variant}
+      headingTagOverride={variant === "container" ? "h3" : undefined}
+      headerText={`Linked controls (${linkedControls.length})`}
     >
-      <TokenGroup
-        items={
-          linkedControls.map(x => ({
+      <Autosuggest
+        onChange={({ detail }) => setSearchValue(detail.value)}
+        value={searchValue}
+        options={filteredControls.map((x) => ({
+          value: x.id,
+          label: x.content,
+        }))}
+        onSelect={({ detail }) => {
+          onAddControlLink(detail.value);
+          setSearchValue("");
+        }}
+        filteringType="manual"
+        enteredTextLabel={(value) => `Add new control: "${value}"`}
+        placeholder="Search control"
+        empty="No matches found"
+      />
+      <div
+        style={{
+          display: "flex",
+        }}
+      >
+        <TokenGroup
+          items={linkedControls.map((x) => ({
             label: x.content,
             dismissLabel: `Unlink control ${x.numericId}`,
-          }))
-        }
-        onDismiss={({ detail: { itemIndex } }) => {
-          onRemoveControlLink(linkedControls[itemIndex].id);
-        }}
-      />
-    </div>
-  </ExpandableSection>);
+          }))}
+          onDismiss={({ detail: { itemIndex } }) => {
+            onRemoveControlLink(linkedControls[itemIndex].id);
+          }}
+        />
+      </div>
+    </ExpandableSection>
+  );
 };
 
 export default ControlLinkComponent;

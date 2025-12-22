@@ -14,22 +14,26 @@
   limitations under the License.
  ******************************************************************************************************************** */
 
-import { FC, PropsWithChildren } from 'react';
-import { ComposerMode, DataExchangeFormat, ViewNavigationEvent } from '../../customTypes';
-import ApplicationInfoContextProvider from '../ApplicationContext';
-import ArchitectureInfoContextProvider from '../ArchitectureContext';
-import AssumptionLinksContextProvider from '../AssumptionLinksContext';
-import AssumptionsContextProvider from '../AssumptionsContext';
-import DataflowInfoContextProvider from '../DataflowContext';
-import FlowContextProvider from '../FlowContext';
-import ExampleContextProvider from '../ExampleContext';
-import GlobalSetupContextProvider from '../GlobalSetupContext';
-import MitigationLinksContextProvider from '../MitigationLinksContext';
-import MitigationsContextProvider from '../MitigationsContext';
-import ControlLinksContextProvider from '../ControlLinksContext';
-import ControlsContextProvider from '../ControlsContext';
-import ControlProfilesContextProvider from '../ControlProfilesContext';
-import ThreatsContextProvider from '../ThreatsContext';
+import { FC, PropsWithChildren } from "react";
+import {
+  ComposerMode,
+  DataExchangeFormat,
+  ViewNavigationEvent,
+} from "../../customTypes";
+import ApplicationInfoContextProvider from "../ApplicationContext";
+import ArchitectureInfoContextProvider from "../ArchitectureContext";
+import AssumptionLinksContextProvider from "../AssumptionLinksContext";
+import AssumptionsContextProvider from "../AssumptionsContext";
+import DataflowInfoContextProvider from "../DataflowContext";
+import FlowContextProvider from "../FlowContext";
+import ExampleContextProvider from "../ExampleContext";
+import GlobalSetupContextProvider from "../GlobalSetupContext";
+import MitigationLinksContextProvider from "../MitigationLinksContext";
+import MitigationsContextProvider from "../MitigationsContext";
+import ControlLinksContextProvider from "../ControlLinksContext";
+import ControlsContextProvider from "../ControlsContext";
+import ControlProfilesContextProvider from "../ControlProfilesContext";
+import ThreatsContextProvider from "../ThreatsContext";
 
 export interface WorkspaceContextAggregatorProps extends ViewNavigationEvent {
   workspaceId: string | null;
@@ -40,15 +44,16 @@ export interface WorkspaceContextAggregatorProps extends ViewNavigationEvent {
   onImported?: () => void;
 }
 
-const WorkspaceContextInnerAggregator: FC<PropsWithChildren<WorkspaceContextAggregatorProps>> = ({
-  children,
-  workspaceId,
-  onThreatEditorView,
-  onThreatListView,
-}) => {
+const WorkspaceContextInnerAggregator: FC<
+  PropsWithChildren<WorkspaceContextAggregatorProps>
+> = ({ children, workspaceId, onThreatEditorView, onThreatListView }) => {
   return (
     <ExampleContextProvider>
-      <ThreatsContextProvider workspaceId={workspaceId || null} onThreatEditorView={onThreatEditorView} onThreatListView={onThreatListView}>
+      <ThreatsContextProvider
+        workspaceId={workspaceId || null}
+        onThreatEditorView={onThreatEditorView}
+        onThreatListView={onThreatListView}
+      >
         <MitigationsContextProvider workspaceId={workspaceId}>
           <AssumptionsContextProvider workspaceId={workspaceId}>
             <ControlsContextProvider workspaceId={workspaceId}>
@@ -57,8 +62,12 @@ const WorkspaceContextInnerAggregator: FC<PropsWithChildren<WorkspaceContextAggr
                   <ControlLinksContextProvider workspaceId={workspaceId}>
                     <ControlProfilesContextProvider workspaceId={workspaceId}>
                       <ApplicationInfoContextProvider workspaceId={workspaceId}>
-                        <ArchitectureInfoContextProvider workspaceId={workspaceId}>
-                          <DataflowInfoContextProvider workspaceId={workspaceId}>
+                        <ArchitectureInfoContextProvider
+                          workspaceId={workspaceId}
+                        >
+                          <DataflowInfoContextProvider
+                            workspaceId={workspaceId}
+                          >
                             <FlowContextProvider workspaceId={workspaceId}>
                               {children}
                             </FlowContextProvider>
@@ -70,14 +79,16 @@ const WorkspaceContextInnerAggregator: FC<PropsWithChildren<WorkspaceContextAggr
                 </AssumptionLinksContextProvider>
               </MitigationLinksContextProvider>
             </ControlsContextProvider>
-          </AssumptionsContextProvider >
+          </AssumptionsContextProvider>
         </MitigationsContextProvider>
       </ThreatsContextProvider>
     </ExampleContextProvider>
   );
 };
 
-const WorkspaceContextAggregator: FC<PropsWithChildren<WorkspaceContextAggregatorProps>> = ({
+const WorkspaceContextAggregator: FC<
+  PropsWithChildren<WorkspaceContextAggregatorProps>
+> = ({
   children,
   workspaceId,
   composerMode,
@@ -88,7 +99,8 @@ const WorkspaceContextAggregator: FC<PropsWithChildren<WorkspaceContextAggregato
   ...rest
 }) => {
   return requiredGlobalSetupContext ? (
-    <GlobalSetupContextProvider composerMode={composerMode}
+    <GlobalSetupContextProvider
+      composerMode={composerMode}
       onPreview={onPreview}
       onPreviewClose={onPreviewClose}
       onImported={onImported}

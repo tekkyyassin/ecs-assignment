@@ -14,18 +14,18 @@
   limitations under the License.
  ******************************************************************************************************************** */
 
-import FormField from '@cloudscape-design/components/form-field';
-import Multiselect from '@cloudscape-design/components/multiselect';
-import { FC } from 'react';
+import FormField from "@cloudscape-design/components/form-field";
+import Multiselect from "@cloudscape-design/components/multiselect";
+import { FC } from "react";
 
 export const OPTIONS = [
-  { label: 'Spoofing', value: 'S' },
-  { label: 'Tampering', value: 'T' },
-  { label: 'Repudiation', value: 'R' },
-  { label: 'Information disclosure', value: 'I' },
-  { label: 'Denial of service', value: 'D' },
-  { label: 'Elevation of privilege', value: 'E' },
-  { label: 'Lateral movement', value: 'LM' },
+  { label: "Spoofing", value: "S" },
+  { label: "Tampering", value: "T" },
+  { label: "Repudiation", value: "R" },
+  { label: "Information disclosure", value: "I" },
+  { label: "Denial of service", value: "D" },
+  { label: "Elevation of privilege", value: "E" },
+  { label: "Lateral movement", value: "LM" },
 ];
 
 export interface STRIDESelectorProps {
@@ -40,13 +40,13 @@ const STRIDESelector: FC<STRIDESelectorProps> = ({
   setSelected,
 }) => {
   return (
-    <FormField
-      label={label}
-    >
+    <FormField label={label}>
       <Multiselect
-        selectedOptions={selected ? OPTIONS.filter(x => selected.includes(x.value)) : []}
+        selectedOptions={
+          selected ? OPTIONS.filter((x) => selected.includes(x.value)) : []
+        }
         onChange={({ detail }) =>
-          setSelected(detail.selectedOptions.map(x => x.value || ''))
+          setSelected(detail.selectedOptions.map((x) => x.value || ""))
         }
         options={OPTIONS}
         selectedAriaLabel="Selected"

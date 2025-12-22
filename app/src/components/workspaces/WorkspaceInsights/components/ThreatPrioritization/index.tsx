@@ -21,25 +21,25 @@ import {
   ColumnLayout,
   Link,
   Icon,
-} from '@cloudscape-design/components';
-import PieChart from '@cloudscape-design/components/pie-chart';
+} from "@cloudscape-design/components";
+import PieChart from "@cloudscape-design/components/pie-chart";
 import {
   colorChartsStatusInfo,
   colorChartsStatusPositive,
   colorChartsStatusHigh,
   colorChartsStatusNeutral,
-} from '@cloudscape-design/design-tokens';
-import { useMemo } from 'react';
+} from "@cloudscape-design/design-tokens";
+import { useMemo } from "react";
 
 import {
   LEVEL_HIGH,
   LEVEL_LOW,
   LEVEL_MEDIUM,
   LEVEL_NOT_SET,
-} from '../../../../../configs';
-import { useThreatsContext } from '../../../../../contexts/ThreatsContext';
-import filterThreatsByMetadata from '../../../../../utils/filterThreatsByMetadata';
-import useLinkClicked from '../../hooks/useLinkClicked';
+} from "../../../../../configs";
+import { useThreatsContext } from "../../../../../contexts/ThreatsContext";
+import filterThreatsByMetadata from "../../../../../utils/filterThreatsByMetadata";
+import useLinkClicked from "../../hooks/useLinkClicked";
 
 const ThreatPrioritization = () => {
   const { statementList, addStatement } = useThreatsContext();
@@ -47,21 +47,21 @@ const ThreatPrioritization = () => {
   const handleLinkClicked = useLinkClicked();
 
   const missingPriority = useMemo(
-    () => filterThreatsByMetadata(statementList, 'Priority').length,
+    () => filterThreatsByMetadata(statementList, "Priority").length,
     [statementList],
   );
 
   const countHigh = useMemo(
-    () => filterThreatsByMetadata(statementList, 'Priority', LEVEL_HIGH).length,
+    () => filterThreatsByMetadata(statementList, "Priority", LEVEL_HIGH).length,
     [statementList],
   );
   const countMed = useMemo(
     () =>
-      filterThreatsByMetadata(statementList, 'Priority', LEVEL_MEDIUM).length,
+      filterThreatsByMetadata(statementList, "Priority", LEVEL_MEDIUM).length,
     [statementList],
   );
   const countLow = useMemo(
-    () => filterThreatsByMetadata(statementList, 'Priority', LEVEL_LOW).length,
+    () => filterThreatsByMetadata(statementList, "Priority", LEVEL_LOW).length,
     [statementList],
   );
 
@@ -78,37 +78,39 @@ const ThreatPrioritization = () => {
           <Box variant="p" color="text-body-secondary">
             Start by adding a threat to this workspace
           </Box>
-          <Button variant="primary" onClick={() => addStatement()}>Add a threat</Button>
+          <Button variant="primary" onClick={() => addStatement()}>
+            Add a threat
+          </Button>
         </Box>
       ) : (
         <Box padding="s">
           <PieChart
             data={[
               {
-                title: 'High',
+                title: "High",
                 value: countHigh,
                 color: colorChartsStatusHigh,
               },
               {
-                title: 'Medium',
+                title: "Medium",
                 value: countMed,
                 color: colorChartsStatusInfo,
               },
               {
-                title: 'Low',
+                title: "Low",
                 value: countLow,
                 color: colorChartsStatusPositive,
               },
               {
-                title: 'Undefined',
+                title: "Undefined",
                 value: missingPriority,
                 color: colorChartsStatusNeutral,
               },
             ]}
             detailPopoverContent={(datum, sum) => [
-              { key: 'Threat count', value: datum.value },
+              { key: "Threat count", value: datum.value },
               {
-                key: 'Percentage',
+                key: "Percentage",
                 value: `${((datum.value / sum) * 100).toFixed(0)}%`,
               },
             ]}

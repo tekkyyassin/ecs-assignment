@@ -14,47 +14,55 @@
   limitations under the License.
  ******************************************************************************************************************** */
 
-const STRIDE = [{
-  label: 'Spoofing',
-  value: 'S',
-  violates: 'Authenticity',
-  description: 'Pretending to be something or somebody other than who you are',
-},
-{
-  label: 'Tampering',
-  value: 'T',
-  violates: 'Integrity',
-  description: 'Changing data on disk, in memory, on the network, or elsewhere',
-},
-{
-  label: 'Repudiation',
-  value: 'R',
-  violates: 'Non-repudiation',
-  description: 'Claiming that you were not responsible for an action',
-},
-{
-  label: 'Information Disclosure',
-  value: 'I',
-  violates: 'Confidentiality',
-  description: 'Obtaining information that was not intended for you (such as side-channel timing attacks, verbose error messages, or internal developer comments in public code)',
-},
-{
-  label: 'Denial of Service',
-  value: 'D',
-  violates: 'Availability',
-  description: 'Destruction or excessive consumption of finite resources (such as expensive regular expressions or lack of request throttling leading to service quotas being reached)',
-},
-{
-  label: 'Elevation of Privilege',
-  value: 'E',
-  violates: 'Authorization',
-  description: 'Performing actions on protected resources that you should not be allowed to perform',
-},
-{
-  label: 'Lateral Movement',
-  value: 'LM',
-  violates: '',
-  description: 'Expanding control over the target network beyond the initial point of compromise',
-}];
+const STRIDE = [
+  {
+    label: "Spoofing",
+    value: "S",
+    violates: "Authenticity",
+    description:
+      "Pretending to be something or somebody other than who you are",
+  },
+  {
+    label: "Tampering",
+    value: "T",
+    violates: "Integrity",
+    description:
+      "Changing data on disk, in memory, on the network, or elsewhere",
+  },
+  {
+    label: "Repudiation",
+    value: "R",
+    violates: "Non-repudiation",
+    description: "Claiming that you were not responsible for an action",
+  },
+  {
+    label: "Information Disclosure",
+    value: "I",
+    violates: "Confidentiality",
+    description:
+      "Obtaining information that was not intended for you (such as side-channel timing attacks, verbose error messages, or internal developer comments in public code)",
+  },
+  {
+    label: "Denial of Service",
+    value: "D",
+    violates: "Availability",
+    description:
+      "Destruction or excessive consumption of finite resources (such as expensive regular expressions or lack of request throttling leading to service quotas being reached)",
+  },
+  {
+    label: "Elevation of Privilege",
+    value: "E",
+    violates: "Authorization",
+    description:
+      "Performing actions on protected resources that you should not be allowed to perform",
+  },
+  {
+    label: "Lateral Movement",
+    value: "LM",
+    violates: "",
+    description:
+      "Expanding control over the target network beyond the initial point of compromise",
+  },
+];
 
 export default STRIDE;

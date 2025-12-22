@@ -14,8 +14,8 @@
   limitations under the License.
  ******************************************************************************************************************** */
 
-import { useContext, createContext } from 'react';
-import { ArchitectureInfo } from '../../customTypes';
+import { useContext, createContext } from "react";
+import { ArchitectureInfo } from "../../customTypes";
 
 export interface DataflowInfoContextApi {
   dataflowInfo: ArchitectureInfo;
@@ -26,11 +26,12 @@ export interface DataflowInfoContextApi {
 
 const initialState: DataflowInfoContextApi = {
   dataflowInfo: {},
-  setDataflowInfo: () => { },
+  setDataflowInfo: () => {},
   removeDataflowInfo: () => Promise.resolve(),
   onDeleteWorkspace: () => Promise.resolve(),
 };
 
-export const DataflowInfoContext = createContext<DataflowInfoContextApi>(initialState);
+export const DataflowInfoContext =
+  createContext<DataflowInfoContextApi>(initialState);
 
 export const useDataflowInfoContext = () => useContext(DataflowInfoContext);

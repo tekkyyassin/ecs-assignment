@@ -14,20 +14,20 @@
   limitations under the License.
  ******************************************************************************************************************** */
 
-import Button from '@cloudscape-design/components/button';
-import ColumnLayout from '@cloudscape-design/components/column-layout';
-import SpaceBetween from '@cloudscape-design/components/space-between';
-import TextContent from '@cloudscape-design/components/text-content';
-import { FC, useState, useCallback } from 'react';
-import { Mitigation, MitigationSchema } from '../../../customTypes';
-import useEditMetadata from '../../../hooks/useEditMetadata';
-import AssumptionLink from '../../assumptions/AssumptionLink';
-import ControlLink from '../../controls/ControlLink';
-import CopyToClipbord from '../../generic/CopyToClipboard';
-import MetadataEditor from '../../generic/EntityMetadataEditor';
-import GenericCard from '../../generic/GenericCard';
-import Textarea from '../../generic/Textarea';
-import MitigationThreatLink from '../MitigationThreatLink';
+import Button from "@cloudscape-design/components/button";
+import ColumnLayout from "@cloudscape-design/components/column-layout";
+import SpaceBetween from "@cloudscape-design/components/space-between";
+import TextContent from "@cloudscape-design/components/text-content";
+import { FC, useState, useCallback } from "react";
+import { Mitigation, MitigationSchema } from "../../../customTypes";
+import useEditMetadata from "../../../hooks/useEditMetadata";
+import AssumptionLink from "../../assumptions/AssumptionLink";
+import ControlLink from "../../controls/ControlLink";
+import CopyToClipbord from "../../generic/CopyToClipboard";
+import MetadataEditor from "../../generic/EntityMetadataEditor";
+import GenericCard from "../../generic/GenericCard";
+import Textarea from "../../generic/Textarea";
+import MitigationThreatLink from "../MitigationThreatLink";
 
 export interface MitigationCardProps {
   entity: Mitigation;
@@ -65,49 +65,55 @@ const MitigationCard: FC<MitigationCardProps> = ({
 
   const handleMetadataEdit = useEditMetadata(onEdit);
 
-  return (<GenericCard
-    header={`Mitigation ${entity.numericId}`}
-    entityId={entity.id}
-    tags={entity.tags}
-    onCopy={() => onCopy?.(entity.id)}
-    onRemove={() => onRemove?.(entity.id)}
-    onEdit={() => setEditingMode(true)}
-    onAddTagToEntity={(_entityId, tag) => onAddTagToEntity?.(entity, tag)}
-    onRemoveTagFromEntity={(_entityId, tag) => onRemoveTagFromEntity?.(entity, tag)}
-  >
-    <SpaceBetween direction='vertical' size='s'>
-      <ColumnLayout columns={2}>
-        {editingMode ? (
-          <SpaceBetween direction='vertical' size='s'>
-            <Textarea
-              value={editingValue}
-              onChange={({ detail }) => setEditingValue(detail.value)}
-              validateData={MitigationSchema.shape.content.safeParse}
-              singleLine
-            />
-            <SpaceBetween direction='horizontal' size='s'>
-              <Button onClick={handleCancel}>Cancel</Button>
-              <Button variant='primary' onClick={handleSave}>Save</Button>
+  return (
+    <GenericCard
+      header={`Mitigation ${entity.numericId}`}
+      entityId={entity.id}
+      tags={entity.tags}
+      onCopy={() => onCopy?.(entity.id)}
+      onRemove={() => onRemove?.(entity.id)}
+      onEdit={() => setEditingMode(true)}
+      onAddTagToEntity={(_entityId, tag) => onAddTagToEntity?.(entity, tag)}
+      onRemoveTagFromEntity={(_entityId, tag) =>
+        onRemoveTagFromEntity?.(entity, tag)
+      }
+    >
+      <SpaceBetween direction="vertical" size="s">
+        <ColumnLayout columns={2}>
+          {editingMode ? (
+            <SpaceBetween direction="vertical" size="s">
+              <Textarea
+                value={editingValue}
+                onChange={({ detail }) => setEditingValue(detail.value)}
+                validateData={MitigationSchema.shape.content.safeParse}
+                singleLine
+              />
+              <SpaceBetween direction="horizontal" size="s">
+                <Button onClick={handleCancel}>Cancel</Button>
+                <Button variant="primary" onClick={handleSave}>
+                  Save
+                </Button>
+              </SpaceBetween>
             </SpaceBetween>
+          ) : (
+            <TextContent>
+              <CopyToClipbord>{entity.content || ""}</CopyToClipbord>
+            </TextContent>
+          )}
+          <SpaceBetween direction="vertical" size="s">
+            <MitigationThreatLink mitigationId={entity.id} />
+            <ControlLink linkedEntityId={entity.id} />
+            <AssumptionLink linkedEntityId={entity.id} type="Mitigation" />
           </SpaceBetween>
-        ) : (<TextContent>
-          <CopyToClipbord>
-            {entity.content || ''}
-          </CopyToClipbord>
-        </TextContent>)}
-        <SpaceBetween direction='vertical' size='s'>
-          <MitigationThreatLink mitigationId={entity.id} />
-          <ControlLink linkedEntityId={entity.id} />
-          <AssumptionLink linkedEntityId={entity.id} type='Mitigation' />
-        </SpaceBetween>
-      </ColumnLayout>
-      <MetadataEditor
-        variant='default'
-        entity={entity}
-        onEditEntity={handleMetadataEdit}
-      />
-    </SpaceBetween>
-  </GenericCard>);
+        </ColumnLayout>
+        <MetadataEditor
+          variant="default"
+          entity={entity}
+          onEditEntity={handleMetadataEdit}
+        />
+      </SpaceBetween>
+    </GenericCard>
+  );
 };
 
 export default MitigationCard;

@@ -15,23 +15,26 @@
  ******************************************************************************************************************** */
 
 /** @jsxImportSource @emotion/react */
-import Button from '@cloudscape-design/components/button';
-import Container from '@cloudscape-design/components/container';
-import Header from '@cloudscape-design/components/header';
-import SpaceBetween from '@cloudscape-design/components/space-between';
-import { FC, useCallback, useState, useMemo, useEffect } from 'react';
-import { BaseImageInfo, EditableComponentBaseProps } from '../../../customTypes';
-import imageStyles from '../../../styles/image';
-import ImageEdit from '../ImageEdit';
-import MarkdownEditor, { MarkdownEditorProps } from '../MarkdownEditor';
-import MarkdownViewer from '../MarkdownViewer';
+import Button from "@cloudscape-design/components/button";
+import Container from "@cloudscape-design/components/container";
+import Header from "@cloudscape-design/components/header";
+import SpaceBetween from "@cloudscape-design/components/space-between";
+import { FC, useCallback, useState, useMemo, useEffect } from "react";
+import {
+  BaseImageInfo,
+  EditableComponentBaseProps,
+} from "../../../customTypes";
+import imageStyles from "../../../styles/image";
+import ImageEdit from "../ImageEdit";
+import MarkdownEditor, { MarkdownEditorProps } from "../MarkdownEditor";
+import MarkdownViewer from "../MarkdownViewer";
 
 export interface BaseDiagramInfoProps extends EditableComponentBaseProps {
   entity: BaseImageInfo;
   headerTitle: string;
   diagramTitle: string;
   onConfirm: (info: BaseImageInfo) => void;
-  validateData?: MarkdownEditorProps['validateData'];
+  validateData?: MarkdownEditorProps["validateData"];
 }
 
 const BaseDiagramInfo: FC<BaseDiagramInfoProps> = ({
@@ -42,9 +45,11 @@ const BaseDiagramInfo: FC<BaseDiagramInfoProps> = ({
   validateData,
   onEditModeChange,
 }) => {
-  const [editMode, setEditMode] = useState(!entity.description && !entity.image);
-  const [image, setImage] = useState<string>('');
-  const [content, setContent] = useState('');
+  const [editMode, setEditMode] = useState(
+    !entity.description && !entity.image,
+  );
+  const [image, setImage] = useState<string>("");
+  const [content, setContent] = useState("");
 
   useEffect(() => {
     onEditModeChange?.(editMode);
@@ -59,39 +64,59 @@ const BaseDiagramInfo: FC<BaseDiagramInfoProps> = ({
   }, [image, content, onConfirm]);
 
   const handleEdit = useCallback(() => {
-    setContent(entity.description || '');
-    setImage(entity.image || '');
+    setContent(entity.description || "");
+    setImage(entity.image || "");
     setEditMode(true);
   }, [entity, setContent, setEditMode, setImage]);
 
   const actions = useMemo(() => {
-    return editMode ? (<SpaceBetween direction='horizontal' size='s'>
-      <Button key='cancelBtn' onClick={() => setEditMode(false)}>Cancel</Button>
-      <Button key='confirmBtn' variant='primary' onClick={handleSaveDiagramInfo}>Confirm</Button>
-    </SpaceBetween>) : (<Button onClick={handleEdit}>Edit</Button>);
+    return editMode ? (
+      <SpaceBetween direction="horizontal" size="s">
+        <Button key="cancelBtn" onClick={() => setEditMode(false)}>
+          Cancel
+        </Button>
+        <Button
+          key="confirmBtn"
+          variant="primary"
+          onClick={handleSaveDiagramInfo}
+        >
+          Confirm
+        </Button>
+      </SpaceBetween>
+    ) : (
+      <Button onClick={handleEdit}>Edit</Button>
+    );
   }, [editMode, handleSaveDiagramInfo, handleEdit, setEditMode]);
 
-  return (<Container header={<Header actions={actions}>{headerTitle}</Header>}>
-    {editMode ? (<SpaceBetween direction='vertical' size='s'>
-      <MarkdownEditor
-        label='Introduction'
-        value={content}
-        onChange={setContent}
-        parentHeaderLevel='h3'
-        validateData={validateData}
-      />
-      <Header variant='h3'>{headerTitle} Diagram</Header>
-      <ImageEdit value={image} onChange={setImage} />
-    </SpaceBetween>) :
-      (<SpaceBetween direction='vertical' size='s'>
-        <Header variant='h3' key='diagramInfo'>Introduction</Header>
-        <MarkdownViewer>
-          {entity.description || ''}
-        </MarkdownViewer>
-        <Header variant='h3' key='diagram'>{diagramTitle}</Header>
-        {entity.image && <img css={imageStyles} src={entity.image} alt={diagramTitle} />}
-      </SpaceBetween>)}
-  </Container>
+  return (
+    <Container header={<Header actions={actions}>{headerTitle}</Header>}>
+      {editMode ? (
+        <SpaceBetween direction="vertical" size="s">
+          <MarkdownEditor
+            label="Introduction"
+            value={content}
+            onChange={setContent}
+            parentHeaderLevel="h3"
+            validateData={validateData}
+          />
+          <Header variant="h3">{headerTitle} Diagram</Header>
+          <ImageEdit value={image} onChange={setImage} />
+        </SpaceBetween>
+      ) : (
+        <SpaceBetween direction="vertical" size="s">
+          <Header variant="h3" key="diagramInfo">
+            Introduction
+          </Header>
+          <MarkdownViewer>{entity.description || ""}</MarkdownViewer>
+          <Header variant="h3" key="diagram">
+            {diagramTitle}
+          </Header>
+          {entity.image && (
+            <img css={imageStyles} src={entity.image} alt={diagramTitle} />
+          )}
+        </SpaceBetween>
+      )}
+    </Container>
   );
 };
 

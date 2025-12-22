@@ -14,10 +14,14 @@
   limitations under the License.
  ******************************************************************************************************************** */
 
-import { ALL_LEVELS } from '../../configs';
-import { TemplateThreatStatement } from '../../customTypes';
+import { ALL_LEVELS } from "../../configs";
+import { TemplateThreatStatement } from "../../customTypes";
 
-const filterThreatsByMetadata = (threatList: TemplateThreatStatement[], metadataKey: string, metadataValue?: string) => {
+const filterThreatsByMetadata = (
+  threatList: TemplateThreatStatement[],
+  metadataKey: string,
+  metadataValue?: string,
+) => {
   if (metadataValue === ALL_LEVELS) {
     return threatList;
   }
@@ -28,7 +32,7 @@ const filterThreatsByMetadata = (threatList: TemplateThreatStatement[], metadata
         return true;
       }
 
-      const metadata = s.metadata.find(m => m.key === metadataKey);
+      const metadata = s.metadata.find((m) => m.key === metadataKey);
 
       if (!metadata || !metadata.value) {
         return true;
@@ -47,7 +51,7 @@ const filterThreatsByMetadata = (threatList: TemplateThreatStatement[], metadata
       return false;
     }
 
-    const metadata = s.metadata.find(m => m.key === metadataKey);
+    const metadata = s.metadata.find((m) => m.key === metadataKey);
 
     if (!metadata || !metadata.value) {
       return false;

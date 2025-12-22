@@ -14,22 +14,24 @@
   limitations under the License.
  ******************************************************************************************************************** */
 
-import { FC } from 'react';
-import AssumptionListComponent from '../../components/assumptions/AssumptionList';
-import WorkspaceContextAggregator from '../../contexts/WorkspaceContextAggregator';
+import { FC } from "react";
+import AssumptionListComponent from "../../components/assumptions/AssumptionList";
+import WorkspaceContextAggregator from "../../contexts/WorkspaceContextAggregator";
 
 export interface AssumptionListProps {
   workspaceId?: string;
 }
 
 const AssumptionList: FC<AssumptionListProps> = ({ workspaceId }) => {
-  return (<WorkspaceContextAggregator
-    workspaceId={workspaceId || null}
-    composerMode='Full'
-    requiredGlobalSetupContext
-  >
-    <AssumptionListComponent/>
-  </WorkspaceContextAggregator>);
+  return (
+    <WorkspaceContextAggregator
+      workspaceId={workspaceId || null}
+      composerMode="Full"
+      requiredGlobalSetupContext
+    >
+      <AssumptionListComponent />
+    </WorkspaceContextAggregator>
+  );
 };
 
 export default AssumptionList;

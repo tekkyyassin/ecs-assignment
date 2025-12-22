@@ -14,8 +14,12 @@
   limitations under the License.
  ******************************************************************************************************************** */
 
-import { z } from 'zod';
+import { z } from "zod";
 
-export const ComposerModeSchema = z.union([z.literal('ThreatsOnly'), z.literal('EditorOnly'), z.literal('Full')]);
+export const ComposerModeSchema = z.union([
+  z.literal("ThreatsOnly"),
+  z.literal("EditorOnly"),
+  z.literal("Full"),
+]);
 
 export type ComposerMode = z.infer<typeof ComposerModeSchema>;

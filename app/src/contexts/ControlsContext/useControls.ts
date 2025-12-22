@@ -14,55 +14,64 @@
   limitations under the License.
  ******************************************************************************************************************** */
 
-import { useCallback } from 'react';
-import { v4 as uuidV4 } from 'uuid';
-import { DEFAULT_NEW_ENTITY_ID } from '../../configs';
-import { Control } from '../../customTypes';
+import { useCallback } from "react";
+import { v4 as uuidV4 } from "uuid";
+import { DEFAULT_NEW_ENTITY_ID } from "../../configs";
+import { Control } from "../../customTypes";
 
 const useControls = (
   _controlList: Control[],
   setControlList: React.Dispatch<React.SetStateAction<Control[]>>,
 ) => {
-  const handlRemoveControl = useCallback((id: string) => {
-    setControlList((prevList) => prevList.filter(x => x.id !== id));
-  }, [setControlList]);
+  const handlRemoveControl = useCallback(
+    (id: string) => {
+      setControlList((prevList) => prevList.filter((x) => x.id !== id));
+    },
+    [setControlList],
+  );
 
-  const handleSaveControl = useCallback((control: Control) => {
-    let newEntity = control;
-    setControlList((prevList) => {
-      let numericId = control.numericId;
+  const handleSaveControl = useCallback(
+    (control: Control) => {
+      let newEntity = control;
+      setControlList((prevList) => {
+        let numericId = control.numericId;
 
-      if (numericId === -1) {
-        const maxId = prevList.reduce((max: number, cur: Control) => {
+        if (numericId === -1) {
+          const maxId = prevList.reduce((max: number, cur: Control) => {
+            if (cur.numericId > max) {
+              return cur.numericId;
+            }
 
-          if (cur.numericId > max) {
-            return cur.numericId;
-          }
+            return max;
+          }, 0);
+          numericId = maxId + 1;
+        }
 
-          return max;
-        }, 0);
-        numericId = maxId + 1;
-      }
+        let updated: Control = {
+          ...control,
+          numericId,
+          id: control.id === DEFAULT_NEW_ENTITY_ID ? uuidV4() : control.id,
+          displayOrder: numericId,
+        };
 
-      let updated: Control = {
-        ...control,
-        numericId,
-        id: control.id === DEFAULT_NEW_ENTITY_ID ? uuidV4() : control.id,
-        displayOrder: numericId,
-      };
+        newEntity = { ...updated };
 
-      newEntity = { ...updated };
+        const foundIndex = prevList.findIndex((st) => st.id === updated.id);
+        if (foundIndex >= 0) {
+          return [
+            ...prevList.slice(0, foundIndex),
+            updated,
+            ...prevList.slice(foundIndex + 1),
+          ];
+        }
 
-      const foundIndex = prevList.findIndex(st => st.id === updated.id);
-      if (foundIndex >= 0) {
-        return [...prevList.slice(0, foundIndex), updated, ...prevList.slice(foundIndex + 1)];
-      }
+        return [...prevList, updated];
+      });
 
-      return [...prevList, updated];
-    });
-
-    return newEntity;
-  }, [setControlList]);
+      return newEntity;
+    },
+    [setControlList],
+  );
 
   return {
     handlRemoveControl,

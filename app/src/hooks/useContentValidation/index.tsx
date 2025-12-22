@@ -14,47 +14,54 @@
   limitations under the License.
  ******************************************************************************************************************** */
 
-import { BaseChangeDetail } from '@cloudscape-design/components/input/interfaces';
-import { NonCancelableEventHandler } from '@cloudscape-design/components/internal/events';
-import { useCallback, useEffect, useState } from 'react';
-import { z } from 'zod';
-import sanitizeHtml from '../../utils/sanitizeHtml';
+import { BaseChangeDetail } from "@cloudscape-design/components/input/interfaces";
+import { NonCancelableEventHandler } from "@cloudscape-design/components/internal/events";
+import { useCallback, useEffect, useState } from "react";
+import { z } from "zod";
+import sanitizeHtml from "../../utils/sanitizeHtml";
 
 const useContentValidation = (
   value: string,
   onChange?: NonCancelableEventHandler<BaseChangeDetail>,
-  validateData?: (newValue: string) => z.SafeParseReturnType<string | undefined, string | undefined>,
+  validateData?: (
+    newValue: string,
+  ) => z.SafeParseReturnType<string | undefined, string | undefined>,
 ) => {
   const [tempValue, setTempValue] = useState(value);
-  const [errorText, setErrorText] = useState('');
+  const [errorText, setErrorText] = useState("");
 
   useEffect(() => {
     setTempValue(value);
     if (!value) {
-      setErrorText('');
+      setErrorText("");
     }
   }, [value]);
 
-  const handleChange: NonCancelableEventHandler<BaseChangeDetail> = useCallback((event) => {
-    const newValue = event.detail.value;
-    setTempValue(newValue);
-    const cleanValue = sanitizeHtml(newValue);
-    if (cleanValue !== newValue) {
-      setErrorText('Html tags not supported');
-      return;
-    }
-
-    if (validateData) {
-      const validation = validateData(newValue);
-      if (validation.success === false) {
-        setErrorText(validation.error.issues.map(i => i.message).join('; '));
-        return ;
+  const handleChange: NonCancelableEventHandler<BaseChangeDetail> = useCallback(
+    (event) => {
+      const newValue = event.detail.value;
+      setTempValue(newValue);
+      const cleanValue = sanitizeHtml(newValue);
+      if (cleanValue !== newValue) {
+        setErrorText("Html tags not supported");
+        return;
       }
-    }
 
-    setErrorText('');
-    onChange?.(event);
-  }, [setTempValue, setErrorText, onChange, validateData]);
+      if (validateData) {
+        const validation = validateData(newValue);
+        if (validation.success === false) {
+          setErrorText(
+            validation.error.issues.map((i) => i.message).join("; "),
+          );
+          return;
+        }
+      }
+
+      setErrorText("");
+      onChange?.(event);
+    },
+    [setTempValue, setErrorText, onChange, validateData],
+  );
 
   return {
     tempValue,

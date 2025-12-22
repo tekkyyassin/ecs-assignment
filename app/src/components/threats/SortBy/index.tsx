@@ -15,24 +15,24 @@
  ******************************************************************************************************************** */
 
 /** @jsxImportSource @emotion/react */
-import FormField from '@cloudscape-design/components/form-field';
-import RadioGroup from '@cloudscape-design/components/radio-group';
-import Select from '@cloudscape-design/components/select';
-import SpaceBetween from '@cloudscape-design/components/space-between';
-import { css } from '@emotion/react';
-import { FC } from 'react';
+import FormField from "@cloudscape-design/components/form-field";
+import RadioGroup from "@cloudscape-design/components/radio-group";
+import Select from "@cloudscape-design/components/select";
+import SpaceBetween from "@cloudscape-design/components/space-between";
+import { css } from "@emotion/react";
+import { FC } from "react";
 
 const styles = {
   selector: css({
-    minWidth: '100px',
+    minWidth: "100px",
   }),
   radioGroup: css({
-    marginTop: '10px',
+    marginTop: "10px",
   }),
 };
 
 export const DEFAULT_SORT_BY = {
-  field: 'Id',
+  field: "Id",
   ascending: false,
 };
 
@@ -47,48 +47,50 @@ export interface SortByProps {
 }
 
 const SELECT_OPTIONS = [
-  { label: 'Id', value: 'Id' },
-  { label: 'Priority', value: 'Priority' },
+  { label: "Id", value: "Id" },
+  { label: "Priority", value: "Priority" },
 ];
 
 const SORTING_OPTIONS = [
-  { value: 'ascending', label: 'Ascending' },
-  { value: 'descending', label: 'Descending' },
+  { value: "ascending", label: "Ascending" },
+  { value: "descending", label: "Descending" },
 ];
 
 const SortByComponent: FC<SortByProps> = ({
   value = DEFAULT_SORT_BY,
   setValue,
 }) => {
-  return (<SpaceBetween direction='horizontal' size='s'>
-    <div css={styles.selector}>
-      <FormField
-        label="Sort by"
-      >
-        <Select
-          selectedOption={{ label: value.field, value: value.field }}
+  return (
+    <SpaceBetween direction="horizontal" size="s">
+      <div css={styles.selector}>
+        <FormField label="Sort by">
+          <Select
+            selectedOption={{ label: value.field, value: value.field }}
+            onChange={({ detail }) =>
+              setValue({
+                ...value,
+                field: detail.selectedOption.value || DEFAULT_SORT_BY.field,
+              })
+            }
+            options={SELECT_OPTIONS}
+            selectedAriaLabel="Selected"
+          />
+        </FormField>
+      </div>
+      <div css={styles.radioGroup}>
+        <RadioGroup
           onChange={({ detail }) =>
             setValue({
               ...value,
-              field: detail.selectedOption.value || DEFAULT_SORT_BY.field,
+              ascending: detail.value === "ascending",
             })
           }
-          options={SELECT_OPTIONS}
-          selectedAriaLabel="Selected"
+          value={value.ascending ? "ascending" : "descending"}
+          items={SORTING_OPTIONS}
         />
-      </FormField>
-    </div>
-    <div css={styles.radioGroup}>
-      <RadioGroup
-        onChange={({ detail }) => setValue({
-          ...value,
-          ascending: detail.value === 'ascending',
-        })}
-        value={value.ascending ? 'ascending' : 'descending'}
-        items={SORTING_OPTIONS}
-      />
-    </div>
-  </SpaceBetween>);
+      </div>
+    </SpaceBetween>
+  );
 };
 
 export default SortByComponent;

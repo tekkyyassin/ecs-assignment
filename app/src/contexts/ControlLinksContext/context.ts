@@ -14,8 +14,8 @@
   limitations under the License.
  ******************************************************************************************************************** */
 
-import { useContext, createContext } from 'react';
-import { ControlLink } from '../../customTypes';
+import { useContext, createContext } from "react";
+import { ControlLink } from "../../customTypes";
 export interface ControlLinksContextApi {
   controlLinkList: ControlLink[];
   setControlLinkList: (list: ControlLink[]) => void;
@@ -33,19 +33,20 @@ export interface ControlLinksContextApi {
 
 const initialState: ControlLinksContextApi = {
   controlLinkList: [],
-  setControlLinkList: () => { },
+  setControlLinkList: () => {},
   getLinkedControlLinks: () => [],
   getMitigtaionThreatLinks: () => [],
-  removeControlLink: () => { },
+  removeControlLink: () => {},
   removeControlLinksByControlId: () => Promise.resolve(),
   removeControlLinksByLinkedEntityId: () => Promise.resolve(),
-  removeControlLinks: () => { },
-  addControlLink: () => { },
-  addControlLinks: () => { },
+  removeControlLinks: () => {},
+  addControlLink: () => {},
+  addControlLinks: () => {},
   removeAllControlLinks: () => Promise.resolve(),
   onDeleteWorkspace: () => Promise.resolve(),
 };
 
-export const ControlLinksContext = createContext<ControlLinksContextApi>(initialState);
+export const ControlLinksContext =
+  createContext<ControlLinksContextApi>(initialState);
 
 export const useControlLinksContext = () => useContext(ControlLinksContext);

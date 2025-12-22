@@ -14,43 +14,62 @@
   limitations under the License.
  ******************************************************************************************************************** */
 
-import a from 'indefinite';
-import { TemplateThreatStatement, ThreatFieldTypes, threatFieldTypeMapping } from '../../customTypes';
-import correctIndefiniteArticle from '../correctIndefiniteArticle';
-import getFieldContentByToken from '../getFieldContentByToken';
+import a from "indefinite";
+import {
+  TemplateThreatStatement,
+  ThreatFieldTypes,
+  threatFieldTypeMapping,
+} from "../../customTypes";
+import correctIndefiniteArticle from "../correctIndefiniteArticle";
+import getFieldContentByToken from "../getFieldContentByToken";
 
 interface ThreatStatementParseArgType<T> {
   template: string;
   statement: TemplateThreatStatement;
-  outputProcessor: (token: string, content: string, before: string, filled: boolean) => T[];
+  outputProcessor: (
+    token: string,
+    content: string,
+    before: string,
+    filled: boolean,
+  ) => T[];
 }
 
-const parseThreatStatement = <T extends any>(args: ThreatStatementParseArgType<T>) => {
+const parseThreatStatement = <T extends any>(
+  args: ThreatStatementParseArgType<T>,
+) => {
   const output: T[] = [];
   let template = args.template;
   while (true) {
-    const startIndex = template.indexOf('[');
+    const startIndex = template.indexOf("[");
     if (startIndex < 0) {
       break;
     }
     let before = template.slice(0, startIndex);
 
-    const endIndex = template.indexOf(']');
+    const endIndex = template.indexOf("]");
     if (endIndex < 0) {
       break;
     }
     const token = template.slice(startIndex + 1, endIndex) as ThreatFieldTypes;
-    const content = correctIndefiniteArticle(getFieldContentByToken(token, args.statement));
+    const content = correctIndefiniteArticle(
+      getFieldContentByToken(token, args.statement),
+    );
 
     // This is to cater for the A for the threat source.
-    if (before === 'A ') {
-      before = before.replace('A', a(content, { capitalize: true, articleOnly: true }));
+    if (before === "A ") {
+      before = before.replace(
+        "A",
+        a(content, { capitalize: true, articleOnly: true }),
+      );
     }
 
     before = correctIndefiniteArticle(before);
     let value = args.statement[threatFieldTypeMapping[token]];
 
-    const filled = !!(value && (typeof value === 'string' || (Array.isArray(value) && value.length > 0)));
+    const filled = !!(
+      value &&
+      (typeof value === "string" || (Array.isArray(value) && value.length > 0))
+    );
 
     output.push(...args.outputProcessor(token, content, before, filled));
 

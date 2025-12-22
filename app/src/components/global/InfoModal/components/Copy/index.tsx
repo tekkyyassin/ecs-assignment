@@ -15,16 +15,22 @@
  ******************************************************************************************************************** */
 
 /** @jsxImportSource @emotion/react */
-import { css } from '@emotion/react';
-import { FC } from 'react';
-import threatStatementCopy from '../../../../../assets/threat-statement-copy.png';
-import styles from '../../styles';
-import InfoModalBase from '../InfoModalBase';
+import { css } from "@emotion/react";
+import { FC } from "react";
+import threatStatementCopy from "../../../../../assets/threat-statement-copy.png";
+import styles from "../../styles";
+import InfoModalBase from "../InfoModalBase";
 
 const InfoModalCopy: FC = () => {
-  return (<InfoModalBase>
-    <img css={css(styles.image)} src={threatStatementCopy} alt="ThreatStatementCopyPaste"/>
-  </InfoModalBase>);
+  return (
+    <InfoModalBase>
+      <img
+        css={css(styles.image)}
+        src={threatStatementCopy}
+        alt="ThreatStatementCopyPaste"
+      />
+    </InfoModalBase>
+  );
 };
 
 export default InfoModalCopy;

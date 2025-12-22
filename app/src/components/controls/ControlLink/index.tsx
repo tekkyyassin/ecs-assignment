@@ -14,24 +14,24 @@
   limitations under the License.
  ******************************************************************************************************************** */
 
-import { FC, useCallback, useEffect, useMemo, useState } from 'react';
-import { ControlLink, Control } from '../../../customTypes';
-import { useControlLinksContext } from '../../../contexts/ControlLinksContext/context';
-import ControlLookupComponent from '../../controls/ControlLookup';
-import { getControlProfileByName } from '../../../data/controlProfileProvider';
-import { useApplicationInfoContext } from '../../../contexts';
+import { FC, useCallback, useEffect, useMemo, useState } from "react";
+import { ControlLink, Control } from "../../../customTypes";
+import { useControlLinksContext } from "../../../contexts/ControlLinksContext/context";
+import ControlLookupComponent from "../../controls/ControlLookup";
+import { getControlProfileByName } from "../../../data/controlProfileProvider";
+import { useApplicationInfoContext } from "../../../contexts";
 
 export interface ControlLinkProps {
   linkedEntityId: string;
 }
 
-const ControlLinkComponent: FC<ControlLinkProps> = ({
-  linkedEntityId,
-}) => {
-
+const ControlLinkComponent: FC<ControlLinkProps> = ({ linkedEntityId }) => {
   const { applicationInfo } = useApplicationInfoContext();
 
-  let selectedCategory = (applicationInfo.securityCategory == undefined ? 'CCCS Medium' : applicationInfo.securityCategory);
+  let selectedCategory =
+    applicationInfo.securityCategory == undefined
+      ? "CCCS Medium"
+      : applicationInfo.securityCategory;
   const controlList = useMemo(() => {
     return getControlProfileByName(selectedCategory) as Control[];
   }, [selectedCategory]);
@@ -45,26 +45,30 @@ const ControlLinkComponent: FC<ControlLinkProps> = ({
     setControlLinks(_controlLinks || []);
   }, [getLinkedControlLinks, linkedEntityId]);
 
-  const {
-    addControlLink,
-    removeControlLink,
-  } = useControlLinksContext();
+  const { addControlLink, removeControlLink } = useControlLinksContext();
 
-  const handleAddControlLink = useCallback((controlIdOrNewControl: string) => {
-    if (controlList.find(m => m.id === controlIdOrNewControl)) {
-      addControlLink({
-        linkedId: linkedEntityId,
-        controlId: controlIdOrNewControl,
-      });
-    }
-  }, [linkedEntityId, controlList, addControlLink]);
+  const handleAddControlLink = useCallback(
+    (controlIdOrNewControl: string) => {
+      if (controlList.find((m) => m.id === controlIdOrNewControl)) {
+        addControlLink({
+          linkedId: linkedEntityId,
+          controlId: controlIdOrNewControl,
+        });
+      }
+    },
+    [linkedEntityId, controlList, addControlLink],
+  );
 
-  return (<ControlLookupComponent
-    controlList={controlList}
-    linkedControlIds={controlLinks.map(ml => ml.controlId)}
-    onAddControlLink={handleAddControlLink}
-    onRemoveControlLink={(controlId) => removeControlLink(controlId, linkedEntityId)}
-  />);
+  return (
+    <ControlLookupComponent
+      controlList={controlList}
+      linkedControlIds={controlLinks.map((ml) => ml.controlId)}
+      onAddControlLink={handleAddControlLink}
+      onRemoveControlLink={(controlId) =>
+        removeControlLink(controlId, linkedEntityId)
+      }
+    />
+  );
 };
 
 export default ControlLinkComponent;

@@ -14,11 +14,11 @@
   limitations under the License.
  ******************************************************************************************************************** */
 
-import { FC, useCallback, useEffect, useState } from 'react';
-import { useMitigationLinksContext } from '../../../contexts/MitigationLinksContext/context';
-import { useMitigationsContext } from '../../../contexts/MitigationsContext/context';
-import { MitigationLink } from '../../../customTypes';
-import MitigationLinkView from '../MitigationLinkView';
+import { FC, useCallback, useEffect, useState } from "react";
+import { useMitigationLinksContext } from "../../../contexts/MitigationLinksContext/context";
+import { useMitigationsContext } from "../../../contexts/MitigationsContext/context";
+import { MitigationLink } from "../../../customTypes";
+import MitigationLinkView from "../MitigationLinkView";
 
 export interface MitigationLinkProps {
   linkedEntityId: string;
@@ -37,36 +37,41 @@ const MitigationLinkComponent: FC<MitigationLinkProps> = ({
     setMitigationLinks(_mitigationLinks || []);
   }, [getLinkedMitigationLinks, linkedEntityId]);
 
-  const {
-    addMitigationLink,
-    removeMitigationLink,
-  } = useMitigationLinksContext();
+  const { addMitigationLink, removeMitigationLink } =
+    useMitigationLinksContext();
 
-  const handleAddMitigationLink = useCallback((mitigationIdOrNewMitigation: string) => {
-    if (mitigationList.find(m => m.id === mitigationIdOrNewMitigation)) {
-      addMitigationLink({
-        linkedId: linkedEntityId,
-        mitigationId: mitigationIdOrNewMitigation,
-      });
-    } else {
-      const newMitigation = saveMitigation({
-        numericId: -1,
-        content: mitigationIdOrNewMitigation,
-        id: 'new',
-      });
-      addMitigationLink({
-        linkedId: linkedEntityId,
-        mitigationId: newMitigation.id,
-      });
-    }
-  }, [linkedEntityId, mitigationList, addMitigationLink, saveMitigation]);
+  const handleAddMitigationLink = useCallback(
+    (mitigationIdOrNewMitigation: string) => {
+      if (mitigationList.find((m) => m.id === mitigationIdOrNewMitigation)) {
+        addMitigationLink({
+          linkedId: linkedEntityId,
+          mitigationId: mitigationIdOrNewMitigation,
+        });
+      } else {
+        const newMitigation = saveMitigation({
+          numericId: -1,
+          content: mitigationIdOrNewMitigation,
+          id: "new",
+        });
+        addMitigationLink({
+          linkedId: linkedEntityId,
+          mitigationId: newMitigation.id,
+        });
+      }
+    },
+    [linkedEntityId, mitigationList, addMitigationLink, saveMitigation],
+  );
 
-  return (<MitigationLinkView
-    mitigationList={mitigationList}
-    linkedMitigationIds={mitigationLinks.map(ml => ml.mitigationId)}
-    onAddMitigationLink={handleAddMitigationLink}
-    onRemoveMitigationLink={(mitigationId) => removeMitigationLink(mitigationId, linkedEntityId)}
-  />);
+  return (
+    <MitigationLinkView
+      mitigationList={mitigationList}
+      linkedMitigationIds={mitigationLinks.map((ml) => ml.mitigationId)}
+      onAddMitigationLink={handleAddMitigationLink}
+      onRemoveMitigationLink={(mitigationId) =>
+        removeMitigationLink(mitigationId, linkedEntityId)
+      }
+    />
+  );
 };
 
 export default MitigationLinkComponent;

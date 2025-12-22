@@ -14,24 +14,27 @@
   limitations under the License.
  ******************************************************************************************************************** */
 
-import { FC, PropsWithChildren, useCallback, useState } from 'react';
-import { Assumption } from '../../../../customTypes';
-import { LocalStateContextProviderBaseProps } from '../../../types';
-import { AssumptionsContext } from '../../context';
-import { AssumptionsContextProviderProps } from '../../types';
-import useAssumptions from '../../useAssumptions';
+import { FC, PropsWithChildren, useCallback, useState } from "react";
+import { Assumption } from "../../../../customTypes";
+import { LocalStateContextProviderBaseProps } from "../../../types";
+import { AssumptionsContext } from "../../context";
+import { AssumptionsContextProviderProps } from "../../types";
+import useAssumptions from "../../useAssumptions";
 
-const AssumptionsLocalStateContextProvider: FC<PropsWithChildren<
-AssumptionsContextProviderProps & LocalStateContextProviderBaseProps<Assumption[]>>> = ({
-  children,
-  initialValue,
-}) => {
-  const [assumptionList, setAssumptionList] = useState<Assumption[]>(initialValue || []);
+const AssumptionsLocalStateContextProvider: FC<
+  PropsWithChildren<
+    AssumptionsContextProviderProps &
+      LocalStateContextProviderBaseProps<Assumption[]>
+  >
+> = ({ children, initialValue }) => {
+  const [assumptionList, setAssumptionList] = useState<Assumption[]>(
+    initialValue || [],
+  );
 
-  const {
-    handleSaveAssumption,
-    handlRemoveAssumption,
-  } = useAssumptions(assumptionList, setAssumptionList);
+  const { handleSaveAssumption, handlRemoveAssumption } = useAssumptions(
+    assumptionList,
+    setAssumptionList,
+  );
 
   const handleRemoveAllAssumptions = useCallback(async () => {
     setAssumptionList([]);
@@ -41,16 +44,20 @@ AssumptionsContextProviderProps & LocalStateContextProviderBaseProps<Assumption[
     setAssumptionList([]);
   }, []);
 
-  return (<AssumptionsContext.Provider value={{
-    assumptionList,
-    setAssumptionList,
-    removeAssumption: handlRemoveAssumption,
-    saveAssumption: handleSaveAssumption,
-    removeAllAssumptions: handleRemoveAllAssumptions,
-    onDeleteWorkspace: handleDeleteWorkspace,
-  }}>
-    {children}
-  </AssumptionsContext.Provider>);
+  return (
+    <AssumptionsContext.Provider
+      value={{
+        assumptionList,
+        setAssumptionList,
+        removeAssumption: handlRemoveAssumption,
+        saveAssumption: handleSaveAssumption,
+        removeAllAssumptions: handleRemoveAllAssumptions,
+        onDeleteWorkspace: handleDeleteWorkspace,
+      }}
+    >
+      {children}
+    </AssumptionsContext.Provider>
+  );
 };
 
 export default AssumptionsLocalStateContextProvider;

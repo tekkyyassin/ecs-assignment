@@ -14,19 +14,22 @@
   limitations under the License.
  ******************************************************************************************************************** */
 
-import { FC, PropsWithChildren, useCallback, useState } from 'react';
-import { ApplicationInfo } from '../../../../customTypes';
-import { INFO_DEFAULT_VALUE } from '../../../constants';
-import { LocalStateContextProviderBaseProps } from '../../../types';
-import { ApplicationInfoContext } from '../../context';
-import { ApplicationContextProviderProps } from '../../types';
+import { FC, PropsWithChildren, useCallback, useState } from "react";
+import { ApplicationInfo } from "../../../../customTypes";
+import { INFO_DEFAULT_VALUE } from "../../../constants";
+import { LocalStateContextProviderBaseProps } from "../../../types";
+import { ApplicationInfoContext } from "../../context";
+import { ApplicationContextProviderProps } from "../../types";
 
 const ApplicationLocalStateContextProvider: FC<
-PropsWithChildren<ApplicationContextProviderProps & LocalStateContextProviderBaseProps<ApplicationInfo>>> = ({
-  children,
-  initialValue,
-}) => {
-  const [applicationInfo, setApplicationInfo] = useState<ApplicationInfo>(initialValue || INFO_DEFAULT_VALUE);
+  PropsWithChildren<
+    ApplicationContextProviderProps &
+      LocalStateContextProviderBaseProps<ApplicationInfo>
+  >
+> = ({ children, initialValue }) => {
+  const [applicationInfo, setApplicationInfo] = useState<ApplicationInfo>(
+    initialValue || INFO_DEFAULT_VALUE,
+  );
 
   const handleRemoveApplicationInfo = useCallback(async () => {
     setApplicationInfo(INFO_DEFAULT_VALUE);
@@ -36,15 +39,18 @@ PropsWithChildren<ApplicationContextProviderProps & LocalStateContextProviderBas
     setApplicationInfo(INFO_DEFAULT_VALUE);
   }, []);
 
-  return (<ApplicationInfoContext.Provider value={{
-    applicationInfo,
-    setApplicationInfo,
-    removeApplicationInfo: handleRemoveApplicationInfo,
-    onDeleteWorkspace: handleDeleteWorkspace,
-  }}>
-    {children}
-  </ApplicationInfoContext.Provider>);
+  return (
+    <ApplicationInfoContext.Provider
+      value={{
+        applicationInfo,
+        setApplicationInfo,
+        removeApplicationInfo: handleRemoveApplicationInfo,
+        onDeleteWorkspace: handleDeleteWorkspace,
+      }}
+    >
+      {children}
+    </ApplicationInfoContext.Provider>
+  );
 };
 
 export default ApplicationLocalStateContextProvider;
-

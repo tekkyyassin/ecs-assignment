@@ -15,34 +15,36 @@
  ******************************************************************************************************************** */
 
 /** @jsxImportSource @emotion/react */
-import Button from '@cloudscape-design/components/button';
-import { css } from '@emotion/react';
-import { FC } from 'react';
-import styles from '../../styles';
-import InfoModalBase from '../InfoModalBase';
+import Button from "@cloudscape-design/components/button";
+import { css } from "@emotion/react";
+import { FC } from "react";
+import styles from "../../styles";
+import InfoModalBase from "../InfoModalBase";
 
 export interface InfoModalGetStartedProps {
   onClick: () => void;
 }
 
 const InfoModalGetStarted: FC<InfoModalGetStartedProps> = ({ onClick }) => {
-  return (<InfoModalBase title='Guiding principles of this tool'>
-    <div css={css(styles.contentList)}>
-      <ol>
-        <li>Do one thing, well</li>
-        <li>Optimise for approachability over completeness</li>
-        <li>Encourage (not mandate) more complete threat statements</li>
-        <li>Spur creativity through example</li>
-        <li>Support iterative threat statement writing</li>
-        <li>No user-supplied data leaves the browser</li>
-      </ol>
-    </div>
-    <div css={css(styles.getStartedBtnContainer)}>
-      <Button onClick={onClick} variant='primary'>
-        Get Started
-      </Button>
-    </div>
-  </InfoModalBase>);
+  return (
+    <InfoModalBase title="Guiding principles of this tool">
+      <div css={css(styles.contentList)}>
+        <ol>
+          <li>Do one thing, well</li>
+          <li>Optimise for approachability over completeness</li>
+          <li>Encourage (not mandate) more complete threat statements</li>
+          <li>Spur creativity through example</li>
+          <li>Support iterative threat statement writing</li>
+          <li>No user-supplied data leaves the browser</li>
+        </ol>
+      </div>
+      <div css={css(styles.getStartedBtnContainer)}>
+        <Button onClick={onClick} variant="primary">
+          Get Started
+        </Button>
+      </div>
+    </InfoModalBase>
+  );
 };
 
 export default InfoModalGetStarted;

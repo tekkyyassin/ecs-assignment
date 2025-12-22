@@ -14,8 +14,8 @@
   limitations under the License.
  ******************************************************************************************************************** */
 
-import Multiselect from '@cloudscape-design/components/multiselect';
-import React, { FC, useMemo } from 'react';
+import Multiselect from "@cloudscape-design/components/multiselect";
+import React, { FC, useMemo } from "react";
 
 export interface AssetSelectorProps {
   allAssets: string[];
@@ -34,24 +34,28 @@ const AssetSelector: FC<AssetSelectorProps> = ({
     });
   }, [allAssets]);
 
-  return (<Multiselect
-    tokenLimit={0}
-    selectedOptions={selectedAssets.map(ia => ({
-      label: ia,
-      value: ia,
-    }))}
-    onChange={({ detail }) =>
-      setSelectedAssets(detail.selectedOptions?.map(o => o.value || '') || [])
-    }
-    deselectAriaLabel={e => `Remove ${e.label}`}
-    options={sortedAssets.map(g => ({
-      label: g,
-      value: g,
-    }))}
-    filteringType="auto"
-    placeholder="Filtered by Assets"
-    selectedAriaLabel="Selected"
-  />);
+  return (
+    <Multiselect
+      tokenLimit={0}
+      selectedOptions={selectedAssets.map((ia) => ({
+        label: ia,
+        value: ia,
+      }))}
+      onChange={({ detail }) =>
+        setSelectedAssets(
+          detail.selectedOptions?.map((o) => o.value || "") || [],
+        )
+      }
+      deselectAriaLabel={(e) => `Remove ${e.label}`}
+      options={sortedAssets.map((g) => ({
+        label: g,
+        value: g,
+      }))}
+      filteringType="auto"
+      placeholder="Filtered by Assets"
+      selectedAriaLabel="Selected"
+    />
+  );
 };
 
 export default AssetSelector;

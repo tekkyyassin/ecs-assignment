@@ -14,27 +14,33 @@
   limitations under the License.
  ******************************************************************************************************************** */
 
-import { TemplateThreatStatement } from '../../customTypes';
-import { threatFieldTypeMapping, ThreatFieldTypes } from '../../customTypes/threatFieldTypes';
-import threatFieldData from '../../data/threatFieldData';
-import renderArrayField from '../renderArrayField';
+import { TemplateThreatStatement } from "../../customTypes";
+import {
+  threatFieldTypeMapping,
+  ThreatFieldTypes,
+} from "../../customTypes/threatFieldTypes";
+import threatFieldData from "../../data/threatFieldData";
+import renderArrayField from "../renderArrayField";
 
-const getFieldContentByToken = (token: ThreatFieldTypes, statement: TemplateThreatStatement): string => {
+const getFieldContentByToken = (
+  token: ThreatFieldTypes,
+  statement: TemplateThreatStatement,
+): string => {
   const fieldKey = threatFieldTypeMapping[token];
   if (fieldKey) {
     const value = statement[fieldKey as keyof TemplateThreatStatement];
     if (value) {
-      if (typeof value === 'string') {
+      if (typeof value === "string") {
         return value;
       }
 
       if (Array.isArray(value) && value.length > 0) {
-        return renderArrayField(value as string[], token === 'impacted_goal');
+        return renderArrayField(value as string[], token === "impacted_goal");
       }
     }
   }
 
-  return threatFieldData[token]?.displayField || '';
+  return threatFieldData[token]?.displayField || "";
 };
 
 export default getFieldContentByToken;

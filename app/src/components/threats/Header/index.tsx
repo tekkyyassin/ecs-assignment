@@ -15,11 +15,11 @@
  ******************************************************************************************************************** */
 
 /** @jsxImportSource @emotion/react */
-import Button from '@cloudscape-design/components/button';
-import HeaderComponent from '@cloudscape-design/components/header';
-import SpaceBetween from '@cloudscape-design/components/space-between';
-import { FC, useMemo } from 'react';
-import { ComposerMode, TemplateThreatStatement } from '../../../customTypes';
+import Button from "@cloudscape-design/components/button";
+import HeaderComponent from "@cloudscape-design/components/header";
+import SpaceBetween from "@cloudscape-design/components/space-between";
+import { FC, useMemo } from "react";
+import { ComposerMode, TemplateThreatStatement } from "../../../customTypes";
 
 export interface HeaderProps {
   composerMode: ComposerMode;
@@ -42,14 +42,23 @@ const Header: FC<HeaderProps> = ({
       <SpaceBetween direction="horizontal" size="xs">
         <Button onClick={onCancel}>Threat list</Button>
         <Button onClick={onStartOver}>Start over</Button>
-        <Button variant="primary" onClick={onComplete} disabled={!statement.statement}>
+        <Button
+          variant="primary"
+          onClick={onComplete}
+          disabled={!statement.statement}
+        >
           {saveButtonText}
         </Button>
-      </SpaceBetween>);
+      </SpaceBetween>
+    );
   }, [onComplete, onCancel, onStartOver, saveButtonText, statement.statement]);
 
   return (
-    <HeaderComponent variant='h1' actions={actions}>{!statement.numericId || statement.numericId === -1 ? undefined : `Threat ${statement.numericId}`}</HeaderComponent>
+    <HeaderComponent variant="h1" actions={actions}>
+      {!statement.numericId || statement.numericId === -1
+        ? undefined
+        : `Threat ${statement.numericId}`}
+    </HeaderComponent>
   );
 };
 

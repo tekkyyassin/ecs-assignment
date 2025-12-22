@@ -14,13 +14,17 @@
   limitations under the License.
  ******************************************************************************************************************** */
 
-import { useMemo } from 'react';
-import { EntityBase, MetadataCommentSchema } from '../../../customTypes';
-import MarkdownEditor from '../MarkdownEditor';
+import { useMemo } from "react";
+import { EntityBase, MetadataCommentSchema } from "../../../customTypes";
+import MarkdownEditor from "../MarkdownEditor";
 
 export interface CommentsEditProps<T> {
   entity: T;
-  onEditEntity: (entity: T, key: string, value: string | string[] | undefined) => void;
+  onEditEntity: (
+    entity: T,
+    key: string,
+    value: string | string[] | undefined,
+  ) => void;
 }
 
 const CommentsEdit = <T extends EntityBase>({
@@ -28,16 +32,21 @@ const CommentsEdit = <T extends EntityBase>({
   onEditEntity,
 }: CommentsEditProps<T>) => {
   const comments = useMemo(() => {
-    return (entity.metadata?.find(m => m.key === 'Comments')?.value as string) || '';
+    return (
+      (entity.metadata?.find((m) => m.key === "Comments")?.value as string) ||
+      ""
+    );
   }, [entity.metadata]);
 
-  return (<MarkdownEditor
-    label='Comments'
-    value={comments}
-    onChange={(value) => onEditEntity(entity, 'Comments', value)}
-    rows={3}
-    validateData={MetadataCommentSchema.safeParse}
-  />);
+  return (
+    <MarkdownEditor
+      label="Comments"
+      value={comments}
+      onChange={(value) => onEditEntity(entity, "Comments", value)}
+      rows={3}
+      validateData={MetadataCommentSchema.safeParse}
+    />
+  );
 };
 
 export default CommentsEdit;

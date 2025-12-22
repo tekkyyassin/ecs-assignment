@@ -14,22 +14,24 @@
   limitations under the License.
  ******************************************************************************************************************** */
 
-import { FC } from 'react';
-import DataflowComponent from '../../components/dataflow/DataflowInfo';
-import WorkspaceContextAggregator from '../../contexts/WorkspaceContextAggregator';
+import { FC } from "react";
+import DataflowComponent from "../../components/dataflow/DataflowInfo";
+import WorkspaceContextAggregator from "../../contexts/WorkspaceContextAggregator";
 
 export interface DataflowProps {
   workspaceId?: string;
 }
 
 const Dataflow: FC<DataflowProps> = ({ workspaceId }) => {
-  return (<WorkspaceContextAggregator
-    workspaceId={workspaceId || null}
-    composerMode='Full'
-    requiredGlobalSetupContext
-  >
-    <DataflowComponent/>
-  </WorkspaceContextAggregator>);
+  return (
+    <WorkspaceContextAggregator
+      workspaceId={workspaceId || null}
+      composerMode="Full"
+      requiredGlobalSetupContext
+    >
+      <DataflowComponent />
+    </WorkspaceContextAggregator>
+  );
 };
 
 export default Dataflow;

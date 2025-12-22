@@ -14,18 +14,23 @@
   limitations under the License.
  ******************************************************************************************************************** */
 
-import { TemplateThreatStatement } from './threats';
+import { TemplateThreatStatement } from "./threats";
 
-export type ThreatFieldTypes = 'threat_source' | 'prerequisites' | 'threat_action' | 'threat_impact' | 'impacted_goal' | 'impacted_assets';
+export type ThreatFieldTypes =
+  | "threat_source"
+  | "prerequisites"
+  | "threat_action"
+  | "threat_impact"
+  | "impacted_goal"
+  | "impacted_assets";
 
 export const threatFieldTypeMapping: {
   [key in ThreatFieldTypes]: keyof TemplateThreatStatement;
 } = {
-  threat_source: 'threatSource',
-  prerequisites: 'prerequisites',
-  threat_action: 'threatAction',
-  threat_impact: 'threatImpact',
-  impacted_goal: 'impactedGoal',
-  impacted_assets: 'impactedAssets',
+  threat_source: "threatSource",
+  prerequisites: "prerequisites",
+  threat_action: "threatAction",
+  threat_impact: "threatImpact",
+  impacted_goal: "impactedGoal",
+  impacted_assets: "impactedAssets",
 };
-
