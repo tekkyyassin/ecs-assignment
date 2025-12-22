@@ -14,12 +14,12 @@
   limitations under the License.
  ******************************************************************************************************************** */
 
-import { useCallback, useEffect, useState } from 'react';
-import { MOBILE_BREAKPOINT } from '../../configs';
+import { useCallback, useEffect, useState } from "react";
+import { MOBILE_BREAKPOINT } from "../../configs";
 
 function useMediaQuery(query: string): boolean {
   const getMatches = (matchQuery: string): boolean => {
-    if (typeof window !== 'undefined') {
+    if (typeof window !== "undefined") {
       return window.matchMedia(matchQuery).matches;
     }
     return false;
@@ -41,14 +41,14 @@ function useMediaQuery(query: string): boolean {
     if (matchMedia.addListener) {
       matchMedia.addListener(handleChange);
     } else {
-      matchMedia.addEventListener('change', handleChange);
+      matchMedia.addEventListener("change", handleChange);
     }
 
     return () => {
       if (matchMedia.removeListener) {
         matchMedia.removeListener(handleChange);
       } else {
-        matchMedia.removeEventListener('change', handleChange);
+        matchMedia.removeEventListener("change", handleChange);
       }
     };
   }, [query, handleChange]);
@@ -56,6 +56,7 @@ function useMediaQuery(query: string): boolean {
   return matches;
 }
 
-export const useMobileMediaQuery = () => useMediaQuery(`(max-width: ${MOBILE_BREAKPOINT}px)`);
+export const useMobileMediaQuery = () =>
+  useMediaQuery(`(max-width: ${MOBILE_BREAKPOINT}px)`);
 
 export default useMediaQuery;

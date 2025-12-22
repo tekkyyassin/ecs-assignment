@@ -14,14 +14,14 @@
   limitations under the License.
  ******************************************************************************************************************** */
 
-import { FC, PropsWithChildren, useCallback } from 'react';
-import useLocalStorageState from 'use-local-storage-state';
-import { LOCAL_STORAGE_KEY_ASSUMPTION_LIST } from '../../../../configs/localStorageKeys';
-import { Assumption } from '../../../../customTypes';
-import removeLocalStorageKey from '../../../../utils/removeLocalStorageKey';
-import { AssumptionsContext } from '../../context';
-import { AssumptionsContextProviderProps } from '../../types';
-import useAssumptions from '../../useAssumptions';
+import { FC, PropsWithChildren, useCallback } from "react";
+import useLocalStorageState from "use-local-storage-state";
+import { LOCAL_STORAGE_KEY_ASSUMPTION_LIST } from "../../../../configs/localStorageKeys";
+import { Assumption } from "../../../../customTypes";
+import removeLocalStorageKey from "../../../../utils/removeLocalStorageKey";
+import { AssumptionsContext } from "../../context";
+import { AssumptionsContextProviderProps } from "../../types";
+import useAssumptions from "../../useAssumptions";
 
 const getLocalStorageKey = (workspaceId: string | null) => {
   if (workspaceId) {
@@ -31,18 +31,18 @@ const getLocalStorageKey = (workspaceId: string | null) => {
   return LOCAL_STORAGE_KEY_ASSUMPTION_LIST;
 };
 
-const AssumptionsLocalStorageContextProvider: FC<PropsWithChildren<AssumptionsContextProviderProps>> = ({
-  children,
-  workspaceId: currentWorkspaceId,
-}) => {
-  const [assumptionList, setAssumptionList, { removeItem }] = useLocalStorageState<Assumption[]>(getLocalStorageKey(currentWorkspaceId), {
-    defaultValue: [],
-  });
+const AssumptionsLocalStorageContextProvider: FC<
+  PropsWithChildren<AssumptionsContextProviderProps>
+> = ({ children, workspaceId: currentWorkspaceId }) => {
+  const [assumptionList, setAssumptionList, { removeItem }] =
+    useLocalStorageState<Assumption[]>(getLocalStorageKey(currentWorkspaceId), {
+      defaultValue: [],
+    });
 
-  const {
-    handleSaveAssumption,
-    handlRemoveAssumption,
-  } = useAssumptions(assumptionList, setAssumptionList);
+  const { handleSaveAssumption, handlRemoveAssumption } = useAssumptions(
+    assumptionList,
+    setAssumptionList,
+  );
 
   const handleRemoveAllAssumptions = useCallback(async () => {
     removeItem();
@@ -55,16 +55,20 @@ const AssumptionsLocalStorageContextProvider: FC<PropsWithChildren<AssumptionsCo
     }, 1000);
   }, []);
 
-  return (<AssumptionsContext.Provider value={{
-    assumptionList,
-    setAssumptionList,
-    removeAssumption: handlRemoveAssumption,
-    saveAssumption: handleSaveAssumption,
-    removeAllAssumptions: handleRemoveAllAssumptions,
-    onDeleteWorkspace: handleDeleteWorkspace,
-  }}>
-    {children}
-  </AssumptionsContext.Provider>);
+  return (
+    <AssumptionsContext.Provider
+      value={{
+        assumptionList,
+        setAssumptionList,
+        removeAssumption: handlRemoveAssumption,
+        saveAssumption: handleSaveAssumption,
+        removeAllAssumptions: handleRemoveAllAssumptions,
+        onDeleteWorkspace: handleDeleteWorkspace,
+      }}
+    >
+      {children}
+    </AssumptionsContext.Provider>
+  );
 };
 
 export default AssumptionsLocalStorageContextProvider;

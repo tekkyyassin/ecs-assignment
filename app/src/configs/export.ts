@@ -14,4 +14,4 @@
   limitations under the License.
  ******************************************************************************************************************** */
 
-export const EXPORT_FILE_NAME = 'ThreatComposer';
+export const EXPORT_FILE_NAME = "ThreatComposer";

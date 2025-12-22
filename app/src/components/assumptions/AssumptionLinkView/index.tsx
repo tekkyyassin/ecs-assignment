@@ -14,14 +14,16 @@
   limitations under the License.
  ******************************************************************************************************************** */
 
-import Autosuggest from '@cloudscape-design/components/autosuggest';
-import ExpandableSection, { ExpandableSectionProps } from '@cloudscape-design/components/expandable-section';
-import TokenGroup from '@cloudscape-design/components/token-group';
-import React, { FC, useMemo } from 'react';
-import { Assumption } from '../../../customTypes';
+import Autosuggest from "@cloudscape-design/components/autosuggest";
+import ExpandableSection, {
+  ExpandableSectionProps,
+} from "@cloudscape-design/components/expandable-section";
+import TokenGroup from "@cloudscape-design/components/token-group";
+import React, { FC, useMemo } from "react";
+import { Assumption } from "../../../customTypes";
 
 export interface AssumptionLinkProps {
-  variant?: ExpandableSectionProps['variant'];
+  variant?: ExpandableSectionProps["variant"];
   linkedAssumptionIds: string[];
   assumptionList: Assumption[];
   onAddAssumptionLink: (assumptionId: string) => void;
@@ -35,54 +37,59 @@ const AssumptionLinkComponent: FC<AssumptionLinkProps> = ({
   onRemoveAssumptionLink,
   variant,
 }) => {
-  const [searchValue, setSearchValue] = React.useState('');
+  const [searchValue, setSearchValue] = React.useState("");
 
   const linkedAssumptions = useMemo(() => {
-    return assumptionList.filter(al => linkedAssumptionIds.includes(al.id));
+    return assumptionList.filter((al) => linkedAssumptionIds.includes(al.id));
   }, [linkedAssumptionIds, assumptionList]);
 
   const filteredAssumptions = useMemo(() => {
-    const assumptions = assumptionList.filter(x => !linkedAssumptionIds.includes(x.id));
+    const assumptions = assumptionList.filter(
+      (x) => !linkedAssumptionIds.includes(x.id),
+    );
 
     if (!searchValue) {
       return assumptions;
     }
 
-    return assumptions.filter(x => (x.content.toLowerCase().indexOf(searchValue.toLowerCase()) >= 0));
+    return assumptions.filter(
+      (x) => x.content.toLowerCase().indexOf(searchValue.toLowerCase()) >= 0,
+    );
   }, [searchValue, assumptionList, linkedAssumptionIds]);
 
-  return (<ExpandableSection
-    variant={variant}
-    headingTagOverride={variant === 'container' ? 'h3' : undefined}
-    headerText={`Linked assumptions (${linkedAssumptions.length})`}>
-    <Autosuggest
-      onChange={({ detail }) => setSearchValue(detail.value)}
-      value={searchValue}
-      options={filteredAssumptions.map(x => ({
-        value: x.id,
-        label: x.content,
-      }))}
-      onSelect={({ detail }) => {
-        onAddAssumptionLink(detail.value);
-        setSearchValue('');
-      }}
-      filteringType='manual'
-      enteredTextLabel={value => `Add new assumption: "${value}"`}
-      placeholder="Search assumption"
-      empty="No matches found"
-    />
-    <TokenGroup
-      items={
-        linkedAssumptions.map(x => ({
+  return (
+    <ExpandableSection
+      variant={variant}
+      headingTagOverride={variant === "container" ? "h3" : undefined}
+      headerText={`Linked assumptions (${linkedAssumptions.length})`}
+    >
+      <Autosuggest
+        onChange={({ detail }) => setSearchValue(detail.value)}
+        value={searchValue}
+        options={filteredAssumptions.map((x) => ({
+          value: x.id,
+          label: x.content,
+        }))}
+        onSelect={({ detail }) => {
+          onAddAssumptionLink(detail.value);
+          setSearchValue("");
+        }}
+        filteringType="manual"
+        enteredTextLabel={(value) => `Add new assumption: "${value}"`}
+        placeholder="Search assumption"
+        empty="No matches found"
+      />
+      <TokenGroup
+        items={linkedAssumptions.map((x) => ({
           label: x.content,
           dismissLabel: `Unlink assumption ${x.numericId}`,
-        }))
-      }
-      onDismiss={({ detail: { itemIndex } }) => {
-        onRemoveAssumptionLink(linkedAssumptions[itemIndex].id);
-      }}
-    />
-  </ExpandableSection>);
+        }))}
+        onDismiss={({ detail: { itemIndex } }) => {
+          onRemoveAssumptionLink(linkedAssumptions[itemIndex].id);
+        }}
+      />
+    </ExpandableSection>
+  );
 };
 
 export default AssumptionLinkComponent;

@@ -14,7 +14,10 @@
   limitations under the License.
  ******************************************************************************************************************** */
 
-import { DataExchangeFormat, DataExchangeFormatSchema } from '../../customTypes';
+import {
+  DataExchangeFormat,
+  DataExchangeFormatSchema,
+} from "../../customTypes";
 
 const validateData = (data: DataExchangeFormat) => {
   const validation = DataExchangeFormatSchema.safeParse(data);

@@ -14,14 +14,14 @@
   limitations under the License.
  ******************************************************************************************************************** */
 
-import { FC, PropsWithChildren, useCallback } from 'react';
-import useLocalStorageState from 'use-local-storage-state';
-import { LOCAL_STORAGE_KEY_ASSUMPTION_LINK_LIST } from '../../../../configs/localStorageKeys';
-import { AssumptionLink } from '../../../../customTypes';
-import removeLocalStorageKey from '../../../../utils/removeLocalStorageKey';
-import { AssumptionLinksContext } from '../../context';
-import { AssumptionLinksContextProviderProps } from '../../types';
-import useAssumptionLinks from '../../useAssumptionLinks';
+import { FC, PropsWithChildren, useCallback } from "react";
+import useLocalStorageState from "use-local-storage-state";
+import { LOCAL_STORAGE_KEY_ASSUMPTION_LINK_LIST } from "../../../../configs/localStorageKeys";
+import { AssumptionLink } from "../../../../customTypes";
+import removeLocalStorageKey from "../../../../utils/removeLocalStorageKey";
+import { AssumptionLinksContext } from "../../context";
+import { AssumptionLinksContextProviderProps } from "../../types";
+import useAssumptionLinks from "../../useAssumptionLinks";
 
 const getLocalStorageKey = (workspaceId: string | null) => {
   if (workspaceId) {
@@ -31,13 +31,16 @@ const getLocalStorageKey = (workspaceId: string | null) => {
   return LOCAL_STORAGE_KEY_ASSUMPTION_LINK_LIST;
 };
 
-const AssumptionLinksLocalStorageContextProvider: FC<PropsWithChildren<AssumptionLinksContextProviderProps>> = ({
-  children,
-  workspaceId: currentWorkspaceId,
-}) => {
-  const [assumptionLinkList, setAssumptionLinkList, { removeItem }] = useLocalStorageState<AssumptionLink[]>(getLocalStorageKey(currentWorkspaceId), {
-    defaultValue: [],
-  });
+const AssumptionLinksLocalStorageContextProvider: FC<
+  PropsWithChildren<AssumptionLinksContextProviderProps>
+> = ({ children, workspaceId: currentWorkspaceId }) => {
+  const [assumptionLinkList, setAssumptionLinkList, { removeItem }] =
+    useLocalStorageState<AssumptionLink[]>(
+      getLocalStorageKey(currentWorkspaceId),
+      {
+        defaultValue: [],
+      },
+    );
 
   const {
     handlRemoveAssumptionLink,
@@ -61,23 +64,28 @@ const AssumptionLinksLocalStorageContextProvider: FC<PropsWithChildren<Assumptio
     }, 1000);
   }, []);
 
-  return (<AssumptionLinksContext.Provider value={{
-    assumptionLinkList,
-    setAssumptionLinkList,
-    getLinkedAssumptionLinks: handleGetLinkedAssumptionLinks,
-    getAssumptionEntityLinks: handleGetAssumptionEntityLinks,
-    removeAssumptionLink: handlRemoveAssumptionLink,
-    removeAssumptionLinksByAssumptionId: handlRemoveAssumptionLinksByAssumptionId,
-    removeAssumptionLinksByLinkedEntityId: handlRemoveAssumptionLinksByLinkedEntityId,
-    removeAssumptionLinks: handleRemoveAssumptionLinks,
-    addAssumptionLink: handleAddAssumptionLink,
-    addAssumptionLinks: handleAddAssumptionLinks,
-    removeAllAssumptionLinks: handleRemoveAllAssumptionLinks,
-    onDeleteWorkspace: handleDeleteWorkspace,
-  }}>
-    {children}
-  </AssumptionLinksContext.Provider>);
+  return (
+    <AssumptionLinksContext.Provider
+      value={{
+        assumptionLinkList,
+        setAssumptionLinkList,
+        getLinkedAssumptionLinks: handleGetLinkedAssumptionLinks,
+        getAssumptionEntityLinks: handleGetAssumptionEntityLinks,
+        removeAssumptionLink: handlRemoveAssumptionLink,
+        removeAssumptionLinksByAssumptionId:
+          handlRemoveAssumptionLinksByAssumptionId,
+        removeAssumptionLinksByLinkedEntityId:
+          handlRemoveAssumptionLinksByLinkedEntityId,
+        removeAssumptionLinks: handleRemoveAssumptionLinks,
+        addAssumptionLink: handleAddAssumptionLink,
+        addAssumptionLinks: handleAddAssumptionLinks,
+        removeAllAssumptionLinks: handleRemoveAllAssumptionLinks,
+        onDeleteWorkspace: handleDeleteWorkspace,
+      }}
+    >
+      {children}
+    </AssumptionLinksContext.Provider>
+  );
 };
 
 export default AssumptionLinksLocalStorageContextProvider;
-

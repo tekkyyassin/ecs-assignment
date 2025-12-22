@@ -15,24 +15,36 @@
  ******************************************************************************************************************** */
 
 /** @jsxImportSource @emotion/react */
-import { css } from '@emotion/react';
-import { FC } from 'react';
-import threatStatementElements from '../../../../../assets/threat-statement-elements.png';
-import styles from '../../styles';
-import InfoModalBase from '../InfoModalBase';
+import { css } from "@emotion/react";
+import { FC } from "react";
+import threatStatementElements from "../../../../../assets/threat-statement-elements.png";
+import styles from "../../styles";
+import InfoModalBase from "../InfoModalBase";
 
 const InfoModalSelector: FC = () => {
-  return (<InfoModalBase>
-    <p>A useful threat statement considers <span css={css(styles.contentHighlight)}>threat source</span>,{' '}
-      <span css={css(styles.contentHighlight)}>prerequisites</span>,{' '}
-      <span css={css(styles.contentHighlight)}>threat action</span>,{' '}
-      <span css={css(styles.contentHighlight)}>threat impact</span>,{' '}
-      <span css={css(styles.contentHighlight)}>impacted goal</span>{' '}
-      and <span css={css(styles.contentHighlight)}>impacted assets</span>.</p>
-    <p>This tool empowers you to compose useful threat statements by providing examples and suggestions
-      for each section and generating the final statement for you.</p>
-    <img css={css(styles.image)} src={threatStatementElements} alt="ThreatStatementElements" />
-  </InfoModalBase>);
+  return (
+    <InfoModalBase>
+      <p>
+        A useful threat statement considers{" "}
+        <span css={css(styles.contentHighlight)}>threat source</span>,{" "}
+        <span css={css(styles.contentHighlight)}>prerequisites</span>,{" "}
+        <span css={css(styles.contentHighlight)}>threat action</span>,{" "}
+        <span css={css(styles.contentHighlight)}>threat impact</span>,{" "}
+        <span css={css(styles.contentHighlight)}>impacted goal</span> and{" "}
+        <span css={css(styles.contentHighlight)}>impacted assets</span>.
+      </p>
+      <p>
+        This tool empowers you to compose useful threat statements by providing
+        examples and suggestions for each section and generating the final
+        statement for you.
+      </p>
+      <img
+        css={css(styles.image)}
+        src={threatStatementElements}
+        alt="ThreatStatementElements"
+      />
+    </InfoModalBase>
+  );
 };
 
 export default InfoModalSelector;

@@ -1,5 +1,5 @@
-import { useContext, createContext } from 'react';
-import { Flow } from '../../customTypes';
+import { useContext, createContext } from "react";
+import { Flow } from "../../customTypes";
 
 export interface FlowContextApi {
   flow: Flow;
@@ -10,9 +10,9 @@ export interface FlowContextApi {
 
 const initialState: FlowContextApi = {
   flow: {
-    content: '',
+    content: "",
   },
-  setFlow: () => { },
+  setFlow: () => {},
   removeFlow: () => Promise.resolve(),
   onDeleteWorkspace: () => Promise.resolve(),
 };

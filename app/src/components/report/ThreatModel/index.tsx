@@ -14,12 +14,12 @@
   limitations under the License.
  ******************************************************************************************************************** */
 
-import { FC, useMemo } from 'react';
-import ThreatModelView from './components/ThreatModelView';
-import { useGlobalSetupContext, useWorkspacesContext } from '../../../contexts';
-import useImportExport from '../../../hooks/useExportImport';
-import useHasContent from '../../../hooks/useHasContent';
-import getExportFileName from '../../../utils/getExportFileName';
+import { FC, useMemo } from "react";
+import ThreatModelView from "./components/ThreatModelView";
+import { useGlobalSetupContext, useWorkspacesContext } from "../../../contexts";
+import useImportExport from "../../../hooks/useExportImport";
+import useHasContent from "../../../hooks/useHasContent";
+import getExportFileName from "../../../utils/getExportFileName";
 
 export interface ThreatModelProps {
   onPrintButtonClick?: () => void;
@@ -49,22 +49,24 @@ const ThreatModel: FC<ThreatModelProps> = ({
     onMitigationListView,
     onControlListView,
   } = useWorkspacesContext();
-  return <ThreatModelView
-    {...props}
-    onPrintButtonClick={onPrintButtonClick}
-    composerMode={composerMode}
-    data={getWorkspaceData()}
-    downloadFileName={downloadFileName}
-    hasContentDetails={hasContentDetails}
-    onApplicationInfoView={onApplicationInfoView}
-    onArchitectureView={onArchitectureView}
-    onDataflowView={onDataflowView}
-    onDiagramView={onDiagramView}
-    onAssumptionListView={onAssumptionListView}
-    onThreatListView={onThreatListView}
-    onMitigationListView={onMitigationListView}
-    onControlListView={onControlListView}
-  />;
+  return (
+    <ThreatModelView
+      {...props}
+      onPrintButtonClick={onPrintButtonClick}
+      composerMode={composerMode}
+      data={getWorkspaceData()}
+      downloadFileName={downloadFileName}
+      hasContentDetails={hasContentDetails}
+      onApplicationInfoView={onApplicationInfoView}
+      onArchitectureView={onArchitectureView}
+      onDataflowView={onDataflowView}
+      onDiagramView={onDiagramView}
+      onAssumptionListView={onAssumptionListView}
+      onThreatListView={onThreatListView}
+      onMitigationListView={onMitigationListView}
+      onControlListView={onControlListView}
+    />
+  );
 };
 
 export default ThreatModel;

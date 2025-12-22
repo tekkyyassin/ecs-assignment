@@ -15,74 +15,86 @@
  ******************************************************************************************************************** */
 
 /** @jsxImportSource @emotion/react */
-import * as awsui from '@cloudscape-design/design-tokens';
-import { css } from '@emotion/react';
-import React, { FC, PropsWithChildren } from 'react';
-import { useMobileMediaQuery } from '../../../hooks/useMediaQuery';
+import * as awsui from "@cloudscape-design/design-tokens";
+import { css } from "@emotion/react";
+import React, { FC, PropsWithChildren } from "react";
+import { useMobileMediaQuery } from "../../../hooks/useMediaQuery";
 
 const styles = {
   tooltip: css({
-    'position': 'relative',
-    ['&:hover .tooltipText']: {
-      visibility: 'visible',
+    position: "relative",
+    ["&:hover .tooltipText"]: {
+      visibility: "visible",
     },
-    '& .tooltipText': {
-      visibility: 'hidden',
-      backgroundColor: 'black',
-      color: '#fff',
-      textAlign: 'center',
+    "& .tooltipText": {
+      visibility: "hidden",
+      backgroundColor: "black",
+      color: "#fff",
+      textAlign: "center",
       borderRadius: awsui.borderRadiusBadge,
       padding: awsui.spaceScaledXxs,
-      position: 'absolute',
-      zIndex: '100',
-      lineHeight: '20px',
-      fontSize: '14px !important',
-      fontWeight: '500 !important',
+      position: "absolute",
+      zIndex: "100",
+      lineHeight: "20px",
+      fontSize: "14px !important",
+      fontWeight: "500 !important",
     },
   }),
   tooltipAnchor: css({
-    'width': '110px',
-    'left': '50%',
-    'marginLeft': '-56px',
-    '&.tooltipText::after': {
+    width: "110px",
+    left: "50%",
+    marginLeft: "-56px",
+    "&.tooltipText::after": {
       content: '" "',
-      position: 'absolute',
-      left: '50%',
-      marginLeft: '-5px',
-      borderWidth: '5px',
-      borderStyle: 'solid',
-      borderColor: 'black transparent transparent transparent',
+      position: "absolute",
+      left: "50%",
+      marginLeft: "-5px",
+      borderWidth: "5px",
+      borderStyle: "solid",
+      borderColor: "black transparent transparent transparent",
     },
   }),
   tooltipTop: css({
-    'bottom': '125%',
-    '&.tooltipText::after': {
-      top: '100%',
+    bottom: "125%",
+    "&.tooltipText::after": {
+      top: "100%",
     },
   }),
   tooltipBottom: css({
-    'top': '110%',
-    '&.tooltipText::after': {
-      bottom: '100%',
+    top: "110%",
+    "&.tooltipText::after": {
+      bottom: "100%",
     },
   }),
 };
 
 export interface TooltipProps {
   tooltip: React.ReactNode;
-  anchor?: 'top' | 'bottom';
+  anchor?: "top" | "bottom";
 }
 
 const Tooltip: FC<PropsWithChildren<TooltipProps>> = ({
   tooltip,
   children,
-  anchor = 'top',
+  anchor = "top",
 }) => {
   const isMobileView = useMobileMediaQuery();
-  return isMobileView ? <>{children}</> : (<span css={styles.tooltip}>
-    {children}
-    <span css={[styles.tooltipAnchor, anchor === 'top' ? styles.tooltipTop : styles.tooltipBottom]} className='tooltipText'>{tooltip}</span>
-  </span>);
+  return isMobileView ? (
+    <>{children}</>
+  ) : (
+    <span css={styles.tooltip}>
+      {children}
+      <span
+        css={[
+          styles.tooltipAnchor,
+          anchor === "top" ? styles.tooltipTop : styles.tooltipBottom,
+        ]}
+        className="tooltipText"
+      >
+        {tooltip}
+      </span>
+    </span>
+  );
 };
 
 export default Tooltip;

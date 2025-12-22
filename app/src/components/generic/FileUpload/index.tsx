@@ -14,11 +14,13 @@
   limitations under the License.
  ******************************************************************************************************************** */
 
-import Button from '@cloudscape-design/components/button';
-import FormField, { FormFieldProps } from '@cloudscape-design/components/form-field';
-import SpaceBetween from '@cloudscape-design/components/space-between';
-import React, { FC, useCallback, useRef, useMemo } from 'react';
-import FileTokenLabel from './components/FileTokenLabel';
+import Button from "@cloudscape-design/components/button";
+import FormField, {
+  FormFieldProps,
+} from "@cloudscape-design/components/form-field";
+import SpaceBetween from "@cloudscape-design/components/space-between";
+import React, { FC, useCallback, useRef, useMemo } from "react";
+import FileTokenLabel from "./components/FileTokenLabel";
 
 export interface FileUploadProps extends FormFieldProps {
   accept?: string;
@@ -36,7 +38,7 @@ const FileUpload: FC<FileUploadProps> = ({
   secondaryControl,
   errorText,
   info,
-  buttonText = 'Choose file',
+  buttonText = "Choose file",
   name,
   accept,
   files,
@@ -62,25 +64,26 @@ const FileUpload: FC<FileUploadProps> = ({
     inputElement.current?.click();
   }, []);
 
-  const handleFileSelectionChange: React.ChangeEventHandler<HTMLInputElement> = useCallback(
-    (event) => {
-      const newFiles: File[] = [];
+  const handleFileSelectionChange: React.ChangeEventHandler<HTMLInputElement> =
+    useCallback(
+      (event) => {
+        const newFiles: File[] = [];
 
-      if (event.target.files) {
-        const targetFiles = event.target.files;
-        const len = targetFiles.length;
-        for (let i = 0; i < len; i++) {
-          const file = targetFiles.item(i);
-          if (file) {
-            newFiles.push(file);
+        if (event.target.files) {
+          const targetFiles = event.target.files;
+          const len = targetFiles.length;
+          for (let i = 0; i < len; i++) {
+            const file = targetFiles.item(i);
+            if (file) {
+              newFiles.push(file);
+            }
           }
         }
-      }
 
-      onChange?.(newFiles);
-    },
-    [onChange],
-  );
+        onChange?.(newFiles);
+      },
+      [onChange],
+    );
 
   return (
     <SpaceBetween direction="vertical" size="m">
@@ -96,7 +99,7 @@ const FileUpload: FC<FileUploadProps> = ({
         <input
           ref={inputElement}
           name={name}
-          style={{ display: 'none' }}
+          style={{ display: "none" }}
           type="file"
           accept={accept}
           onChange={handleFileSelectionChange}

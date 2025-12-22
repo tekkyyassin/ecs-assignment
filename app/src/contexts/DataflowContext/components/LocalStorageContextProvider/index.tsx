@@ -14,14 +14,14 @@
   limitations under the License.
  ******************************************************************************************************************** */
 
-import { FC, PropsWithChildren, useCallback } from 'react';
-import useLocalStorageState from 'use-local-storage-state';
-import { LOCAL_STORAGE_KEY_DATAFLOW_INFO } from '../../../../configs/localStorageKeys';
-import { DataflowInfo } from '../../../../customTypes';
-import removeLocalStorageKey from '../../../../utils/removeLocalStorageKey';
-import { INFO_DEFAULT_VALUE } from '../../../constants';
-import { DataflowInfoContext, useDataflowInfoContext } from '../../context';
-import { DataflowContextProviderProps } from '../../types';
+import { FC, PropsWithChildren, useCallback } from "react";
+import useLocalStorageState from "use-local-storage-state";
+import { LOCAL_STORAGE_KEY_DATAFLOW_INFO } from "../../../../configs/localStorageKeys";
+import { DataflowInfo } from "../../../../customTypes";
+import removeLocalStorageKey from "../../../../utils/removeLocalStorageKey";
+import { INFO_DEFAULT_VALUE } from "../../../constants";
+import { DataflowInfoContext, useDataflowInfoContext } from "../../context";
+import { DataflowContextProviderProps } from "../../types";
 
 const getLocalStorageKey = (workspaceId: string | null) => {
   if (workspaceId) {
@@ -31,13 +31,13 @@ const getLocalStorageKey = (workspaceId: string | null) => {
   return LOCAL_STORAGE_KEY_DATAFLOW_INFO;
 };
 
-const DataflowLocalStorageContextProvider: FC<PropsWithChildren<DataflowContextProviderProps>> = ({
-  children,
-  workspaceId: currentWorkspaceId,
-}) => {
-  const [dataflowInfo, setDataflowInfo, { removeItem }] = useLocalStorageState<DataflowInfo>(getLocalStorageKey(currentWorkspaceId), {
-    defaultValue: INFO_DEFAULT_VALUE,
-  });
+const DataflowLocalStorageContextProvider: FC<
+  PropsWithChildren<DataflowContextProviderProps>
+> = ({ children, workspaceId: currentWorkspaceId }) => {
+  const [dataflowInfo, setDataflowInfo, { removeItem }] =
+    useLocalStorageState<DataflowInfo>(getLocalStorageKey(currentWorkspaceId), {
+      defaultValue: INFO_DEFAULT_VALUE,
+    });
 
   const handleRemoveDataflowInfo = useCallback(async () => {
     removeItem();
@@ -50,18 +50,20 @@ const DataflowLocalStorageContextProvider: FC<PropsWithChildren<DataflowContextP
     }, 1000);
   }, []);
 
-  return (<DataflowInfoContext.Provider value={{
-    dataflowInfo,
-    setDataflowInfo,
-    removeDataflowInfo: handleRemoveDataflowInfo,
-    onDeleteWorkspace: handleDeleteWorkspace,
-  }}>
-    {children}
-  </DataflowInfoContext.Provider>);
+  return (
+    <DataflowInfoContext.Provider
+      value={{
+        dataflowInfo,
+        setDataflowInfo,
+        removeDataflowInfo: handleRemoveDataflowInfo,
+        onDeleteWorkspace: handleDeleteWorkspace,
+      }}
+    >
+      {children}
+    </DataflowInfoContext.Provider>
+  );
 };
 
 export default DataflowLocalStorageContextProvider;
 
-export {
-  useDataflowInfoContext,
-};
+export { useDataflowInfoContext };

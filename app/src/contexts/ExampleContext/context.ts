@@ -14,11 +14,10 @@
   limitations under the License.
  ******************************************************************************************************************** */
 
-import { useContext, createContext } from 'react';
-import { DataExchangeFormat } from '../../customTypes';
+import { useContext, createContext } from "react";
+import { DataExchangeFormat } from "../../customTypes";
 
-export interface ExampleContextApi extends DataExchangeFormat {
-}
+export interface ExampleContextApi extends DataExchangeFormat {}
 
 const initialState: ExampleContextApi = {
   schema: -1,

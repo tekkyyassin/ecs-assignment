@@ -14,11 +14,11 @@
   limitations under the License.
  ******************************************************************************************************************** */
 
-import { FC, useCallback, useEffect, useState } from 'react';
-import { useAssumptionLinksContext } from '../../../contexts/AssumptionLinksContext/context';
-import { useControlsContext } from '../../../contexts/ControlsContext/context';
-import { AssumptionLink } from '../../../customTypes';
-import ControlLinkView from '../../controls/ControlLinkView';
+import { FC, useCallback, useEffect, useState } from "react";
+import { useAssumptionLinksContext } from "../../../contexts/AssumptionLinksContext/context";
+import { useControlsContext } from "../../../contexts/ControlsContext/context";
+import { AssumptionLink } from "../../../customTypes";
+import ControlLinkView from "../../controls/ControlLinkView";
 
 export interface AssumptionThreatLinkProps {
   assumptionId: string;
@@ -33,42 +33,47 @@ const AssumptionThreatLinkComponent: FC<AssumptionThreatLinkProps> = ({
   const { getAssumptionEntityLinks } = useAssumptionLinksContext();
 
   useEffect(() => {
-    const _assumptionLinks = getAssumptionEntityLinks(assumptionId, 'Control');
+    const _assumptionLinks = getAssumptionEntityLinks(assumptionId, "Control");
     setAssumptionLinks(_assumptionLinks || []);
   }, [getAssumptionEntityLinks, assumptionId]);
 
-  const {
-    addAssumptionLink,
-    removeAssumptionLink,
-  } = useAssumptionLinksContext();
+  const { addAssumptionLink, removeAssumptionLink } =
+    useAssumptionLinksContext();
 
-  const handleAddControlLink = useCallback((controlIdOrNewControl: string) => {
-    if (controlList.find(m => m.id === controlIdOrNewControl)) {
-      addAssumptionLink({
-        linkedId: controlIdOrNewControl,
-        assumptionId,
-        type: 'Control',
-      });
-    } else {
-      const newControl = saveControl({
-        numericId: -1,
-        content: controlIdOrNewControl,
-        id: 'new',
-      });
-      addAssumptionLink({
-        type: 'Control',
-        linkedId: newControl.id,
-        assumptionId,
-      });
-    }
-  }, [assumptionId, controlList, addAssumptionLink, saveControl]);
+  const handleAddControlLink = useCallback(
+    (controlIdOrNewControl: string) => {
+      if (controlList.find((m) => m.id === controlIdOrNewControl)) {
+        addAssumptionLink({
+          linkedId: controlIdOrNewControl,
+          assumptionId,
+          type: "Control",
+        });
+      } else {
+        const newControl = saveControl({
+          numericId: -1,
+          content: controlIdOrNewControl,
+          id: "new",
+        });
+        addAssumptionLink({
+          type: "Control",
+          linkedId: newControl.id,
+          assumptionId,
+        });
+      }
+    },
+    [assumptionId, controlList, addAssumptionLink, saveControl],
+  );
 
-  return (<ControlLinkView
-    controlList={controlList}
-    linkedControlIds={assumptionLinks.map(ml => ml.linkedId)}
-    onAddControlLink={handleAddControlLink}
-    onRemoveControlLink={(controlId) => removeAssumptionLink(assumptionId, controlId)}
-  />);
+  return (
+    <ControlLinkView
+      controlList={controlList}
+      linkedControlIds={assumptionLinks.map((ml) => ml.linkedId)}
+      onAddControlLink={handleAddControlLink}
+      onRemoveControlLink={(controlId) =>
+        removeAssumptionLink(assumptionId, controlId)
+      }
+    />
+  );
 };
 
 export default AssumptionThreatLinkComponent;

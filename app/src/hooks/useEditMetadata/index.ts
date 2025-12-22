@@ -14,33 +14,41 @@
   limitations under the License.
  ******************************************************************************************************************** */
 
-import { useCallback } from 'react';
-import { EntityBase } from '../../customTypes';
+import { useCallback } from "react";
+import { EntityBase } from "../../customTypes";
 
-const useEditMetadata = <T extends EntityBase>(onSaveEntity?: (updated: T) => void) => {
-  return useCallback((entity: T, key: string, value: string | string[] | undefined) => {
-    const updatedEntity = {
-      ...entity,
-      metadata: [...entity.metadata || []],
-    };
-    if (value) {
-      const prevIndex = updatedEntity.metadata.findIndex(x => x.key === key);
-      if (prevIndex >= 0) {
-        updatedEntity.metadata = [
-          ...updatedEntity.metadata.slice(0, prevIndex),
-          ...[{ key, value }],
-          ...updatedEntity.metadata.slice(prevIndex + 1),
-        ];
+const useEditMetadata = <T extends EntityBase>(
+  onSaveEntity?: (updated: T) => void,
+) => {
+  return useCallback(
+    (entity: T, key: string, value: string | string[] | undefined) => {
+      const updatedEntity = {
+        ...entity,
+        metadata: [...(entity.metadata || [])],
+      };
+      if (value) {
+        const prevIndex = updatedEntity.metadata.findIndex(
+          (x) => x.key === key,
+        );
+        if (prevIndex >= 0) {
+          updatedEntity.metadata = [
+            ...updatedEntity.metadata.slice(0, prevIndex),
+            ...[{ key, value }],
+            ...updatedEntity.metadata.slice(prevIndex + 1),
+          ];
+        } else {
+          updatedEntity.metadata.push({ key, value });
+        }
       } else {
-        updatedEntity.metadata.push({ key, value });
+        updatedEntity.metadata = updatedEntity.metadata.filter(
+          (m) => m.key !== key,
+        );
       }
-    } else {
-      updatedEntity.metadata = updatedEntity.metadata.filter(m => m.key !== key);
-    }
 
-    onSaveEntity?.(updatedEntity);
-  }, [onSaveEntity]);
-
+      onSaveEntity?.(updatedEntity);
+    },
+    [onSaveEntity],
+  );
 };
 
 export default useEditMetadata;

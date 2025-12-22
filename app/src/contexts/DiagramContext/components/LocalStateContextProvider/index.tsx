@@ -14,18 +14,21 @@
   limitations under the License.
  ******************************************************************************************************************** */
 
-import { FC, PropsWithChildren, useCallback, useState } from 'react';
-import { DiagramInfo } from '../../../../customTypes';
-import { LocalStateContextProviderBaseProps } from '../../../types';
-import { DiagramInfoContext } from '../../context';
-import { DiagramContextProviderProps } from '../../types';
+import { FC, PropsWithChildren, useCallback, useState } from "react";
+import { DiagramInfo } from "../../../../customTypes";
+import { LocalStateContextProviderBaseProps } from "../../../types";
+import { DiagramInfoContext } from "../../context";
+import { DiagramContextProviderProps } from "../../types";
 
-const DiagramLocalStateContextProvider: FC<PropsWithChildren<
-DiagramContextProviderProps & LocalStateContextProviderBaseProps<DiagramInfo>>> = ({
-  children,
-  initialValue,
-}) => {
-  const [diagramInfo, setDiagramInfo] = useState<DiagramInfo>(initialValue || {});
+const DiagramLocalStateContextProvider: FC<
+  PropsWithChildren<
+    DiagramContextProviderProps &
+      LocalStateContextProviderBaseProps<DiagramInfo>
+  >
+> = ({ children, initialValue }) => {
+  const [diagramInfo, setDiagramInfo] = useState<DiagramInfo>(
+    initialValue || {},
+  );
 
   const handleRemoveDiagramInfo = useCallback(async () => {
     setDiagramInfo({});
@@ -35,15 +38,18 @@ DiagramContextProviderProps & LocalStateContextProviderBaseProps<DiagramInfo>>> 
     setDiagramInfo({});
   }, []);
 
-  return (<DiagramInfoContext.Provider value={{
-    diagramInfo,
-    setDiagramInfo,
-    removeDiagramInfo: handleRemoveDiagramInfo,
-    onDeleteWorkspace: handleDeleteWorkspace,
-  }}>
-    {children}
-  </DiagramInfoContext.Provider>);
+  return (
+    <DiagramInfoContext.Provider
+      value={{
+        diagramInfo,
+        setDiagramInfo,
+        removeDiagramInfo: handleRemoveDiagramInfo,
+        onDeleteWorkspace: handleDeleteWorkspace,
+      }}
+    >
+      {children}
+    </DiagramInfoContext.Provider>
+  );
 };
 
 export default DiagramLocalStateContextProvider;
-

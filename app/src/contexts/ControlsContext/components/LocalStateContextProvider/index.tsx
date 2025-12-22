@@ -14,24 +14,24 @@
   limitations under the License.
  ******************************************************************************************************************** */
 
-import { FC, PropsWithChildren, useCallback, useState } from 'react';
-import { Control } from '../../../../customTypes';
-import { LocalStateContextProviderBaseProps } from '../../../types';
-import { ControlsContext } from '../../context';
-import { ControlsContextProviderProps } from '../../types';
-import useControls from '../../useControls';
+import { FC, PropsWithChildren, useCallback, useState } from "react";
+import { Control } from "../../../../customTypes";
+import { LocalStateContextProviderBaseProps } from "../../../types";
+import { ControlsContext } from "../../context";
+import { ControlsContextProviderProps } from "../../types";
+import useControls from "../../useControls";
 
-const ControlsLocalStateContextProvider: FC<PropsWithChildren<
-ControlsContextProviderProps & LocalStateContextProviderBaseProps<Control[]>>> = ({
-  children,
-  initialValue,
-}) => {
+const ControlsLocalStateContextProvider: FC<
+  PropsWithChildren<
+    ControlsContextProviderProps & LocalStateContextProviderBaseProps<Control[]>
+  >
+> = ({ children, initialValue }) => {
   const [controlList, setControlList] = useState<Control[]>(initialValue || []);
 
-  const {
-    handlRemoveControl,
-    handleSaveControl,
-  } = useControls(controlList, setControlList);
+  const { handlRemoveControl, handleSaveControl } = useControls(
+    controlList,
+    setControlList,
+  );
 
   const handleRemoveAllControls = useCallback(async () => {
     setControlList([]);
@@ -41,17 +41,20 @@ ControlsContextProviderProps & LocalStateContextProviderBaseProps<Control[]>>> =
     setControlList([]);
   }, []);
 
-  return (<ControlsContext.Provider value={{
-    controlList,
-    setControlList,
-    removeControl: handlRemoveControl,
-    saveControl: handleSaveControl,
-    removeAllControls: handleRemoveAllControls,
-    onDeleteWorkspace: handleDeleteWorkspace,
-  }}>
-    {children}
-  </ControlsContext.Provider>);
+  return (
+    <ControlsContext.Provider
+      value={{
+        controlList,
+        setControlList,
+        removeControl: handlRemoveControl,
+        saveControl: handleSaveControl,
+        removeAllControls: handleRemoveAllControls,
+        onDeleteWorkspace: handleDeleteWorkspace,
+      }}
+    >
+      {children}
+    </ControlsContext.Provider>
+  );
 };
 
 export default ControlsLocalStateContextProvider;
-

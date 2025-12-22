@@ -15,19 +15,26 @@
  ******************************************************************************************************************** */
 
 /** @jsxImportSource @emotion/react */
-import { css } from '@emotion/react';
-import { FC, PropsWithChildren } from 'react';
-import styles from '../../styles';
+import { css } from "@emotion/react";
+import { FC, PropsWithChildren } from "react";
+import styles from "../../styles";
 
 export interface InfoModalBaseProps {
   title?: React.ReactNode;
 }
 
-const InfoModalBase: FC<PropsWithChildren<InfoModalBaseProps>> = ({ children, title }) => {
-  return (<div css={css(styles.contentBase)}>
-    {title && <div css={css(styles.contentBaseHeader)}>{title}</div>}
-    <div css={[css(styles.contentBaseMain), css(styles.contentBaseText)]}>{children}</div>
-  </div>);
+const InfoModalBase: FC<PropsWithChildren<InfoModalBaseProps>> = ({
+  children,
+  title,
+}) => {
+  return (
+    <div css={css(styles.contentBase)}>
+      {title && <div css={css(styles.contentBaseHeader)}>{title}</div>}
+      <div css={[css(styles.contentBaseMain), css(styles.contentBaseText)]}>
+        {children}
+      </div>
+    </div>
+  );
 };
 
 export default InfoModalBase;

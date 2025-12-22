@@ -15,19 +15,25 @@
  ******************************************************************************************************************** */
 
 /** @jsxImportSource @emotion/react */
-import ExpandableSection, { ExpandableSectionProps } from '@cloudscape-design/components/expandable-section';
-import Grid from '@cloudscape-design/components/grid';
-import { FC, useMemo } from 'react';
-import { TemplateThreatStatement } from '../../../customTypes';
-import expandablePanelHeaderStyles from '../../../styles/expandablePanelHeader';
-import CommentsEdit from '../../generic/CommentsEdit';
-import STRIDESELECTOR from '../../generic/STRIDESelector';
-import PriorityEdit from '../PriorityEdit';
+import ExpandableSection, {
+  ExpandableSectionProps,
+} from "@cloudscape-design/components/expandable-section";
+import Grid from "@cloudscape-design/components/grid";
+import { FC, useMemo } from "react";
+import { TemplateThreatStatement } from "../../../customTypes";
+import expandablePanelHeaderStyles from "../../../styles/expandablePanelHeader";
+import CommentsEdit from "../../generic/CommentsEdit";
+import STRIDESELECTOR from "../../generic/STRIDESelector";
+import PriorityEdit from "../PriorityEdit";
 
 export interface MetadataEditorProps {
-  variant: ExpandableSectionProps['variant'];
+  variant: ExpandableSectionProps["variant"];
   editingStatement: TemplateThreatStatement;
-  onEditMetadata: (statement: TemplateThreatStatement, key: string, value: string | string[] | undefined) => void;
+  onEditMetadata: (
+    statement: TemplateThreatStatement,
+    key: string,
+    value: string | string[] | undefined,
+  ) => void;
 }
 
 const MetadataEditor: FC<MetadataEditorProps> = ({
@@ -36,11 +42,24 @@ const MetadataEditor: FC<MetadataEditorProps> = ({
   onEditMetadata,
 }) => {
   const stride = useMemo(() => {
-    return (editingStatement.metadata?.find(m => m.key === 'STRIDE')?.value as string[]) || undefined;
+    return (
+      (editingStatement.metadata?.find((m) => m.key === "STRIDE")
+        ?.value as string[]) || undefined
+    );
   }, [editingStatement.metadata]);
 
   return (
-    <ExpandableSection headerText={<span css={variant === 'default' ? expandablePanelHeaderStyles : undefined}>Metadata</span>} headingTagOverride='h3' variant={variant}>
+    <ExpandableSection
+      headerText={
+        <span
+          css={variant === "default" ? expandablePanelHeaderStyles : undefined}
+        >
+          Metadata
+        </span>
+      }
+      headingTagOverride="h3"
+      variant={variant}
+    >
       <Grid
         gridDefinition={[
           { colspan: { default: 12, xs: 3 } },
@@ -53,14 +72,13 @@ const MetadataEditor: FC<MetadataEditorProps> = ({
           onEditMetadata={onEditMetadata}
         />
         <STRIDESELECTOR
-          label='STRIDE'
+          label="STRIDE"
           selected={stride}
-          setSelected={(selected) => onEditMetadata(editingStatement, 'STRIDE', selected)}
+          setSelected={(selected) =>
+            onEditMetadata(editingStatement, "STRIDE", selected)
+          }
         />
-        <CommentsEdit
-          entity={editingStatement}
-          onEditEntity={onEditMetadata}
-        />
+        <CommentsEdit entity={editingStatement} onEditEntity={onEditMetadata} />
       </Grid>
     </ExpandableSection>
   );

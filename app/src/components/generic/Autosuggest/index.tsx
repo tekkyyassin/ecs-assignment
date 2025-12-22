@@ -14,56 +14,64 @@
   limitations under the License.
  ******************************************************************************************************************** */
 
-import CloudscapeAutosuggest, { AutosuggestProps as CloudscapeAutosuggestProps } from '@cloudscape-design/components/autosuggest';
-import FormField, { FormFieldProps } from '@cloudscape-design/components/form-field';
-import { BaseKeyDetail, CancelableEventHandler } from '@cloudscape-design/components/internal/events';
-import React, { FC, useCallback, useState } from 'react';
-import { z } from 'zod';
-import useContentValidation from '../../../hooks/useContentValidation';
+import CloudscapeAutosuggest, {
+  AutosuggestProps as CloudscapeAutosuggestProps,
+} from "@cloudscape-design/components/autosuggest";
+import FormField, {
+  FormFieldProps,
+} from "@cloudscape-design/components/form-field";
+import {
+  BaseKeyDetail,
+  CancelableEventHandler,
+} from "@cloudscape-design/components/internal/events";
+import React, { FC, useCallback, useState } from "react";
+import { z } from "zod";
+import useContentValidation from "../../../hooks/useContentValidation";
 
-export interface AutosuggestProps extends FormFieldProps, Omit<CloudscapeAutosuggestProps, 'errorText'> {
+export interface AutosuggestProps
+  extends FormFieldProps, Omit<CloudscapeAutosuggestProps, "errorText"> {
   ref?: React.ForwardedRef<any>;
-  validateData?: (newValue: string) => z.SafeParseReturnType<string | undefined, string | undefined>;
+  validateData?: (
+    newValue: string,
+  ) => z.SafeParseReturnType<string | undefined, string | undefined>;
 }
 
-const Autosuggest: FC<AutosuggestProps> = React.forwardRef<CloudscapeAutosuggestProps.Ref, AutosuggestProps>(({
-  onChange,
-  value,
-  validateData,
-  errorText: _errorText,
-  ...props
-},
-ref) => {
+const Autosuggest: FC<AutosuggestProps> = React.forwardRef<
+  CloudscapeAutosuggestProps.Ref,
+  AutosuggestProps
+>(({ onChange, value, validateData, errorText: _errorText, ...props }, ref) => {
   const [resetErrorText, setResetErrorText] = useState<boolean>();
-  const { tempValue, errorText, handleChange } = useContentValidation(value, onChange, validateData);
+  const { tempValue, errorText, handleChange } = useContentValidation(
+    value,
+    onChange,
+    validateData,
+  );
 
-  const handleKeyDown: CancelableEventHandler<BaseKeyDetail> = useCallback((event) => {
-    if (event.detail.keyCode === 8 && !value && errorText) {
-      // When the value is empty, press backspace to reset the errorText.
-      setResetErrorText(true);
-    } else {
-      setResetErrorText(false);
-    }
+  const handleKeyDown: CancelableEventHandler<BaseKeyDetail> = useCallback(
+    (event) => {
+      if (event.detail.keyCode === 8 && !value && errorText) {
+        // When the value is empty, press backspace to reset the errorText.
+        setResetErrorText(true);
+      } else {
+        setResetErrorText(false);
+      }
 
-    props.onKeyDown?.(event);
-  },
-  [errorText, value, props]);
+      props.onKeyDown?.(event);
+    },
+    [errorText, value, props],
+  );
 
   return (
-    <FormField
-      {...props}
-      errorText={resetErrorText ? undefined : errorText}
-    >
+    <FormField {...props} errorText={resetErrorText ? undefined : errorText}>
       <CloudscapeAutosuggest
         {...props}
         ref={ref}
         value={errorText ? value : tempValue}
-        onChange={event =>
-          handleChange(event)
-        }
+        onChange={(event) => handleChange(event)}
         onKeyDown={handleKeyDown}
       />
-    </FormField>);
+    </FormField>
+  );
 });
 
 export default Autosuggest;

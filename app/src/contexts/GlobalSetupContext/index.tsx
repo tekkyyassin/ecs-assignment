@@ -15,14 +15,14 @@
  ******************************************************************************************************************** */
 
 /** @jsxImportSource @emotion/react */
-import { FC, PropsWithChildren, useState, useEffect } from 'react';
-import useLocalStorageState from 'use-local-storage-state';
-import { GlobalSetupContext, useGlobalSetupContext } from './context';
-import InfoModal from '../../components/global/InfoModal';
-import { LOCAL_STORAGE_KEY_NEW_VISIT_FLAG } from '../../configs/localStorageKeys';
-import { ComposerMode, DataExchangeFormat } from '../../customTypes';
+import { FC, PropsWithChildren, useState, useEffect } from "react";
+import useLocalStorageState from "use-local-storage-state";
+import { GlobalSetupContext, useGlobalSetupContext } from "./context";
+import InfoModal from "../../components/global/InfoModal";
+import { LOCAL_STORAGE_KEY_NEW_VISIT_FLAG } from "../../configs/localStorageKeys";
+import { ComposerMode, DataExchangeFormat } from "../../customTypes";
 
-import '@cloudscape-design/global-styles/index.css';
+import "@cloudscape-design/global-styles/index.css";
 
 export interface GlobalSetupContextProviderProps {
   composerMode?: ComposerMode;
@@ -32,9 +32,11 @@ export interface GlobalSetupContextProviderProps {
   onDefineWorkload?: () => void;
 }
 
-const GlobalSetupContextProvider: FC<PropsWithChildren<GlobalSetupContextProviderProps>> = ({
+const GlobalSetupContextProvider: FC<
+  PropsWithChildren<GlobalSetupContextProviderProps>
+> = ({
   children,
-  composerMode = 'Full',
+  composerMode = "Full",
   onPreview,
   onPreviewClose,
   onImported,
@@ -42,41 +44,49 @@ const GlobalSetupContextProvider: FC<PropsWithChildren<GlobalSetupContextProvide
 }) => {
   const [fileImportModalVisible, setFileImportModalVisible] = useState(false);
 
-  const [hasVisitBefore, setHasVisitBefore] = useLocalStorageState<boolean>(LOCAL_STORAGE_KEY_NEW_VISIT_FLAG, {
-    defaultValue: false,
-  });
+  const [hasVisitBefore, setHasVisitBefore] = useLocalStorageState<boolean>(
+    LOCAL_STORAGE_KEY_NEW_VISIT_FLAG,
+    {
+      defaultValue: false,
+    },
+  );
 
   const [infoModalVisible, setInfoModalVisible] = useState(false);
 
   useEffect(() => {
     if (!hasVisitBefore) {
-      composerMode !== 'Full' && setInfoModalVisible(true);
+      composerMode !== "Full" && setInfoModalVisible(true);
       window.setTimeout(() => setHasVisitBefore(true), 1000);
     }
   }, [hasVisitBefore, composerMode, setHasVisitBefore]);
 
-  return (<div>
-    <GlobalSetupContext.Provider value={{
-      hasVisitBefore,
-      composerMode,
-      showInfoModal: () => setInfoModalVisible(true),
-      onPreview,
-      onPreviewClose,
-      onImported,
-      fileImportModalVisible,
-      setFileImportModalVisible,
-      onDefineWorkload,
-    }}>
-      {children}
-      {infoModalVisible && <InfoModal
-        visible={infoModalVisible}
-        setVisible={setInfoModalVisible}
-      />}
-    </GlobalSetupContext.Provider></div>);
+  return (
+    <div>
+      <GlobalSetupContext.Provider
+        value={{
+          hasVisitBefore,
+          composerMode,
+          showInfoModal: () => setInfoModalVisible(true),
+          onPreview,
+          onPreviewClose,
+          onImported,
+          fileImportModalVisible,
+          setFileImportModalVisible,
+          onDefineWorkload,
+        }}
+      >
+        {children}
+        {infoModalVisible && (
+          <InfoModal
+            visible={infoModalVisible}
+            setVisible={setInfoModalVisible}
+          />
+        )}
+      </GlobalSetupContext.Provider>
+    </div>
+  );
 };
 
 export default GlobalSetupContextProvider;
 
-export {
-  useGlobalSetupContext,
-};
+export { useGlobalSetupContext };

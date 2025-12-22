@@ -14,9 +14,7 @@
             },
             {
               "key": "STRIDE",
-              "value": [
-                "E"
-              ]
+              "value": ["E"]
             }
           ],
           "tags": [
@@ -39,9 +37,7 @@
             },
             {
               "key": "STRIDE",
-              "value": [
-                "E"
-              ]
+              "value": ["E"]
             }
           ],
           "tags": [
@@ -64,9 +60,7 @@
             },
             {
               "key": "STRIDE",
-              "value": [
-                "E"
-              ]
+              "value": ["E"]
             }
           ],
           "tags": [
@@ -89,9 +83,7 @@
             },
             {
               "key": "STRIDE",
-              "value": [
-                "E"
-              ]
+              "value": ["E"]
             }
           ],
           "tags": [
@@ -115,9 +107,7 @@
             },
             {
               "key": "STRIDE",
-              "value": [
-                ""
-              ]
+              "value": [""]
             }
           ],
           "tags": [
@@ -141,9 +131,7 @@
             },
             {
               "key": "STRIDE",
-              "value": [
-                ""
-              ]
+              "value": [""]
             }
           ],
           "tags": [
@@ -167,9 +155,7 @@
             },
             {
               "key": "STRIDE",
-              "value": [
-                ""
-              ]
+              "value": [""]
             }
           ],
           "tags": [
@@ -192,10 +178,7 @@
             },
             {
               "key": "STRIDE",
-              "value": [
-                "E",
-                "LM"
-              ]
+              "value": ["E", "LM"]
             }
           ],
           "tags": [
@@ -218,10 +201,7 @@
             },
             {
               "key": "STRIDE",
-              "value": [
-                "I",
-                "E"
-              ]
+              "value": ["I", "E"]
             }
           ],
           "tags": [
@@ -245,10 +225,7 @@
             },
             {
               "key": "STRIDE",
-              "value": [
-                "I",
-                "E"
-              ]
+              "value": ["I", "E"]
             }
           ],
           "tags": [
@@ -272,10 +249,7 @@
             },
             {
               "key": "STRIDE",
-              "value": [
-                "I",
-                "E"
-              ]
+              "value": ["I", "E"]
             }
           ],
           "tags": [
@@ -299,10 +273,7 @@
             },
             {
               "key": "STRIDE",
-              "value": [
-                "I",
-                "E"
-              ]
+              "value": ["I", "E"]
             }
           ],
           "tags": [
@@ -325,10 +296,7 @@
             },
             {
               "key": "STRIDE",
-              "value": [
-                "I",
-                "E"
-              ]
+              "value": ["I", "E"]
             }
           ],
           "tags": [
@@ -351,9 +319,7 @@
             },
             {
               "key": "STRIDE",
-              "value": [
-                ""
-              ]
+              "value": [""]
             }
           ],
           "tags": [
@@ -376,9 +342,7 @@
             },
             {
               "key": "STRIDE",
-              "value": [
-                ""
-              ]
+              "value": [""]
             }
           ],
           "tags": [
@@ -401,9 +365,7 @@
             },
             {
               "key": "STRIDE",
-              "value": [
-                ""
-              ]
+              "value": [""]
             }
           ],
           "tags": [
@@ -426,9 +388,7 @@
             },
             {
               "key": "STRIDE",
-              "value": [
-                ""
-              ]
+              "value": [""]
             }
           ],
           "tags": [
@@ -451,9 +411,7 @@
             },
             {
               "key": "STRIDE",
-              "value": [
-                ""
-              ]
+              "value": [""]
             }
           ],
           "tags": [
@@ -476,9 +434,7 @@
             },
             {
               "key": "STRIDE",
-              "value": [
-                "LM"
-              ]
+              "value": ["LM"]
             }
           ],
           "tags": [
@@ -501,10 +457,7 @@
             },
             {
               "key": "STRIDE",
-              "value": [
-                "I",
-                "LM"
-              ]
+              "value": ["I", "LM"]
             }
           ],
           "tags": [
@@ -526,9 +479,7 @@
             },
             {
               "key": "STRIDE",
-              "value": [
-                ""
-              ]
+              "value": [""]
             }
           ],
           "tags": [
@@ -551,10 +502,7 @@
             },
             {
               "key": "STRIDE",
-              "value": [
-                "I",
-                "E"
-              ]
+              "value": ["I", "E"]
             }
           ],
           "tags": [
@@ -578,10 +526,7 @@
             },
             {
               "key": "STRIDE",
-              "value": [
-                "I",
-                "E"
-              ]
+              "value": ["I", "E"]
             }
           ],
           "tags": [
@@ -605,10 +550,7 @@
             },
             {
               "key": "STRIDE",
-              "value": [
-                "E",
-                "LM"
-              ]
+              "value": ["E", "LM"]
             }
           ],
           "tags": [
@@ -632,9 +574,7 @@
             },
             {
               "key": "STRIDE",
-              "value": [
-                "E"
-              ]
+              "value": ["E"]
             }
           ],
           "tags": [
@@ -658,9 +598,7 @@
             },
             {
               "key": "STRIDE",
-              "value": [
-                "E"
-              ]
+              "value": ["E"]
             }
           ],
           "tags": [
@@ -684,9 +622,7 @@
             },
             {
               "key": "STRIDE",
-              "value": [
-                "LM"
-              ]
+              "value": ["LM"]
             }
           ],
           "tags": [
@@ -710,9 +646,7 @@
             },
             {
               "key": "STRIDE",
-              "value": [
-                "LM"
-              ]
+              "value": ["LM"]
             }
           ],
           "tags": [
@@ -736,9 +670,7 @@
             },
             {
               "key": "STRIDE",
-              "value": [
-                "LM"
-              ]
+              "value": ["LM"]
             }
           ],
           "tags": [
@@ -762,9 +694,7 @@
             },
             {
               "key": "STRIDE",
-              "value": [
-                ""
-              ]
+              "value": [""]
             }
           ],
           "tags": [
@@ -788,9 +718,7 @@
             },
             {
               "key": "STRIDE",
-              "value": [
-                ""
-              ]
+              "value": [""]
             }
           ],
           "tags": [
@@ -814,11 +742,7 @@
             },
             {
               "key": "STRIDE",
-              "value": [
-                "S",
-                "T",
-                "R"
-              ]
+              "value": ["S", "T", "R"]
             }
           ],
           "tags": [
@@ -842,11 +766,7 @@
             },
             {
               "key": "STRIDE",
-              "value": [
-                "S",
-                "T",
-                "R"
-              ]
+              "value": ["S", "T", "R"]
             }
           ],
           "tags": [
@@ -870,9 +790,7 @@
             },
             {
               "key": "STRIDE",
-              "value": [
-                ""
-              ]
+              "value": [""]
             }
           ],
           "tags": [
@@ -896,11 +814,7 @@
             },
             {
               "key": "STRIDE",
-              "value": [
-                "S",
-                "T",
-                "R"
-              ]
+              "value": ["S", "T", "R"]
             }
           ],
           "tags": [
@@ -923,11 +837,7 @@
             },
             {
               "key": "STRIDE",
-              "value": [
-                "S",
-                "T",
-                "R"
-              ]
+              "value": ["S", "T", "R"]
             }
           ],
           "tags": [
@@ -950,9 +860,7 @@
             },
             {
               "key": "STRIDE",
-              "value": [
-                ""
-              ]
+              "value": [""]
             }
           ],
           "tags": [
@@ -975,11 +883,7 @@
             },
             {
               "key": "STRIDE",
-              "value": [
-                "S",
-                "T",
-                "R"
-              ]
+              "value": ["S", "T", "R"]
             }
           ],
           "tags": [
@@ -1003,11 +907,7 @@
             },
             {
               "key": "STRIDE",
-              "value": [
-                "S",
-                "T",
-                "R"
-              ]
+              "value": ["S", "T", "R"]
             }
           ],
           "tags": [
@@ -1031,11 +931,7 @@
             },
             {
               "key": "STRIDE",
-              "value": [
-                "S",
-                "T",
-                "R"
-              ]
+              "value": ["S", "T", "R"]
             }
           ],
           "tags": [
@@ -1059,11 +955,7 @@
             },
             {
               "key": "STRIDE",
-              "value": [
-                "S",
-                "T",
-                "R"
-              ]
+              "value": ["S", "T", "R"]
             }
           ],
           "tags": [
@@ -1086,11 +978,7 @@
             },
             {
               "key": "STRIDE",
-              "value": [
-                "S",
-                "T",
-                "R"
-              ]
+              "value": ["S", "T", "R"]
             }
           ],
           "tags": [
@@ -1113,9 +1001,7 @@
             },
             {
               "key": "STRIDE",
-              "value": [
-                ""
-              ]
+              "value": [""]
             }
           ],
           "tags": [
@@ -1138,9 +1024,7 @@
             },
             {
               "key": "STRIDE",
-              "value": [
-                ""
-              ]
+              "value": [""]
             }
           ],
           "tags": [
@@ -1163,9 +1047,7 @@
             },
             {
               "key": "STRIDE",
-              "value": [
-                ""
-              ]
+              "value": [""]
             }
           ],
           "tags": [
@@ -1188,9 +1070,7 @@
             },
             {
               "key": "STRIDE",
-              "value": [
-                ""
-              ]
+              "value": [""]
             }
           ],
           "tags": [
@@ -1213,9 +1093,7 @@
             },
             {
               "key": "STRIDE",
-              "value": [
-                ""
-              ]
+              "value": [""]
             }
           ],
           "tags": [
@@ -1239,9 +1117,7 @@
             },
             {
               "key": "STRIDE",
-              "value": [
-                ""
-              ]
+              "value": [""]
             }
           ],
           "tags": [
@@ -1265,13 +1141,7 @@
             },
             {
               "key": "STRIDE",
-              "value": [
-                "S",
-                "T",
-                "R",
-                "E",
-                "LM"
-              ]
+              "value": ["S", "T", "R", "E", "LM"]
             }
           ],
           "tags": [
@@ -1294,9 +1164,7 @@
             },
             {
               "key": "STRIDE",
-              "value": [
-                ""
-              ]
+              "value": [""]
             }
           ],
           "tags": [
@@ -1320,9 +1188,7 @@
             },
             {
               "key": "STRIDE",
-              "value": [
-                ""
-              ]
+              "value": [""]
             }
           ],
           "tags": [
@@ -1346,9 +1212,7 @@
             },
             {
               "key": "STRIDE",
-              "value": [
-                ""
-              ]
+              "value": [""]
             }
           ],
           "tags": [
@@ -1372,9 +1236,7 @@
             },
             {
               "key": "STRIDE",
-              "value": [
-                ""
-              ]
+              "value": [""]
             }
           ],
           "tags": [
@@ -1398,9 +1260,7 @@
             },
             {
               "key": "STRIDE",
-              "value": [
-                ""
-              ]
+              "value": [""]
             }
           ],
           "tags": [
@@ -1424,9 +1284,7 @@
             },
             {
               "key": "STRIDE",
-              "value": [
-                ""
-              ]
+              "value": [""]
             }
           ],
           "tags": [
@@ -1450,11 +1308,7 @@
             },
             {
               "key": "STRIDE",
-              "value": [
-                "S",
-                "R",
-                "E"
-              ]
+              "value": ["S", "R", "E"]
             }
           ],
           "tags": [
@@ -1478,9 +1332,7 @@
             },
             {
               "key": "STRIDE",
-              "value": [
-                "LM"
-              ]
+              "value": ["LM"]
             }
           ],
           "tags": [
@@ -1504,9 +1356,7 @@
             },
             {
               "key": "STRIDE",
-              "value": [
-                "LM"
-              ]
+              "value": ["LM"]
             }
           ],
           "tags": [
@@ -1529,9 +1379,7 @@
             },
             {
               "key": "STRIDE",
-              "value": [
-                "LM"
-              ]
+              "value": ["LM"]
             }
           ],
           "tags": [
@@ -1554,9 +1402,7 @@
             },
             {
               "key": "STRIDE",
-              "value": [
-                "LM"
-              ]
+              "value": ["LM"]
             }
           ],
           "tags": [
@@ -1579,9 +1425,7 @@
             },
             {
               "key": "STRIDE",
-              "value": [
-                "LM"
-              ]
+              "value": ["LM"]
             }
           ],
           "tags": [
@@ -1605,9 +1449,7 @@
             },
             {
               "key": "STRIDE",
-              "value": [
-                ""
-              ]
+              "value": [""]
             }
           ],
           "tags": [
@@ -1631,9 +1473,7 @@
             },
             {
               "key": "STRIDE",
-              "value": [
-                ""
-              ]
+              "value": [""]
             }
           ],
           "tags": [
@@ -1656,9 +1496,7 @@
             },
             {
               "key": "STRIDE",
-              "value": [
-                "LM"
-              ]
+              "value": ["LM"]
             }
           ],
           "tags": [
@@ -1681,9 +1519,7 @@
             },
             {
               "key": "STRIDE",
-              "value": [
-                "LM"
-              ]
+              "value": ["LM"]
             }
           ],
           "tags": [
@@ -1705,9 +1541,7 @@
             },
             {
               "key": "STRIDE",
-              "value": [
-                ""
-              ]
+              "value": [""]
             }
           ],
           "tags": [
@@ -1729,9 +1563,7 @@
             },
             {
               "key": "STRIDE",
-              "value": [
-                "LM"
-              ]
+              "value": ["LM"]
             }
           ],
           "tags": [
@@ -1755,11 +1587,7 @@
             },
             {
               "key": "STRIDE",
-              "value": [
-                "T",
-                "E",
-                "LM"
-              ]
+              "value": ["T", "E", "LM"]
             }
           ],
           "tags": [
@@ -1783,9 +1611,7 @@
             },
             {
               "key": "STRIDE",
-              "value": [
-                ""
-              ]
+              "value": [""]
             }
           ],
           "tags": [
@@ -1807,9 +1633,7 @@
             },
             {
               "key": "STRIDE",
-              "value": [
-                ""
-              ]
+              "value": [""]
             }
           ],
           "tags": [
@@ -1831,9 +1655,7 @@
             },
             {
               "key": "STRIDE",
-              "value": [
-                ""
-              ]
+              "value": [""]
             }
           ],
           "tags": [
@@ -1856,9 +1678,7 @@
             },
             {
               "key": "STRIDE",
-              "value": [
-                ""
-              ]
+              "value": [""]
             }
           ],
           "tags": [
@@ -1881,9 +1701,7 @@
             },
             {
               "key": "STRIDE",
-              "value": [
-                ""
-              ]
+              "value": [""]
             }
           ],
           "tags": [
@@ -1906,9 +1724,7 @@
             },
             {
               "key": "STRIDE",
-              "value": [
-                ""
-              ]
+              "value": [""]
             }
           ],
           "tags": [
@@ -1931,9 +1747,7 @@
             },
             {
               "key": "STRIDE",
-              "value": [
-                ""
-              ]
+              "value": [""]
             }
           ],
           "tags": [
@@ -1956,9 +1770,7 @@
             },
             {
               "key": "STRIDE",
-              "value": [
-                ""
-              ]
+              "value": [""]
             }
           ],
           "tags": [
@@ -1981,9 +1793,7 @@
             },
             {
               "key": "STRIDE",
-              "value": [
-                ""
-              ]
+              "value": [""]
             }
           ],
           "tags": [
@@ -2007,11 +1817,7 @@
             },
             {
               "key": "STRIDE",
-              "value": [
-                "T",
-                "E",
-                "LM"
-              ]
+              "value": ["T", "E", "LM"]
             }
           ],
           "tags": [
@@ -2034,11 +1840,7 @@
             },
             {
               "key": "STRIDE",
-              "value": [
-                "T",
-                "E",
-                "LM"
-              ]
+              "value": ["T", "E", "LM"]
             }
           ],
           "tags": [
@@ -2061,9 +1863,7 @@
             },
             {
               "key": "STRIDE",
-              "value": [
-                ""
-              ]
+              "value": [""]
             }
           ],
           "tags": [
@@ -2087,9 +1887,7 @@
             },
             {
               "key": "STRIDE",
-              "value": [
-                "T"
-              ]
+              "value": ["T"]
             }
           ],
           "tags": [
@@ -2112,9 +1910,7 @@
             },
             {
               "key": "STRIDE",
-              "value": [
-                ""
-              ]
+              "value": [""]
             }
           ],
           "tags": [
@@ -2137,9 +1933,7 @@
             },
             {
               "key": "STRIDE",
-              "value": [
-                ""
-              ]
+              "value": [""]
             }
           ],
           "tags": [
@@ -2162,9 +1956,7 @@
             },
             {
               "key": "STRIDE",
-              "value": [
-                ""
-              ]
+              "value": [""]
             }
           ],
           "tags": [
@@ -2187,9 +1979,7 @@
             },
             {
               "key": "STRIDE",
-              "value": [
-                ""
-              ]
+              "value": [""]
             }
           ],
           "tags": [
@@ -2212,9 +2002,7 @@
             },
             {
               "key": "STRIDE",
-              "value": [
-                ""
-              ]
+              "value": [""]
             }
           ],
           "tags": [
@@ -2238,9 +2026,7 @@
             },
             {
               "key": "STRIDE",
-              "value": [
-                ""
-              ]
+              "value": [""]
             }
           ],
           "tags": [
@@ -2264,9 +2050,7 @@
             },
             {
               "key": "STRIDE",
-              "value": [
-                ""
-              ]
+              "value": [""]
             }
           ],
           "tags": [
@@ -2290,9 +2074,7 @@
             },
             {
               "key": "STRIDE",
-              "value": [
-                ""
-              ]
+              "value": [""]
             }
           ],
           "tags": [
@@ -2314,9 +2096,7 @@
             },
             {
               "key": "STRIDE",
-              "value": [
-                ""
-              ]
+              "value": [""]
             }
           ],
           "tags": [
@@ -2339,9 +2119,7 @@
             },
             {
               "key": "STRIDE",
-              "value": [
-                ""
-              ]
+              "value": [""]
             }
           ],
           "tags": [
@@ -2364,9 +2142,7 @@
             },
             {
               "key": "STRIDE",
-              "value": [
-                ""
-              ]
+              "value": [""]
             }
           ],
           "tags": [
@@ -2390,9 +2166,7 @@
             },
             {
               "key": "STRIDE",
-              "value": [
-                ""
-              ]
+              "value": [""]
             }
           ],
           "tags": [
@@ -2416,9 +2190,7 @@
             },
             {
               "key": "STRIDE",
-              "value": [
-                ""
-              ]
+              "value": [""]
             }
           ],
           "tags": [
@@ -2442,11 +2214,7 @@
             },
             {
               "key": "STRIDE",
-              "value": [
-                "T",
-                "E",
-                "LM"
-              ]
+              "value": ["T", "E", "LM"]
             }
           ],
           "tags": [
@@ -2470,11 +2238,7 @@
             },
             {
               "key": "STRIDE",
-              "value": [
-                "T",
-                "E",
-                "LM"
-              ]
+              "value": ["T", "E", "LM"]
             }
           ],
           "tags": [
@@ -2497,9 +2261,7 @@
             },
             {
               "key": "STRIDE",
-              "value": [
-                ""
-              ]
+              "value": [""]
             }
           ],
           "tags": [
@@ -2522,9 +2284,7 @@
             },
             {
               "key": "STRIDE",
-              "value": [
-                ""
-              ]
+              "value": [""]
             }
           ],
           "tags": [
@@ -2547,9 +2307,7 @@
             },
             {
               "key": "STRIDE",
-              "value": [
-                ""
-              ]
+              "value": [""]
             }
           ],
           "tags": [
@@ -2573,9 +2331,7 @@
             },
             {
               "key": "STRIDE",
-              "value": [
-                "D"
-              ]
+              "value": ["D"]
             }
           ],
           "tags": [
@@ -2599,9 +2355,7 @@
             },
             {
               "key": "STRIDE",
-              "value": [
-                "D"
-              ]
+              "value": ["D"]
             }
           ],
           "tags": [
@@ -2625,9 +2379,7 @@
             },
             {
               "key": "STRIDE",
-              "value": [
-                ""
-              ]
+              "value": [""]
             }
           ],
           "tags": [
@@ -2651,9 +2403,7 @@
             },
             {
               "key": "STRIDE",
-              "value": [
-                "D"
-              ]
+              "value": ["D"]
             }
           ],
           "tags": [
@@ -2676,9 +2426,7 @@
             },
             {
               "key": "STRIDE",
-              "value": [
-                ""
-              ]
+              "value": [""]
             }
           ],
           "tags": [
@@ -2699,9 +2447,7 @@
             },
             {
               "key": "STRIDE",
-              "value": [
-                ""
-              ]
+              "value": [""]
             }
           ],
           "tags": [
@@ -2722,9 +2468,7 @@
             },
             {
               "key": "STRIDE",
-              "value": [
-                ""
-              ]
+              "value": [""]
             }
           ],
           "tags": [
@@ -2746,9 +2490,7 @@
             },
             {
               "key": "STRIDE",
-              "value": [
-                "D"
-              ]
+              "value": ["D"]
             }
           ],
           "tags": [
@@ -2772,9 +2514,7 @@
             },
             {
               "key": "STRIDE",
-              "value": [
-                ""
-              ]
+              "value": [""]
             }
           ],
           "tags": [
@@ -2798,9 +2538,7 @@
             },
             {
               "key": "STRIDE",
-              "value": [
-                "D"
-              ]
+              "value": ["D"]
             }
           ],
           "tags": [
@@ -2824,9 +2562,7 @@
             },
             {
               "key": "STRIDE",
-              "value": [
-                "D"
-              ]
+              "value": ["D"]
             }
           ],
           "tags": [
@@ -2849,9 +2585,7 @@
             },
             {
               "key": "STRIDE",
-              "value": [
-                ""
-              ]
+              "value": [""]
             }
           ],
           "tags": [
@@ -2873,9 +2607,7 @@
             },
             {
               "key": "STRIDE",
-              "value": [
-                "D"
-              ]
+              "value": ["D"]
             }
           ],
           "tags": [
@@ -2899,9 +2631,7 @@
             },
             {
               "key": "STRIDE",
-              "value": [
-                "D"
-              ]
+              "value": ["D"]
             }
           ],
           "tags": [
@@ -2924,9 +2654,7 @@
             },
             {
               "key": "STRIDE",
-              "value": [
-                ""
-              ]
+              "value": [""]
             }
           ],
           "tags": [
@@ -2948,9 +2676,7 @@
             },
             {
               "key": "STRIDE",
-              "value": [
-                "D"
-              ]
+              "value": ["D"]
             }
           ],
           "tags": [
@@ -2974,9 +2700,7 @@
             },
             {
               "key": "STRIDE",
-              "value": [
-                "D"
-              ]
+              "value": ["D"]
             }
           ],
           "tags": [
@@ -3000,9 +2724,7 @@
             },
             {
               "key": "STRIDE",
-              "value": [
-                "D"
-              ]
+              "value": ["D"]
             }
           ],
           "tags": [
@@ -3026,9 +2748,7 @@
             },
             {
               "key": "STRIDE",
-              "value": [
-                "D"
-              ]
+              "value": ["D"]
             }
           ],
           "tags": [
@@ -3052,9 +2772,7 @@
             },
             {
               "key": "STRIDE",
-              "value": [
-                "D"
-              ]
+              "value": ["D"]
             }
           ],
           "tags": [
@@ -3077,9 +2795,7 @@
             },
             {
               "key": "STRIDE",
-              "value": [
-                ""
-              ]
+              "value": [""]
             }
           ],
           "tags": [
@@ -3101,10 +2817,7 @@
             },
             {
               "key": "STRIDE",
-              "value": [
-                "D",
-                "LM"
-              ]
+              "value": ["D", "LM"]
             }
           ],
           "tags": [
@@ -3128,9 +2841,7 @@
             },
             {
               "key": "STRIDE",
-              "value": [
-                ""
-              ]
+              "value": [""]
             }
           ],
           "tags": [
@@ -3154,9 +2865,7 @@
             },
             {
               "key": "STRIDE",
-              "value": [
-                ""
-              ]
+              "value": [""]
             }
           ],
           "tags": [
@@ -3179,9 +2888,7 @@
             },
             {
               "key": "STRIDE",
-              "value": [
-                ""
-              ]
+              "value": [""]
             }
           ],
           "tags": [
@@ -3205,9 +2912,7 @@
             },
             {
               "key": "STRIDE",
-              "value": [
-                ""
-              ]
+              "value": [""]
             }
           ],
           "tags": [
@@ -3230,9 +2935,7 @@
             },
             {
               "key": "STRIDE",
-              "value": [
-                ""
-              ]
+              "value": [""]
             }
           ],
           "tags": [
@@ -3255,9 +2958,7 @@
             },
             {
               "key": "STRIDE",
-              "value": [
-                ""
-              ]
+              "value": [""]
             }
           ],
           "tags": [
@@ -3280,10 +2981,7 @@
             },
             {
               "key": "STRIDE",
-              "value": [
-                "E",
-                "LM"
-              ]
+              "value": ["E", "LM"]
             }
           ],
           "tags": [
@@ -3306,10 +3004,7 @@
             },
             {
               "key": "STRIDE",
-              "value": [
-                "E",
-                "LM"
-              ]
+              "value": ["E", "LM"]
             }
           ],
           "tags": [
@@ -3332,10 +3027,7 @@
             },
             {
               "key": "STRIDE",
-              "value": [
-                "E",
-                "LM"
-              ]
+              "value": ["E", "LM"]
             }
           ],
           "tags": [
@@ -3358,11 +3050,7 @@
             },
             {
               "key": "STRIDE",
-              "value": [
-                "T",
-                "E",
-                "LM"
-              ]
+              "value": ["T", "E", "LM"]
             }
           ],
           "tags": [
@@ -3385,11 +3073,7 @@
             },
             {
               "key": "STRIDE",
-              "value": [
-                "T",
-                "E",
-                "LM"
-              ]
+              "value": ["T", "E", "LM"]
             }
           ],
           "tags": [
@@ -3412,9 +3096,7 @@
             },
             {
               "key": "STRIDE",
-              "value": [
-                ""
-              ]
+              "value": [""]
             }
           ],
           "tags": [
@@ -3437,9 +3119,7 @@
             },
             {
               "key": "STRIDE",
-              "value": [
-                ""
-              ]
+              "value": [""]
             }
           ],
           "tags": [
@@ -3462,10 +3142,7 @@
             },
             {
               "key": "STRIDE",
-              "value": [
-                "S",
-                "R"
-              ]
+              "value": ["S", "R"]
             }
           ],
           "tags": [
@@ -3488,11 +3165,7 @@
             },
             {
               "key": "STRIDE",
-              "value": [
-                "S",
-                "R",
-                "LM"
-              ]
+              "value": ["S", "R", "LM"]
             }
           ],
           "tags": [
@@ -3515,9 +3188,7 @@
             },
             {
               "key": "STRIDE",
-              "value": [
-                ""
-              ]
+              "value": [""]
             }
           ],
           "tags": [
@@ -3538,9 +3209,7 @@
             },
             {
               "key": "STRIDE",
-              "value": [
-                ""
-              ]
+              "value": [""]
             }
           ],
           "tags": [
@@ -3562,11 +3231,7 @@
             },
             {
               "key": "STRIDE",
-              "value": [
-                "S",
-                "R",
-                "LM"
-              ]
+              "value": ["S", "R", "LM"]
             }
           ],
           "tags": [
@@ -3590,11 +3255,7 @@
             },
             {
               "key": "STRIDE",
-              "value": [
-                "S",
-                "R",
-                "LM"
-              ]
+              "value": ["S", "R", "LM"]
             }
           ],
           "tags": [
@@ -3618,11 +3279,7 @@
             },
             {
               "key": "STRIDE",
-              "value": [
-                "S",
-                "R",
-                "LM"
-              ]
+              "value": ["S", "R", "LM"]
             }
           ],
           "tags": [
@@ -3645,11 +3302,7 @@
             },
             {
               "key": "STRIDE",
-              "value": [
-                "S",
-                "R",
-                "LM"
-              ]
+              "value": ["S", "R", "LM"]
             }
           ],
           "tags": [
@@ -3672,9 +3325,7 @@
             },
             {
               "key": "STRIDE",
-              "value": [
-                ""
-              ]
+              "value": [""]
             }
           ],
           "tags": [
@@ -3698,9 +3349,7 @@
             },
             {
               "key": "STRIDE",
-              "value": [
-                ""
-              ]
+              "value": [""]
             }
           ],
           "tags": [
@@ -3724,11 +3373,7 @@
             },
             {
               "key": "STRIDE",
-              "value": [
-                "S",
-                "R",
-                "LM"
-              ]
+              "value": ["S", "R", "LM"]
             }
           ],
           "tags": [
@@ -3752,9 +3397,7 @@
             },
             {
               "key": "STRIDE",
-              "value": [
-                ""
-              ]
+              "value": [""]
             }
           ],
           "tags": [
@@ -3777,9 +3420,7 @@
             },
             {
               "key": "STRIDE",
-              "value": [
-                ""
-              ]
+              "value": [""]
             }
           ],
           "tags": [
@@ -3801,9 +3442,7 @@
             },
             {
               "key": "STRIDE",
-              "value": [
-                ""
-              ]
+              "value": [""]
             }
           ],
           "tags": [
@@ -3826,9 +3465,7 @@
             },
             {
               "key": "STRIDE",
-              "value": [
-                ""
-              ]
+              "value": [""]
             }
           ],
           "tags": [
@@ -3851,10 +3488,7 @@
             },
             {
               "key": "STRIDE",
-              "value": [
-                "S",
-                "R"
-              ]
+              "value": ["S", "R"]
             }
           ],
           "tags": [
@@ -3877,11 +3511,7 @@
             },
             {
               "key": "STRIDE",
-              "value": [
-                "S",
-                "R",
-                "LM"
-              ]
+              "value": ["S", "R", "LM"]
             }
           ],
           "tags": [
@@ -3904,9 +3534,7 @@
             },
             {
               "key": "STRIDE",
-              "value": [
-                ""
-              ]
+              "value": [""]
             }
           ],
           "tags": [
@@ -3930,9 +3558,7 @@
             },
             {
               "key": "STRIDE",
-              "value": [
-                ""
-              ]
+              "value": [""]
             }
           ],
           "tags": [
@@ -3956,10 +3582,7 @@
             },
             {
               "key": "STRIDE",
-              "value": [
-                "D",
-                "LM"
-              ]
+              "value": ["D", "LM"]
             }
           ],
           "tags": [
@@ -3983,10 +3606,7 @@
             },
             {
               "key": "STRIDE",
-              "value": [
-                "D",
-                "LM"
-              ]
+              "value": ["D", "LM"]
             }
           ],
           "tags": [
@@ -4009,9 +3629,7 @@
             },
             {
               "key": "STRIDE",
-              "value": [
-                ""
-              ]
+              "value": [""]
             }
           ],
           "tags": [
@@ -4032,9 +3650,7 @@
             },
             {
               "key": "STRIDE",
-              "value": [
-                ""
-              ]
+              "value": [""]
             }
           ],
           "tags": [
@@ -4056,9 +3672,7 @@
             },
             {
               "key": "STRIDE",
-              "value": [
-                "D"
-              ]
+              "value": ["D"]
             }
           ],
           "tags": [
@@ -4082,9 +3696,7 @@
             },
             {
               "key": "STRIDE",
-              "value": [
-                "D"
-              ]
+              "value": ["D"]
             }
           ],
           "tags": [
@@ -4107,9 +3719,7 @@
             },
             {
               "key": "STRIDE",
-              "value": [
-                ""
-              ]
+              "value": [""]
             }
           ],
           "tags": [
@@ -4131,9 +3741,7 @@
             },
             {
               "key": "STRIDE",
-              "value": [
-                ""
-              ]
+              "value": [""]
             }
           ],
           "tags": [
@@ -4156,9 +3764,7 @@
             },
             {
               "key": "STRIDE",
-              "value": [
-                ""
-              ]
+              "value": [""]
             }
           ],
           "tags": [
@@ -4179,9 +3785,7 @@
             },
             {
               "key": "STRIDE",
-              "value": [
-                ""
-              ]
+              "value": [""]
             }
           ],
           "tags": [
@@ -4203,9 +3807,7 @@
             },
             {
               "key": "STRIDE",
-              "value": [
-                ""
-              ]
+              "value": [""]
             }
           ],
           "tags": [
@@ -4229,9 +3831,7 @@
             },
             {
               "key": "STRIDE",
-              "value": [
-                ""
-              ]
+              "value": [""]
             }
           ],
           "tags": [
@@ -4254,9 +3854,7 @@
             },
             {
               "key": "STRIDE",
-              "value": [
-                ""
-              ]
+              "value": [""]
             }
           ],
           "tags": [
@@ -4278,11 +3876,7 @@
             },
             {
               "key": "STRIDE",
-              "value": [
-                "S",
-                "R",
-                "LM"
-              ]
+              "value": ["S", "R", "LM"]
             }
           ],
           "tags": [
@@ -4306,11 +3900,7 @@
             },
             {
               "key": "STRIDE",
-              "value": [
-                "S",
-                "R",
-                "LM"
-              ]
+              "value": ["S", "R", "LM"]
             }
           ],
           "tags": [
@@ -4333,11 +3923,7 @@
             },
             {
               "key": "STRIDE",
-              "value": [
-                "S",
-                "R",
-                "LM"
-              ]
+              "value": ["S", "R", "LM"]
             }
           ],
           "tags": [
@@ -4360,9 +3946,7 @@
             },
             {
               "key": "STRIDE",
-              "value": [
-                ""
-              ]
+              "value": [""]
             }
           ],
           "tags": [
@@ -4384,9 +3968,7 @@
             },
             {
               "key": "STRIDE",
-              "value": [
-                ""
-              ]
+              "value": [""]
             }
           ],
           "tags": [
@@ -4408,11 +3990,7 @@
             },
             {
               "key": "STRIDE",
-              "value": [
-                "S",
-                "R",
-                "LM"
-              ]
+              "value": ["S", "R", "LM"]
             }
           ],
           "tags": [
@@ -4435,9 +4013,7 @@
             },
             {
               "key": "STRIDE",
-              "value": [
-                ""
-              ]
+              "value": [""]
             }
           ],
           "tags": [
@@ -4461,9 +4037,7 @@
             },
             {
               "key": "STRIDE",
-              "value": [
-                ""
-              ]
+              "value": [""]
             }
           ],
           "tags": [
@@ -4487,9 +4061,7 @@
             },
             {
               "key": "STRIDE",
-              "value": [
-                ""
-              ]
+              "value": [""]
             }
           ],
           "tags": [
@@ -4513,9 +4085,7 @@
             },
             {
               "key": "STRIDE",
-              "value": [
-                ""
-              ]
+              "value": [""]
             }
           ],
           "tags": [
@@ -4539,9 +4109,7 @@
             },
             {
               "key": "STRIDE",
-              "value": [
-                ""
-              ]
+              "value": [""]
             }
           ],
           "tags": [
@@ -4565,9 +4133,7 @@
             },
             {
               "key": "STRIDE",
-              "value": [
-                "T"
-              ]
+              "value": ["T"]
             }
           ],
           "tags": [
@@ -4590,9 +4156,7 @@
             },
             {
               "key": "STRIDE",
-              "value": [
-                "LM"
-              ]
+              "value": ["LM"]
             }
           ],
           "tags": [
@@ -4615,9 +4179,7 @@
             },
             {
               "key": "STRIDE",
-              "value": [
-                ""
-              ]
+              "value": [""]
             }
           ],
           "tags": [
@@ -4640,9 +4202,7 @@
             },
             {
               "key": "STRIDE",
-              "value": [
-                ""
-              ]
+              "value": [""]
             }
           ],
           "tags": [
@@ -4665,9 +4225,7 @@
             },
             {
               "key": "STRIDE",
-              "value": [
-                ""
-              ]
+              "value": [""]
             }
           ],
           "tags": [
@@ -4690,9 +4248,7 @@
             },
             {
               "key": "STRIDE",
-              "value": [
-                ""
-              ]
+              "value": [""]
             }
           ],
           "tags": [
@@ -4715,9 +4271,7 @@
             },
             {
               "key": "STRIDE",
-              "value": [
-                "T"
-              ]
+              "value": ["T"]
             }
           ],
           "tags": [
@@ -4740,9 +4294,7 @@
             },
             {
               "key": "STRIDE",
-              "value": [
-                ""
-              ]
+              "value": [""]
             }
           ],
           "tags": [
@@ -4765,9 +4317,7 @@
             },
             {
               "key": "STRIDE",
-              "value": [
-                "T"
-              ]
+              "value": ["T"]
             }
           ],
           "tags": [
@@ -4790,10 +4340,7 @@
             },
             {
               "key": "STRIDE",
-              "value": [
-                "T",
-                "I"
-              ]
+              "value": ["T", "I"]
             }
           ],
           "tags": [
@@ -4817,10 +4364,7 @@
             },
             {
               "key": "STRIDE",
-              "value": [
-                "T",
-                "I"
-              ]
+              "value": ["T", "I"]
             }
           ],
           "tags": [
@@ -4844,10 +4388,7 @@
             },
             {
               "key": "STRIDE",
-              "value": [
-                "T",
-                "I"
-              ]
+              "value": ["T", "I"]
             }
           ],
           "tags": [
@@ -4871,10 +4412,7 @@
             },
             {
               "key": "STRIDE",
-              "value": [
-                "T",
-                "I"
-              ]
+              "value": ["T", "I"]
             }
           ],
           "tags": [
@@ -4898,10 +4436,7 @@
             },
             {
               "key": "STRIDE",
-              "value": [
-                "T",
-                "I"
-              ]
+              "value": ["T", "I"]
             }
           ],
           "tags": [
@@ -4925,9 +4460,7 @@
             },
             {
               "key": "STRIDE",
-              "value": [
-                ""
-              ]
+              "value": [""]
             }
           ],
           "tags": [
@@ -4951,10 +4484,7 @@
             },
             {
               "key": "STRIDE",
-              "value": [
-                "T",
-                "I"
-              ]
+              "value": ["T", "I"]
             }
           ],
           "tags": [
@@ -4978,9 +4508,7 @@
             },
             {
               "key": "STRIDE",
-              "value": [
-                ""
-              ]
+              "value": [""]
             }
           ],
           "tags": [
@@ -5004,9 +4532,7 @@
             },
             {
               "key": "STRIDE",
-              "value": [
-                ""
-              ]
+              "value": [""]
             }
           ],
           "tags": [
@@ -5029,9 +4555,7 @@
             },
             {
               "key": "STRIDE",
-              "value": [
-                ""
-              ]
+              "value": [""]
             }
           ],
           "tags": [
@@ -5053,9 +4577,7 @@
             },
             {
               "key": "STRIDE",
-              "value": [
-                "T"
-              ]
+              "value": ["T"]
             }
           ],
           "tags": [
@@ -5078,9 +4600,7 @@
             },
             {
               "key": "STRIDE",
-              "value": [
-                "T"
-              ]
+              "value": ["T"]
             }
           ],
           "tags": [
@@ -5103,9 +4623,7 @@
             },
             {
               "key": "STRIDE",
-              "value": [
-                "T"
-              ]
+              "value": ["T"]
             }
           ],
           "tags": [
@@ -5128,9 +4646,7 @@
             },
             {
               "key": "STRIDE",
-              "value": [
-                "T"
-              ]
+              "value": ["T"]
             }
           ],
           "tags": [
@@ -5153,9 +4669,7 @@
             },
             {
               "key": "STRIDE",
-              "value": [
-                "T"
-              ]
+              "value": ["T"]
             }
           ],
           "tags": [
@@ -5178,9 +4692,7 @@
             },
             {
               "key": "STRIDE",
-              "value": [
-                ""
-              ]
+              "value": [""]
             }
           ],
           "tags": [
@@ -5204,9 +4716,7 @@
             },
             {
               "key": "STRIDE",
-              "value": [
-                ""
-              ]
+              "value": [""]
             }
           ],
           "tags": [
@@ -5230,9 +4740,7 @@
             },
             {
               "key": "STRIDE",
-              "value": [
-                "LM"
-              ]
+              "value": ["LM"]
             }
           ],
           "tags": [
@@ -5256,9 +4764,7 @@
             },
             {
               "key": "STRIDE",
-              "value": [
-                "LM"
-              ]
+              "value": ["LM"]
             }
           ],
           "tags": [
@@ -5279,9 +4785,7 @@
             },
             {
               "key": "STRIDE",
-              "value": [
-                ""
-              ]
+              "value": [""]
             }
           ],
           "tags": [
@@ -5303,9 +4807,7 @@
             },
             {
               "key": "STRIDE",
-              "value": [
-                ""
-              ]
+              "value": [""]
             }
           ],
           "tags": [
@@ -5329,9 +4831,7 @@
             },
             {
               "key": "STRIDE",
-              "value": [
-                ""
-              ]
+              "value": [""]
             }
           ],
           "tags": [
@@ -5355,9 +4855,7 @@
             },
             {
               "key": "STRIDE",
-              "value": [
-                ""
-              ]
+              "value": [""]
             }
           ],
           "tags": [
@@ -5381,9 +4879,7 @@
             },
             {
               "key": "STRIDE",
-              "value": [
-                ""
-              ]
+              "value": [""]
             }
           ],
           "tags": [
@@ -5407,9 +4903,7 @@
             },
             {
               "key": "STRIDE",
-              "value": [
-                ""
-              ]
+              "value": [""]
             }
           ],
           "tags": [
@@ -5433,9 +4927,7 @@
             },
             {
               "key": "STRIDE",
-              "value": [
-                ""
-              ]
+              "value": [""]
             }
           ],
           "tags": [
@@ -5459,9 +4951,7 @@
             },
             {
               "key": "STRIDE",
-              "value": [
-                ""
-              ]
+              "value": [""]
             }
           ],
           "tags": [
@@ -5485,16 +4975,10 @@
             },
             {
               "key": "STRIDE",
-              "value": [
-                ""
-              ]
+              "value": [""]
             }
           ],
-          "tags": [
-            "Operational",
-            "CCCS Medium",
-            "CSP Full Stack"
-          ]
+          "tags": ["Operational", "CCCS Medium", "CSP Full Stack"]
         },
         {
           "id": "a44c04ca-25ea-44cd-aa4a-4d3c5c8f2e7d",
@@ -5507,16 +4991,10 @@
             },
             {
               "key": "STRIDE",
-              "value": [
-                ""
-              ]
+              "value": [""]
             }
           ],
-          "tags": [
-            "Operational",
-            "CCCS Medium",
-            "CSP Full Stack"
-          ]
+          "tags": ["Operational", "CCCS Medium", "CSP Full Stack"]
         },
         {
           "id": "07a3a392-7f95-4902-a6e7-ab4aa5c93171",
@@ -5529,16 +5007,10 @@
             },
             {
               "key": "STRIDE",
-              "value": [
-                ""
-              ]
+              "value": [""]
             }
           ],
-          "tags": [
-            "Operational",
-            "CCCS Medium",
-            "CSP Full Stack"
-          ]
+          "tags": ["Operational", "CCCS Medium", "CSP Full Stack"]
         },
         {
           "id": "ce7a209f-605e-405a-8cd2-d2225b8bdeed",
@@ -5551,16 +5023,10 @@
             },
             {
               "key": "STRIDE",
-              "value": [
-                ""
-              ]
+              "value": [""]
             }
           ],
-          "tags": [
-            "Operational",
-            "CCCS Medium",
-            "CSP Full Stack"
-          ]
+          "tags": ["Operational", "CCCS Medium", "CSP Full Stack"]
         },
         {
           "id": "f04a8f5f-1d8f-498e-a97e-41daa7bb4464",
@@ -5573,16 +5039,10 @@
             },
             {
               "key": "STRIDE",
-              "value": [
-                ""
-              ]
+              "value": [""]
             }
           ],
-          "tags": [
-            "Operational",
-            "CCCS Medium",
-            "CSP Full Stack"
-          ]
+          "tags": ["Operational", "CCCS Medium", "CSP Full Stack"]
         },
         {
           "id": "ded3df9b-d80f-4e9a-aab9-a632e6c0672f",
@@ -5595,16 +5055,10 @@
             },
             {
               "key": "STRIDE",
-              "value": [
-                ""
-              ]
+              "value": [""]
             }
           ],
-          "tags": [
-            "Operational",
-            "CCCS Medium",
-            "CSP Full Stack"
-          ]
+          "tags": ["Operational", "CCCS Medium", "CSP Full Stack"]
         },
         {
           "id": "90b52d34-6690-44a3-9509-c96e09c493ef",
@@ -5617,16 +5071,10 @@
             },
             {
               "key": "STRIDE",
-              "value": [
-                ""
-              ]
+              "value": [""]
             }
           ],
-          "tags": [
-            "Operational",
-            "CCCS Medium",
-            "CSP Full Stack"
-          ]
+          "tags": ["Operational", "CCCS Medium", "CSP Full Stack"]
         },
         {
           "id": "162f73b6-031c-4860-a19f-6a27e2726c2d",
@@ -5639,9 +5087,7 @@
             },
             {
               "key": "STRIDE",
-              "value": [
-                ""
-              ]
+              "value": [""]
             }
           ],
           "tags": [
@@ -5662,9 +5108,7 @@
             },
             {
               "key": "STRIDE",
-              "value": [
-                ""
-              ]
+              "value": [""]
             }
           ],
           "tags": [
@@ -5688,9 +5132,7 @@
             },
             {
               "key": "STRIDE",
-              "value": [
-                ""
-              ]
+              "value": [""]
             }
           ],
           "tags": [
@@ -5714,9 +5156,7 @@
             },
             {
               "key": "STRIDE",
-              "value": [
-                ""
-              ]
+              "value": [""]
             }
           ],
           "tags": [
@@ -5740,9 +5180,7 @@
             },
             {
               "key": "STRIDE",
-              "value": [
-                ""
-              ]
+              "value": [""]
             }
           ],
           "tags": [
@@ -5766,9 +5204,7 @@
             },
             {
               "key": "STRIDE",
-              "value": [
-                ""
-              ]
+              "value": [""]
             }
           ],
           "tags": [
@@ -5792,9 +5228,7 @@
             },
             {
               "key": "STRIDE",
-              "value": [
-                "D"
-              ]
+              "value": ["D"]
             }
           ],
           "tags": [
@@ -5817,9 +5251,7 @@
             },
             {
               "key": "STRIDE",
-              "value": [
-                ""
-              ]
+              "value": [""]
             }
           ],
           "tags": [
@@ -5843,9 +5275,7 @@
             },
             {
               "key": "STRIDE",
-              "value": [
-                ""
-              ]
+              "value": [""]
             }
           ],
           "tags": [
@@ -5869,10 +5299,7 @@
             },
             {
               "key": "STRIDE",
-              "value": [
-                "T",
-                "I"
-              ]
+              "value": ["T", "I"]
             }
           ],
           "tags": [
@@ -5896,9 +5323,7 @@
             },
             {
               "key": "STRIDE",
-              "value": [
-                ""
-              ]
+              "value": [""]
             }
           ],
           "tags": [
@@ -5921,9 +5346,7 @@
             },
             {
               "key": "STRIDE",
-              "value": [
-                ""
-              ]
+              "value": [""]
             }
           ],
           "tags": [
@@ -5944,9 +5367,7 @@
             },
             {
               "key": "STRIDE",
-              "value": [
-                ""
-              ]
+              "value": [""]
             }
           ],
           "tags": [
@@ -5967,16 +5388,10 @@
             },
             {
               "key": "STRIDE",
-              "value": [
-                "T"
-              ]
+              "value": ["T"]
             }
           ],
-          "tags": [
-            "Operational",
-            "CCCS Medium",
-            "CSP Full Stack"
-          ]
+          "tags": ["Operational", "CCCS Medium", "CSP Full Stack"]
         },
         {
           "id": "bb270bfe-6824-4833-9ae5-0b5fce4b1077",
@@ -5989,19 +5404,10 @@
             },
             {
               "key": "STRIDE",
-              "value": [
-                "S",
-                "T",
-                "R",
-                "LM"
-              ]
+              "value": ["S", "T", "R", "LM"]
             }
           ],
-          "tags": [
-            "Operational",
-            "CCCS Medium",
-            "CSP Full Stack"
-          ]
+          "tags": ["Operational", "CCCS Medium", "CSP Full Stack"]
         },
         {
           "id": "0e642267-b6c2-42fc-a027-19e6027602de",
@@ -6014,16 +5420,10 @@
             },
             {
               "key": "STRIDE",
-              "value": [
-                "T"
-              ]
+              "value": ["T"]
             }
           ],
-          "tags": [
-            "Operational",
-            "CCCS Medium",
-            "CSP Full Stack"
-          ]
+          "tags": ["Operational", "CCCS Medium", "CSP Full Stack"]
         },
         {
           "id": "52e4d522-125d-48e2-b542-e8e838bfd3b4",
@@ -6036,16 +5436,10 @@
             },
             {
               "key": "STRIDE",
-              "value": [
-                ""
-              ]
+              "value": [""]
             }
           ],
-          "tags": [
-            "Operational",
-            "CCCS Medium",
-            "CSP Full Stack"
-          ]
+          "tags": ["Operational", "CCCS Medium", "CSP Full Stack"]
         },
         {
           "id": "8d89b0b8-fd71-4c7d-86e7-3599e333b26c",
@@ -6058,16 +5452,10 @@
             },
             {
               "key": "STRIDE",
-              "value": [
-                "T"
-              ]
+              "value": ["T"]
             }
           ],
-          "tags": [
-            "Operational",
-            "CCCS Medium",
-            "CSP Full Stack"
-          ]
+          "tags": ["Operational", "CCCS Medium", "CSP Full Stack"]
         },
         {
           "id": "659f5c62-fcde-4dd7-8ff3-7d9a73df251c",
@@ -6080,16 +5468,10 @@
             },
             {
               "key": "STRIDE",
-              "value": [
-                "T"
-              ]
+              "value": ["T"]
             }
           ],
-          "tags": [
-            "Operational",
-            "CCCS Medium",
-            "CSP Full Stack"
-          ]
+          "tags": ["Operational", "CCCS Medium", "CSP Full Stack"]
         },
         {
           "id": "d681fb31-dd77-44c8-b896-eaa854955e04",
@@ -6102,18 +5484,10 @@
             },
             {
               "key": "STRIDE",
-              "value": [
-                "T",
-                "E",
-                "LM"
-              ]
+              "value": ["T", "E", "LM"]
             }
           ],
-          "tags": [
-            "Operational",
-            "CCCS Medium",
-            "CSP Full Stack"
-          ]
+          "tags": ["Operational", "CCCS Medium", "CSP Full Stack"]
         },
         {
           "id": "099b6be1-4ffa-46b8-87b5-f5aee21abcd7",
@@ -6126,18 +5500,10 @@
             },
             {
               "key": "STRIDE",
-              "value": [
-                "T",
-                "E",
-                "LM"
-              ]
+              "value": ["T", "E", "LM"]
             }
           ],
-          "tags": [
-            "Operational",
-            "CCCS Medium",
-            "CSP Full Stack"
-          ]
+          "tags": ["Operational", "CCCS Medium", "CSP Full Stack"]
         },
         {
           "id": "ac5f4ce8-c530-4b9e-bebf-5edbc4baf0e9",
@@ -6150,16 +5516,10 @@
             },
             {
               "key": "STRIDE",
-              "value": [
-                ""
-              ]
+              "value": [""]
             }
           ],
-          "tags": [
-            "Operational",
-            "CCCS Medium",
-            "CSP Full Stack"
-          ]
+          "tags": ["Operational", "CCCS Medium", "CSP Full Stack"]
         },
         {
           "id": "38df414f-f117-4f30-9783-3f925e6b6af1",
@@ -6172,16 +5532,10 @@
             },
             {
               "key": "STRIDE",
-              "value": [
-                "T"
-              ]
+              "value": ["T"]
             }
           ],
-          "tags": [
-            "Operational",
-            "CCCS Medium",
-            "CSP Full Stack"
-          ]
+          "tags": ["Operational", "CCCS Medium", "CSP Full Stack"]
         },
         {
           "id": "fe4ceb61-8171-49a6-badd-5f52890b8bbf",
@@ -6194,16 +5548,10 @@
             },
             {
               "key": "STRIDE",
-              "value": [
-                "T"
-              ]
+              "value": ["T"]
             }
           ],
-          "tags": [
-            "Operational",
-            "CCCS Medium",
-            "CSP Full Stack"
-          ]
+          "tags": ["Operational", "CCCS Medium", "CSP Full Stack"]
         },
         {
           "id": "04fbdc26-cfd7-45b1-8ee5-e52f6ac01880",
@@ -6216,16 +5564,10 @@
             },
             {
               "key": "STRIDE",
-              "value": [
-                ""
-              ]
+              "value": [""]
             }
           ],
-          "tags": [
-            "Operational",
-            "CCCS Medium",
-            "CSP Full Stack"
-          ]
+          "tags": ["Operational", "CCCS Medium", "CSP Full Stack"]
         },
         {
           "id": "bf1b0182-9613-4ff4-8809-97f5d989207d",
@@ -6238,16 +5580,10 @@
             },
             {
               "key": "STRIDE",
-              "value": [
-                "D"
-              ]
+              "value": ["D"]
             }
           ],
-          "tags": [
-            "Operational",
-            "CCCS Medium",
-            "CSP Full Stack"
-          ]
+          "tags": ["Operational", "CCCS Medium", "CSP Full Stack"]
         },
         {
           "id": "f46518b2-7643-4d19-bdf6-3d662652fe14",
@@ -6260,16 +5596,10 @@
             },
             {
               "key": "STRIDE",
-              "value": [
-                ""
-              ]
+              "value": [""]
             }
           ],
-          "tags": [
-            "Operational",
-            "CCCS Medium",
-            "CSP Full Stack"
-          ]
+          "tags": ["Operational", "CCCS Medium", "CSP Full Stack"]
         },
         {
           "id": "e0021cfe-1991-479d-8986-dd7c8f2e30fe",
@@ -6282,9 +5612,7 @@
             },
             {
               "key": "STRIDE",
-              "value": [
-                ""
-              ]
+              "value": [""]
             }
           ],
           "tags": [
@@ -6308,9 +5636,7 @@
             },
             {
               "key": "STRIDE",
-              "value": [
-                ""
-              ]
+              "value": [""]
             }
           ],
           "tags": [
@@ -6334,9 +5660,7 @@
             },
             {
               "key": "STRIDE",
-              "value": [
-                ""
-              ]
+              "value": [""]
             }
           ],
           "tags": [
@@ -6359,9 +5683,7 @@
             },
             {
               "key": "STRIDE",
-              "value": [
-                ""
-              ]
+              "value": [""]
             }
           ],
           "tags": [
@@ -6384,9 +5706,7 @@
             },
             {
               "key": "STRIDE",
-              "value": [
-                "LM"
-              ]
+              "value": ["LM"]
             }
           ],
           "tags": [
@@ -6409,9 +5729,7 @@
             },
             {
               "key": "STRIDE",
-              "value": [
-                "LM"
-              ]
+              "value": ["LM"]
             }
           ],
           "tags": [
@@ -6434,9 +5752,7 @@
             },
             {
               "key": "STRIDE",
-              "value": [
-                "LM"
-              ]
+              "value": ["LM"]
             }
           ],
           "tags": [
@@ -6459,9 +5775,7 @@
             },
             {
               "key": "STRIDE",
-              "value": [
-                ""
-              ]
+              "value": [""]
             }
           ],
           "tags": [
@@ -6484,9 +5798,7 @@
             },
             {
               "key": "STRIDE",
-              "value": [
-                "LM"
-              ]
+              "value": ["LM"]
             }
           ],
           "tags": [
@@ -6509,9 +5821,7 @@
             },
             {
               "key": "STRIDE",
-              "value": [
-                ""
-              ]
+              "value": [""]
             }
           ],
           "tags": [
@@ -6534,9 +5844,7 @@
             },
             {
               "key": "STRIDE",
-              "value": [
-                ""
-              ]
+              "value": [""]
             }
           ],
           "tags": [
@@ -6559,9 +5867,7 @@
             },
             {
               "key": "STRIDE",
-              "value": [
-                "LM"
-              ]
+              "value": ["LM"]
             }
           ],
           "tags": [
@@ -6584,9 +5890,7 @@
             },
             {
               "key": "STRIDE",
-              "value": [
-                ""
-              ]
+              "value": [""]
             }
           ],
           "tags": [
@@ -6610,9 +5914,7 @@
             },
             {
               "key": "STRIDE",
-              "value": [
-                "LM"
-              ]
+              "value": ["LM"]
             }
           ],
           "tags": [
@@ -6636,9 +5938,7 @@
             },
             {
               "key": "STRIDE",
-              "value": [
-                ""
-              ]
+              "value": [""]
             }
           ],
           "tags": [
@@ -6662,9 +5962,7 @@
             },
             {
               "key": "STRIDE",
-              "value": [
-                ""
-              ]
+              "value": [""]
             }
           ],
           "tags": [
@@ -6688,9 +5986,7 @@
             },
             {
               "key": "STRIDE",
-              "value": [
-                ""
-              ]
+              "value": [""]
             }
           ],
           "tags": [
@@ -6713,9 +6009,7 @@
             },
             {
               "key": "STRIDE",
-              "value": [
-                ""
-              ]
+              "value": [""]
             }
           ],
           "tags": [
@@ -6738,9 +6032,7 @@
             },
             {
               "key": "STRIDE",
-              "value": [
-                ""
-              ]
+              "value": [""]
             }
           ],
           "tags": [
@@ -6763,9 +6055,7 @@
             },
             {
               "key": "STRIDE",
-              "value": [
-                ""
-              ]
+              "value": [""]
             }
           ],
           "tags": [
@@ -6788,9 +6078,7 @@
             },
             {
               "key": "STRIDE",
-              "value": [
-                ""
-              ]
+              "value": [""]
             }
           ],
           "tags": [
@@ -6813,9 +6101,7 @@
             },
             {
               "key": "STRIDE",
-              "value": [
-                ""
-              ]
+              "value": [""]
             }
           ],
           "tags": [
@@ -6838,9 +6124,7 @@
             },
             {
               "key": "STRIDE",
-              "value": [
-                ""
-              ]
+              "value": [""]
             }
           ],
           "tags": [
@@ -6864,9 +6148,7 @@
             },
             {
               "key": "STRIDE",
-              "value": [
-                ""
-              ]
+              "value": [""]
             }
           ],
           "tags": [
@@ -6890,11 +6172,7 @@
             },
             {
               "key": "STRIDE",
-              "value": [
-                "S",
-                "R",
-                "LM"
-              ]
+              "value": ["S", "R", "LM"]
             }
           ],
           "tags": [
@@ -6918,9 +6196,7 @@
             },
             {
               "key": "STRIDE",
-              "value": [
-                ""
-              ]
+              "value": [""]
             }
           ],
           "tags": [
@@ -6944,9 +6220,7 @@
             },
             {
               "key": "STRIDE",
-              "value": [
-                ""
-              ]
+              "value": [""]
             }
           ],
           "tags": [
@@ -6970,9 +6244,7 @@
             },
             {
               "key": "STRIDE",
-              "value": [
-                ""
-              ]
+              "value": [""]
             }
           ],
           "tags": [
@@ -6996,9 +6268,7 @@
             },
             {
               "key": "STRIDE",
-              "value": [
-                "I"
-              ]
+              "value": ["I"]
             }
           ],
           "tags": [
@@ -7022,9 +6292,7 @@
             },
             {
               "key": "STRIDE",
-              "value": [
-                "LM"
-              ]
+              "value": ["LM"]
             }
           ],
           "tags": [
@@ -7048,9 +6316,7 @@
             },
             {
               "key": "STRIDE",
-              "value": [
-                ""
-              ]
+              "value": [""]
             }
           ],
           "tags": [
@@ -7074,9 +6340,7 @@
             },
             {
               "key": "STRIDE",
-              "value": [
-                ""
-              ]
+              "value": [""]
             }
           ],
           "tags": [
@@ -7100,9 +6364,7 @@
             },
             {
               "key": "STRIDE",
-              "value": [
-                ""
-              ]
+              "value": [""]
             }
           ],
           "tags": [
@@ -7125,10 +6387,7 @@
             },
             {
               "key": "STRIDE",
-              "value": [
-                "D",
-                "LM"
-              ]
+              "value": ["D", "LM"]
             }
           ],
           "tags": [
@@ -7151,9 +6410,7 @@
             },
             {
               "key": "STRIDE",
-              "value": [
-                ""
-              ]
+              "value": [""]
             }
           ],
           "tags": [
@@ -7176,10 +6433,7 @@
             },
             {
               "key": "STRIDE",
-              "value": [
-                "I",
-                "LM"
-              ]
+              "value": ["I", "LM"]
             }
           ],
           "tags": [
@@ -7202,10 +6456,7 @@
             },
             {
               "key": "STRIDE",
-              "value": [
-                "I",
-                "LM"
-              ]
+              "value": ["I", "LM"]
             }
           ],
           "tags": [
@@ -7229,10 +6480,7 @@
             },
             {
               "key": "STRIDE",
-              "value": [
-                "I",
-                "LM"
-              ]
+              "value": ["I", "LM"]
             }
           ],
           "tags": [
@@ -7256,10 +6504,7 @@
             },
             {
               "key": "STRIDE",
-              "value": [
-                "I",
-                "LM"
-              ]
+              "value": ["I", "LM"]
             }
           ],
           "tags": [
@@ -7282,10 +6527,7 @@
             },
             {
               "key": "STRIDE",
-              "value": [
-                "I",
-                "LM"
-              ]
+              "value": ["I", "LM"]
             }
           ],
           "tags": [
@@ -7308,10 +6550,7 @@
             },
             {
               "key": "STRIDE",
-              "value": [
-                "I",
-                "LM"
-              ]
+              "value": ["I", "LM"]
             }
           ],
           "tags": [
@@ -7334,9 +6573,7 @@
             },
             {
               "key": "STRIDE",
-              "value": [
-                ""
-              ]
+              "value": [""]
             }
           ],
           "tags": [
@@ -7360,9 +6597,7 @@
             },
             {
               "key": "STRIDE",
-              "value": [
-                ""
-              ]
+              "value": [""]
             }
           ],
           "tags": [
@@ -7386,9 +6621,7 @@
             },
             {
               "key": "STRIDE",
-              "value": [
-                ""
-              ]
+              "value": [""]
             }
           ],
           "tags": [
@@ -7411,10 +6644,7 @@
             },
             {
               "key": "STRIDE",
-              "value": [
-                "T",
-                "I"
-              ]
+              "value": ["T", "I"]
             }
           ],
           "tags": [
@@ -7437,10 +6667,7 @@
             },
             {
               "key": "STRIDE",
-              "value": [
-                "T",
-                "I"
-              ]
+              "value": ["T", "I"]
             }
           ],
           "tags": [
@@ -7463,9 +6690,7 @@
             },
             {
               "key": "STRIDE",
-              "value": [
-                "LM"
-              ]
+              "value": ["LM"]
             }
           ],
           "tags": [
@@ -7488,9 +6713,7 @@
             },
             {
               "key": "STRIDE",
-              "value": [
-                ""
-              ]
+              "value": [""]
             }
           ],
           "tags": [
@@ -7513,9 +6736,7 @@
             },
             {
               "key": "STRIDE",
-              "value": [
-                ""
-              ]
+              "value": [""]
             }
           ],
           "tags": [
@@ -7537,9 +6758,7 @@
             },
             {
               "key": "STRIDE",
-              "value": [
-                ""
-              ]
+              "value": [""]
             }
           ],
           "tags": [
@@ -7563,9 +6782,7 @@
             },
             {
               "key": "STRIDE",
-              "value": [
-                ""
-              ]
+              "value": [""]
             }
           ],
           "tags": [
@@ -7589,9 +6806,7 @@
             },
             {
               "key": "STRIDE",
-              "value": [
-                ""
-              ]
+              "value": [""]
             }
           ],
           "tags": [
@@ -7614,9 +6829,7 @@
             },
             {
               "key": "STRIDE",
-              "value": [
-                "LM"
-              ]
+              "value": ["LM"]
             }
           ],
           "tags": [
@@ -7639,9 +6852,7 @@
             },
             {
               "key": "STRIDE",
-              "value": [
-                ""
-              ]
+              "value": [""]
             }
           ],
           "tags": [
@@ -7665,10 +6876,7 @@
             },
             {
               "key": "STRIDE",
-              "value": [
-                "T",
-                "E"
-              ]
+              "value": ["T", "E"]
             }
           ],
           "tags": [
@@ -7692,9 +6900,7 @@
             },
             {
               "key": "STRIDE",
-              "value": [
-                ""
-              ]
+              "value": [""]
             }
           ],
           "tags": [
@@ -7717,9 +6923,7 @@
             },
             {
               "key": "STRIDE",
-              "value": [
-                "T"
-              ]
+              "value": ["T"]
             }
           ],
           "tags": [
@@ -7742,9 +6946,7 @@
             },
             {
               "key": "STRIDE",
-              "value": [
-                ""
-              ]
+              "value": [""]
             }
           ],
           "tags": [
@@ -7767,9 +6969,7 @@
             },
             {
               "key": "STRIDE",
-              "value": [
-                ""
-              ]
+              "value": [""]
             }
           ],
           "tags": [
@@ -7792,9 +6992,7 @@
             },
             {
               "key": "STRIDE",
-              "value": [
-                ""
-              ]
+              "value": [""]
             }
           ],
           "tags": [
@@ -7817,9 +7015,7 @@
             },
             {
               "key": "STRIDE",
-              "value": [
-                ""
-              ]
+              "value": [""]
             }
           ],
           "tags": [
@@ -7842,9 +7038,7 @@
             },
             {
               "key": "STRIDE",
-              "value": [
-                ""
-              ]
+              "value": [""]
             }
           ],
           "tags": [
@@ -7867,9 +7061,7 @@
             },
             {
               "key": "STRIDE",
-              "value": [
-                ""
-              ]
+              "value": [""]
             }
           ],
           "tags": [
@@ -7892,9 +7084,7 @@
             },
             {
               "key": "STRIDE",
-              "value": [
-                ""
-              ]
+              "value": [""]
             }
           ],
           "tags": [
@@ -7918,9 +7108,7 @@
             },
             {
               "key": "STRIDE",
-              "value": [
-                ""
-              ]
+              "value": [""]
             }
           ],
           "tags": [
@@ -7944,9 +7132,7 @@
             },
             {
               "key": "STRIDE",
-              "value": [
-                ""
-              ]
+              "value": [""]
             }
           ],
           "tags": [
@@ -7970,9 +7156,7 @@
             },
             {
               "key": "STRIDE",
-              "value": [
-                ""
-              ]
+              "value": [""]
             }
           ],
           "tags": [
@@ -7995,9 +7179,7 @@
             },
             {
               "key": "STRIDE",
-              "value": [
-                ""
-              ]
+              "value": [""]
             }
           ],
           "tags": [
@@ -8020,9 +7202,7 @@
             },
             {
               "key": "STRIDE",
-              "value": [
-                ""
-              ]
+              "value": [""]
             }
           ],
           "tags": [
@@ -8045,12 +7225,7 @@
             },
             {
               "key": "STRIDE",
-              "value": [
-                "T",
-                "I",
-                "E",
-                "LM"
-              ]
+              "value": ["T", "I", "E", "LM"]
             }
           ],
           "tags": [
@@ -8073,9 +7248,7 @@
             },
             {
               "key": "STRIDE",
-              "value": [
-                ""
-              ]
+              "value": [""]
             }
           ],
           "tags": [
@@ -8098,12 +7271,7 @@
             },
             {
               "key": "STRIDE",
-              "value": [
-                "T",
-                "I",
-                "E",
-                "LM"
-              ]
+              "value": ["T", "I", "E", "LM"]
             }
           ],
           "tags": [
@@ -8126,12 +7294,7 @@
             },
             {
               "key": "STRIDE",
-              "value": [
-                "T",
-                "I",
-                "E",
-                "LM"
-              ]
+              "value": ["T", "I", "E", "LM"]
             }
           ],
           "tags": [
@@ -8154,12 +7317,7 @@
             },
             {
               "key": "STRIDE",
-              "value": [
-                "T",
-                "I",
-                "E",
-                "LM"
-              ]
+              "value": ["T", "I", "E", "LM"]
             }
           ],
           "tags": [
@@ -8182,9 +7340,7 @@
             },
             {
               "key": "STRIDE",
-              "value": [
-                ""
-              ]
+              "value": [""]
             }
           ],
           "tags": [
@@ -8207,9 +7363,7 @@
             },
             {
               "key": "STRIDE",
-              "value": [
-                ""
-              ]
+              "value": [""]
             }
           ],
           "tags": [
@@ -8232,9 +7386,7 @@
             },
             {
               "key": "STRIDE",
-              "value": [
-                ""
-              ]
+              "value": [""]
             }
           ],
           "tags": [
@@ -8257,9 +7409,7 @@
             },
             {
               "key": "STRIDE",
-              "value": [
-                ""
-              ]
+              "value": [""]
             }
           ],
           "tags": [
@@ -8282,9 +7432,7 @@
             },
             {
               "key": "STRIDE",
-              "value": [
-                ""
-              ]
+              "value": [""]
             }
           ],
           "tags": [
@@ -8308,9 +7456,7 @@
             },
             {
               "key": "STRIDE",
-              "value": [
-                ""
-              ]
+              "value": [""]
             }
           ],
           "tags": [
@@ -8333,9 +7479,7 @@
             },
             {
               "key": "STRIDE",
-              "value": [
-                ""
-              ]
+              "value": [""]
             }
           ],
           "tags": [
@@ -8359,9 +7503,7 @@
             },
             {
               "key": "STRIDE",
-              "value": [
-                ""
-              ]
+              "value": [""]
             }
           ],
           "tags": [
@@ -8384,9 +7526,7 @@
             },
             {
               "key": "STRIDE",
-              "value": [
-                "T"
-              ]
+              "value": ["T"]
             }
           ],
           "tags": [
@@ -8409,9 +7549,7 @@
             },
             {
               "key": "STRIDE",
-              "value": [
-                "T"
-              ]
+              "value": ["T"]
             }
           ],
           "tags": [
@@ -8434,9 +7572,7 @@
             },
             {
               "key": "STRIDE",
-              "value": [
-                "T"
-              ]
+              "value": ["T"]
             }
           ],
           "tags": [
@@ -8459,10 +7595,7 @@
             },
             {
               "key": "STRIDE",
-              "value": [
-                "T",
-                "E"
-              ]
+              "value": ["T", "E"]
             }
           ],
           "tags": [
@@ -8485,9 +7618,7 @@
             },
             {
               "key": "STRIDE",
-              "value": [
-                ""
-              ]
+              "value": [""]
             }
           ],
           "tags": [
@@ -8510,10 +7641,7 @@
             },
             {
               "key": "STRIDE",
-              "value": [
-                "T",
-                "E"
-              ]
+              "value": ["T", "E"]
             }
           ],
           "tags": [
@@ -8536,9 +7664,7 @@
             },
             {
               "key": "STRIDE",
-              "value": [
-                "T"
-              ]
+              "value": ["T"]
             }
           ],
           "tags": [
@@ -8561,9 +7687,7 @@
             },
             {
               "key": "STRIDE",
-              "value": [
-                ""
-              ]
+              "value": [""]
             }
           ],
           "tags": [
@@ -8586,9 +7710,7 @@
             },
             {
               "key": "STRIDE",
-              "value": [
-                ""
-              ]
+              "value": [""]
             }
           ],
           "tags": [
@@ -8612,9 +7734,7 @@
             },
             {
               "key": "STRIDE",
-              "value": [
-                ""
-              ]
+              "value": [""]
             }
           ],
           "tags": [
@@ -8637,10 +7757,7 @@
             },
             {
               "key": "STRIDE",
-              "value": [
-                "T",
-                "E"
-              ]
+              "value": ["T", "E"]
             }
           ],
           "tags": [
@@ -8663,9 +7780,7 @@
             },
             {
               "key": "STRIDE",
-              "value": [
-                ""
-              ]
+              "value": [""]
             }
           ],
           "tags": [
@@ -8688,9 +7803,7 @@
             },
             {
               "key": "STRIDE",
-              "value": [
-                ""
-              ]
+              "value": [""]
             }
           ],
           "tags": [
@@ -8713,9 +7826,7 @@
             },
             {
               "key": "STRIDE",
-              "value": [
-                ""
-              ]
+              "value": [""]
             }
           ],
           "tags": [
@@ -8738,9 +7849,7 @@
             },
             {
               "key": "STRIDE",
-              "value": [
-                ""
-              ]
+              "value": [""]
             }
           ],
           "tags": [
@@ -8763,9 +7872,7 @@
             },
             {
               "key": "STRIDE",
-              "value": [
-                ""
-              ]
+              "value": [""]
             }
           ],
           "tags": [
@@ -8788,9 +7895,7 @@
             },
             {
               "key": "STRIDE",
-              "value": [
-                "LM"
-              ]
+              "value": ["LM"]
             }
           ],
           "tags": [
@@ -8813,9 +7918,7 @@
             },
             {
               "key": "STRIDE",
-              "value": [
-                "LM"
-              ]
+              "value": ["LM"]
             }
           ],
           "tags": [
@@ -8838,9 +7941,7 @@
             },
             {
               "key": "STRIDE",
-              "value": [
-                "LM"
-              ]
+              "value": ["LM"]
             }
           ],
           "tags": [
@@ -8863,9 +7964,7 @@
             },
             {
               "key": "STRIDE",
-              "value": [
-                "LM"
-              ]
+              "value": ["LM"]
             }
           ],
           "tags": [
@@ -8888,9 +7987,7 @@
             },
             {
               "key": "STRIDE",
-              "value": [
-                ""
-              ]
+              "value": [""]
             }
           ],
           "tags": [
@@ -8913,10 +8010,7 @@
             },
             {
               "key": "STRIDE",
-              "value": [
-                "T",
-                "I"
-              ]
+              "value": ["T", "I"]
             }
           ],
           "tags": [
@@ -8939,10 +8033,7 @@
             },
             {
               "key": "STRIDE",
-              "value": [
-                "T",
-                "I"
-              ]
+              "value": ["T", "I"]
             }
           ],
           "tags": [
@@ -8965,9 +8056,7 @@
             },
             {
               "key": "STRIDE",
-              "value": [
-                ""
-              ]
+              "value": [""]
             }
           ],
           "tags": [

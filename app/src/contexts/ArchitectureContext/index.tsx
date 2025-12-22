@@ -14,24 +14,29 @@
   limitations under the License.
  ******************************************************************************************************************** */
 
-import { FC, PropsWithChildren } from 'react';
-import ArchitectureLocalStateContextProvider from './components/LocalStateContextProvider';
-import ArchitectureLocalStorageContextProvider from './components/LocalStorageContextProvider';
-import { useArchitectureInfoContext } from './context';
-import { ArchitectureContextProviderProps } from './types';
-import { EXAMPLE_WORKSPACE_ID } from '../../configs/constants';
-import { useExampleContext } from '../ExampleContext';
+import { FC, PropsWithChildren } from "react";
+import ArchitectureLocalStateContextProvider from "./components/LocalStateContextProvider";
+import ArchitectureLocalStorageContextProvider from "./components/LocalStorageContextProvider";
+import { useArchitectureInfoContext } from "./context";
+import { ArchitectureContextProviderProps } from "./types";
+import { EXAMPLE_WORKSPACE_ID } from "../../configs/constants";
+import { useExampleContext } from "../ExampleContext";
 
-const ArchitectureContextProvider: FC<PropsWithChildren<ArchitectureContextProviderProps>> = (props) => {
+const ArchitectureContextProvider: FC<
+  PropsWithChildren<ArchitectureContextProviderProps>
+> = (props) => {
   const { architecture } = useExampleContext();
 
-  return props.workspaceId === EXAMPLE_WORKSPACE_ID ?
-    (<ArchitectureLocalStateContextProvider initialValue={architecture} {...props} />) :
-    (<ArchitectureLocalStorageContextProvider {...props} />);
+  return props.workspaceId === EXAMPLE_WORKSPACE_ID ? (
+    <ArchitectureLocalStateContextProvider
+      initialValue={architecture}
+      {...props}
+    />
+  ) : (
+    <ArchitectureLocalStorageContextProvider {...props} />
+  );
 };
 
 export default ArchitectureContextProvider;
 
-export {
-  useArchitectureInfoContext,
-};
+export { useArchitectureInfoContext };

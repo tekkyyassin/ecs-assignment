@@ -14,11 +14,11 @@
   limitations under the License.
  ******************************************************************************************************************** */
 
-import rehypeStringify from 'rehype-stringify';
-import remarkGfm from 'remark-gfm';
-import remarkParse from 'remark-parse';
-import remarkRehype from 'remark-rehype';
-import { unified } from 'unified';
+import rehypeStringify from "rehype-stringify";
+import remarkGfm from "remark-gfm";
+import remarkParse from "remark-parse";
+import remarkRehype from "remark-rehype";
+import { unified } from "unified";
 
 const parseTableCellContent = async (str: string) => {
   if (str) {
@@ -28,7 +28,7 @@ const parseTableCellContent = async (str: string) => {
       .use(remarkRehype)
       .use(rehypeStringify)
       .process(str);
-    const output = String(htmlOutput).replace(/(\r\n|\n|\r)/gm, '');
+    const output = String(htmlOutput).replace(/(\r\n|\n|\r)/gm, "");
     return output;
   }
 

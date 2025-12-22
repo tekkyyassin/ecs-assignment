@@ -13,7 +13,7 @@
   See the License for the specific language governing permissions and
   limitations under the License.
  ******************************************************************************************************************** */
-import AssumptionList from '../../components/assumptions/AssumptionList';
+import AssumptionList from "../../components/assumptions/AssumptionList";
 
 const UIAssumptionList = () => {
   return <AssumptionList />;

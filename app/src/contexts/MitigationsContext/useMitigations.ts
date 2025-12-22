@@ -14,55 +14,65 @@
   limitations under the License.
  ******************************************************************************************************************** */
 
-import { useCallback } from 'react';
-import { v4 as uuidV4 } from 'uuid';
-import { DEFAULT_NEW_ENTITY_ID } from '../../configs';
-import { Mitigation } from '../../customTypes';
+import { useCallback } from "react";
+import { v4 as uuidV4 } from "uuid";
+import { DEFAULT_NEW_ENTITY_ID } from "../../configs";
+import { Mitigation } from "../../customTypes";
 
 const useMitigations = (
   _mitigationList: Mitigation[],
   setMitigationList: React.Dispatch<React.SetStateAction<Mitigation[]>>,
 ) => {
-  const handlRemoveMitigation = useCallback((id: string) => {
-    setMitigationList((prevList) => prevList.filter(x => x.id !== id));
-  }, [setMitigationList]);
+  const handlRemoveMitigation = useCallback(
+    (id: string) => {
+      setMitigationList((prevList) => prevList.filter((x) => x.id !== id));
+    },
+    [setMitigationList],
+  );
 
-  const handleSaveMitigation = useCallback((mitigation: Mitigation) => {
-    let newEntity = mitigation;
-    setMitigationList((prevList) => {
-      let numericId = mitigation.numericId;
+  const handleSaveMitigation = useCallback(
+    (mitigation: Mitigation) => {
+      let newEntity = mitigation;
+      setMitigationList((prevList) => {
+        let numericId = mitigation.numericId;
 
-      if (numericId === -1) {
-        const maxId = prevList.reduce((max: number, cur: Mitigation) => {
+        if (numericId === -1) {
+          const maxId = prevList.reduce((max: number, cur: Mitigation) => {
+            if (cur.numericId > max) {
+              return cur.numericId;
+            }
 
-          if (cur.numericId > max) {
-            return cur.numericId;
-          }
+            return max;
+          }, 0);
+          numericId = maxId + 1;
+        }
 
-          return max;
-        }, 0);
-        numericId = maxId + 1;
-      }
+        let updated: Mitigation = {
+          ...mitigation,
+          numericId,
+          id:
+            mitigation.id === DEFAULT_NEW_ENTITY_ID ? uuidV4() : mitigation.id,
+          displayOrder: numericId,
+        };
 
-      let updated: Mitigation = {
-        ...mitigation,
-        numericId,
-        id: mitigation.id === DEFAULT_NEW_ENTITY_ID ? uuidV4() : mitigation.id,
-        displayOrder: numericId,
-      };
+        newEntity = { ...updated };
 
-      newEntity = { ...updated };
+        const foundIndex = prevList.findIndex((st) => st.id === updated.id);
+        if (foundIndex >= 0) {
+          return [
+            ...prevList.slice(0, foundIndex),
+            updated,
+            ...prevList.slice(foundIndex + 1),
+          ];
+        }
 
-      const foundIndex = prevList.findIndex(st => st.id === updated.id);
-      if (foundIndex >= 0) {
-        return [...prevList.slice(0, foundIndex), updated, ...prevList.slice(foundIndex + 1)];
-      }
+        return [...prevList, updated];
+      });
 
-      return [...prevList, updated];
-    });
-
-    return newEntity;
-  }, [setMitigationList]);
+      return newEntity;
+    },
+    [setMitigationList],
+  );
 
   return {
     handlRemoveMitigation,

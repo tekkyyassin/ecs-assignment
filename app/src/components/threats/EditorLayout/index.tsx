@@ -15,11 +15,11 @@
  ******************************************************************************************************************** */
 
 /** @jsxImportSource @emotion/react */
-import Container from '@cloudscape-design/components/container';
-import Header from '@cloudscape-design/components/header';
-import SpaceBetween from '@cloudscape-design/components/space-between';
-import React, { FC, PropsWithChildren } from 'react';
-import styles from './styles';
+import Container from "@cloudscape-design/components/container";
+import Header from "@cloudscape-design/components/header";
+import SpaceBetween from "@cloudscape-design/components/space-between";
+import React, { FC, PropsWithChildren } from "react";
+import styles from "./styles";
 
 export interface EditorLayoutProps {
   title: string;
@@ -33,16 +33,18 @@ const EditorLayout: FC<PropsWithChildren<EditorLayoutProps>> = ({
   children,
   secondaryControl,
 }) => {
-  return (<Container
-    header={<Header description={description}>{title}</Header>}
-    footer={secondaryControl}
-  >
-    <div css={styles.container}>
-      <SpaceBetween direction='vertical' size='m'>
-        {children}
-      </SpaceBetween>
-    </div>
-  </Container>);
+  return (
+    <Container
+      header={<Header description={description}>{title}</Header>}
+      footer={secondaryControl}
+    >
+      <div css={styles.container}>
+        <SpaceBetween direction="vertical" size="m">
+          {children}
+        </SpaceBetween>
+      </div>
+    </Container>
+  );
 };
 
 export default EditorLayout;

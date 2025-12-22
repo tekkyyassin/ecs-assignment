@@ -14,18 +14,16 @@
   limitations under the License.
  ******************************************************************************************************************** */
 
-import { DataExchangeFormat } from '../../../../../customTypes';
+import { DataExchangeFormat } from "../../../../../customTypes";
 
-export const getApplicationInfoContent = async (
-  data: DataExchangeFormat,
-) => {
+export const getApplicationInfoContent = async (data: DataExchangeFormat) => {
   const rows: string[] = [];
-  rows.push('## Application Info');
+  rows.push("## Application Info");
   if (data.applicationInfo?.description) {
     rows.push(data.applicationInfo.description);
   }
 
-  rows.push('\n');
+  rows.push("\n");
 
-  return rows.join('\n');
+  return rows.join("\n");
 };

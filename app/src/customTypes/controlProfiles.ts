@@ -14,12 +14,14 @@
   limitations under the License.
  ******************************************************************************************************************** */
 
-import { z } from 'zod';
-import { ControlSchema } from './controls';
+import { z } from "zod";
+import { ControlSchema } from "./controls";
 
-export const ControlProfileSchema = z.object({
-  schema: z.string(),
-  controls: ControlSchema.array().optional(),
-}).strict();
+export const ControlProfileSchema = z
+  .object({
+    schema: z.string(),
+    controls: ControlSchema.array().optional(),
+  })
+  .strict();
 
 export type ControlProfile = z.infer<typeof ControlProfileSchema>;

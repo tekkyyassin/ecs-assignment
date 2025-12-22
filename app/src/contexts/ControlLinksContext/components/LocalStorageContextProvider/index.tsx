@@ -14,14 +14,14 @@
   limitations under the License.
  ******************************************************************************************************************** */
 
-import { FC, PropsWithChildren, useCallback } from 'react';
-import useLocalStorageState from 'use-local-storage-state';
-import { LOCAL_STORAGE_KEY_CONTROL_LINK_LIST } from '../../../../configs/localStorageKeys';
-import { ControlLink } from '../../../../customTypes';
-import removeLocalStorageKey from '../../../../utils/removeLocalStorageKey';
-import { ControlLinksContext } from '../../context';
-import { ControlLinksContextProviderProps } from '../../types';
-import useControlLinks from '../../useControlLinks';
+import { FC, PropsWithChildren, useCallback } from "react";
+import useLocalStorageState from "use-local-storage-state";
+import { LOCAL_STORAGE_KEY_CONTROL_LINK_LIST } from "../../../../configs/localStorageKeys";
+import { ControlLink } from "../../../../customTypes";
+import removeLocalStorageKey from "../../../../utils/removeLocalStorageKey";
+import { ControlLinksContext } from "../../context";
+import { ControlLinksContextProviderProps } from "../../types";
+import useControlLinks from "../../useControlLinks";
 
 const getLocalStorageKey = (workspaceId: string | null) => {
   if (workspaceId) {
@@ -31,14 +31,16 @@ const getLocalStorageKey = (workspaceId: string | null) => {
   return LOCAL_STORAGE_KEY_CONTROL_LINK_LIST;
 };
 
-
-const ControlLinksLocalStorageContextProvider: FC<PropsWithChildren<ControlLinksContextProviderProps>> = ({
-  children,
-  workspaceId: currentWorkspaceId,
-}) => {
-  const [controlLinkList, setControlLinkList, { removeItem }] = useLocalStorageState<ControlLink[]>(getLocalStorageKey(currentWorkspaceId), {
-    defaultValue: [],
-  });
+const ControlLinksLocalStorageContextProvider: FC<
+  PropsWithChildren<ControlLinksContextProviderProps>
+> = ({ children, workspaceId: currentWorkspaceId }) => {
+  const [controlLinkList, setControlLinkList, { removeItem }] =
+    useLocalStorageState<ControlLink[]>(
+      getLocalStorageKey(currentWorkspaceId),
+      {
+        defaultValue: [],
+      },
+    );
 
   const {
     handlRemoveControlLink,
@@ -62,23 +64,27 @@ const ControlLinksLocalStorageContextProvider: FC<PropsWithChildren<ControlLinks
     }, 1000);
   }, []);
 
-  return (<ControlLinksContext.Provider value={{
-    controlLinkList,
-    setControlLinkList,
-    getLinkedControlLinks: handleGetLinkedControlLinks,
-    getMitigtaionThreatLinks: handleGetControlThreatLinks,
-    removeControlLink: handlRemoveControlLink,
-    removeControlLinksByControlId: handlRemoveControlLinksByControlId,
-    removeControlLinksByLinkedEntityId: handlRemoveControlLinksByLinkedEntityId,
-    removeControlLinks: handleRemoveControlLinks,
-    addControlLink: handleAddControlLink,
-    addControlLinks: handleAddControlLinks,
-    removeAllControlLinks: handleRemoveAllControlLinks,
-    onDeleteWorkspace: handleDeleteWorkspace,
-  }}>
-    {children}
-  </ControlLinksContext.Provider>);
+  return (
+    <ControlLinksContext.Provider
+      value={{
+        controlLinkList,
+        setControlLinkList,
+        getLinkedControlLinks: handleGetLinkedControlLinks,
+        getMitigtaionThreatLinks: handleGetControlThreatLinks,
+        removeControlLink: handlRemoveControlLink,
+        removeControlLinksByControlId: handlRemoveControlLinksByControlId,
+        removeControlLinksByLinkedEntityId:
+          handlRemoveControlLinksByLinkedEntityId,
+        removeControlLinks: handleRemoveControlLinks,
+        addControlLink: handleAddControlLink,
+        addControlLinks: handleAddControlLinks,
+        removeAllControlLinks: handleRemoveAllControlLinks,
+        onDeleteWorkspace: handleDeleteWorkspace,
+      }}
+    >
+      {children}
+    </ControlLinksContext.Provider>
+  );
 };
 
 export default ControlLinksLocalStorageContextProvider;
-

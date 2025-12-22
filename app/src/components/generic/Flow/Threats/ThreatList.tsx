@@ -13,8 +13,8 @@
   See the License for the specific language governing permissions and
   limitations under the License.
  ******************************************************************************************************************** */
-import { memo, useState, useEffect } from 'react';
-import { useCollection } from '@cloudscape-design/collection-hooks';
+import { memo, useState, useEffect } from "react";
+import { useCollection } from "@cloudscape-design/collection-hooks";
 import {
   Box,
   Button,
@@ -24,9 +24,16 @@ import {
   Pagination,
   Table,
   PropertyFilter,
-} from '@cloudscape-design/components';
-import { columnDefinitions, getMatchesCountText, paginationLabels, collectionPreferencesProps, filteringConstants, filteringProperties } from './table-config';
-import { useThreatsContext } from '../../../../contexts/ThreatsContext';
+} from "@cloudscape-design/components";
+import {
+  columnDefinitions,
+  getMatchesCountText,
+  paginationLabels,
+  collectionPreferencesProps,
+  filteringConstants,
+  filteringProperties,
+} from "./table-config";
+import { useThreatsContext } from "../../../../contexts/ThreatsContext";
 
 function EmptyState({ title, subtitle, action }) {
   return (
@@ -34,7 +41,7 @@ function EmptyState({ title, subtitle, action }) {
       <Box variant="strong" textAlign="center" color="inherit">
         {title}
       </Box>
-      <Box variant="p" padding={{ bottom: 's' }} color="inherit">
+      <Box variant="p" padding={{ bottom: "s" }} color="inherit">
         {subtitle}
       </Box>
       {action}
@@ -42,123 +49,151 @@ function EmptyState({ title, subtitle, action }) {
   );
 }
 
-export default memo(({ threats, component, changeHandler }: { threats: any; component: any; changeHandler: any } ) => {
+export default memo(
+  ({
+    threats,
+    component,
+    changeHandler,
+  }: {
+    threats: any;
+    component: any;
+    changeHandler: any;
+  }) => {
+    const [data, setData] = useState((component && component.data) || {});
 
-  const [data, setData] = useState((component && component.data) || {});
+    useEffect(() => {
+      setData((component && component.data) || {});
+    }, [component]);
 
-  useEffect(() => {
-    setData((component && component.data) || {});
-  }, [component]);
+    const updateData = (key, value, defaultValue) => {
+      if (component) {
+        setData({ ...data, [key]: value || defaultValue });
+        changeHandler({ [key]: value || defaultValue });
+      }
+    };
 
-  const updateData = (key, value, defaultValue) => {
-    if (component) {
-      setData({ ...data, [key]: value || defaultValue });
-      changeHandler({ [key]: value || defaultValue });
+    const { onThreatListView } = useThreatsContext();
+
+    const [preferences, setPreferences] =
+      useState<CollectionPreferencesProps.Preferences>({
+        pageSize: 10,
+        visibleContent: ["statement", "priority", "stride"],
+        wrapLines: true,
+      });
+
+    const {
+      items,
+      actions,
+      filteredItemsCount,
+      collectionProps,
+      paginationProps,
+      propertyFilterProps,
+    } = useCollection(
+      threats.map((item) => {
+        const output: any = {};
+        output.id = item.id;
+        output.statement = item.statement;
+        output.priority = item.metadata?.find(
+          (m) => m.key === "Priority",
+        )?.value;
+        output.stride = item.metadata
+          ?.find((m) => m.key === "STRIDE")
+          ?.value.sort()
+          .join(",");
+        return output;
+      }),
+      {
+        propertyFiltering: {
+          filteringProperties: filteringProperties,
+          empty: (
+            <EmptyState
+              title="No threats defined"
+              subtitle=""
+              action={
+                <Button onClick={() => onThreatListView?.()}>
+                  Add threats
+                </Button>
+              }
+            />
+          ),
+          noMatch: (
+            <EmptyState
+              title="No matches"
+              subtitle=""
+              action={
+                <Button onClick={() => actions.setFiltering("")}>
+                  Clear filter
+                </Button>
+              }
+            />
+          ),
+        },
+        sorting: {},
+        pagination: { pageSize: preferences.pageSize },
+        selection: {
+          defaultSelectedItems: component?.data.threats,
+          keepSelection: true,
+          trackBy: "id",
+        },
+      },
+    );
+
+    if (!component) {
+      return (
+        <EmptyState
+          title="Select a component to view and assign threats"
+          subtitle=""
+          action={null}
+        />
+      );
     }
-  };
 
-  const { onThreatListView } = useThreatsContext();
-
-  const [preferences, setPreferences] = useState<CollectionPreferencesProps.Preferences>({
-    pageSize: 10,
-    visibleContent: ['statement', 'priority', 'stride'],
-    wrapLines: true,
-  });
-
-  const {
-    items,
-    actions,
-    filteredItemsCount,
-    collectionProps,
-    paginationProps,
-    propertyFilterProps,
-  } = useCollection(
-    threats.map((item) => {
-      const output: any = {};
-      output.id = item.id;
-      output.statement = item.statement;
-      output.priority = item.metadata?.find(m => m.key === 'Priority')?.value;
-      output.stride = item.metadata?.find(m => m.key === 'STRIDE')?.value.sort().join(',');
-      return output;
-    }),
-    {
-      propertyFiltering: {
-        filteringProperties: filteringProperties,
-        empty: (
-          <EmptyState
-            title="No threats defined"
-            subtitle=""
-            action={<Button onClick={() => onThreatListView?.()}>Add threats</Button>}
-          />
-        ),
-        noMatch: (
-          <EmptyState
-            title="No matches"
-            subtitle=""
-            action={
-              <Button onClick={() => actions.setFiltering('')}>
-              Clear filter
-              </Button>
+    return (
+      <Table
+        {...collectionProps}
+        selectionType="multi"
+        header={
+          <Header
+            counter={
+              data.threats?.length
+                ? `(${data.threats.length}/${threats.length})`
+                : `(${threats.length})`
             }
+          >
+            Threats
+          </Header>
+        }
+        columnDefinitions={columnDefinitions}
+        visibleColumns={preferences.visibleContent}
+        items={items}
+        trackBy="id"
+        selectedItems={data.threats}
+        onSelectionChange={(e) =>
+          updateData("threats", e.detail.selectedItems, [])
+        }
+        stickyHeader
+        resizableColumns
+        wrapLines
+        stripedRows
+        pagination={
+          <Pagination {...paginationProps} ariaLabels={paginationLabels} />
+        }
+        preferences={
+          <CollectionPreferences
+            {...collectionPreferencesProps}
+            preferences={preferences}
+            onConfirm={({ detail }) => setPreferences(detail)}
           />
-        ),
-      },
-      sorting: {},
-      pagination: { pageSize: preferences.pageSize },
-      selection: {
-        defaultSelectedItems: component?.data.threats,
-        keepSelection: true,
-        trackBy: 'id',
-      },
-    });
-
-  if (!component) {
-    return <EmptyState title="Select a component to view and assign threats" subtitle="" action={null} />;
-  }
-
-  return (
-    <Table
-      {...collectionProps}
-      selectionType="multi"
-      header={
-        <Header
-          counter={
-            data.threats?.length
-              ? `(${data.threats.length}/${threats.length})`
-              : `(${threats.length})`
-          }
-        >
-          Threats
-        </Header>
-      }
-      columnDefinitions={columnDefinitions}
-      visibleColumns={preferences.visibleContent}
-      items={items}
-      trackBy="id"
-      selectedItems={data.threats}
-      onSelectionChange={(e) => updateData('threats', e.detail.selectedItems, [])}
-      stickyHeader
-      resizableColumns
-      wrapLines
-      stripedRows
-      pagination={
-        <Pagination {...paginationProps} ariaLabels={paginationLabels} />
-      }
-      preferences={
-        <CollectionPreferences
-          {...collectionPreferencesProps}
-          preferences={preferences}
-          onConfirm={({ detail }) => setPreferences(detail)}
-        />
-      }
-      filter={
-        <PropertyFilter
-          {...propertyFilterProps}
-          countText={getMatchesCountText(filteredItemsCount)}
-          expandToViewport={true}
-          i18nStrings={filteringConstants}
-        />
-      }
-    />
-  );
-});
+        }
+        filter={
+          <PropertyFilter
+            {...propertyFilterProps}
+            countText={getMatchesCountText(filteredItemsCount)}
+            expandToViewport={true}
+            i18nStrings={filteringConstants}
+          />
+        }
+      />
+    );
+  },
+);

@@ -14,18 +14,18 @@
   limitations under the License.
  ******************************************************************************************************************** */
 
-import * as awsui from '@cloudscape-design/design-tokens';
-import { css } from '@emotion/react';
+import * as awsui from "@cloudscape-design/design-tokens";
+import { css } from "@emotion/react";
 
 const styles = {
   print: css({
-    '@media print': {
+    "@media print": {
       color: `${awsui.colorBackgroundHomeHeader} !important`,
     },
   }),
   hiddenPrint: css({
-    '@media print': {
-      display: 'none !important;',
+    "@media print": {
+      display: "none !important;",
     },
   }),
 };

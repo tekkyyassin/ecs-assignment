@@ -14,46 +14,58 @@
   limitations under the License.
  ******************************************************************************************************************** */
 
-import { DataExchangeFormat } from '../../../../../customTypes';
-import escapeMarkdown from '../../../../../utils/escapeMarkdown';
-import parseTableCellContent from '../../../../../utils/parseTableCellContent';
-import standardizeNumericId from '../../../../../utils/standardizeNumericId';
+import { DataExchangeFormat } from "../../../../../customTypes";
+import escapeMarkdown from "../../../../../utils/escapeMarkdown";
+import parseTableCellContent from "../../../../../utils/parseTableCellContent";
+import standardizeNumericId from "../../../../../utils/standardizeNumericId";
 
-export const getMitigationsContent = async (
-  data: DataExchangeFormat,
-) => {
+export const getMitigationsContent = async (data: DataExchangeFormat) => {
   const rows: string[] = [];
-  rows.push('## Mitigations');
+  rows.push("## Mitigations");
 
-  rows.push('\n');
+  rows.push("\n");
 
-  rows.push('| Mitigation Number | Mitigation | Threats Mitigating | Assumptions | Comments |');
-  rows.push('| --- | --- | --- | --- | --- |');
+  rows.push(
+    "| Mitigation Number | Mitigation | Threats Mitigating | Assumptions | Comments |",
+  );
+  rows.push("| --- | --- | --- | --- | --- |");
 
   if (data.mitigations) {
     const promises = data.mitigations.map(async (x) => {
-      const threats = data.mitigationLinks?.filter(ml => ml.mitigationId === x.id) || [];
-      const assumpptionLinks = data.assumptionLinks?.filter(al => al.linkedId === x.id) || [];
+      const threats =
+        data.mitigationLinks?.filter((ml) => ml.mitigationId === x.id) || [];
+      const assumpptionLinks =
+        data.assumptionLinks?.filter((al) => al.linkedId === x.id) || [];
 
-      const threatsContent = threats.map(tl => {
-        const threat = data.threats?.find(s => s.id === tl.linkedId);
-        if (threat) {
-          const threatId = `T-${standardizeNumericId(threat.numericId)}`;
-          return `[**${threatId}**](#${threatId}): ${escapeMarkdown(threat.statement || '')}`;
-        }
-        return null;
-      }).filter(t => !!t).join('<br/>');
+      const threatsContent = threats
+        .map((tl) => {
+          const threat = data.threats?.find((s) => s.id === tl.linkedId);
+          if (threat) {
+            const threatId = `T-${standardizeNumericId(threat.numericId)}`;
+            return `[**${threatId}**](#${threatId}): ${escapeMarkdown(threat.statement || "")}`;
+          }
+          return null;
+        })
+        .filter((t) => !!t)
+        .join("<br/>");
 
-      const assumptionsContent = assumpptionLinks.map(al => {
-        const assumption = data.assumptions?.find(a => a.id === al.assumptionId);
-        if (assumption) {
-          const assumptionId = `A-${standardizeNumericId(assumption.numericId)}`;
-          return `[**${assumptionId}**](#${assumptionId}): ${escapeMarkdown(assumption.content)}`;
-        }
-        return null;
-      }).filter(a => !!a).join('<br/>');
+      const assumptionsContent = assumpptionLinks
+        .map((al) => {
+          const assumption = data.assumptions?.find(
+            (a) => a.id === al.assumptionId,
+          );
+          if (assumption) {
+            const assumptionId = `A-${standardizeNumericId(assumption.numericId)}`;
+            return `[**${assumptionId}**](#${assumptionId}): ${escapeMarkdown(assumption.content)}`;
+          }
+          return null;
+        })
+        .filter((a) => !!a)
+        .join("<br/>");
 
-      const comments = await parseTableCellContent((x.metadata?.find(m => m.key === 'Comments')?.value as string) || '');
+      const comments = await parseTableCellContent(
+        (x.metadata?.find((m) => m.key === "Comments")?.value as string) || "",
+      );
 
       const mitigationId = `M-${standardizeNumericId(x.numericId)}`;
       return `| ${mitigationId} | ${escapeMarkdown(x.content)} | ${threatsContent} | ${assumptionsContent} | ${comments} |`;
@@ -62,7 +74,7 @@ export const getMitigationsContent = async (
     rows.push(...(await Promise.all(promises)));
   }
 
-  rows.push('\n');
+  rows.push("\n");
 
-  return rows.join('\n');
+  return rows.join("\n");
 };

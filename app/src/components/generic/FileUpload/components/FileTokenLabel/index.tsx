@@ -14,12 +14,12 @@
   limitations under the License.
  ******************************************************************************************************************** */
 
-import Spacebetween from '@cloudscape-design/components/space-between';
-import StatusIndicator from '@cloudscape-design/components/status-indicator';
-import TextContent from '@cloudscape-design/components/text-content';
-import { FC } from 'react';
-import getDisplayLastModified from '../../utils/getDisplayLastModified';
-import getDisplaySize from '../../utils/getDisplaySize';
+import Spacebetween from "@cloudscape-design/components/space-between";
+import StatusIndicator from "@cloudscape-design/components/status-indicator";
+import TextContent from "@cloudscape-design/components/text-content";
+import { FC } from "react";
+import getDisplayLastModified from "../../utils/getDisplayLastModified";
+import getDisplaySize from "../../utils/getDisplaySize";
 
 export interface FileTokenLabelProps {
   name?: string;
@@ -27,15 +27,25 @@ export interface FileTokenLabelProps {
   lastModified?: number;
 }
 
-const FileTokenLabel: FC<FileTokenLabelProps> = ({ name, size, lastModified }) => {
+const FileTokenLabel: FC<FileTokenLabelProps> = ({
+  name,
+  size,
+  lastModified,
+}) => {
   return (
     <Spacebetween direction="horizontal" size="xs">
       <StatusIndicator type="success" />
       <TextContent>
         <Spacebetween direction="vertical" size="xxxs">
-          <span key='name'><b>{name}</b></span>
-          <span key='size'>{getDisplaySize(size)}</span>
-          {lastModified && <span key='lastModified'>{getDisplayLastModified(lastModified)}</span>}
+          <span key="name">
+            <b>{name}</b>
+          </span>
+          <span key="size">{getDisplaySize(size)}</span>
+          {lastModified && (
+            <span key="lastModified">
+              {getDisplayLastModified(lastModified)}
+            </span>
+          )}
         </Spacebetween>
       </TextContent>
     </Spacebetween>

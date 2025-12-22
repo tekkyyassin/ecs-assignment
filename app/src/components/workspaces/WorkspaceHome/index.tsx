@@ -14,9 +14,9 @@
   limitations under the License.
  ******************************************************************************************************************** */
 
-import useHasContent from '../../../hooks/useHasContent';
-import LandingPage from '../LandingPage';
-import WorkspaceInsight from '../WorkspaceInsights';
+import useHasContent from "../../../hooks/useHasContent";
+import LandingPage from "../LandingPage";
+import WorkspaceInsight from "../WorkspaceInsights";
 
 const WorkspaceHome = () => {
   const [hasContent] = useHasContent();

@@ -1,4 +1,3 @@
-import { ContextProviderBaseProps } from '../types';
+import { ContextProviderBaseProps } from "../types";
 
-export interface FlowContextProviderProps extends ContextProviderBaseProps {
-}
+export interface FlowContextProviderProps extends ContextProviderBaseProps {}

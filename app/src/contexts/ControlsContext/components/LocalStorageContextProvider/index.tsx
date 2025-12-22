@@ -14,14 +14,14 @@
   limitations under the License.
  ******************************************************************************************************************** */
 
-import { FC, PropsWithChildren, useCallback } from 'react';
-import useLocalStorageState from 'use-local-storage-state';
-import { LOCAL_STORAGE_KEY_CONTROL_LIST } from '../../../../configs/localStorageKeys';
-import { Control } from '../../../../customTypes';
-import removeLocalStorageKey from '../../../../utils/removeLocalStorageKey';
-import { ControlsContext } from '../../context';
-import { ControlsContextProviderProps } from '../../types';
-import useControls from '../../useControls';
+import { FC, PropsWithChildren, useCallback } from "react";
+import useLocalStorageState from "use-local-storage-state";
+import { LOCAL_STORAGE_KEY_CONTROL_LIST } from "../../../../configs/localStorageKeys";
+import { Control } from "../../../../customTypes";
+import removeLocalStorageKey from "../../../../utils/removeLocalStorageKey";
+import { ControlsContext } from "../../context";
+import { ControlsContextProviderProps } from "../../types";
+import useControls from "../../useControls";
 
 const getLocalStorageKey = (workspaceId: string | null) => {
   if (workspaceId) {
@@ -31,18 +31,19 @@ const getLocalStorageKey = (workspaceId: string | null) => {
   return LOCAL_STORAGE_KEY_CONTROL_LIST;
 };
 
-const ControlsLocalStorageContextProvider: FC<PropsWithChildren<ControlsContextProviderProps>> = ({
-  children,
-  workspaceId: currentWorkspaceId,
-}) => {
-  const [controlList, setControlList, { removeItem }] = useLocalStorageState<Control[]>(getLocalStorageKey(currentWorkspaceId), {
+const ControlsLocalStorageContextProvider: FC<
+  PropsWithChildren<ControlsContextProviderProps>
+> = ({ children, workspaceId: currentWorkspaceId }) => {
+  const [controlList, setControlList, { removeItem }] = useLocalStorageState<
+    Control[]
+  >(getLocalStorageKey(currentWorkspaceId), {
     defaultValue: [],
   });
 
-  const {
-    handlRemoveControl,
-    handleSaveControl,
-  } = useControls(controlList, setControlList);
+  const { handlRemoveControl, handleSaveControl } = useControls(
+    controlList,
+    setControlList,
+  );
 
   const handleRemoveAllControls = useCallback(async () => {
     removeItem();
@@ -55,17 +56,20 @@ const ControlsLocalStorageContextProvider: FC<PropsWithChildren<ControlsContextP
     }, 1000);
   }, []);
 
-  return (<ControlsContext.Provider value={{
-    controlList,
-    setControlList,
-    removeControl: handlRemoveControl,
-    saveControl: handleSaveControl,
-    removeAllControls: handleRemoveAllControls,
-    onDeleteWorkspace: handleDeleteWorkspace,
-  }}>
-    {children}
-  </ControlsContext.Provider>);
+  return (
+    <ControlsContext.Provider
+      value={{
+        controlList,
+        setControlList,
+        removeControl: handlRemoveControl,
+        saveControl: handleSaveControl,
+        removeAllControls: handleRemoveAllControls,
+        onDeleteWorkspace: handleDeleteWorkspace,
+      }}
+    >
+      {children}
+    </ControlsContext.Provider>
+  );
 };
 
 export default ControlsLocalStorageContextProvider;
-

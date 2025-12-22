@@ -13,31 +13,32 @@
   See the License for the specific language governing permissions and
   limitations under the License.
  ******************************************************************************************************************** */
-import { FC } from 'react';
+import { FC } from "react";
 
-import StandaloneAppLayout from '../../../../components/StandaloneAppLayout';
-import useNotifications from '../../../../hooks/useNotifications';
-import ThreatStatementGenerator from '../../../ThreatStatementGenerator';
+import StandaloneAppLayout from "../../../../components/StandaloneAppLayout";
+import useNotifications from "../../../../hooks/useNotifications";
+import ThreatStatementGenerator from "../../../ThreatStatementGenerator";
 
-const defaultHref = process.env.PUBLIC_URL || '/';
+const defaultHref = process.env.PUBLIC_URL || "/";
 
 export interface StandaloneProps {
   composeMode: string | null;
 }
 
-const Standalone: FC<StandaloneProps> = ({
-  composeMode,
-}) => {
+const Standalone: FC<StandaloneProps> = ({ composeMode }) => {
   const notifications = useNotifications(true);
   return (
     <StandaloneAppLayout
-      title='threat-composer'
+      title="threat-composer"
       href={defaultHref}
       notifications={notifications}
     >
-      <ThreatStatementGenerator composerMode={composeMode !== 'EditorOnly' ? 'ThreatsOnly' : 'EditorOnly'} />
+      <ThreatStatementGenerator
+        composerMode={
+          composeMode !== "EditorOnly" ? "ThreatsOnly" : "EditorOnly"
+        }
+      />
     </StandaloneAppLayout>
-
   );
 };
 

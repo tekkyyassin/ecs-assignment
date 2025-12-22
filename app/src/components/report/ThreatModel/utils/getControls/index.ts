@@ -14,46 +14,58 @@
   limitations under the License.
  ******************************************************************************************************************** */
 
-import { DataExchangeFormat } from '../../../../../customTypes';
-import escapeMarkdown from '../../../../../utils/escapeMarkdown';
-import parseTableCellContent from '../../../../../utils/parseTableCellContent';
-import standardizeNumericId from '../../../../../utils/standardizeNumericId';
+import { DataExchangeFormat } from "../../../../../customTypes";
+import escapeMarkdown from "../../../../../utils/escapeMarkdown";
+import parseTableCellContent from "../../../../../utils/parseTableCellContent";
+import standardizeNumericId from "../../../../../utils/standardizeNumericId";
 
-export const getControlsContent = async (
-  data: DataExchangeFormat,
-) => {
+export const getControlsContent = async (data: DataExchangeFormat) => {
   const rows: string[] = [];
-  rows.push('## Security Controls');
+  rows.push("## Security Controls");
 
-  rows.push('\n');
+  rows.push("\n");
 
-  rows.push('| Control Number | Control | Threats Mitigating | Mitigations | Comments |');
-  rows.push('| --- | --- | --- | --- | --- |');
+  rows.push(
+    "| Control Number | Control | Threats Mitigating | Mitigations | Comments |",
+  );
+  rows.push("| --- | --- | --- | --- | --- |");
 
   if (data.controls) {
     const promises = data.controls.map(async (x) => {
-      const threats = data.controlLinks?.filter(cl => cl.controlId === x.id) || [];
-      const mitigationLinks = data.mitigationLinks?.filter(ml => ml.linkedId === x.id) || [];
+      const threats =
+        data.controlLinks?.filter((cl) => cl.controlId === x.id) || [];
+      const mitigationLinks =
+        data.mitigationLinks?.filter((ml) => ml.linkedId === x.id) || [];
 
-      const threatsContent = threats.map(tl => {
-        const threat = data.threats?.find(s => s.id === tl.linkedId);
-        if (threat) {
-          const threatId = `T-${standardizeNumericId(threat.numericId)}`;
-          return `[**${threatId}**](#${threatId}): ${escapeMarkdown(threat.statement || '')}`;
-        }
-        return null;
-      }).filter(t => !!t).join('<br/>');
+      const threatsContent = threats
+        .map((tl) => {
+          const threat = data.threats?.find((s) => s.id === tl.linkedId);
+          if (threat) {
+            const threatId = `T-${standardizeNumericId(threat.numericId)}`;
+            return `[**${threatId}**](#${threatId}): ${escapeMarkdown(threat.statement || "")}`;
+          }
+          return null;
+        })
+        .filter((t) => !!t)
+        .join("<br/>");
 
-      const mitigationsContent = mitigationLinks.map(ml => {
-        const mitigation = data.mitigations?.find(m => m.id === ml.mitigationId);
-        if (mitigation) {
-          const mitigationId = `A-${standardizeNumericId(mitigation.numericId)}`;
-          return `[**${mitigationId}**](#${mitigationId}): ${escapeMarkdown(mitigation.content)}`;
-        }
-        return null;
-      }).filter(m => !!m).join('<br/>');
+      const mitigationsContent = mitigationLinks
+        .map((ml) => {
+          const mitigation = data.mitigations?.find(
+            (m) => m.id === ml.mitigationId,
+          );
+          if (mitigation) {
+            const mitigationId = `A-${standardizeNumericId(mitigation.numericId)}`;
+            return `[**${mitigationId}**](#${mitigationId}): ${escapeMarkdown(mitigation.content)}`;
+          }
+          return null;
+        })
+        .filter((m) => !!m)
+        .join("<br/>");
 
-      const comments = await parseTableCellContent((x.metadata?.find(m => m.key === 'Comments')?.value as string) || '');
+      const comments = await parseTableCellContent(
+        (x.metadata?.find((m) => m.key === "Comments")?.value as string) || "",
+      );
 
       const controlId = `C-${standardizeNumericId(x.numericId)}`;
       return `| ${controlId} | ${escapeMarkdown(x.content)} | ${threatsContent} | ${mitigationsContent} | ${escapeMarkdown(comments)} |`;
@@ -62,7 +74,7 @@ export const getControlsContent = async (
     rows.push(...(await Promise.all(promises)));
   }
 
-  rows.push('\n');
+  rows.push("\n");
 
-  return rows.join('\n');
+  return rows.join("\n");
 };

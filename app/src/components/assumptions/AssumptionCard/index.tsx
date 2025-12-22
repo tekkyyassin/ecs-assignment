@@ -14,20 +14,20 @@
   limitations under the License.
  ******************************************************************************************************************** */
 
-import Button from '@cloudscape-design/components/button';
-import ColumnLayout from '@cloudscape-design/components/column-layout';
-import SpaceBetween from '@cloudscape-design/components/space-between';
-import TextContent from '@cloudscape-design/components/text-content';
-import { FC, useState, useCallback } from 'react';
-import { Assumption, AssumptionSchema } from '../../../customTypes';
-import useEditMetadata from '../../../hooks/useEditMetadata';
-import CopyToClipbord from '../../generic/CopyToClipboard';
-import MetadataEditor from '../../generic/EntityMetadataEditor';
-import GenericCard from '../../generic/GenericCard';
-import Textarea from '../../generic/Textarea';
-import AssumptionMitigationLink from '../AssumptionMitigationLink';
-import AssumptionThreatLink from '../AssumptionThreatLink';
-import AssumptionControlLink from '../AssumptionControlLink';
+import Button from "@cloudscape-design/components/button";
+import ColumnLayout from "@cloudscape-design/components/column-layout";
+import SpaceBetween from "@cloudscape-design/components/space-between";
+import TextContent from "@cloudscape-design/components/text-content";
+import { FC, useState, useCallback } from "react";
+import { Assumption, AssumptionSchema } from "../../../customTypes";
+import useEditMetadata from "../../../hooks/useEditMetadata";
+import CopyToClipbord from "../../generic/CopyToClipboard";
+import MetadataEditor from "../../generic/EntityMetadataEditor";
+import GenericCard from "../../generic/GenericCard";
+import Textarea from "../../generic/Textarea";
+import AssumptionMitigationLink from "../AssumptionMitigationLink";
+import AssumptionThreatLink from "../AssumptionThreatLink";
+import AssumptionControlLink from "../AssumptionControlLink";
 
 export interface AssumptionCardProps {
   assumption: Assumption;
@@ -65,54 +65,57 @@ const AssumptionCard: FC<AssumptionCardProps> = ({
 
   const handleMetadataEdit = useEditMetadata(onEdit);
 
-  return (<GenericCard
-    header={`Assumption ${assumption.numericId}`}
-    entityId={assumption.id}
-    tags={assumption.tags}
-    onCopy={() => onCopy?.(assumption.id)}
-    onRemove={() => onRemove?.(assumption.id)}
-    onEdit={() => setEditingMode(true)}
-    onAddTagToEntity={(_entityId, tag) => onAddTagToAssumption?.(assumption, tag)}
-    onRemoveTagFromEntity={(_entityId, tag) => onRemoveTagFromAssumption?.(assumption, tag)}
-  >
-    <SpaceBetween direction='vertical' size='s'>
-      <ColumnLayout columns={2}>
-        {editingMode ? (
-          <SpaceBetween direction='vertical' size='s'>
-            <Textarea
-              value={editingValue}
-              onChange={({ detail }) => setEditingValue(detail.value)}
-              validateData={AssumptionSchema.shape.content.safeParse}
-              singleLine
-            />
-            <SpaceBetween direction='horizontal' size='s'>
-              <Button onClick={handleCancel}>Cancel</Button>
-              <Button variant='primary' onClick={handleSave}>Save</Button>
+  return (
+    <GenericCard
+      header={`Assumption ${assumption.numericId}`}
+      entityId={assumption.id}
+      tags={assumption.tags}
+      onCopy={() => onCopy?.(assumption.id)}
+      onRemove={() => onRemove?.(assumption.id)}
+      onEdit={() => setEditingMode(true)}
+      onAddTagToEntity={(_entityId, tag) =>
+        onAddTagToAssumption?.(assumption, tag)
+      }
+      onRemoveTagFromEntity={(_entityId, tag) =>
+        onRemoveTagFromAssumption?.(assumption, tag)
+      }
+    >
+      <SpaceBetween direction="vertical" size="s">
+        <ColumnLayout columns={2}>
+          {editingMode ? (
+            <SpaceBetween direction="vertical" size="s">
+              <Textarea
+                value={editingValue}
+                onChange={({ detail }) => setEditingValue(detail.value)}
+                validateData={AssumptionSchema.shape.content.safeParse}
+                singleLine
+              />
+              <SpaceBetween direction="horizontal" size="s">
+                <Button onClick={handleCancel}>Cancel</Button>
+                <Button variant="primary" onClick={handleSave}>
+                  Save
+                </Button>
+              </SpaceBetween>
             </SpaceBetween>
-          </SpaceBetween>) : (<TextContent>
-          <CopyToClipbord>
-            {assumption.content || ''}
-          </CopyToClipbord>
-        </TextContent>)}
-        <SpaceBetween direction='vertical' size='s'>
-          <AssumptionThreatLink
-            assumptionId={assumption.id}
-          />
-          <AssumptionControlLink
-            assumptionId={assumption.id}
-          />
-          <AssumptionMitigationLink
-            assumptionId={assumption.id}
-          />
-        </SpaceBetween>
-      </ColumnLayout>
-      <MetadataEditor
-        variant='default'
-        entity={assumption}
-        onEditEntity={handleMetadataEdit}
-      />
-    </SpaceBetween>
-  </GenericCard>);
+          ) : (
+            <TextContent>
+              <CopyToClipbord>{assumption.content || ""}</CopyToClipbord>
+            </TextContent>
+          )}
+          <SpaceBetween direction="vertical" size="s">
+            <AssumptionThreatLink assumptionId={assumption.id} />
+            <AssumptionControlLink assumptionId={assumption.id} />
+            <AssumptionMitigationLink assumptionId={assumption.id} />
+          </SpaceBetween>
+        </ColumnLayout>
+        <MetadataEditor
+          variant="default"
+          entity={assumption}
+          onEditEntity={handleMetadataEdit}
+        />
+      </SpaceBetween>
+    </GenericCard>
+  );
 };
 
 export default AssumptionCard;

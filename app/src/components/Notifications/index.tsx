@@ -13,10 +13,12 @@
   See the License for the specific language governing permissions and
   limitations under the License.
  ******************************************************************************************************************** */
-import Flashbar, { FlashbarProps } from '@cloudscape-design/components/flashbar';
-import Link from '@cloudscape-design/components/link';
-import * as awsui from '@cloudscape-design/design-tokens';
-import { FC, useEffect, useState } from 'react';
+import Flashbar, {
+  FlashbarProps,
+} from "@cloudscape-design/components/flashbar";
+import Link from "@cloudscape-design/components/link";
+import * as awsui from "@cloudscape-design/design-tokens";
+import { FC, useEffect, useState } from "react";
 
 export interface NotificationsProps {
   addPadding?: boolean;
@@ -24,7 +26,7 @@ export interface NotificationsProps {
 
 const NOTIFICATIONS_VERSION = 1;
 
-const LOCAL_STORAGE_KEY = 'ThreatComposer.GithubNotificationsVersion';
+const LOCAL_STORAGE_KEY = "ThreatComposer.GithubNotificationsVersion";
 
 const Notifications: FC<NotificationsProps> = ({ addPadding }) => {
   const [items, setItems] = useState<FlashbarProps.MessageDefinition[]>([]);
@@ -34,45 +36,78 @@ const Notifications: FC<NotificationsProps> = ({ addPadding }) => {
     if (key !== NOTIFICATIONS_VERSION.toString()) {
       setItems([
         {
-          type: 'info',
+          type: "info",
           dismissible: true,
-          dismissLabel: 'Dismiss message',
-          onDismiss: () => setItems(prevItems => prevItems.filter((x) => x.id !== 'message_1')),
+          dismissLabel: "Dismiss message",
+          onDismiss: () =>
+            setItems((prevItems) =>
+              prevItems.filter((x) => x.id !== "message_1"),
+            ),
           content: (
             <>
-              The 'Full' mode is now the default. To view the 'Threats Only' mode navigate the {' '}
-              <Link color="inverted" href="https://awslabs.github.io/threat-composer?mode=ThreatsOnly" external={false}>
+              The 'Full' mode is now the default. To view the 'Threats Only'
+              mode navigate the{" "}
+              <Link
+                color="inverted"
+                href="https://awslabs.github.io/threat-composer?mode=ThreatsOnly"
+                external={false}
+              >
                 ThreatsOnly
-              </Link> URL, and bookmark or future reference.
+              </Link>{" "}
+              URL, and bookmark or future reference.
             </>
           ),
-          id: 'message_1',
+          id: "message_1",
         },
         {
-          type: 'info',
+          type: "info",
           dismissible: true,
-          dismissLabel: 'Dismiss message',
-          onDismiss: () => setItems(prevItems => prevItems.filter((x) => x.id !== 'message_2')),
+          dismissLabel: "Dismiss message",
+          onDismiss: () =>
+            setItems((prevItems) =>
+              prevItems.filter((x) => x.id !== "message_2"),
+            ),
           content: (
             <>
-              This GitHub Page is provided for demonstration purposes only. Refer to {' '}
-              <Link color="inverted" href="https://github.com/awslabs/threat-composer" external={true}>
+              This GitHub Page is provided for demonstration purposes only.
+              Refer to{" "}
+              <Link
+                color="inverted"
+                href="https://github.com/awslabs/threat-composer"
+                external={true}
+              >
                 threat-composer GitHub Repo
-              </Link> for self-hosting deployment instructions.
+              </Link>{" "}
+              for self-hosting deployment instructions.
             </>
           ),
-          id: 'message_2',
+          id: "message_2",
         },
       ]);
     }
 
-    window.sessionStorage.setItem(LOCAL_STORAGE_KEY, NOTIFICATIONS_VERSION.toString());
+    window.sessionStorage.setItem(
+      LOCAL_STORAGE_KEY,
+      NOTIFICATIONS_VERSION.toString(),
+    );
   }, []);
 
-  return items && items.length > 0 ? (<div style={addPadding ? {
-    padding: awsui.spaceScaledL,
-    backgroundColor: awsui.colorBackgroundHomeHeader,
-  } : undefined}><Flashbar items={items} /></div>) : <></>;
+  return items && items.length > 0 ? (
+    <div
+      style={
+        addPadding
+          ? {
+              padding: awsui.spaceScaledL,
+              backgroundColor: awsui.colorBackgroundHomeHeader,
+            }
+          : undefined
+      }
+    >
+      <Flashbar items={items} />
+    </div>
+  ) : (
+    <></>
+  );
 };
 
 export default Notifications;

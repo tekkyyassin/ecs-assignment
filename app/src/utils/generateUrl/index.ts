@@ -13,11 +13,16 @@
   See the License for the specific language governing permissions and
   limitations under the License.
  ******************************************************************************************************************** */
-import { generatePath } from 'react-router-dom';
+import { generatePath } from "react-router-dom";
 
-const ROUTE_BASE_PATH=process.env.REACT_APP_ROUTE_BASE_PATH || '';
+const ROUTE_BASE_PATH = process.env.REACT_APP_ROUTE_BASE_PATH || "";
 
-const generateUrl = (path: string, searchParams: URLSearchParams, workspaceId: string, threatId?: string) => {
+const generateUrl = (
+  path: string,
+  searchParams: URLSearchParams,
+  workspaceId: string,
+  threatId?: string,
+) => {
   if (Array.from(searchParams.entries()).length > 0) {
     return `${ROUTE_BASE_PATH}${generatePath(path, {
       workspaceId,

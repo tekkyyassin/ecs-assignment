@@ -14,8 +14,8 @@
   limitations under the License.
  ******************************************************************************************************************** */
 
-import { useContext, createContext } from 'react';
-import { DiagramInfo } from '../../customTypes';
+import { useContext, createContext } from "react";
+import { DiagramInfo } from "../../customTypes";
 
 export interface DiagramInfoContextApi {
   diagramInfo: DiagramInfo;
@@ -26,11 +26,12 @@ export interface DiagramInfoContextApi {
 
 const initialState: DiagramInfoContextApi = {
   diagramInfo: {},
-  setDiagramInfo: () => { },
+  setDiagramInfo: () => {},
   removeDiagramInfo: () => Promise.resolve(),
   onDeleteWorkspace: () => Promise.resolve(),
 };
 
-export const DiagramInfoContext = createContext<DiagramInfoContextApi>(initialState);
+export const DiagramInfoContext =
+  createContext<DiagramInfoContextApi>(initialState);
 
 export const useDiagramInfoContext = () => useContext(DiagramInfoContext);

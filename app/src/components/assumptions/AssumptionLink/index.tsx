@@ -14,15 +14,15 @@
   limitations under the License.
  ******************************************************************************************************************** */
 
-import { FC, useEffect, useState, useCallback } from 'react';
-import { useAssumptionLinksContext } from '../../../contexts/AssumptionLinksContext/context';
-import { useAssumptionsContext } from '../../../contexts/AssumptionsContext/context';
-import { AssumptionLink } from '../../../customTypes';
-import AssumptionLinkView from '../AssumptionLinkView';
+import { FC, useEffect, useState, useCallback } from "react";
+import { useAssumptionLinksContext } from "../../../contexts/AssumptionLinksContext/context";
+import { useAssumptionsContext } from "../../../contexts/AssumptionsContext/context";
+import { AssumptionLink } from "../../../customTypes";
+import AssumptionLinkView from "../AssumptionLinkView";
 
 export interface AssumptionLinkProps {
   linkedEntityId: string;
-  type: AssumptionLink['type'];
+  type: AssumptionLink["type"];
 }
 
 const AssumptionLinkComponent: FC<AssumptionLinkProps> = ({
@@ -39,38 +39,43 @@ const AssumptionLinkComponent: FC<AssumptionLinkProps> = ({
     setAssumptionLinks(_assumptionLinks || []);
   }, [getLinkedAssumptionLinks, linkedEntityId]);
 
-  const {
-    addAssumptionLink,
-    removeAssumptionLink,
-  } = useAssumptionLinksContext();
+  const { addAssumptionLink, removeAssumptionLink } =
+    useAssumptionLinksContext();
 
-  const handleAddAssumptionLink = useCallback((assumptionIdOrNewAssumption: string) => {
-    if (assumptionList.find(a => a.id === assumptionIdOrNewAssumption)) {
-      addAssumptionLink({
-        type,
-        linkedId: linkedEntityId,
-        assumptionId: assumptionIdOrNewAssumption,
-      });
-    } else {
-      const newAssumption = saveAssumption({
-        numericId: -1,
-        content: assumptionIdOrNewAssumption,
-        id: 'new',
-      });
-      addAssumptionLink({
-        type,
-        linkedId: linkedEntityId,
-        assumptionId: newAssumption.id,
-      });
-    }
-  }, [assumptionList, linkedEntityId, addAssumptionLink, saveAssumption, type]);
+  const handleAddAssumptionLink = useCallback(
+    (assumptionIdOrNewAssumption: string) => {
+      if (assumptionList.find((a) => a.id === assumptionIdOrNewAssumption)) {
+        addAssumptionLink({
+          type,
+          linkedId: linkedEntityId,
+          assumptionId: assumptionIdOrNewAssumption,
+        });
+      } else {
+        const newAssumption = saveAssumption({
+          numericId: -1,
+          content: assumptionIdOrNewAssumption,
+          id: "new",
+        });
+        addAssumptionLink({
+          type,
+          linkedId: linkedEntityId,
+          assumptionId: newAssumption.id,
+        });
+      }
+    },
+    [assumptionList, linkedEntityId, addAssumptionLink, saveAssumption, type],
+  );
 
-  return (<AssumptionLinkView
-    assumptionList={assumptionList}
-    linkedAssumptionIds={assumptionLinks.map(al => al.assumptionId) || []}
-    onAddAssumptionLink={handleAddAssumptionLink}
-    onRemoveAssumptionLink={(assumptionId) => removeAssumptionLink(assumptionId, linkedEntityId)}
-  />);
+  return (
+    <AssumptionLinkView
+      assumptionList={assumptionList}
+      linkedAssumptionIds={assumptionLinks.map((al) => al.assumptionId) || []}
+      onAddAssumptionLink={handleAddAssumptionLink}
+      onRemoveAssumptionLink={(assumptionId) =>
+        removeAssumptionLink(assumptionId, linkedEntityId)
+      }
+    />
+  );
 };
 
 export default AssumptionLinkComponent;

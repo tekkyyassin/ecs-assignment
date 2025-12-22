@@ -14,15 +14,21 @@
   limitations under the License.
  ******************************************************************************************************************** */
 
-import { FC, PropsWithChildren } from 'react';
-import { ComposerMode, DataExchangeFormat, ViewNavigationEvent } from '../../customTypes';
-import GlobalSetupContextProvider from '../GlobalSetupContext';
-import WorkspaceContextAggregator from '../WorkspaceContextAggregator';
-import WorkspacesContextProvider, { WorkspacesContextProviderProps } from '../WorkspacesContext';
+import { FC, PropsWithChildren } from "react";
+import {
+  ComposerMode,
+  DataExchangeFormat,
+  ViewNavigationEvent,
+} from "../../customTypes";
+import GlobalSetupContextProvider from "../GlobalSetupContext";
+import WorkspaceContextAggregator from "../WorkspaceContextAggregator";
+import WorkspacesContextProvider, {
+  WorkspacesContextProviderProps,
+} from "../WorkspacesContext";
 
 export interface ContextAggregatorProps extends ViewNavigationEvent {
   composerMode?: ComposerMode;
-  onWorkspaceChanged?: WorkspacesContextProviderProps['onWorkspaceChanged'];
+  onWorkspaceChanged?: WorkspacesContextProviderProps["onWorkspaceChanged"];
   onPreview?: (content: DataExchangeFormat) => void;
   onPreviewClose?: () => void;
   onImported?: () => void;
@@ -32,7 +38,7 @@ export interface ContextAggregatorProps extends ViewNavigationEvent {
 const ContextAggregator: FC<PropsWithChildren<ContextAggregatorProps>> = ({
   children,
   onWorkspaceChanged,
-  composerMode = 'Full',
+  composerMode = "Full",
   onPreview,
   onPreviewClose,
   onImported,
@@ -45,18 +51,25 @@ const ContextAggregator: FC<PropsWithChildren<ContextAggregatorProps>> = ({
       onPreviewClose={onPreviewClose}
       onImported={onImported}
       onDefineWorkload={onDefineWorkload}
-      composerMode={composerMode}>
-      <WorkspacesContextProvider onWorkspaceChanged={onWorkspaceChanged} {...props}>
-        {(workspaceId) => (<WorkspaceContextAggregator
-          workspaceId={workspaceId}
-          requiredGlobalSetupContext={false}
-          onThreatEditorView={props.onThreatEditorView}
-          onThreatListView={props.onThreatListView}
-        >
-          {children}
-        </WorkspaceContextAggregator>)}
+      composerMode={composerMode}
+    >
+      <WorkspacesContextProvider
+        onWorkspaceChanged={onWorkspaceChanged}
+        {...props}
+      >
+        {(workspaceId) => (
+          <WorkspaceContextAggregator
+            workspaceId={workspaceId}
+            requiredGlobalSetupContext={false}
+            onThreatEditorView={props.onThreatEditorView}
+            onThreatListView={props.onThreatListView}
+          >
+            {children}
+          </WorkspaceContextAggregator>
+        )}
       </WorkspacesContextProvider>
-    </GlobalSetupContextProvider>);
+    </GlobalSetupContextProvider>
+  );
 };
 
 export default ContextAggregator;

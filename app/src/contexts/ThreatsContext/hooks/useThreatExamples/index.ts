@@ -14,23 +14,24 @@
   limitations under the License.
  ******************************************************************************************************************** */
 
-import { useMemo } from 'react';
-import { TemplateThreatStatement } from '../../../../customTypes';
-import threatStatementExamplesData from '../../../../data/threatStatementExamples.json';
-import renderThreatStatement from '../../../../utils/renderThreatStatement';
-import { PerFieldExamplesType, DEFAULT_PER_FIELD_EXAMPLES } from '../../context';
+import { useMemo } from "react";
+import { TemplateThreatStatement } from "../../../../customTypes";
+import threatStatementExamplesData from "../../../../data/threatStatementExamples.json";
+import renderThreatStatement from "../../../../utils/renderThreatStatement";
+import {
+  PerFieldExamplesType,
+  DEFAULT_PER_FIELD_EXAMPLES,
+} from "../../context";
 import {
   addNewValueToStringArray,
   addNewValueArrayToStringArray,
   addNewValueArrayToStringArrayArray,
   addNewValueToPerFieldExampleArray,
-} from '../../utils';
+} from "../../utils";
 
-const useThreatExamples = (
-  statementList: TemplateThreatStatement[],
-) => {
+const useThreatExamples = (statementList: TemplateThreatStatement[]) => {
   const threatStatementExamples = useMemo(() => {
-    return threatStatementExamplesData.map(e => {
+    return threatStatementExamplesData.map((e) => {
       const { statement, displayedStatement } = renderThreatStatement(e);
       return {
         ...e,
@@ -41,31 +42,93 @@ const useThreatExamples = (
   }, []);
 
   const perFieldExamples: PerFieldExamplesType = useMemo(() => {
-    return (threatStatementExamples as TemplateThreatStatement[]).reduce((agg: PerFieldExamplesType, st: TemplateThreatStatement, index: number) => {
-      return {
-        threat_source: addNewValueToStringArray(agg.threat_source, st.threatSource),
-        prerequisites: addNewValueToPerFieldExampleArray(agg.prerequisites, 'prerequisites', st, index),
-        threat_action: addNewValueToPerFieldExampleArray(agg.threat_action, 'threatAction', st, index),
-        threat_impact: addNewValueToPerFieldExampleArray(agg.threat_impact, 'threatImpact', st, index),
-        impacted_goal: addNewValueArrayToStringArrayArray(agg.impacted_goal, st.impactedGoal),
-        impacted_assets: addNewValueArrayToStringArray(agg.impacted_assets, st.impactedAssets),
-      };
-    }, DEFAULT_PER_FIELD_EXAMPLES);
+    return (threatStatementExamples as TemplateThreatStatement[]).reduce(
+      (
+        agg: PerFieldExamplesType,
+        st: TemplateThreatStatement,
+        index: number,
+      ) => {
+        return {
+          threat_source: addNewValueToStringArray(
+            agg.threat_source,
+            st.threatSource,
+          ),
+          prerequisites: addNewValueToPerFieldExampleArray(
+            agg.prerequisites,
+            "prerequisites",
+            st,
+            index,
+          ),
+          threat_action: addNewValueToPerFieldExampleArray(
+            agg.threat_action,
+            "threatAction",
+            st,
+            index,
+          ),
+          threat_impact: addNewValueToPerFieldExampleArray(
+            agg.threat_impact,
+            "threatImpact",
+            st,
+            index,
+          ),
+          impacted_goal: addNewValueArrayToStringArrayArray(
+            agg.impacted_goal,
+            st.impactedGoal,
+          ),
+          impacted_assets: addNewValueArrayToStringArray(
+            agg.impacted_assets,
+            st.impactedAssets,
+          ),
+        };
+      },
+      DEFAULT_PER_FIELD_EXAMPLES,
+    );
   }, [threatStatementExamples]);
 
   const previousInputs: PerFieldExamplesType = useMemo(() => {
     return statementList
-      .map(ts => ts as TemplateThreatStatement)
-      .reduce((agg: PerFieldExamplesType, st: TemplateThreatStatement, index: number) => {
-        return {
-          threat_source: addNewValueToStringArray(agg.threat_source, st.threatSource),
-          prerequisites: addNewValueToPerFieldExampleArray(agg.prerequisites, 'prerequisites', st, index),
-          threat_action: addNewValueToPerFieldExampleArray(agg.threat_action, 'threatAction', st, index),
-          threat_impact: addNewValueToPerFieldExampleArray(agg.threat_impact, 'threatImpact', st, index),
-          impacted_goal: addNewValueArrayToStringArrayArray(agg.impacted_goal, st.impactedGoal),
-          impacted_assets: addNewValueArrayToStringArray(agg.impacted_assets, st.impactedAssets),
-        };
-      }, DEFAULT_PER_FIELD_EXAMPLES);
+      .map((ts) => ts as TemplateThreatStatement)
+      .reduce(
+        (
+          agg: PerFieldExamplesType,
+          st: TemplateThreatStatement,
+          index: number,
+        ) => {
+          return {
+            threat_source: addNewValueToStringArray(
+              agg.threat_source,
+              st.threatSource,
+            ),
+            prerequisites: addNewValueToPerFieldExampleArray(
+              agg.prerequisites,
+              "prerequisites",
+              st,
+              index,
+            ),
+            threat_action: addNewValueToPerFieldExampleArray(
+              agg.threat_action,
+              "threatAction",
+              st,
+              index,
+            ),
+            threat_impact: addNewValueToPerFieldExampleArray(
+              agg.threat_impact,
+              "threatImpact",
+              st,
+              index,
+            ),
+            impacted_goal: addNewValueArrayToStringArrayArray(
+              agg.impacted_goal,
+              st.impactedGoal,
+            ),
+            impacted_assets: addNewValueArrayToStringArray(
+              agg.impacted_assets,
+              st.impactedAssets,
+            ),
+          };
+        },
+        DEFAULT_PER_FIELD_EXAMPLES,
+      );
   }, [statementList]);
 
   return {

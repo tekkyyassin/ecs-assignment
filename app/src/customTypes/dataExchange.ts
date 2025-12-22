@@ -14,34 +14,36 @@
   limitations under the License.
  ******************************************************************************************************************** */
 
-import { z } from 'zod';
-import { ApplicationInfoSchema } from './application';
-import { ArchitectureInfoSchema } from './architecture';
-import { AssumptionSchema, AssumptionLinkSchema } from './assumptions';
-import { DataflowInfoSchema } from './dataflow';
-import { DiagramInfoSchema } from './diagram';
-import { ControlSchema, ControlLinkSchema } from './controls';
-import { ControlProfileSchema } from './controlProfiles';
-import { MitigationSchema, MitigationLinkSchema } from './mitigations';
-import { TemplateThreatStatementSchema } from './threats';
-import { WorkspaceSchema } from './workspaces';
+import { z } from "zod";
+import { ApplicationInfoSchema } from "./application";
+import { ArchitectureInfoSchema } from "./architecture";
+import { AssumptionSchema, AssumptionLinkSchema } from "./assumptions";
+import { DataflowInfoSchema } from "./dataflow";
+import { DiagramInfoSchema } from "./diagram";
+import { ControlSchema, ControlLinkSchema } from "./controls";
+import { ControlProfileSchema } from "./controlProfiles";
+import { MitigationSchema, MitigationLinkSchema } from "./mitigations";
+import { TemplateThreatStatementSchema } from "./threats";
+import { WorkspaceSchema } from "./workspaces";
 
-export const DataExchangeFormatSchema = z.object({
-  schema: z.number(),
-  workspace: WorkspaceSchema.optional(),
-  applicationInfo: ApplicationInfoSchema.optional(),
-  architecture: ArchitectureInfoSchema.optional(),
-  diagram: DiagramInfoSchema.optional(),
-  dataflow: DataflowInfoSchema.optional(),
-  assumptions: AssumptionSchema.array().optional(),
-  controls: ControlSchema.array().optional(),
-  mitigations: MitigationSchema.array().optional(),
-  assumptionLinks: AssumptionLinkSchema.array().optional(),
-  controlLinks: ControlLinkSchema.array().optional(),
-  controlProfiles: ControlProfileSchema.array().optional(),
-  mitigationLinks: MitigationLinkSchema.array().optional(),
-  threats: TemplateThreatStatementSchema.array().optional(),
-}).strict();
+export const DataExchangeFormatSchema = z
+  .object({
+    schema: z.number(),
+    workspace: WorkspaceSchema.optional(),
+    applicationInfo: ApplicationInfoSchema.optional(),
+    architecture: ArchitectureInfoSchema.optional(),
+    diagram: DiagramInfoSchema.optional(),
+    dataflow: DataflowInfoSchema.optional(),
+    assumptions: AssumptionSchema.array().optional(),
+    controls: ControlSchema.array().optional(),
+    mitigations: MitigationSchema.array().optional(),
+    assumptionLinks: AssumptionLinkSchema.array().optional(),
+    controlLinks: ControlLinkSchema.array().optional(),
+    controlProfiles: ControlProfileSchema.array().optional(),
+    mitigationLinks: MitigationLinkSchema.array().optional(),
+    threats: TemplateThreatStatementSchema.array().optional(),
+  })
+  .strict();
 
 export type DataExchangeFormat = z.infer<typeof DataExchangeFormatSchema>;
 

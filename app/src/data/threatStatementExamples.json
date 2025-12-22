@@ -7,15 +7,11 @@
     "threatAction": "modify the configuration of the AWS services and/or resources within the trust boundary",
     "threatImpact": "a loss of trust in the services to behave as configured",
     "impactedGoal": [],
-    "impactedAssets": [
-      "assets within the trust boundary"
-    ],
+    "impactedAssets": ["assets within the trust boundary"],
     "metadata": [
       {
         "key": "STRIDE",
-        "value": [
-          "T"
-        ]
+        "value": ["T"]
       }
     ]
   },
@@ -36,9 +32,7 @@
     "metadata": [
       {
         "key": "STRIDE",
-        "value": [
-          "S"
-        ]
+        "value": ["S"]
       }
     ]
   },
@@ -59,9 +53,7 @@
     "metadata": [
       {
         "key": "STRIDE",
-        "value": [
-          "S"
-        ]
+        "value": ["S"]
       }
     ]
   },
@@ -73,15 +65,11 @@
     "threatAction": "spoof an authenticated user",
     "threatImpact": "the actor being able to do anything the user can do",
     "impactedGoal": [],
-    "impactedAssets": [
-      "assets within the trust boundary"
-    ],
+    "impactedAssets": ["assets within the trust boundary"],
     "metadata": [
       {
         "key": "STRIDE",
-        "value": [
-          "S"
-        ]
+        "value": ["S"]
       }
     ]
   },
@@ -92,18 +80,12 @@
     "prerequisites": "who can register a file",
     "threatAction": "claim they did not do so",
     "threatImpact": "the actor disputing financial charges related to the upload of a file",
-    "impactedGoal": [
-      "integrity"
-    ],
-    "impactedAssets": [
-      "billing"
-    ],
+    "impactedGoal": ["integrity"],
+    "impactedAssets": ["billing"],
     "metadata": [
       {
         "key": "STRIDE",
-        "value": [
-          "R"
-        ]
+        "value": ["R"]
       }
     ]
   },
@@ -114,18 +96,12 @@
     "prerequisites": "who can register a file",
     "threatAction": "claim they did when they did not",
     "threatImpact": "",
-    "impactedGoal": [
-      "integrity"
-    ],
-    "impactedAssets": [
-      "upload status"
-    ],
+    "impactedGoal": ["integrity"],
+    "impactedAssets": ["upload status"],
     "metadata": [
       {
         "key": "STRIDE",
-        "value": [
-          "R"
-        ]
+        "value": ["R"]
       }
     ]
   },
@@ -146,9 +122,7 @@
     "metadata": [
       {
         "key": "STRIDE",
-        "value": [
-          "S"
-        ]
+        "value": ["S"]
       }
     ]
   },
@@ -169,9 +143,7 @@
     "metadata": [
       {
         "key": "STRIDE",
-        "value": [
-          "S"
-        ]
+        "value": ["S"]
       }
     ]
   },
@@ -183,15 +155,11 @@
     "threatAction": "modify the configuration of the API exposed via API Gateway",
     "threatImpact": "",
     "impactedGoal": [],
-    "impactedAssets": [
-      "assets within the trust boundary"
-    ],
+    "impactedAssets": ["assets within the trust boundary"],
     "metadata": [
       {
         "key": "STRIDE",
-        "value": [
-          "T"
-        ]
+        "value": ["T"]
       }
     ]
   },
@@ -207,9 +175,7 @@
     "metadata": [
       {
         "key": "STRIDE",
-        "value": [
-          "T"
-        ]
+        "value": ["T"]
       }
     ]
   },
@@ -220,10 +186,7 @@
     "prerequisites": "who is authenticated and authorized",
     "threatAction": "deny taking a mutating action via the API",
     "threatImpact": "lack of knowledge/proof of who took the action",
-    "impactedGoal": [
-      "integrity",
-      "availability"
-    ],
+    "impactedGoal": ["integrity", "availability"],
     "impactedAssets": [
       "file upload",
       "file listing",
@@ -233,9 +196,7 @@
     "metadata": [
       {
         "key": "STRIDE",
-        "value": [
-          "R"
-        ]
+        "value": ["R"]
       }
     ]
   },
@@ -246,9 +207,7 @@
     "prerequisites": "with access to logs",
     "threatAction": "access sensitive data that was not excluded or redacted",
     "threatImpact": "",
-    "impactedGoal": [
-      "confidentiality"
-    ],
+    "impactedGoal": ["confidentiality"],
     "impactedAssets": [
       "file upload",
       "file listing",
@@ -259,9 +218,7 @@
     "metadata": [
       {
         "key": "STRIDE",
-        "value": [
-          "I"
-        ]
+        "value": ["I"]
       }
     ]
   },
@@ -272,9 +229,7 @@
     "prerequisites": "who is authorized to make API requests",
     "threatAction": "read information they should not be authorized to read",
     "threatImpact": "",
-    "impactedGoal": [
-      "confidentiality"
-    ],
+    "impactedGoal": ["confidentiality"],
     "impactedAssets": [
       "file upload",
       "file listing",
@@ -284,9 +239,7 @@
     "metadata": [
       {
         "key": "STRIDE",
-        "value": [
-          "I"
-        ]
+        "value": ["I"]
       }
     ]
   },
@@ -297,9 +250,7 @@
     "prerequisites": "",
     "threatAction": "coordinate a distributed denial of service attack against the exposed API",
     "threatImpact": "the API  being unresponsive to callers",
-    "impactedGoal": [
-      "availability"
-    ],
+    "impactedGoal": ["availability"],
     "impactedAssets": [
       "file upload",
       "file listing",
@@ -309,9 +260,7 @@
     "metadata": [
       {
         "key": "STRIDE",
-        "value": [
-          "D"
-        ]
+        "value": ["D"]
       }
     ]
   },
@@ -322,9 +271,7 @@
     "prerequisites": "",
     "threatAction": "deny service to the API by calling it as many times as possible from a single IP address",
     "threatImpact": "the API being unresponsive to callers",
-    "impactedGoal": [
-      "availability"
-    ],
+    "impactedGoal": ["availability"],
     "impactedAssets": [
       "file upload",
       "file listing",
@@ -334,9 +281,7 @@
     "metadata": [
       {
         "key": "STRIDE",
-        "value": [
-          "D"
-        ]
+        "value": ["D"]
       }
     ]
   },
@@ -357,9 +302,7 @@
     "metadata": [
       {
         "key": "STRIDE",
-        "value": [
-          "E"
-        ]
+        "value": ["E"]
       }
     ]
   },
@@ -380,9 +323,7 @@
     "metadata": [
       {
         "key": "STRIDE",
-        "value": [
-          "E"
-        ]
+        "value": ["E"]
       }
     ]
   },
@@ -394,15 +335,11 @@
     "threatAction": "communicate with the Amazon S3 bucket directly",
     "threatImpact": "",
     "impactedGoal": [],
-    "impactedAssets": [
-      "uploaded files"
-    ],
+    "impactedAssets": ["uploaded files"],
     "metadata": [
       {
         "key": "STRIDE",
-        "value": [
-          "S"
-        ]
+        "value": ["S"]
       }
     ]
   },
@@ -423,9 +360,7 @@
     "metadata": [
       {
         "key": "STRIDE",
-        "value": [
-          "T"
-        ]
+        "value": ["T"]
       }
     ]
   },
@@ -437,15 +372,11 @@
     "threatAction": "leverage vulnerabilities in the dependencies we use for our Lambda function code",
     "threatImpact": "the threat actor running arbitrary code within the Lambda function",
     "impactedGoal": [],
-    "impactedAssets": [
-      "assets within the trust boundary"
-    ],
+    "impactedAssets": ["assets within the trust boundary"],
     "metadata": [
       {
         "key": "STRIDE",
-        "value": [
-          "T"
-        ]
+        "value": ["T"]
       }
     ]
   },
@@ -461,9 +392,7 @@
     "metadata": [
       {
         "key": "STRIDE",
-        "value": [
-          "T"
-        ]
+        "value": ["T"]
       }
     ]
   },
@@ -479,9 +408,7 @@
     "metadata": [
       {
         "key": "STRIDE",
-        "value": [
-          "R"
-        ]
+        "value": ["R"]
       }
     ]
   },
@@ -492,9 +419,7 @@
     "prerequisites": "who is able to access the AWS Lambda function logs",
     "threatAction": "may find sensitive data captured within the logs",
     "threatImpact": "",
-    "impactedGoal": [
-      "confidentiality"
-    ],
+    "impactedGoal": ["confidentiality"],
     "impactedAssets": [
       "file upload",
       "file listing",
@@ -504,9 +429,7 @@
     "metadata": [
       {
         "key": "STRIDE",
-        "value": [
-          "I"
-        ]
+        "value": ["I"]
       }
     ]
   },
@@ -517,18 +440,12 @@
     "prerequisites": "with a network path to the exposed API",
     "threatAction": "submit a large number of resource intensive requests",
     "threatImpact": "unnecessary and excessive costs",
-    "impactedGoal": [
-      "return of investment"
-    ],
-    "impactedAssets": [
-      "file upload features"
-    ],
+    "impactedGoal": ["return of investment"],
+    "impactedAssets": ["file upload features"],
     "metadata": [
       {
         "key": "STRIDE",
-        "value": [
-          "D"
-        ]
+        "value": ["D"]
       }
     ]
   },
@@ -540,15 +457,11 @@
     "threatAction": "take advantage of a potentially over-scoped AWS Lambda execution role",
     "threatImpact": "",
     "impactedGoal": [],
-    "impactedAssets": [
-      "assets within the trust boundary"
-    ],
+    "impactedAssets": ["assets within the trust boundary"],
     "metadata": [
       {
         "key": "STRIDE",
-        "value": [
-          "E"
-        ]
+        "value": ["E"]
       }
     ]
   },
@@ -560,17 +473,11 @@
     "threatAction": "tamper with data stored in the DynamoDB tables",
     "threatImpact": "",
     "impactedGoal": [],
-    "impactedAssets": [
-      "file upload",
-      "file listing",
-      "upload status"
-    ],
+    "impactedAssets": ["file upload", "file listing", "upload status"],
     "metadata": [
       {
         "key": "STRIDE",
-        "value": [
-          "T"
-        ]
+        "value": ["T"]
       }
     ]
   },
@@ -581,20 +488,12 @@
     "prerequisites": "who is able to access the DynamoDB tables",
     "threatAction": "access sensitive data",
     "threatImpact": "",
-    "impactedGoal": [
-      "confidentiality"
-    ],
-    "impactedAssets": [
-      "file upload",
-      "file listing",
-      "upload status"
-    ],
+    "impactedGoal": ["confidentiality"],
+    "impactedAssets": ["file upload", "file listing", "upload status"],
     "metadata": [
       {
         "key": "STRIDE",
-        "value": [
-          "I"
-        ]
+        "value": ["I"]
       }
     ]
   },
@@ -605,20 +504,12 @@
     "prerequisites": "with access to a IAM Principal with modify access to the DynamoDB tables",
     "threatAction": "delete the data",
     "threatImpact": "",
-    "impactedGoal": [
-      "availability"
-    ],
-    "impactedAssets": [
-      "file upload",
-      "file listing",
-      "upload status"
-    ],
+    "impactedGoal": ["availability"],
+    "impactedAssets": ["file upload", "file listing", "upload status"],
     "metadata": [
       {
         "key": "STRIDE",
-        "value": [
-          "D"
-        ]
+        "value": ["D"]
       }
     ]
   },
@@ -629,16 +520,12 @@
     "prerequisites": "who is able to access Amazon S3 access logs",
     "threatAction": "may find sensitive data captured within the logs",
     "threatImpact": "",
-    "impactedGoal": [
-      "confidentiality"
-    ],
+    "impactedGoal": ["confidentiality"],
     "impactedAssets": [],
     "metadata": [
       {
         "key": "STRIDE",
-        "value": [
-          "I"
-        ]
+        "value": ["I"]
       }
     ]
   },
@@ -649,18 +536,12 @@
     "prerequisites": "",
     "threatAction": "cause data in the Amazon S3 bucket to be deleted",
     "threatImpact": "",
-    "impactedGoal": [
-      "availability"
-    ],
-    "impactedAssets": [
-      "uploaded files"
-    ],
+    "impactedGoal": ["availability"],
+    "impactedAssets": ["uploaded files"],
     "metadata": [
       {
         "key": "STRIDE",
-        "value": [
-          "D"
-        ]
+        "value": ["D"]
       }
     ]
   },
@@ -681,9 +562,7 @@
     "metadata": [
       {
         "key": "STRIDE",
-        "value": [
-          "T"
-        ]
+        "value": ["T"]
       }
     ]
   },
@@ -694,18 +573,12 @@
     "prerequisites": "who knows the source IP of a legitimate user and can direct high volumes of Internet traffic (e.g. from a botnet)",
     "threatAction": "flood the legitimate user's internet link",
     "threatImpact": "preventing a legitimate user from registering a file",
-    "impactedGoal": [
-      "availability"
-    ],
-    "impactedAssets": [
-      "file upload"
-    ],
+    "impactedGoal": ["availability"],
+    "impactedAssets": ["file upload"],
     "metadata": [
       {
         "key": "STRIDE",
-        "value": [
-          "D"
-        ]
+        "value": ["D"]
       }
     ]
   },
@@ -716,9 +589,7 @@
     "prerequisites": "who can modify communications between API Gateway and Lambda",
     "threatAction": "tamper with valid communications",
     "threatImpact": "",
-    "impactedGoal": [
-      "integrity"
-    ],
+    "impactedGoal": ["integrity"],
     "impactedAssets": [
       "file upload",
       "file listing",
@@ -728,9 +599,7 @@
     "metadata": [
       {
         "key": "STRIDE",
-        "value": [
-          "T"
-        ]
+        "value": ["T"]
       }
     ]
   },
@@ -741,9 +610,7 @@
     "prerequisites": "who can observe communications between API Gateway and Lambda ",
     "threatAction": "access sensitive data",
     "threatImpact": "",
-    "impactedGoal": [
-      "confidentiality"
-    ],
+    "impactedGoal": ["confidentiality"],
     "impactedAssets": [
       "file upload",
       "file listing",
@@ -753,9 +620,7 @@
     "metadata": [
       {
         "key": "STRIDE",
-        "value": [
-          "I"
-        ]
+        "value": ["I"]
       }
     ]
   },
@@ -766,9 +631,7 @@
     "prerequisites": "who can prevent communications between API Gateway deployment and AWS Lambda function",
     "threatAction": "interrupt access",
     "threatImpact": "",
-    "impactedGoal": [
-      "availability"
-    ],
+    "impactedGoal": ["availability"],
     "impactedAssets": [
       "file upload",
       "file listing",
@@ -778,9 +641,7 @@
     "metadata": [
       {
         "key": "STRIDE",
-        "value": [
-          "D"
-        ]
+        "value": ["D"]
       }
     ]
   },
@@ -791,18 +652,12 @@
     "prerequisites": "who can tamper with data in transit between the Amazon S3 bucket and legitimate users",
     "threatAction": "modify that data",
     "threatImpact": "",
-    "impactedGoal": [
-      "integrity"
-    ],
-    "impactedAssets": [
-      "uploaded files"
-    ],
+    "impactedGoal": ["integrity"],
+    "impactedAssets": ["uploaded files"],
     "metadata": [
       {
         "key": "STRIDE",
-        "value": [
-          "T"
-        ]
+        "value": ["T"]
       }
     ]
   },
@@ -813,18 +668,12 @@
     "prerequisites": "with access to data in transit between the user and the Amazon S3 bucket",
     "threatAction": "read that data",
     "threatImpact": "",
-    "impactedGoal": [
-      "confidentiality"
-    ],
-    "impactedAssets": [
-      "uploaded files"
-    ],
+    "impactedGoal": ["confidentiality"],
+    "impactedAssets": ["uploaded files"],
     "metadata": [
       {
         "key": "STRIDE",
-        "value": [
-          "I"
-        ]
+        "value": ["I"]
       }
     ]
   },
@@ -835,18 +684,12 @@
     "prerequisites": "with the required permissions in the AWS account ",
     "threatAction": "access the data stored in the Amazon S3 bucket",
     "threatImpact": "",
-    "impactedGoal": [
-      "confidentiality"
-    ],
-    "impactedAssets": [
-      "uploaded files"
-    ],
+    "impactedGoal": ["confidentiality"],
+    "impactedAssets": ["uploaded files"],
     "metadata": [
       {
         "key": "STRIDE",
-        "value": [
-          "I"
-        ]
+        "value": ["I"]
       }
     ]
   },
@@ -858,20 +701,11 @@
     "threatAction": "perform reconnaissance and intrusion activities against the exposed attack surface",
     "threatImpact": "them discovering a application code flaw they can take advantage of",
     "impactedGoal": [],
-    "impactedAssets": [
-      "assets within the trust boundary"
-    ],
+    "impactedAssets": ["assets within the trust boundary"],
     "metadata": [
       {
         "key": "STRIDE",
-        "value": [
-          "S",
-          "T",
-          "R",
-          "I",
-          "D",
-          "E"
-        ]
+        "value": ["S", "T", "R", "I", "D", "E"]
       }
     ]
   },
@@ -882,18 +716,12 @@
     "prerequisites": "with a network path to the database",
     "threatAction": "brute-force the database credentials",
     "threatImpact": "the ability to modify data",
-    "impactedGoal": [
-      "integrity"
-    ],
-    "impactedAssets": [
-      "assets within the trust boundary"
-    ],
+    "impactedGoal": ["integrity"],
+    "impactedAssets": ["assets within the trust boundary"],
     "metadata": [
       {
         "key": "STRIDE",
-        "value": [
-          "T"
-        ]
+        "value": ["T"]
       }
     ]
   }

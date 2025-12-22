@@ -14,11 +14,11 @@
   limitations under the License.
  ******************************************************************************************************************** */
 
-import { FC, useEffect, useState } from 'react';
-import { useThreatsContext } from '../../../contexts/ThreatsContext/context';
-import { ControlLink } from '../../../customTypes';
-import ThreatLinkView from '../../threats/ThreatLinkView';
-import { useControlLinksContext } from '../../../contexts/ControlLinksContext/context';
+import { FC, useEffect, useState } from "react";
+import { useThreatsContext } from "../../../contexts/ThreatsContext/context";
+import { ControlLink } from "../../../customTypes";
+import ThreatLinkView from "../../threats/ThreatLinkView";
+import { useControlLinksContext } from "../../../contexts/ControlLinksContext/context";
 
 export interface ControlThreatLinkProps {
   controlId: string;
@@ -37,20 +37,21 @@ const ControlThreatLinkComponent: FC<ControlThreatLinkProps> = ({
     setControlLinks(_controlLinks || []);
   }, [getMitigtaionThreatLinks, controlId]);
 
-  const {
-    addControlLink,
-    removeControlLink,
-  } = useControlLinksContext();
+  const { addControlLink, removeControlLink } = useControlLinksContext();
 
-  return (<ThreatLinkView
-    threatList={statementList}
-    linkedThreatIds={controlLinks.map(ml => ml.linkedId)}
-    onAddThreatLink={(threatId) => addControlLink({
-      linkedId: threatId,
-      controlId,
-    })}
-    onRemoveThreatLink={(threatId) => removeControlLink(controlId, threatId)}
-  />);
+  return (
+    <ThreatLinkView
+      threatList={statementList}
+      linkedThreatIds={controlLinks.map((ml) => ml.linkedId)}
+      onAddThreatLink={(threatId) =>
+        addControlLink({
+          linkedId: threatId,
+          controlId,
+        })
+      }
+      onRemoveThreatLink={(threatId) => removeControlLink(controlId, threatId)}
+    />
+  );
 };
 
 export default ControlThreatLinkComponent;

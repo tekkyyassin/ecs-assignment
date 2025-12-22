@@ -14,8 +14,8 @@
   limitations under the License.
  ******************************************************************************************************************** */
 
-import { z } from 'zod';
-import { ContentEntityBaseSchema, EntityLinkBaseSchema } from './entities';
+import { z } from "zod";
+import { ContentEntityBaseSchema, EntityLinkBaseSchema } from "./entities";
 
 export const MitigationSchema = ContentEntityBaseSchema.extend({}).strict();
 
@@ -30,7 +30,6 @@ export const MitigationLinkSchema = EntityLinkBaseSchema.extend({
    * The linked entity Id.
    */
   linkedId: z.string().length(36),
-}).strict();;
+}).strict();
 
 export type MitigationLink = z.infer<typeof MitigationLinkSchema>;
-

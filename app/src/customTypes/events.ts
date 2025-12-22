@@ -14,7 +14,7 @@
   limitations under the License.
  ******************************************************************************************************************** */
 
-import { ThreatStatementListFilter } from './threats';
+import { ThreatStatementListFilter } from "./threats";
 
 export interface ViewNavigationEvent {
   onApplicationInfoView?: () => void;

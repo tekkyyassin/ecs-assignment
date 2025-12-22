@@ -13,14 +13,14 @@
   See the License for the specific language governing permissions and
   limitations under the License.
  ******************************************************************************************************************** */
-import { useEffect, FC, PropsWithChildren } from 'react';
-import { useNavigate } from 'react-router-dom';
+import { useEffect, FC, PropsWithChildren } from "react";
+import { useNavigate } from "react-router-dom";
 
 const requiredRewriteUrl = (search: string) => {
-  return search && (search.startsWith('?/') || search.startsWith('?%2F'));
+  return search && (search.startsWith("?/") || search.startsWith("?%2F"));
 };
 
-const ROUTE_BASE_PATH = process.env.REACT_APP_ROUTE_BASE_PATH || '';
+const ROUTE_BASE_PATH = process.env.REACT_APP_ROUTE_BASE_PATH || "";
 
 const GithubPagesNavigationHelper: FC<PropsWithChildren<{}>> = ({
   children,
@@ -30,14 +30,18 @@ const GithubPagesNavigationHelper: FC<PropsWithChildren<{}>> = ({
     const l = window.location;
     if (requiredRewriteUrl(l.search)) {
       let search = decodeURIComponent(l.search);
-      if (search.indexOf('=') === search.length - 1) {
+      if (search.indexOf("=") === search.length - 1) {
         search = search.slice(0, search.length - 1);
       }
-      var decoded = search.slice(1).split('&').map(function (s) {
-        return s.replace(/~and~/g, '&');
-      }).join('?');
+      var decoded = search
+        .slice(1)
+        .split("&")
+        .map(function (s) {
+          return s.replace(/~and~/g, "&");
+        })
+        .join("?");
 
-      navigate(ROUTE_BASE_PATH + '/' + decoded + l.hash);
+      navigate(ROUTE_BASE_PATH + "/" + decoded + l.hash);
     }
   }, [navigate]);
 

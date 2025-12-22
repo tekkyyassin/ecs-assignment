@@ -14,12 +14,12 @@
   limitations under the License.
  ******************************************************************************************************************** */
 
-import FormField from '@cloudscape-design/components/form-field';
-import Select, { SelectProps } from '@cloudscape-design/components/select';
-import React, { FC } from 'react';
-import { LEVEL_SELECTOR_OPTIONS } from '../../../configs';
+import FormField from "@cloudscape-design/components/form-field";
+import Select, { SelectProps } from "@cloudscape-design/components/select";
+import React, { FC } from "react";
+import { LEVEL_SELECTOR_OPTIONS } from "../../../configs";
 
-export const NO_VALUE = '-';
+export const NO_VALUE = "-";
 
 export interface LevelSelectorProps {
   label?: string;
@@ -31,37 +31,56 @@ export interface LevelSelectorProps {
   onBlur?: () => void;
 }
 
-const LevelSelector: FC<LevelSelectorProps> = React.forwardRef<SelectProps.Ref, LevelSelectorProps>(({
-  label,
-  selectedLevel,
-  setSelectedLevel,
-  allowNoValue,
-  placeholder,
-  onFocus,
-  onBlur,
-}, ref) => {
-  return (
-    <FormField
-      label={label}
-    >
-      <Select
-        ref={ref}
-        selectedOption={LEVEL_SELECTOR_OPTIONS.find(x => x.value === selectedLevel) || null}
-        onChange={({ detail }) => {
-          const selected = detail.selectedOption.value;
-          setSelectedLevel?.(!selected || selected === NO_VALUE ? undefined : selected);
-        }}
-        options={allowNoValue ? [{
-          label: NO_VALUE, value: NO_VALUE,
-        }, ...LEVEL_SELECTOR_OPTIONS] : LEVEL_SELECTOR_OPTIONS}
-        selectedAriaLabel="Selected"
-        onFocus={onFocus}
-        onBlur={onBlur}
-        expandToViewport
-        placeholder={placeholder}
-      />
-    </FormField>
-  );
-});
+const LevelSelector: FC<LevelSelectorProps> = React.forwardRef<
+  SelectProps.Ref,
+  LevelSelectorProps
+>(
+  (
+    {
+      label,
+      selectedLevel,
+      setSelectedLevel,
+      allowNoValue,
+      placeholder,
+      onFocus,
+      onBlur,
+    },
+    ref,
+  ) => {
+    return (
+      <FormField label={label}>
+        <Select
+          ref={ref}
+          selectedOption={
+            LEVEL_SELECTOR_OPTIONS.find((x) => x.value === selectedLevel) ||
+            null
+          }
+          onChange={({ detail }) => {
+            const selected = detail.selectedOption.value;
+            setSelectedLevel?.(
+              !selected || selected === NO_VALUE ? undefined : selected,
+            );
+          }}
+          options={
+            allowNoValue
+              ? [
+                  {
+                    label: NO_VALUE,
+                    value: NO_VALUE,
+                  },
+                  ...LEVEL_SELECTOR_OPTIONS,
+                ]
+              : LEVEL_SELECTOR_OPTIONS
+          }
+          selectedAriaLabel="Selected"
+          onFocus={onFocus}
+          onBlur={onBlur}
+          expandToViewport
+          placeholder={placeholder}
+        />
+      </FormField>
+    );
+  },
+);
 
 export default LevelSelector;

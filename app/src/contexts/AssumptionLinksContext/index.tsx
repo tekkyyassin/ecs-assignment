@@ -14,24 +14,29 @@
   limitations under the License.
  ******************************************************************************************************************** */
 
-import { FC, PropsWithChildren } from 'react';
-import AssumptionLinksLocalStateContextProvider from './components/LocalStateContextProvider';
-import AssumptionLinksLocalStorageContextProvider from './components/LocalStorageContextProvider';
-import { useAssumptionLinksContext } from './context';
-import { AssumptionLinksContextProviderProps } from './types';
-import { EXAMPLE_WORKSPACE_ID } from '../../configs/constants';
-import { useExampleContext } from '../ExampleContext';
+import { FC, PropsWithChildren } from "react";
+import AssumptionLinksLocalStateContextProvider from "./components/LocalStateContextProvider";
+import AssumptionLinksLocalStorageContextProvider from "./components/LocalStorageContextProvider";
+import { useAssumptionLinksContext } from "./context";
+import { AssumptionLinksContextProviderProps } from "./types";
+import { EXAMPLE_WORKSPACE_ID } from "../../configs/constants";
+import { useExampleContext } from "../ExampleContext";
 
-const AssumptionLinksContextProvider: FC<PropsWithChildren<AssumptionLinksContextProviderProps>> = (props) => {
+const AssumptionLinksContextProvider: FC<
+  PropsWithChildren<AssumptionLinksContextProviderProps>
+> = (props) => {
   const { assumptionLinks } = useExampleContext();
 
-  return props.workspaceId === EXAMPLE_WORKSPACE_ID ?
-    (<AssumptionLinksLocalStateContextProvider initialValue={assumptionLinks} {...props} />) :
-    (<AssumptionLinksLocalStorageContextProvider {...props} />);
+  return props.workspaceId === EXAMPLE_WORKSPACE_ID ? (
+    <AssumptionLinksLocalStateContextProvider
+      initialValue={assumptionLinks}
+      {...props}
+    />
+  ) : (
+    <AssumptionLinksLocalStorageContextProvider {...props} />
+  );
 };
 
 export default AssumptionLinksContextProvider;
 
-export {
-  useAssumptionLinksContext,
-};
+export { useAssumptionLinksContext };

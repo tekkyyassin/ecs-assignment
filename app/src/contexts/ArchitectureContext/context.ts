@@ -14,8 +14,8 @@
   limitations under the License.
  ******************************************************************************************************************** */
 
-import { useContext, createContext } from 'react';
-import { ArchitectureInfo } from '../../customTypes';
+import { useContext, createContext } from "react";
+import { ArchitectureInfo } from "../../customTypes";
 
 export interface ArchitectureInfoContextApi {
   architectureInfo: ArchitectureInfo;
@@ -26,11 +26,13 @@ export interface ArchitectureInfoContextApi {
 
 const initialState: ArchitectureInfoContextApi = {
   architectureInfo: {},
-  setArchitectureInfo: () => { },
+  setArchitectureInfo: () => {},
   removeArchitectureInfo: () => Promise.resolve(),
   onDeleteWorkspace: () => Promise.resolve(),
 };
 
-export const ArchitectureInfoContext = createContext<ArchitectureInfoContextApi>(initialState);
+export const ArchitectureInfoContext =
+  createContext<ArchitectureInfoContextApi>(initialState);
 
-export const useArchitectureInfoContext = () => useContext(ArchitectureInfoContext);
+export const useArchitectureInfoContext = () =>
+  useContext(ArchitectureInfoContext);

@@ -14,8 +14,8 @@
   limitations under the License.
  ******************************************************************************************************************** */
 
-import React, { useContext, createContext } from 'react';
-import { ComposerMode, DataExchangeFormat } from '../../customTypes';
+import React, { useContext, createContext } from "react";
+import { ComposerMode, DataExchangeFormat } from "../../customTypes";
 
 export interface GlobalSetupContextApi {
   hasVisitBefore: boolean;
@@ -31,12 +31,13 @@ export interface GlobalSetupContextApi {
 
 const initialState: GlobalSetupContextApi = {
   hasVisitBefore: false,
-  composerMode: 'Full',
-  showInfoModal: () => { },
+  composerMode: "Full",
+  showInfoModal: () => {},
   fileImportModalVisible: false,
   setFileImportModalVisible: () => {},
 };
 
-export const GlobalSetupContext = createContext<GlobalSetupContextApi>(initialState);
+export const GlobalSetupContext =
+  createContext<GlobalSetupContextApi>(initialState);
 
 export const useGlobalSetupContext = () => useContext(GlobalSetupContext);

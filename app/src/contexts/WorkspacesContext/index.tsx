@@ -14,19 +14,24 @@
   limitations under the License.
  ******************************************************************************************************************** */
 
-import { FC, useCallback, ReactElement, useEffect } from 'react';
-import useLocalStorageState from 'use-local-storage-state';
-import { v4 as uuidv4 } from 'uuid';
-import { WorkspacesContext, useWorkspacesContext } from './context';
-import { DEFAULT_WORKSPACE_ID } from '../../configs/constants';
-import { LOCAL_STORAGE_KEY_CURRENT_WORKSPACE, LOCAL_STORAGE_KEY_WORKSPACE_LIST } from '../../configs/localStorageKeys';
-import { ViewNavigationEvent, Workspace } from '../../customTypes';
-import WorkspacesMigration from '../../migrations/WorkspacesMigration';
+import { FC, useCallback, ReactElement, useEffect } from "react";
+import useLocalStorageState from "use-local-storage-state";
+import { v4 as uuidv4 } from "uuid";
+import { WorkspacesContext, useWorkspacesContext } from "./context";
+import { DEFAULT_WORKSPACE_ID } from "../../configs/constants";
+import {
+  LOCAL_STORAGE_KEY_CURRENT_WORKSPACE,
+  LOCAL_STORAGE_KEY_WORKSPACE_LIST,
+} from "../../configs/localStorageKeys";
+import { ViewNavigationEvent, Workspace } from "../../customTypes";
+import WorkspacesMigration from "../../migrations/WorkspacesMigration";
 
 export interface WorkspacesContextProviderProps extends ViewNavigationEvent {
   workspaceId?: string;
   onWorkspaceChanged?: (workspaceId: string) => void;
-  children: (workspace: string | null) => ReactElement<{ workspaceId: string | null }>;
+  children: (
+    workspace: string | null,
+  ) => ReactElement<{ workspaceId: string | null }>;
 }
 
 const WorkspacesContextProvider: FC<WorkspacesContextProviderProps> = ({
@@ -35,20 +40,27 @@ const WorkspacesContextProvider: FC<WorkspacesContextProviderProps> = ({
   onWorkspaceChanged,
   ...props
 }) => {
-  const [currentWorkspace, setCurrentWorkspace] = useLocalStorageState<Workspace | null>(LOCAL_STORAGE_KEY_CURRENT_WORKSPACE, {
-    defaultValue: null,
-  });
+  const [currentWorkspace, setCurrentWorkspace] =
+    useLocalStorageState<Workspace | null>(
+      LOCAL_STORAGE_KEY_CURRENT_WORKSPACE,
+      {
+        defaultValue: null,
+      },
+    );
 
-  const [workspaceList, setWorkspaceList] = useLocalStorageState<Workspace[]>(LOCAL_STORAGE_KEY_WORKSPACE_LIST, {
-    defaultValue: [],
-  });
+  const [workspaceList, setWorkspaceList] = useLocalStorageState<Workspace[]>(
+    LOCAL_STORAGE_KEY_WORKSPACE_LIST,
+    {
+      defaultValue: [],
+    },
+  );
 
   useEffect(() => {
     if (workspaceId) {
       if (workspaceId === DEFAULT_WORKSPACE_ID && currentWorkspace !== null) {
         setCurrentWorkspace(null);
       } else if (workspaceId !== currentWorkspace?.id) {
-        const foundWorkspace = workspaceList.find(x => x.id === workspaceId);
+        const foundWorkspace = workspaceList.find((x) => x.id === workspaceId);
         if (foundWorkspace) {
           setCurrentWorkspace(foundWorkspace);
         } else {
@@ -58,60 +70,81 @@ const WorkspacesContextProvider: FC<WorkspacesContextProviderProps> = ({
     }
   }, [workspaceId, workspaceList, currentWorkspace, setCurrentWorkspace]);
 
-  const handleSwitchWorkspace = useCallback((workspace: Workspace | null) => {
-    setCurrentWorkspace(workspace);
-    onWorkspaceChanged?.(workspace?.id || DEFAULT_WORKSPACE_ID);
-  }, [onWorkspaceChanged, setCurrentWorkspace]);
+  const handleSwitchWorkspace = useCallback(
+    (workspace: Workspace | null) => {
+      setCurrentWorkspace(workspace);
+      onWorkspaceChanged?.(workspace?.id || DEFAULT_WORKSPACE_ID);
+    },
+    [onWorkspaceChanged, setCurrentWorkspace],
+  );
 
-  const handleAddWorkspace = useCallback((workspaceName: string) => {
-    const newWorkspace = {
-      id: uuidv4(),
-      name: workspaceName,
-    };
-    setWorkspaceList(prev => prev.find(p => p.name === workspaceName) ? [...prev] : [...prev, newWorkspace]);
-    setCurrentWorkspace(newWorkspace);
-    onWorkspaceChanged?.(newWorkspace.id);
+  const handleAddWorkspace = useCallback(
+    (workspaceName: string) => {
+      const newWorkspace = {
+        id: uuidv4(),
+        name: workspaceName,
+      };
+      setWorkspaceList((prev) =>
+        prev.find((p) => p.name === workspaceName)
+          ? [...prev]
+          : [...prev, newWorkspace],
+      );
+      setCurrentWorkspace(newWorkspace);
+      onWorkspaceChanged?.(newWorkspace.id);
+    },
+    [onWorkspaceChanged, setCurrentWorkspace, setWorkspaceList],
+  );
 
-  }, [onWorkspaceChanged, setCurrentWorkspace, setWorkspaceList]);
+  const handleRemoveWorkspace = useCallback(
+    async (id: string) => {
+      setWorkspaceList((prev) => prev.filter((p) => p.id !== id));
+    },
+    [setWorkspaceList],
+  );
 
-  const handleRemoveWorkspace = useCallback(async (id: string) => {
-    setWorkspaceList(prev => prev.filter(p => p.id !== id));
-  }, [setWorkspaceList]);
+  const handleRenameWorkspace = useCallback(
+    (id: string, newWorkspaceName: string) => {
+      setWorkspaceList((prev) => {
+        const index = prev.findIndex((w) => w.id === id);
+        const newList = [
+          ...prev.slice(0, index - 1),
+          {
+            id,
+            name: newWorkspaceName,
+          },
+          ...prev.slice(index + 1),
+        ];
+        return newList;
+      });
 
-  const handleRenameWorkspace = useCallback((id: string, newWorkspaceName: string) => {
-    setWorkspaceList(prev => {
-      const index = prev.findIndex(w => w.id === id);
-      const newList = [...prev.slice(0, index - 1), {
+      setCurrentWorkspace({
         id,
         name: newWorkspaceName,
-      }, ...prev.slice(index + 1)];
-      return newList;
-    });
+      });
+    },
+    [setCurrentWorkspace, setWorkspaceList],
+  );
 
-    setCurrentWorkspace({
-      id,
-      name: newWorkspaceName,
-    });
-  }, [setCurrentWorkspace, setWorkspaceList]);
-
-  return (<WorkspacesContext.Provider value={{
-    workspaceList,
-    setWorkspaceList,
-    currentWorkspace,
-    switchWorkspace: handleSwitchWorkspace,
-    addWorkspace: handleAddWorkspace,
-    removeWorkspace: handleRemoveWorkspace,
-    renameWorkspace: handleRenameWorkspace,
-    ...props,
-  }}>
-    <WorkspacesMigration>
-      {children(currentWorkspace?.id || null)}
-    </WorkspacesMigration>
-  </WorkspacesContext.Provider>);
+  return (
+    <WorkspacesContext.Provider
+      value={{
+        workspaceList,
+        setWorkspaceList,
+        currentWorkspace,
+        switchWorkspace: handleSwitchWorkspace,
+        addWorkspace: handleAddWorkspace,
+        removeWorkspace: handleRemoveWorkspace,
+        renameWorkspace: handleRenameWorkspace,
+        ...props,
+      }}
+    >
+      <WorkspacesMigration>
+        {children(currentWorkspace?.id || null)}
+      </WorkspacesMigration>
+    </WorkspacesContext.Provider>
+  );
 };
 
 export default WorkspacesContextProvider;
 
-export {
-  useWorkspacesContext,
-};
+export { useWorkspacesContext };

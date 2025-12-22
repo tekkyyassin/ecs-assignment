@@ -14,14 +14,14 @@
   limitations under the License.
  ******************************************************************************************************************** */
 
-import { FC, PropsWithChildren, useCallback } from 'react';
-import useLocalStorageState from 'use-local-storage-state';
-import { LOCAL_STORAGE_KEY_APPLICATION_INFO } from '../../../../configs/localStorageKeys';
-import { ApplicationInfo } from '../../../../customTypes';
-import removeLocalStorageKey from '../../../../utils/removeLocalStorageKey';
-import { INFO_DEFAULT_VALUE } from '../../../constants';
-import { ApplicationInfoContext } from '../../context';
-import { ApplicationContextProviderProps } from '../../types';
+import { FC, PropsWithChildren, useCallback } from "react";
+import useLocalStorageState from "use-local-storage-state";
+import { LOCAL_STORAGE_KEY_APPLICATION_INFO } from "../../../../configs/localStorageKeys";
+import { ApplicationInfo } from "../../../../customTypes";
+import removeLocalStorageKey from "../../../../utils/removeLocalStorageKey";
+import { INFO_DEFAULT_VALUE } from "../../../constants";
+import { ApplicationInfoContext } from "../../context";
+import { ApplicationContextProviderProps } from "../../types";
 
 const getLocalStorageKey = (workspaceId: string | null) => {
   if (workspaceId) {
@@ -31,13 +31,16 @@ const getLocalStorageKey = (workspaceId: string | null) => {
   return LOCAL_STORAGE_KEY_APPLICATION_INFO;
 };
 
-const ApplicationLocalStorageContextProvider: FC<PropsWithChildren<ApplicationContextProviderProps>> = ({
-  children,
-  workspaceId: currentWorkspaceId,
-}) => {
-  const [applicationInfo, setApplicationInfo, { removeItem }] = useLocalStorageState<ApplicationInfo>(getLocalStorageKey(currentWorkspaceId), {
-    defaultValue: INFO_DEFAULT_VALUE,
-  });
+const ApplicationLocalStorageContextProvider: FC<
+  PropsWithChildren<ApplicationContextProviderProps>
+> = ({ children, workspaceId: currentWorkspaceId }) => {
+  const [applicationInfo, setApplicationInfo, { removeItem }] =
+    useLocalStorageState<ApplicationInfo>(
+      getLocalStorageKey(currentWorkspaceId),
+      {
+        defaultValue: INFO_DEFAULT_VALUE,
+      },
+    );
 
   const handleRemoveApplicationInfo = useCallback(async () => {
     removeItem();
@@ -50,15 +53,18 @@ const ApplicationLocalStorageContextProvider: FC<PropsWithChildren<ApplicationCo
     }, 1000);
   }, []);
 
-  return (<ApplicationInfoContext.Provider value={{
-    applicationInfo,
-    setApplicationInfo,
-    removeApplicationInfo: handleRemoveApplicationInfo,
-    onDeleteWorkspace: handleDeleteWorkspace,
-  }}>
-    {children}
-  </ApplicationInfoContext.Provider>);
+  return (
+    <ApplicationInfoContext.Provider
+      value={{
+        applicationInfo,
+        setApplicationInfo,
+        removeApplicationInfo: handleRemoveApplicationInfo,
+        onDeleteWorkspace: handleDeleteWorkspace,
+      }}
+    >
+      {children}
+    </ApplicationInfoContext.Provider>
+  );
 };
 
 export default ApplicationLocalStorageContextProvider;
-

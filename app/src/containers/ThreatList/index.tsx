@@ -14,22 +14,24 @@
   limitations under the License.
  ******************************************************************************************************************** */
 
-import { FC } from 'react';
-import ThreatStatementListComponent from '../../components/threats/ThreatStatementList';
-import WorkspaceContextAggregator from '../../contexts/WorkspaceContextAggregator';
+import { FC } from "react";
+import ThreatStatementListComponent from "../../components/threats/ThreatStatementList";
+import WorkspaceContextAggregator from "../../contexts/WorkspaceContextAggregator";
 
 export interface ThreatListProps {
   workspaceId?: string;
 }
 
 const ThreatList: FC<ThreatListProps> = ({ workspaceId }) => {
-  return (<WorkspaceContextAggregator
-    workspaceId={workspaceId || null}
-    composerMode='Full'
-    requiredGlobalSetupContext
-  >
-    <ThreatStatementListComponent />
-  </WorkspaceContextAggregator>);
+  return (
+    <WorkspaceContextAggregator
+      workspaceId={workspaceId || null}
+      composerMode="Full"
+      requiredGlobalSetupContext
+    >
+      <ThreatStatementListComponent />
+    </WorkspaceContextAggregator>
+  );
 };
 
 export default ThreatList;

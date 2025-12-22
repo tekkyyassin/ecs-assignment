@@ -14,19 +14,22 @@
   limitations under the License.
  ******************************************************************************************************************** */
 
-import { FC, PropsWithChildren, useCallback, useState } from 'react';
-import { AssumptionLink } from '../../../../customTypes';
-import { LocalStateContextProviderBaseProps } from '../../../types';
-import { AssumptionLinksContext } from '../../context';
-import { AssumptionLinksContextProviderProps } from '../../types';
-import useAssumptionLinks from '../../useAssumptionLinks';
+import { FC, PropsWithChildren, useCallback, useState } from "react";
+import { AssumptionLink } from "../../../../customTypes";
+import { LocalStateContextProviderBaseProps } from "../../../types";
+import { AssumptionLinksContext } from "../../context";
+import { AssumptionLinksContextProviderProps } from "../../types";
+import useAssumptionLinks from "../../useAssumptionLinks";
 
-const AssumptionLinksLocalStorageContextProvider: FC<PropsWithChildren<
-AssumptionLinksContextProviderProps & LocalStateContextProviderBaseProps<AssumptionLink[]>>> = ({
-  children,
-  initialValue,
-}) => {
-  const [assumptionLinkList, setAssumptionLinkList] = useState<AssumptionLink[]>(initialValue || []);
+const AssumptionLinksLocalStorageContextProvider: FC<
+  PropsWithChildren<
+    AssumptionLinksContextProviderProps &
+      LocalStateContextProviderBaseProps<AssumptionLink[]>
+  >
+> = ({ children, initialValue }) => {
+  const [assumptionLinkList, setAssumptionLinkList] = useState<
+    AssumptionLink[]
+  >(initialValue || []);
 
   const {
     handlRemoveAssumptionLink,
@@ -47,23 +50,28 @@ AssumptionLinksContextProviderProps & LocalStateContextProviderBaseProps<Assumpt
     setAssumptionLinkList([]);
   }, []);
 
-  return (<AssumptionLinksContext.Provider value={{
-    assumptionLinkList,
-    setAssumptionLinkList,
-    getLinkedAssumptionLinks: handleGetLinkedAssumptionLinks,
-    getAssumptionEntityLinks: handleGetAssumptionEntityLinks,
-    removeAssumptionLink: handlRemoveAssumptionLink,
-    removeAssumptionLinksByAssumptionId: handlRemoveAssumptionLinksByAssumptionId,
-    removeAssumptionLinksByLinkedEntityId: handlRemoveAssumptionLinksByLinkedEntityId,
-    removeAssumptionLinks: handleRemoveAssumptionLinks,
-    addAssumptionLink: handleAddAssumptionLink,
-    addAssumptionLinks: handleAddAssumptionLinks,
-    removeAllAssumptionLinks: handleRemoveAllAssumptionLinks,
-    onDeleteWorkspace: handleDeleteWorkspace,
-  }}>
-    {children}
-  </AssumptionLinksContext.Provider>);
+  return (
+    <AssumptionLinksContext.Provider
+      value={{
+        assumptionLinkList,
+        setAssumptionLinkList,
+        getLinkedAssumptionLinks: handleGetLinkedAssumptionLinks,
+        getAssumptionEntityLinks: handleGetAssumptionEntityLinks,
+        removeAssumptionLink: handlRemoveAssumptionLink,
+        removeAssumptionLinksByAssumptionId:
+          handlRemoveAssumptionLinksByAssumptionId,
+        removeAssumptionLinksByLinkedEntityId:
+          handlRemoveAssumptionLinksByLinkedEntityId,
+        removeAssumptionLinks: handleRemoveAssumptionLinks,
+        addAssumptionLink: handleAddAssumptionLink,
+        addAssumptionLinks: handleAddAssumptionLinks,
+        removeAllAssumptionLinks: handleRemoveAllAssumptionLinks,
+        onDeleteWorkspace: handleDeleteWorkspace,
+      }}
+    >
+      {children}
+    </AssumptionLinksContext.Provider>
+  );
 };
 
 export default AssumptionLinksLocalStorageContextProvider;
-

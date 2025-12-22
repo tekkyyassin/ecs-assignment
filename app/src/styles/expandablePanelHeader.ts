@@ -14,10 +14,10 @@
   limitations under the License.
  ******************************************************************************************************************** */
 
-import { css } from '@emotion/react';
+import { css } from "@emotion/react";
 
 const styles = css({
-  fontSize: '16px',
+  fontSize: "16px",
 });
 
 export default styles;

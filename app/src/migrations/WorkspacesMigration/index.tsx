@@ -14,11 +14,11 @@
   limitations under the License.
  ******************************************************************************************************************** */
 
-import { FC, useEffect, ReactNode } from 'react';
-import useLocalStorageState from 'use-local-storage-state';
-import { v4 as uuidv4 } from 'uuid';
-import { LOCAL_STORAGE_KEY_WORKSPACE_LIST_MIGRATION } from '../../configs/localStorageKeys';
-import { useWorkspacesContext } from '../../contexts/WorkspacesContext/context';
+import { FC, useEffect, ReactNode } from "react";
+import useLocalStorageState from "use-local-storage-state";
+import { v4 as uuidv4 } from "uuid";
+import { LOCAL_STORAGE_KEY_WORKSPACE_LIST_MIGRATION } from "../../configs/localStorageKeys";
+import { useWorkspacesContext } from "../../contexts/WorkspacesContext/context";
 
 export interface WorkspacesMigrationProps {
   children: ReactNode;
@@ -30,14 +30,17 @@ export interface WorkspacesMigrationProps {
 const WorkspacesMigration: FC<WorkspacesMigrationProps> = ({ children }) => {
   const { workspaceList, setWorkspaceList } = useWorkspacesContext();
 
-  const [migrated, setMigrated] = useLocalStorageState<boolean>(LOCAL_STORAGE_KEY_WORKSPACE_LIST_MIGRATION, {
-    defaultValue: false,
-  });
+  const [migrated, setMigrated] = useLocalStorageState<boolean>(
+    LOCAL_STORAGE_KEY_WORKSPACE_LIST_MIGRATION,
+    {
+      defaultValue: false,
+    },
+  );
 
   // Temporarily tracking Workspace data structure migration
   useEffect(() => {
     if (!migrated) {
-      if (workspaceList.length > 0 && typeof workspaceList[0] === 'string') {
+      if (workspaceList.length > 0 && typeof workspaceList[0] === "string") {
         // @ts-ignore
         setWorkspaceList((prev: any) => {
           // @ts-ignore
@@ -46,7 +49,11 @@ const WorkspacesMigration: FC<WorkspacesMigrationProps> = ({ children }) => {
             name: p,
           }));
           // @ts-ignore
-          currentWorkspace && typeof currentWorkspace === 'string' && setCurrentWorkspace(prevWs => newList.find(x => x.name === prevWs));
+          currentWorkspace &&
+            typeof currentWorkspace === "string" &&
+            setCurrentWorkspace((prevWs) =>
+              newList.find((x) => x.name === prevWs),
+            );
           return newList;
         });
       }

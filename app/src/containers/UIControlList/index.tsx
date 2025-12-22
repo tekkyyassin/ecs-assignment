@@ -13,7 +13,7 @@
   See the License for the specific language governing permissions and
   limitations under the License.
  ******************************************************************************************************************** */
-import ControlList from '../../components/controls/ControlList';
+import ControlList from "../../components/controls/ControlList";
 
 const UIControlList = () => {
   return <ControlList />;

@@ -15,16 +15,22 @@
  ******************************************************************************************************************** */
 
 /** @jsxImportSource @emotion/react */
-import ExpandableSection, { ExpandableSectionProps } from '@cloudscape-design/components/expandable-section';
-import Grid from '@cloudscape-design/components/grid';
-import { EntityBase } from '../../../customTypes';
-import expandablePanelHeaderStyles from '../../../styles/expandablePanelHeader';
-import CommentsEdit from '../CommentsEdit';
+import ExpandableSection, {
+  ExpandableSectionProps,
+} from "@cloudscape-design/components/expandable-section";
+import Grid from "@cloudscape-design/components/grid";
+import { EntityBase } from "../../../customTypes";
+import expandablePanelHeaderStyles from "../../../styles/expandablePanelHeader";
+import CommentsEdit from "../CommentsEdit";
 
 export interface MetadataEditorProps<T> {
-  variant: ExpandableSectionProps['variant'];
+  variant: ExpandableSectionProps["variant"];
   entity: T;
-  onEditEntity: (entity: T, key: string, value: string | string[] | undefined) => void;
+  onEditEntity: (
+    entity: T,
+    key: string,
+    value: string | string[] | undefined,
+  ) => void;
   defaultExpanded?: boolean;
 }
 
@@ -37,19 +43,12 @@ const MetadataEditor = <T extends EntityBase>({
   return (
     <ExpandableSection
       headerText={<span css={expandablePanelHeaderStyles}>Metadata</span>}
-      headingTagOverride='h3'
+      headingTagOverride="h3"
       variant={variant}
       defaultExpanded={defaultExpanded}
     >
-      <Grid
-        gridDefinition={[
-          { colspan: { default: 12, xs: 12 } },
-        ]}
-      >
-        <CommentsEdit
-          entity={entity}
-          onEditEntity={onEditEntity}
-        />
+      <Grid gridDefinition={[{ colspan: { default: 12, xs: 12 } }]}>
+        <CommentsEdit entity={entity} onEditEntity={onEditEntity} />
       </Grid>
     </ExpandableSection>
   );

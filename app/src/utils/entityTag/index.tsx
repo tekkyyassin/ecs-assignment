@@ -14,15 +14,16 @@
   limitations under the License.
  ******************************************************************************************************************** */
 
-import { EntityBase } from '../../customTypes';
+import { EntityBase } from "../../customTypes";
 
 export const addTagToEntity = (entity: EntityBase, tag: string) => {
   const updated: EntityBase = {
     ...entity,
-    tags: entity.tags ?
-      (!entity.tags.includes(tag) ?
-        [...entity.tags, tag] : entity.tags) :
-      [tag],
+    tags: entity.tags
+      ? !entity.tags.includes(tag)
+        ? [...entity.tags, tag]
+        : entity.tags
+      : [tag],
   };
 
   return updated;
@@ -31,7 +32,7 @@ export const addTagToEntity = (entity: EntityBase, tag: string) => {
 export const removeTagFromEntity = (entity: EntityBase, tag: string) => {
   const updated: EntityBase = {
     ...entity,
-    tags: entity.tags?.filter(t => t !== tag),
+    tags: entity.tags?.filter((t) => t !== tag),
   };
 
   return updated;

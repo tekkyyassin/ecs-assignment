@@ -14,15 +14,24 @@
   limitations under the License.
  ******************************************************************************************************************** */
 
-import { PerFieldExample, TemplateThreatStatement } from '../../customTypes';
+import { PerFieldExample, TemplateThreatStatement } from "../../customTypes";
 
 export const addNewValueToStringArray = (arr: string[], newValue?: string) => {
   return newValue && !arr.includes(newValue) ? [...arr, newValue] : arr;
 };
 
-export const addNewValueArrayToStringArrayArray = (arr: string[][], newValue?: string[]) => {
+export const addNewValueArrayToStringArrayArray = (
+  arr: string[][],
+  newValue?: string[],
+) => {
   if (newValue && newValue.length > 0) {
-    if (!arr.find(strArr => strArr.length === newValue.length && newValue.every(v => strArr.includes(v)))) {
+    if (
+      !arr.find(
+        (strArr) =>
+          strArr.length === newValue.length &&
+          newValue.every((v) => strArr.includes(v)),
+      )
+    ) {
       return [...arr, newValue];
     }
   }
@@ -30,9 +39,12 @@ export const addNewValueArrayToStringArrayArray = (arr: string[][], newValue?: s
   return arr;
 };
 
-export const addNewValueArrayToStringArray = (arr: string[], newValue?: string[]) => {
+export const addNewValueArrayToStringArray = (
+  arr: string[],
+  newValue?: string[],
+) => {
   if (newValue && newValue.length > 0) {
-    return [...arr, ...newValue.filter(v => !arr.includes(v))];
+    return [...arr, ...newValue.filter((v) => !arr.includes(v))];
   }
 
   return arr;
@@ -42,12 +54,16 @@ export const addNewValueToPerFieldExampleArray = (
   arr: PerFieldExample[],
   field: keyof TemplateThreatStatement,
   newValue: TemplateThreatStatement,
-  fromId: number) => {
-  return newValue[field] ? [
-    ...arr, {
-      example: newValue[field] as string,
-      fromId,
-      stride: [],
-    },
-  ] : arr;
+  fromId: number,
+) => {
+  return newValue[field]
+    ? [
+        ...arr,
+        {
+          example: newValue[field] as string,
+          fromId,
+          stride: [],
+        },
+      ]
+    : arr;
 };

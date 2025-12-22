@@ -1,0 +1,101 @@
+minimum_pre_commit_version: "3.6.0"
+exclude: >
+  (?x)^(
+    app/node_modules/|
+    app/build/|
+    infra/\.terraform/|
+    infra/\.terragrunt-cache/|
+    \.git/|
+    \.venv/|
+    dist/|
+    coverage/
+  )
+
+repos:
+  # General repo hygiene
+  - repo: https://github.com/pre-commit/pre-commit-hooks
+    rev: v4.6.0
+    hooks:
+      - id: check-added-large-files
+        args: ["--maxkb=1024"]
+      - id: end-of-file-fixer
+      - id: trailing-whitespace
+      - id: mixed-line-ending
+      - id: check-yaml
+      - id: check-json
+      - id: detect-private-key
+
+  # Lint GitHub Actions workflows (catches syntax + common mistakes)
+  - repo: https://github.com/rhysd/actionlint
+    rev: v1.7.9
+    hooks:
+      - id: actionlint
+
+  # Dockerfile linting
+  - repo: https://github.com/hadolint/hadolint
+    rev: v2.12.0
+    hooks:
+      - id: hadolint
+        files: (^Dockerfile$|^app/Dockerfile$)
+
+
+  # Terraform / Terragrunt (infra/)
+  - repo: https://github.com/antonbabenko/pre-commit-terraform
+    rev: v1.104.0
+    hooks:
+      # Terraform formatting
+      - id: terraform_fmt
+        files: ^infra/.*\.tf$
+
+      # Validate module syntax (needs providers available during validate)
+      - id: terraform_validate
+        files: ^infra/.*\.tf$
+
+      # TFLint (static analysis + AWS rules if you enable them via .tflint.hcl)
+      - id: terraform_tflint
+        files: ^infra/.*\.tf$
+        args:
+          - --args=--recursive
+
+      # Terragrunt formatting if you're using *.hcl
+      - id: terragrunt_fmt
+        files: ^infra/.*\.hcl$
+
+      # Checkov scan (IaC misconfig / policy). "soft-fail" keeps momentum.
+      # Remove --soft-fail later if you want hard enforcement.
+      - id: terraform_checkov
+        files: ^infra/.*\.tf$
+        args:
+          - --args=--quiet
+          - --args=--compact
+          - --args=--soft-fail
+
+      # Trivy config scan for Terraform (misconfig + some vuln signals)
+      # Tune severities later (or remove soft-fail to block commits).
+      - id: terraform_trivy
+        files: ^infra/.*\.tf$
+        args:
+          - --args=--severity
+          - --args=HIGH,CRITICAL
+          - --args=--exit-code
+          - --args=0
+
+
+  # App formatting (prettier) - runs on app/ + common text formats
+  - repo: local
+    hooks:
+    - id: app-prettier
+      name: app prettier
+      entry: bash -lc 'cd app && yarn -s prettier -w .'
+      language: system
+      files: ^app/.*\.(js|jsx|ts|tsx|json|css|scss|md|yml|yaml)$
+
+
+  # App lint (eslint) for yarn
+  - repo: local
+    hooks:
+      - id: app-eslint
+        name: app eslint
+        entry: bash -lc 'cd app && yarn -s eslint --max-warnings=0'
+        language: system
+        files: ^app/.*\.(js|jsx|ts|tsx)$

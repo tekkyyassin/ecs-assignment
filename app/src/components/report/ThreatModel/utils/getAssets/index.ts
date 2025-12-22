@@ -14,41 +14,46 @@
   limitations under the License.
  ******************************************************************************************************************** */
 
-import { DataExchangeFormat, TemplateThreatStatement } from '../../../../../customTypes';
-import escapeMarkdown from '../../../../../utils/escapeMarkdown';
-import standardizeNumericId from '../../../../../utils/standardizeNumericId';
+import {
+  DataExchangeFormat,
+  TemplateThreatStatement,
+} from "../../../../../customTypes";
+import escapeMarkdown from "../../../../../utils/escapeMarkdown";
+import standardizeNumericId from "../../../../../utils/standardizeNumericId";
 
-export const getAssetsContent = async (
-  data: DataExchangeFormat,
-) => {
+export const getAssetsContent = async (data: DataExchangeFormat) => {
   const rows: string[] = [];
-  rows.push('## Impacted Assets');
+  rows.push("## Impacted Assets");
 
-  rows.push('\n');
+  rows.push("\n");
 
-  rows.push('| Assets Number | Asset | Related Threats |');
-  rows.push('| --- | --- | --- |');
+  rows.push("| Assets Number | Asset | Related Threats |");
+  rows.push("| --- | --- | --- |");
 
   if (data.threats) {
     const assetThreatMap: {
       [assetName: string]: TemplateThreatStatement[];
     } = {};
 
-    data.threats.forEach(t => t.impactedAssets?.forEach(ia => {
-      if (!assetThreatMap[ia]) {
-        assetThreatMap[ia] = [];
-      }
+    data.threats.forEach((t) =>
+      t.impactedAssets?.forEach((ia) => {
+        if (!assetThreatMap[ia]) {
+          assetThreatMap[ia] = [];
+        }
 
-      assetThreatMap[ia].push(t);
-    }));
+        assetThreatMap[ia].push(t);
+      }),
+    );
 
     const promises = Object.keys(assetThreatMap).map(async (at, index) => {
       const atId = `AS-${standardizeNumericId(index + 1)}`;
 
-      const threatsContent = assetThreatMap[at].map(t => {
-        const threatId = `T-${standardizeNumericId(t.numericId)}`;
-        return `[**${threatId}**](#${threatId}): ${escapeMarkdown((t.statement || ''))}`;
-      }).join('<br/>');
+      const threatsContent = assetThreatMap[at]
+        .map((t) => {
+          const threatId = `T-${standardizeNumericId(t.numericId)}`;
+          return `[**${threatId}**](#${threatId}): ${escapeMarkdown(t.statement || "")}`;
+        })
+        .join("<br/>");
 
       return `| ${atId} | ${escapeMarkdown(at)} | ${threatsContent} |`;
     });
@@ -56,7 +61,7 @@ export const getAssetsContent = async (
     rows.push(...(await Promise.all(promises)));
   }
 
-  rows.push('\n');
+  rows.push("\n");
 
-  return rows.join('\n');
+  return rows.join("\n");
 };

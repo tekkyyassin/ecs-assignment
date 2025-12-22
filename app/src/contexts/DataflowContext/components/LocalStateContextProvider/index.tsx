@@ -14,19 +14,22 @@
   limitations under the License.
  ******************************************************************************************************************** */
 
-import { FC, PropsWithChildren, useCallback, useState } from 'react';
-import { DataflowInfo } from '../../../../customTypes';
-import { INFO_DEFAULT_VALUE } from '../../../constants';
-import { LocalStateContextProviderBaseProps } from '../../../types';
-import { DataflowInfoContext } from '../../context';
-import { DataflowContextProviderProps } from '../../types';
+import { FC, PropsWithChildren, useCallback, useState } from "react";
+import { DataflowInfo } from "../../../../customTypes";
+import { INFO_DEFAULT_VALUE } from "../../../constants";
+import { LocalStateContextProviderBaseProps } from "../../../types";
+import { DataflowInfoContext } from "../../context";
+import { DataflowContextProviderProps } from "../../types";
 
-const ApplicationLocalStateContextProvider: FC<PropsWithChildren<
-DataflowContextProviderProps & LocalStateContextProviderBaseProps<DataflowInfo>>> = ({
-  children,
-  initialValue,
-}) => {
-  const [dataflowInfo, setDataflowInfo] = useState<DataflowInfo>(initialValue || INFO_DEFAULT_VALUE);
+const ApplicationLocalStateContextProvider: FC<
+  PropsWithChildren<
+    DataflowContextProviderProps &
+      LocalStateContextProviderBaseProps<DataflowInfo>
+  >
+> = ({ children, initialValue }) => {
+  const [dataflowInfo, setDataflowInfo] = useState<DataflowInfo>(
+    initialValue || INFO_DEFAULT_VALUE,
+  );
 
   const handleRemoveDataflowInfo = useCallback(async () => {
     setDataflowInfo(INFO_DEFAULT_VALUE);
@@ -36,15 +39,18 @@ DataflowContextProviderProps & LocalStateContextProviderBaseProps<DataflowInfo>>
     setDataflowInfo(INFO_DEFAULT_VALUE);
   }, []);
 
-  return (<DataflowInfoContext.Provider value={{
-    dataflowInfo,
-    setDataflowInfo,
-    removeDataflowInfo: handleRemoveDataflowInfo,
-    onDeleteWorkspace: handleDeleteWorkspace,
-  }}>
-    {children}
-  </DataflowInfoContext.Provider>);
+  return (
+    <DataflowInfoContext.Provider
+      value={{
+        dataflowInfo,
+        setDataflowInfo,
+        removeDataflowInfo: handleRemoveDataflowInfo,
+        onDeleteWorkspace: handleDeleteWorkspace,
+      }}
+    >
+      {children}
+    </DataflowInfoContext.Provider>
+  );
 };
 
 export default ApplicationLocalStateContextProvider;
-

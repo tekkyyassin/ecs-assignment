@@ -14,17 +14,17 @@
   limitations under the License.
  ******************************************************************************************************************** */
 
-import sanitizeHtmlString from 'sanitize-html';
+import sanitizeHtmlString from "sanitize-html";
 
 const sanitizeHtml: any = (data: any) => {
   if (data) {
     if (Array.isArray(data)) {
-      return data.map(d => sanitizeHtml(d));
-    } else if (typeof data === 'string') {
+      return data.map((d) => sanitizeHtml(d));
+    } else if (typeof data === "string") {
       return sanitizeHtmlString(data, {
         allowedTags: [],
       });
-    } else if (typeof data === 'object') {
+    } else if (typeof data === "object") {
       return Object.keys(data).reduce(
         (attrs, key) => ({
           ...attrs,

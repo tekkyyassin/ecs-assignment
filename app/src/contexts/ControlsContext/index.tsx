@@ -14,24 +14,26 @@
   limitations under the License.
  ******************************************************************************************************************** */
 
-import { FC, PropsWithChildren } from 'react';
-import ControlsLocalStateContextProvider from './components/LocalStateContextProvider';
-import ControlsLocalStorageContextProvider from './components/LocalStorageContextProvider';
-import { useControlsContext } from './context';
-import { ControlsContextProviderProps } from './types';
-import { EXAMPLE_WORKSPACE_ID } from '../../configs/constants';
-import { useExampleContext } from '../ExampleContext';
+import { FC, PropsWithChildren } from "react";
+import ControlsLocalStateContextProvider from "./components/LocalStateContextProvider";
+import ControlsLocalStorageContextProvider from "./components/LocalStorageContextProvider";
+import { useControlsContext } from "./context";
+import { ControlsContextProviderProps } from "./types";
+import { EXAMPLE_WORKSPACE_ID } from "../../configs/constants";
+import { useExampleContext } from "../ExampleContext";
 
-const ControlsContextProvider: FC<PropsWithChildren<ControlsContextProviderProps>> = (props) => {
+const ControlsContextProvider: FC<
+  PropsWithChildren<ControlsContextProviderProps>
+> = (props) => {
   const { controls } = useExampleContext();
 
-  return props.workspaceId === EXAMPLE_WORKSPACE_ID ?
-    (<ControlsLocalStateContextProvider initialValue={controls} {...props} />) :
-    (<ControlsLocalStorageContextProvider {...props} />);
+  return props.workspaceId === EXAMPLE_WORKSPACE_ID ? (
+    <ControlsLocalStateContextProvider initialValue={controls} {...props} />
+  ) : (
+    <ControlsLocalStorageContextProvider {...props} />
+  );
 };
 
 export default ControlsContextProvider;
 
-export {
-  useControlsContext,
-};
+export { useControlsContext };

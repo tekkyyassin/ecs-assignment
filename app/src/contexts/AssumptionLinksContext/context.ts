@@ -14,18 +14,23 @@
   limitations under the License.
  ******************************************************************************************************************** */
 
-import { useContext, createContext } from 'react';
-import { AssumptionLink } from '../../customTypes';
-export type View = 'list' | 'editor';
+import { useContext, createContext } from "react";
+import { AssumptionLink } from "../../customTypes";
+export type View = "list" | "editor";
 
 export interface AssumptionLinksContextApi {
   assumptionLinkList: AssumptionLink[];
   setAssumptionLinkList: (list: AssumptionLink[]) => void;
   getLinkedAssumptionLinks: (linkedEntityId: string) => AssumptionLink[];
-  getAssumptionEntityLinks: (assumptionId: string, type: AssumptionLink['type']) => AssumptionLink[];
+  getAssumptionEntityLinks: (
+    assumptionId: string,
+    type: AssumptionLink["type"],
+  ) => AssumptionLink[];
   removeAssumptionLink: (assumptionId: string, linkedEntityId: string) => void;
   removeAssumptionLinksByAssumptionId: (assumptionId: string) => Promise<void>;
-  removeAssumptionLinksByLinkedEntityId: (linkedEntityId: string) => Promise<void>;
+  removeAssumptionLinksByLinkedEntityId: (
+    linkedEntityId: string,
+  ) => Promise<void>;
   removeAssumptionLinks: (entities: AssumptionLink[]) => void;
   addAssumptionLink: (entity: AssumptionLink) => void;
   addAssumptionLinks: (entities: AssumptionLink[]) => void;
@@ -35,19 +40,21 @@ export interface AssumptionLinksContextApi {
 
 const initialState: AssumptionLinksContextApi = {
   assumptionLinkList: [],
-  setAssumptionLinkList: () => { },
+  setAssumptionLinkList: () => {},
   getLinkedAssumptionLinks: () => [],
   getAssumptionEntityLinks: () => [],
-  removeAssumptionLink: () => { },
+  removeAssumptionLink: () => {},
   removeAssumptionLinksByAssumptionId: () => Promise.resolve(),
   removeAssumptionLinksByLinkedEntityId: () => Promise.resolve(),
-  removeAssumptionLinks: () => { },
-  addAssumptionLink: () => { },
-  addAssumptionLinks: () => { },
+  removeAssumptionLinks: () => {},
+  addAssumptionLink: () => {},
+  addAssumptionLinks: () => {},
   removeAllAssumptionLinks: () => Promise.resolve(),
   onDeleteWorkspace: () => Promise.resolve(),
 };
 
-export const AssumptionLinksContext = createContext<AssumptionLinksContextApi>(initialState);
+export const AssumptionLinksContext =
+  createContext<AssumptionLinksContextApi>(initialState);
 
-export const useAssumptionLinksContext = () => useContext(AssumptionLinksContext);
+export const useAssumptionLinksContext = () =>
+  useContext(AssumptionLinksContext);

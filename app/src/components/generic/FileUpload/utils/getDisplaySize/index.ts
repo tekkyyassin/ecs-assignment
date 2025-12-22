@@ -19,7 +19,7 @@ const getDisplaySize = (size?: number | null) => {
 
   const k = 1000;
   const dm = 2;
-  const sizes = ['bytes', 'KB', 'MB', 'GB'];
+  const sizes = ["bytes", "KB", "MB", "GB"];
 
   const i = Math.floor(Math.log(size) / Math.log(k));
 

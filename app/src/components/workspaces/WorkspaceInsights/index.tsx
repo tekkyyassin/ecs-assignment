@@ -14,15 +14,15 @@
   limitations under the License.
  ******************************************************************************************************************** */
 
-import Board, { BoardProps } from '@cloudscape-design/board-components/board';
-import BoardItem from '@cloudscape-design/board-components/board-item';
-import ContentLayout from '@cloudscape-design/components/content-layout';
-import Header from '@cloudscape-design/components/header';
-import { useState, ReactNode, useCallback } from 'react';
-import Overview from './components/Overview';
-import STRIDEAllocation from './components/STRIDEAllocation';
-import ThreatGrammar from './components/ThreatGrammar';
-import ThreatPrioritization from './components/ThreatPrioritization';
+import Board, { BoardProps } from "@cloudscape-design/board-components/board";
+import BoardItem from "@cloudscape-design/board-components/board-item";
+import ContentLayout from "@cloudscape-design/components/content-layout";
+import Header from "@cloudscape-design/components/header";
+import { useState, ReactNode, useCallback } from "react";
+import Overview from "./components/Overview";
+import STRIDEAllocation from "./components/STRIDEAllocation";
+import ThreatGrammar from "./components/ThreatGrammar";
+import ThreatPrioritization from "./components/ThreatPrioritization";
 
 export interface ItemType {
   title: string;
@@ -32,152 +32,168 @@ export interface ItemType {
 const WorkspaceInsights = () => {
   const [items, setItems] = useState<BoardProps.Item<ItemType>[]>([
     {
-      id: 'overview',
+      id: "overview",
       rowSpan: 2,
       columnSpan: 6,
-      data: { title: 'Threat summary', content: <Overview /> },
+      data: { title: "Threat summary", content: <Overview /> },
     },
     {
-      id: 'threat-prioritization',
+      id: "threat-prioritization",
       rowSpan: 5,
       columnSpan: 2,
-      data: { title: 'Threat prioritization', content: <ThreatPrioritization /> },
+      data: {
+        title: "Threat prioritization",
+        content: <ThreatPrioritization />,
+      },
     },
     {
-      id: 'stride-allocation',
+      id: "stride-allocation",
       rowSpan: 5,
       columnSpan: 2,
-      data: { title: 'Threat category distribution', content: <STRIDEAllocation /> },
+      data: {
+        title: "Threat category distribution",
+        content: <STRIDEAllocation />,
+      },
     },
     {
-      id: 'threat-grammer',
+      id: "threat-grammer",
       rowSpan: 5,
       columnSpan: 2,
-      data: { title: 'Threat grammar distribution', content: <ThreatGrammar /> },
+      data: {
+        title: "Threat grammar distribution",
+        content: <ThreatGrammar />,
+      },
     },
   ]);
 
-  const handleRenderItem = useCallback((item: BoardProps.Item<ItemType>, _actions: any) => {
-    return (<BoardItem
-      header={<Header>{item.data.title}</Header>}
-      i18nStrings={{
-        dragHandleAriaLabel: 'Drag handle',
-        dragHandleAriaDescription:
-          'Use Space or Enter to activate drag, arrow keys to move, Space or Enter to submit, or Escape to discard.',
-        resizeHandleAriaLabel: 'Resize handle',
-        resizeHandleAriaDescription:
-          'Use Space or Enter to activate resize, arrow keys to move, Space or Enter to submit, or Escape to discard.',
-      }}
-    >
-      {item.data.content}
-    </BoardItem>);
-  }, []);
+  const handleRenderItem = useCallback(
+    (item: BoardProps.Item<ItemType>, _actions: any) => {
+      return (
+        <BoardItem
+          header={<Header>{item.data.title}</Header>}
+          i18nStrings={{
+            dragHandleAriaLabel: "Drag handle",
+            dragHandleAriaDescription:
+              "Use Space or Enter to activate drag, arrow keys to move, Space or Enter to submit, or Escape to discard.",
+            resizeHandleAriaLabel: "Resize handle",
+            resizeHandleAriaDescription:
+              "Use Space or Enter to activate resize, arrow keys to move, Space or Enter to submit, or Escape to discard.",
+          }}
+        >
+          {item.data.content}
+        </BoardItem>
+      );
+    },
+    [],
+  );
 
-  return (<ContentLayout
-    header={
-      <Header
-        variant="h1"
-      >
-        Insights dashboard
-      </Header>
-    }
-  >
-    <Board
-      renderItem={handleRenderItem as (item: BoardProps.Item<unknown>) => JSX.Element}
-      onItemsChange={event => {
-        setItems(event.detail.items as BoardProps.Item<ItemType>[]);
-      }}
-      empty={<></>}
-      items={items}
-      i18nStrings={(() => {
-        function createAnnouncement(
-          operationAnnouncement: any,
-          conflicts: any,
-          disturbed: any,
-        ) {
-          const conflictsAnnouncement =
-            conflicts.length > 0
-              ? `Conflicts with ${conflicts
-                .map((c: BoardProps.Item<ItemType>) => c.data.title)
-                .join(', ')}.`
-              : '';
-          const disturbedAnnouncement =
-            disturbed.length > 0
-              ? `Disturbed ${disturbed.length} items.`
-              : '';
-          return [
-            operationAnnouncement,
-            conflictsAnnouncement,
-            disturbedAnnouncement,
-          ]
-            .filter(Boolean)
-            .join(' ');
+  return (
+    <ContentLayout header={<Header variant="h1">Insights dashboard</Header>}>
+      <Board
+        renderItem={
+          handleRenderItem as (item: BoardProps.Item<unknown>) => JSX.Element
         }
-        return {
-          liveAnnouncementDndStarted: (operationType: BoardProps.DndOperationType) =>
-            operationType === 'resize'
-              ? 'Resizing'
-              : 'Dragging',
-          liveAnnouncementDndItemReordered: (operation: BoardProps.DndReorderState<unknown>) => {
-            const columns = `column ${operation.placement
-              .x + 1}`;
-            const rows = `row ${operation.placement.y +
-              1}`;
-            return createAnnouncement(
-              `Item moved to ${operation.direction === 'horizontal'
-                ? columns
-                : rows
-              }.`,
-              operation.conflicts,
-              operation.disturbed,
-            );
-          },
-          liveAnnouncementDndItemResized: (operation: BoardProps.DndResizeState<unknown>) => {
-            const columnsConstraint = operation.isMinimalColumnsReached
-              ? ' (minimal)'
-              : '';
-            const rowsConstraint = operation.isMinimalRowsReached
-              ? ' (minimal)'
-              : '';
-            const sizeAnnouncement =
-              operation.direction === 'horizontal'
-                ? `columns ${operation.placement.width}${columnsConstraint}`
-                : `rows ${operation.placement.height}${rowsConstraint}`;
-            return createAnnouncement(
-              `Item resized to ${sizeAnnouncement}.`,
-              operation.conflicts,
-              operation.disturbed,
-            );
-          },
-          liveAnnouncementDndItemInserted: (operation: BoardProps.DndInsertState<unknown>) => {
-            const columns = `column ${operation.placement
-              .x + 1}`;
-            const rows = `row ${operation.placement.y +
-              1}`;
-            return createAnnouncement(
-              `Item inserted to ${columns}, ${rows}.`,
-              operation.conflicts,
-              operation.disturbed,
-            );
-          },
-          liveAnnouncementDndCommitted: (operationType: BoardProps.DndOperationType) =>
-            `${operationType} committed`,
-          liveAnnouncementDndDiscarded: (operationType: BoardProps.DndOperationType) =>
-            `${operationType} discarded`,
-          liveAnnouncementItemRemoved: (op: BoardProps.ItemRemovedState<ItemType>) =>
-            createAnnouncement(
-              `Removed item ${op.item.data.title}.`,
-              [],
-              op.disturbed,
-            ),
-          navigationAriaLabel: 'Board navigation',
-          navigationAriaDescription:
-            'Click on non-empty item to move focus over',
-          navigationItemAriaLabel: (item: BoardProps.Item<ItemType> | null) =>
-            item ? item.data.title : 'Empty',
-        };
-      })()}
-    /></ContentLayout>);
+        onItemsChange={(event) => {
+          setItems(event.detail.items as BoardProps.Item<ItemType>[]);
+        }}
+        empty={<></>}
+        items={items}
+        i18nStrings={(() => {
+          function createAnnouncement(
+            operationAnnouncement: any,
+            conflicts: any,
+            disturbed: any,
+          ) {
+            const conflictsAnnouncement =
+              conflicts.length > 0
+                ? `Conflicts with ${conflicts
+                    .map((c: BoardProps.Item<ItemType>) => c.data.title)
+                    .join(", ")}.`
+                : "";
+            const disturbedAnnouncement =
+              disturbed.length > 0
+                ? `Disturbed ${disturbed.length} items.`
+                : "";
+            return [
+              operationAnnouncement,
+              conflictsAnnouncement,
+              disturbedAnnouncement,
+            ]
+              .filter(Boolean)
+              .join(" ");
+          }
+          return {
+            liveAnnouncementDndStarted: (
+              operationType: BoardProps.DndOperationType,
+            ) => (operationType === "resize" ? "Resizing" : "Dragging"),
+            liveAnnouncementDndItemReordered: (
+              operation: BoardProps.DndReorderState<unknown>,
+            ) => {
+              const columns = `column ${operation.placement.x + 1}`;
+              const rows = `row ${operation.placement.y + 1}`;
+              return createAnnouncement(
+                `Item moved to ${
+                  operation.direction === "horizontal" ? columns : rows
+                }.`,
+                operation.conflicts,
+                operation.disturbed,
+              );
+            },
+            liveAnnouncementDndItemResized: (
+              operation: BoardProps.DndResizeState<unknown>,
+            ) => {
+              const columnsConstraint = operation.isMinimalColumnsReached
+                ? " (minimal)"
+                : "";
+              const rowsConstraint = operation.isMinimalRowsReached
+                ? " (minimal)"
+                : "";
+              const sizeAnnouncement =
+                operation.direction === "horizontal"
+                  ? `columns ${operation.placement.width}${columnsConstraint}`
+                  : `rows ${operation.placement.height}${rowsConstraint}`;
+              return createAnnouncement(
+                `Item resized to ${sizeAnnouncement}.`,
+                operation.conflicts,
+                operation.disturbed,
+              );
+            },
+            liveAnnouncementDndItemInserted: (
+              operation: BoardProps.DndInsertState<unknown>,
+            ) => {
+              const columns = `column ${operation.placement.x + 1}`;
+              const rows = `row ${operation.placement.y + 1}`;
+              return createAnnouncement(
+                `Item inserted to ${columns}, ${rows}.`,
+                operation.conflicts,
+                operation.disturbed,
+              );
+            },
+            liveAnnouncementDndCommitted: (
+              operationType: BoardProps.DndOperationType,
+            ) => `${operationType} committed`,
+            liveAnnouncementDndDiscarded: (
+              operationType: BoardProps.DndOperationType,
+            ) => `${operationType} discarded`,
+            liveAnnouncementItemRemoved: (
+              op: BoardProps.ItemRemovedState<ItemType>,
+            ) =>
+              createAnnouncement(
+                `Removed item ${op.item.data.title}.`,
+                [],
+                op.disturbed,
+              ),
+            navigationAriaLabel: "Board navigation",
+            navigationAriaDescription:
+              "Click on non-empty item to move focus over",
+            navigationItemAriaLabel: (
+              item: BoardProps.Item<ItemType> | null,
+            ) => (item ? item.data.title : "Empty"),
+          };
+        })()}
+      />
+    </ContentLayout>
+  );
 };
 
 export default WorkspaceInsights;

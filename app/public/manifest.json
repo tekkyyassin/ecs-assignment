@@ -1,8 +1,7 @@
 {
   "short_name": "threat-composer",
   "name": "threat-composer",
-  "icons": [
-  ],
+  "icons": [],
   "start_url": ".",
   "display": "standalone",
   "theme_color": "#000000",

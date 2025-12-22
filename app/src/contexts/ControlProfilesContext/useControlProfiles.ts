@@ -14,39 +14,52 @@
   limitations under the License.
  ******************************************************************************************************************** */
 
-import { useCallback } from 'react';
-import { ControlProfile } from '../../customTypes';
+import { useCallback } from "react";
+import { ControlProfile } from "../../customTypes";
 
 const useControlProfiles = (
   _controlProfileList: ControlProfile[],
   setControlProfileList: React.Dispatch<React.SetStateAction<ControlProfile[]>>,
 ) => {
-  const handlRemoveControlProfile = useCallback((schema: string) => {
-    setControlProfileList((prevList) => prevList.filter(x => x.schema !== schema));
-  }, [setControlProfileList]);
+  const handlRemoveControlProfile = useCallback(
+    (schema: string) => {
+      setControlProfileList((prevList) =>
+        prevList.filter((x) => x.schema !== schema),
+      );
+    },
+    [setControlProfileList],
+  );
 
-  const handleSaveControlProfile = useCallback((controlProfile: ControlProfile) => {
-    let newEntity = controlProfile;
-    setControlProfileList((prevList) => {
+  const handleSaveControlProfile = useCallback(
+    (controlProfile: ControlProfile) => {
+      let newEntity = controlProfile;
+      setControlProfileList((prevList) => {
+        let updated: ControlProfile = {
+          ...controlProfile,
+          schema: controlProfile.schema,
+          controls: controlProfile.controls,
+        };
 
-      let updated: ControlProfile = {
-        ...controlProfile,
-        schema: controlProfile.schema,
-        controls: controlProfile.controls,
-      };
+        newEntity = { ...updated };
 
-      newEntity = { ...updated };
+        const foundIndex = prevList.findIndex(
+          (st) => st.schema === updated.schema,
+        );
+        if (foundIndex >= 0) {
+          return [
+            ...prevList.slice(0, foundIndex),
+            updated,
+            ...prevList.slice(foundIndex + 1),
+          ];
+        }
 
-      const foundIndex = prevList.findIndex(st => st.schema === updated.schema);
-      if (foundIndex >= 0) {
-        return [...prevList.slice(0, foundIndex), updated, ...prevList.slice(foundIndex + 1)];
-      }
+        return [...prevList, updated];
+      });
 
-      return [...prevList, updated];
-    });
-
-    return newEntity;
-  }, [setControlProfileList]);
+      return newEntity;
+    },
+    [setControlProfileList],
+  );
 
   return {
     handlRemoveControlProfile,

@@ -14,28 +14,33 @@
   limitations under the License.
  ******************************************************************************************************************** */
 
-import { SelectProps } from '@cloudscape-design/components/select';
-import React, { FC, useMemo } from 'react';
-import { TemplateThreatStatement } from '../../../customTypes';
-import LevelSelector from '../../generic/LevelSelector';
+import { SelectProps } from "@cloudscape-design/components/select";
+import React, { FC, useMemo } from "react";
+import { TemplateThreatStatement } from "../../../customTypes";
+import LevelSelector from "../../generic/LevelSelector";
 
 export interface PriorityEditProps {
   showLabel?: boolean;
   editingStatement: TemplateThreatStatement;
-  onEditMetadata: (statement: TemplateThreatStatement, key: string, value: string | string[] | undefined) => void;
+  onEditMetadata: (
+    statement: TemplateThreatStatement,
+    key: string,
+    value: string | string[] | undefined,
+  ) => void;
   onFocus?: () => void;
   onBlur?: () => void;
   ref?: React.ForwardedRef<any>;
 }
 
-const PriorityEdit: FC<PriorityEditProps> = React.forwardRef<React.ForwardedRef<SelectProps.Ref>, PriorityEditProps>(({
-  editingStatement,
-  onEditMetadata,
-  showLabel = true,
-  ...props
-}, ref) => {
+const PriorityEdit: FC<PriorityEditProps> = React.forwardRef<
+  React.ForwardedRef<SelectProps.Ref>,
+  PriorityEditProps
+>(({ editingStatement, onEditMetadata, showLabel = true, ...props }, ref) => {
   const priority = useMemo(() => {
-    return (editingStatement.metadata?.find(m => m.key === 'Priority')?.value as string) || undefined;
+    return (
+      (editingStatement.metadata?.find((m) => m.key === "Priority")
+        ?.value as string) || undefined
+    );
   }, [editingStatement.metadata]);
 
   return (
@@ -43,12 +48,14 @@ const PriorityEdit: FC<PriorityEditProps> = React.forwardRef<React.ForwardedRef<
       ref={ref}
       {...props}
       allowNoValue
-      placeholder='Select Prority'
-      label={showLabel ? 'Priority' : undefined}
+      placeholder="Select Prority"
+      label={showLabel ? "Priority" : undefined}
       selectedLevel={priority}
-      setSelectedLevel={(selectedLevel) => onEditMetadata(editingStatement, 'Priority', selectedLevel)}
+      setSelectedLevel={(selectedLevel) =>
+        onEditMetadata(editingStatement, "Priority", selectedLevel)
+      }
     />
   );
-});;
+});
 
 export default PriorityEdit;

@@ -15,18 +15,18 @@
  ******************************************************************************************************************** */
 
 const replacements = [
-  [/\*/g, '\\*', 'asterisks'],
-  [/#/g, '\\#', 'number signs'],
-  [/\//g, '\\/', 'slashes'],
-  [/\(/g, '\\(', 'parentheses'],
-  [/\)/g, '\\)', 'parentheses'],
-  [/\[/g, '\\[', 'square brackets'],
-  [/\]/g, '\\]', 'square brackets'],
-  [/</g, '&lt;', 'angle brackets'],
-  [/>/g, '&gt;', 'angle brackets'],
-  [/_/g, '\\_', 'underscores'],
-  [/`/g, '\\`', 'codeblocks'],
-  [/\|/g, '\\|', 'pipes'],
+  [/\*/g, "\\*", "asterisks"],
+  [/#/g, "\\#", "number signs"],
+  [/\//g, "\\/", "slashes"],
+  [/\(/g, "\\(", "parentheses"],
+  [/\)/g, "\\)", "parentheses"],
+  [/\[/g, "\\[", "square brackets"],
+  [/\]/g, "\\]", "square brackets"],
+  [/</g, "&lt;", "angle brackets"],
+  [/>/g, "&gt;", "angle brackets"],
+  [/_/g, "\\_", "underscores"],
+  [/`/g, "\\`", "codeblocks"],
+  [/\|/g, "\\|", "pipes"],
 ];
 
 const escapeMarkdown = (input: string, skips: string[] = []) => {

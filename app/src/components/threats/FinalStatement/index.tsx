@@ -15,28 +15,35 @@
  ******************************************************************************************************************** */
 
 /** @jsxImportSource @emotion/react */
-import TextContent from '@cloudscape-design/components/text-content';
-import { css } from '@emotion/react';
-import { FC, ReactNode } from 'react';
-import { TemplateThreatStatement } from '../../../customTypes';
-import CopyToClipbord from '../../generic/CopyToClipboard';
+import TextContent from "@cloudscape-design/components/text-content";
+import { css } from "@emotion/react";
+import { FC, ReactNode } from "react";
+import { TemplateThreatStatement } from "../../../customTypes";
+import CopyToClipbord from "../../generic/CopyToClipboard";
 
 export interface FinalStatementProps {
   statement: TemplateThreatStatement;
   displayStatement?: ReactNode[];
 }
 
-const FinalStatement: FC<FinalStatementProps> = ({ statement, displayStatement }) => {
+const FinalStatement: FC<FinalStatementProps> = ({
+  statement,
+  displayStatement,
+}) => {
   return (
     <TextContent>
-      <p css={css`
-        font-size: 20px !important;
-        line-height: 1.5 !important;
-      `}
+      <p
+        css={css`
+          font-size: 20px !important;
+          line-height: 1.5 !important;
+        `}
       >
-        {(statement.statement || (displayStatement && displayStatement.length > 0)) && <CopyToClipbord content={statement.statement}>
-          {displayStatement ? displayStatement : statement.statement}
-        </CopyToClipbord>}
+        {(statement.statement ||
+          (displayStatement && displayStatement.length > 0)) && (
+          <CopyToClipbord content={statement.statement}>
+            {displayStatement ? displayStatement : statement.statement}
+          </CopyToClipbord>
+        )}
       </p>
     </TextContent>
   );

@@ -1,0 +1,30 @@
+# Terraform / Terragrunt
+
+**/.terraform/
+**/.terragrunt-cache/
+**/*.tfstate
+**/*.tfstate.*
+**/crash.log
+**/crash.*.log
+
+# Terraform CLI plan files (if you ever output -out=planfile)
+**/*.tfplan
+
+
+# Node / app artefacts
+**/node_modules/
+**/build/
+**/dist/
+**/.cache/
+**/*.log
+
+# env files (do not commit)
+**/.env
+**/.env.*
+
+
+# OS / editor
+.DS_Store
+.idea/
+.vscode/
+*.swp

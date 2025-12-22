@@ -14,8 +14,8 @@
   limitations under the License.
  ******************************************************************************************************************** */
 
-import { useContext, createContext } from 'react';
-import { MitigationLink } from '../../customTypes';
+import { useContext, createContext } from "react";
+import { MitigationLink } from "../../customTypes";
 export interface MitigationLinksContextApi {
   mitigationLinkList: MitigationLink[];
   setMitigationLinkList: (list: MitigationLink[]) => void;
@@ -23,7 +23,9 @@ export interface MitigationLinksContextApi {
   getMitigtaionThreatLinks: (mitigationId: string) => MitigationLink[];
   removeMitigationLink: (mitigationId: string, linkedEntityId: string) => void;
   removeMitigationLinksByMitigationId: (mitigationId: string) => Promise<void>;
-  removeMitigationLinksByLinkedEntityId: (linkedEntityId: string) => Promise<void>;
+  removeMitigationLinksByLinkedEntityId: (
+    linkedEntityId: string,
+  ) => Promise<void>;
   removeMitigationLinks: (entity: MitigationLink[]) => void;
   addMitigationLink: (entity: MitigationLink) => void;
   addMitigationLinks: (entity: MitigationLink[]) => void;
@@ -33,19 +35,21 @@ export interface MitigationLinksContextApi {
 
 const initialState: MitigationLinksContextApi = {
   mitigationLinkList: [],
-  setMitigationLinkList: () => { },
+  setMitigationLinkList: () => {},
   getLinkedMitigationLinks: () => [],
   getMitigtaionThreatLinks: () => [],
-  removeMitigationLink: () => { },
+  removeMitigationLink: () => {},
   removeMitigationLinksByMitigationId: () => Promise.resolve(),
   removeMitigationLinksByLinkedEntityId: () => Promise.resolve(),
-  removeMitigationLinks: () => { },
-  addMitigationLink: () => { },
-  addMitigationLinks: () => { },
+  removeMitigationLinks: () => {},
+  addMitigationLink: () => {},
+  addMitigationLinks: () => {},
   removeAllMitigationLinks: () => Promise.resolve(),
   onDeleteWorkspace: () => Promise.resolve(),
 };
 
-export const MitigationLinksContext = createContext<MitigationLinksContextApi>(initialState);
+export const MitigationLinksContext =
+  createContext<MitigationLinksContextApi>(initialState);
 
-export const useMitigationLinksContext = () => useContext(MitigationLinksContext);
+export const useMitigationLinksContext = () =>
+  useContext(MitigationLinksContext);

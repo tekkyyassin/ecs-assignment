@@ -14,24 +14,25 @@
   limitations under the License.
  ******************************************************************************************************************** */
 
-import { FC, PropsWithChildren, useCallback, useState } from 'react';
-import { ControlProfile } from '../../../../customTypes';
-import { LocalStateContextProviderBaseProps } from '../../../types';
-import { ControlProfilesContext } from '../../context';
-import { ControlProfilesContextProviderProps } from '../../types';
-import useControlProfiles from '../../useControlProfiles';
+import { FC, PropsWithChildren, useCallback, useState } from "react";
+import { ControlProfile } from "../../../../customTypes";
+import { LocalStateContextProviderBaseProps } from "../../../types";
+import { ControlProfilesContext } from "../../context";
+import { ControlProfilesContextProviderProps } from "../../types";
+import useControlProfiles from "../../useControlProfiles";
 
-const ControlProfilesLocalStateContextProvider: FC<PropsWithChildren<
-ControlProfilesContextProviderProps & LocalStateContextProviderBaseProps<ControlProfile[]>>> = ({
-  children,
-  initialValue,
-}) => {
-  const [controlProfileList, setControlProfileList] = useState<ControlProfile[]>(initialValue || []);
+const ControlProfilesLocalStateContextProvider: FC<
+  PropsWithChildren<
+    ControlProfilesContextProviderProps &
+      LocalStateContextProviderBaseProps<ControlProfile[]>
+  >
+> = ({ children, initialValue }) => {
+  const [controlProfileList, setControlProfileList] = useState<
+    ControlProfile[]
+  >(initialValue || []);
 
-  const {
-    handlRemoveControlProfile,
-    handleSaveControlProfile,
-  } = useControlProfiles(controlProfileList, setControlProfileList);
+  const { handlRemoveControlProfile, handleSaveControlProfile } =
+    useControlProfiles(controlProfileList, setControlProfileList);
 
   const handleRemoveAllControlProfiles = useCallback(async () => {
     setControlProfileList([]);
@@ -41,17 +42,20 @@ ControlProfilesContextProviderProps & LocalStateContextProviderBaseProps<Control
     setControlProfileList([]);
   }, []);
 
-  return (<ControlProfilesContext.Provider value={{
-    controlProfileList,
-    setControlProfileList,
-    removeControlProfile: handlRemoveControlProfile,
-    saveControlProfile: handleSaveControlProfile,
-    removeAllControlProfiles: handleRemoveAllControlProfiles,
-    onDeleteWorkspace: handleDeleteWorkspace,
-  }}>
-    {children}
-  </ControlProfilesContext.Provider>);
+  return (
+    <ControlProfilesContext.Provider
+      value={{
+        controlProfileList,
+        setControlProfileList,
+        removeControlProfile: handlRemoveControlProfile,
+        saveControlProfile: handleSaveControlProfile,
+        removeAllControlProfiles: handleRemoveAllControlProfiles,
+        onDeleteWorkspace: handleDeleteWorkspace,
+      }}
+    >
+      {children}
+    </ControlProfilesContext.Provider>
+  );
 };
 
 export default ControlProfilesLocalStateContextProvider;
-
