@@ -57,10 +57,13 @@ const ThreatsMigration: FC<WorkspacesMigrationProps> = ({ children }) => {
           }));
           // @ts-ignore
           editingStatement &&
-            !isNaN(editingStatement.id) &&
-            setEditingStatement((prevT) =>
-              newList.find((x) => x.numericId === prevT.id),
-            );
+            !Number.isNaN(Number(editingStatement.id)) &&
+            setEditingStatement((prevT) => {
+              if (!prevT) return prevT; // or return null;
+              return (
+                newList.find((x) => x.numericId === Number(prevT.id)) ?? prevT
+              );
+            });
           return newList;
         });
       }
