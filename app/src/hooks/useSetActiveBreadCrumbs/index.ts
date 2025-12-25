@@ -43,7 +43,7 @@ const useSetActiveBreadcrumbGroup = (
         href: currentPath + a.href,
       })) || []),
     ]);
-  }, [setActiveBreadcrumbs, currentWorkspace]);
+  }, [setActiveBreadcrumbs, currentWorkspace, additionPaths]);
 };
 
 export default useSetActiveBreadcrumbGroup;
