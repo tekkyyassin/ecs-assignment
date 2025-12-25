@@ -11,7 +11,7 @@ terraform {
 }
 
 inputs = {
-  domain_name               = "tekkyyassin.co.uk"
+  domain_name               = "tm.tekkyyassin.co.uk"
   subject_alternative_names = ["www.tekkyyassin.co.uk"]
   validation_method         = "DNS"
 }

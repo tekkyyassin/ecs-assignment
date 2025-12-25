@@ -37,7 +37,7 @@ inputs = {
   alb_security_group_id = dependency.alb.outputs.alb_security_group_id
   target_group_arn      = dependency.alb.outputs.target_group_arn
 
-  container_image   = "${dependency.ecr.outputs.repository_url}:latest"
+  container_image   = "${dependency.ecr.outputs.repository_url}:1.0.0"
   container_port    = 80
   desired_count     = 1
   cpu               = 256

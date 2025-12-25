@@ -19,7 +19,8 @@ __pycache__/
 *.tfstate.*
 *.tfvars
 *.tfvars.json
-**.terraform.lock.hcl
+.terraform.lock.hcl
+vpc/.terraform.lock.hcl
 .terraform.tfstate.lock.info
 crash.log
 crash.*.log
