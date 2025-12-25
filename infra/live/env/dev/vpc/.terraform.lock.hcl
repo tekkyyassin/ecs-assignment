@@ -1,5 +1,6 @@
 # This file is maintained automatically by "terraform init".
 # Manual edits may be lost in future updates.
+#Adding this comment to try and get this back to .gitignore
 
 provider "registry.terraform.io/hashicorp/aws" {
   version     = "5.100.0"
