@@ -1,11 +1,12 @@
 variable "zone_name" {
-  description = "Route53 hosted zone name (e.g. tekkyyassin.co.uk)"
+  description = "Route53 hosted zone name to create (e.g. tm.tekkyyassin.co.uk)"
   type        = string
 }
 
 variable "record_name" {
-  description = "Full DNS record name to create (e.g. tm.tekkyyassin.co.uk)"
+  description = "DNS record to create in the zone. Leave empty to create the zone-apex record."
   type        = string
+  default     = ""
 }
 
 variable "alb_dns_name" {
