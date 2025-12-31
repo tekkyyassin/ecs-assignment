@@ -8,7 +8,7 @@ include "env" {
 
 locals {
   env_cfg   = read_terragrunt_config(find_in_parent_folders("terragrunt.hcl"))
-  image_tag = get_env("IMAGE_TAG", "1.0.1")
+  image_tag = get_env("IMAGE_TAG", "1.0.2")
 }
 
 terraform {

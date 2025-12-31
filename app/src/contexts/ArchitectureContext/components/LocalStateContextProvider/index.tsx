@@ -53,4 +53,4 @@ const ArchitectureLocalStateContextProvider: FC<
   );
 };
 
-export default ArchitectureLocalStateContextProvider;
+export default ArchitectureLocalStateCon;
