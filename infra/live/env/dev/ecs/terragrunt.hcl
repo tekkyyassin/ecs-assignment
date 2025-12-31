@@ -7,7 +7,8 @@ include "env" {
 }
 
 locals {
-  env_cfg = read_terragrunt_config(find_in_parent_folders("terragrunt.hcl"))
+  env_cfg   = read_terragrunt_config(find_in_parent_folders("terragrunt.hcl"))
+  image_tag = get_env("IMAGE_TAG", "1.0.1")
 }
 
 terraform {
@@ -37,7 +38,7 @@ inputs = {
   alb_security_group_id = dependency.alb.outputs.alb_security_group_id
   target_group_arn      = dependency.alb.outputs.target_group_arn
 
-  container_image   = "${dependency.ecr.outputs.repository_url}:1.0.0"
+  container_image   = "${dependency.ecr.outputs.repository_url}:${local.image_tag}"
   container_port    = 80
   desired_count     = 1
   cpu               = 256

@@ -11,18 +11,24 @@ export interface WorkspacesMigrationProps {
 const WorkspacesMigration: FC<WorkspacesMigrationProps> = ({ children }) => {
   const { workspaceList, setWorkspaceList } = useWorkspacesContext();
 
-  const [migrated, setMigrated] = useLocalStorageState<boolean>(
-    LOCAL_STORAGE_KEY_WORKSPACE_LIST_MIGRATION,
-    { defaultValue: false },
-  );
+  // This should mean: "migration attempted / not needed", not "block UI"
+  const [migrationComplete, setMigrationComplete] =
+    useLocalStorageState<boolean>(LOCAL_STORAGE_KEY_WORKSPACE_LIST_MIGRATION, {
+      defaultValue: false,
+    });
 
   useEffect(() => {
-    if (migrated) return;
-    if (!workspaceList || workspaceList.length === 0) return;
+    if (migrationComplete) return;
 
-    // Already migrated (new format)
+    // If there’s nothing to migrate yet, don’t block the app — just mark complete.
+    if (!workspaceList || workspaceList.length === 0) {
+      setMigrationComplete(true);
+      return;
+    }
+
+    // New format already (object list)
     if (typeof workspaceList[0] !== "string") {
-      setMigrated(true);
+      setMigrationComplete(true);
       return;
     }
 
@@ -33,10 +39,16 @@ const WorkspacesMigration: FC<WorkspacesMigrationProps> = ({ children }) => {
     }));
 
     setWorkspaceList(newList as any);
-    setMigrated(true);
-  }, [migrated, workspaceList, setWorkspaceList, setMigrated]);
+    setMigrationComplete(true);
+  }, [
+    migrationComplete,
+    workspaceList,
+    setWorkspaceList,
+    setMigrationComplete,
+  ]);
 
-  return migrated && children ? <>{children}</> : null;
+  // Always render the app; migration is a background concern.
+  return <>{children}</>;
 };
 
 export default WorkspacesMigration;
