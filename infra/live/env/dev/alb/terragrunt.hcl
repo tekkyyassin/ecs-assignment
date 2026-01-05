@@ -3,7 +3,7 @@ include "root" {
 }
 
 include "env" {
-  path = find_in_parent_folders("terragrunt.hcl")
+  path = find_in_parent_folders("env.hcl")
 }
 
 terraform {
@@ -11,8 +11,8 @@ terraform {
 }
 
 locals {
-  # Pull env-level locals (env/dev/terragrunt.hcl)
-  env_cfg = read_terragrunt_config(find_in_parent_folders("terragrunt.hcl"))
+  # Pull env-level locals (env/dev/env.hcl)
+  env_cfg = read_terragrunt_config(find_in_parent_folders("env.hcl"))
 
   env     = local.env_cfg.locals.env
   project = local.env_cfg.locals.project
@@ -20,10 +20,25 @@ locals {
 
 dependency "vpc" {
   config_path = "../vpc"
+
+  mock_outputs = {
+    vpc_id            = "vpc-00000000"
+    public_subnet_ids = ["subnet-00000000", "subnet-00000001"]
+  }
+
+  mock_outputs_allowed_terraform_commands = ["plan", "validate", "destroy"]
+  mock_outputs_merge_strategy_with_state  = "shallow"
 }
 
 dependency "acm" {
   config_path = "../acm"
+
+  mock_outputs = {
+    certificate_arn = "arn:aws:acm:eu-west-2:000000000000:certificate/mock"
+  }
+
+  mock_outputs_allowed_terraform_commands = ["plan", "validate", "destroy"]
+  mock_outputs_merge_strategy_with_state  = "shallow"
 }
 
 inputs = {

@@ -13,6 +13,7 @@ __pycache__/
 
 # Terragrunt / Terraform (VERY IMPORTANT)
 **/.terragrunt-cache/
+.terragrunt-cache/
 **/.terragrunt*
 **/.terraform/
 *.tfstate

@@ -3,7 +3,7 @@ include "root" {
 }
 
 locals {
-  env_cfg = read_terragrunt_config(find_in_parent_folders("terragrunt.hcl"))
+  env_cfg = read_terragrunt_config(find_in_parent_folders("env.hcl"))
   project = local.env_cfg.locals.project
   env     = local.env_cfg.locals.env
   region  = local.env_cfg.locals.region

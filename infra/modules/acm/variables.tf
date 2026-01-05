@@ -20,3 +20,8 @@ variable "tags" {
   type        = map(string)
   default     = {}
 }
+
+variable "route53_zone_id" {
+  description = "Route53 hosted zone id where ACM DNS validation records should be created (tm zone)"
+  type        = string
+}

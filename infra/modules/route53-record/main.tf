@@ -2,12 +2,8 @@ locals {
   record_fqdn = var.record_name != "" ? var.record_name : var.zone_name
 }
 
-resource "aws_route53_zone" "this" {
-  name = var.zone_name
-}
-
 resource "aws_route53_record" "tm" {
-  zone_id = aws_route53_zone.this.zone_id
+  zone_id = var.zone_id
   name    = local.record_fqdn
   type    = "A"
 

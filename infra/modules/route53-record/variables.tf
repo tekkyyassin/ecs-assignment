@@ -18,3 +18,7 @@ variable "alb_zone_id" {
   description = "ALB hosted zone id (from aws_lb.zone_id output)"
   type        = string
 }
+variable "zone_id" {
+  description = "Route53 hosted zone id where the record should be created"
+  type        = string
+}
