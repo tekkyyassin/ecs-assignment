@@ -1,50 +1,114 @@
-name: tg-destroy
+name: Terragrunt Destroy
 
 on:
   workflow_dispatch:
     inputs:
-      confirm:
-        description: 'Type DESTROY to confirm'
+      confirm_destroy:
+        description: 'Type "DESTROY" to confirm destruction'
+        type: string
         required: true
-        default: ''
+      target_module:
+        description: 'Specific module to destroy (leave empty for all)'
+        type: choice
+        options:
+          - all
+          - ecs
+          - alb
+          - ecr
+          - acm
+          - route53-record
+          - route53-zone
+          - vpc
+        default: all
+
+concurrency:
+  group: terragrunt-destroy-main
+  cancel-in-progress: false
 
 permissions:
   id-token: write
   contents: read
 
-concurrency:
-  group: tg-destroy-dev
-  cancel-in-progress: false
+env:
+  AWS_REGION: ${{ vars.AWS_REGION }}
+  TF_VERSION: "1.14.3"
+  TG_VERSION: "0.95.1"
+  WORKING_DIR: infra/live/env/dev
 
 jobs:
-  destroy:
+  validate-confirmation:
+    name: Validate Confirmation
     runs-on: ubuntu-latest
-    defaults:
-      run:
-        working-directory: infra/live/env/dev
-
     steps:
-      - name: Safety check
+      - name: Check Confirmation
         run: |
-          if [ "${{ github.event.inputs.confirm }}" != "DESTROY" ]; then
-            echo "Confirmation missing. Type DESTROY to run."
+          if [[ "${{ inputs.confirm_destroy }}" != "DESTROY" ]]; then
+            echo "❌ Confirmation failed. You must type 'DESTROY' exactly."
+            echo "   You entered: '${{ inputs.confirm_destroy }}'"
             exit 1
           fi
+          echo "✅ Destruction confirmed"
 
-      - uses: actions/checkout@v4
+  destroy:
+    name: Terragrunt Destroy
+    runs-on: ubuntu-latest
+    needs: validate-confirmation
+    defaults:
+      run:
+        working-directory: ${{ env.WORKING_DIR }}
 
-      - uses: aws-actions/configure-aws-credentials@v4
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+
+      - name: Configure AWS credentials (OIDC)
+        uses: aws-actions/configure-aws-credentials@v4
         with:
           role-to-assume: ${{ vars.AWS_ROLE_ARN }}
-          aws-region: ${{ vars.AWS_REGION }}
+          aws-region: ${{ env.AWS_REGION }}
+          role-session-name: gha-tg-destroy-${{ github.run_id }}
 
-      - uses: hashicorp/setup-terraform@v3
+      - name: Setup Terraform
+        uses: hashicorp/setup-terraform@v3
         with:
-          terraform_version: "1.14.3"
+          terraform_version: ${{ env.TF_VERSION }}
+          terraform_wrapper: false
 
-      - uses: gruntwork-io/terragrunt-install@v1
-        with:
-          terragrunt_version: "0.95.1"
+      - name: Install Terragrunt
+        run: |
+          curl -sL "https://github.com/gruntwork-io/terragrunt/releases/download/v${TG_VERSION}/terragrunt_linux_amd64" \
+            -o /usr/local/bin/terragrunt
+          chmod +x /usr/local/bin/terragrunt
+          terragrunt --version
+        working-directory: .
 
-      - name: Terragrunt destroy (all)
-        run: terragrunt run --all destroy --terragrunt-non-interactive -- -auto-approve
+      - name: Terragrunt Init
+        run: terragrunt run-all init --terragrunt-non-interactive
+
+      - name: Destroy All Modules
+        if: inputs.target_module == 'all'
+        run: |
+          echo "⚠️ Destroying ALL infrastructure in reverse dependency order..."
+          terragrunt run-all destroy \
+            --terragrunt-non-interactive \
+            -auto-approve
+
+      - name: Destroy Specific Module
+        if: inputs.target_module != 'all'
+        run: |
+          echo "⚠️ Destroying module: ${{ inputs.target_module }}"
+          cd ${{ inputs.target_module }}
+          terragrunt destroy \
+            --terragrunt-non-interactive \
+            -auto-approve
+
+      - name: Destruction Summary
+        run: |
+          echo "## ⚠️ Destruction Complete" >> $GITHUB_STEP_SUMMARY
+          echo "" >> $GITHUB_STEP_SUMMARY
+          echo "| Item | Value |" >> $GITHUB_STEP_SUMMARY
+          echo "|------|-------|" >> $GITHUB_STEP_SUMMARY
+          echo "| **Target** | \`${{ inputs.target_module }}\` |" >> $GITHUB_STEP_SUMMARY
+          echo "| **Triggered By** | @${{ github.actor }} |" >> $GITHUB_STEP_SUMMARY
+          echo "| **Timestamp** | $(date -u +'%Y-%m-%d %H:%M:%S UTC') |" >> $GITHUB_STEP_SUMMARY
+        working-directory: .

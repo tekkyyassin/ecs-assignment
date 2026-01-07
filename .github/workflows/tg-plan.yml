@@ -1,38 +1,100 @@
-name: tg-plan
+name: Terragrunt Plan
 
 on:
   pull_request:
-    branches: [ "main" ]
+    branches: [main]
     paths:
-      - "infra/**"
-      - ".github/workflows/**"
+      - 'infra/**'
+      - 'app/**'
+      - '.github/workflows/tg-plan.yml'
+
+concurrency:
+  group: terragrunt-plan-${{ github.head_ref }}
+  cancel-in-progress: true
 
 permissions:
-  id-token: write
+  id-token: write   # Required for OIDC
   contents: read
+  pull-requests: write  # To post plan comments
+
+env:
+  AWS_REGION: ${{ vars.AWS_REGION }}
+  TF_VERSION: "1.14.3"
+  TG_VERSION: "0.95.1"
+  WORKING_DIR: infra/live/env/dev
 
 jobs:
   plan:
+    name: Terragrunt Plan
     runs-on: ubuntu-latest
     defaults:
       run:
-        working-directory: infra/live/env/dev
+        working-directory: ${{ env.WORKING_DIR }}
 
     steps:
-      - uses: actions/checkout@v4
+      - name: Checkout repository
+        uses: actions/checkout@v4
 
-      - uses: aws-actions/configure-aws-credentials@v4
+      - name: Configure AWS credentials (OIDC)
+        uses: aws-actions/configure-aws-credentials@v4
         with:
           role-to-assume: ${{ vars.AWS_ROLE_ARN }}
-          aws-region: ${{ vars.AWS_REGION }}
+          aws-region: ${{ env.AWS_REGION }}
+          role-session-name: gha-tg-plan-${{ github.run_id }}
 
-      - uses: hashicorp/setup-terraform@v3
+      - name: Setup Terraform
+        uses: hashicorp/setup-terraform@v3
         with:
-          terraform_version: "1.14.3"
+          terraform_version: ${{ env.TF_VERSION }}
+          terraform_wrapper: false
 
-      - uses: gruntwork-io/terragrunt-install@v1
+      - name: Install Terragrunt
+        run: |
+          curl -sL "https://github.com/gruntwork-io/terragrunt/releases/download/v${TG_VERSION}/terragrunt_linux_amd64" \
+            -o /usr/local/bin/terragrunt
+          chmod +x /usr/local/bin/terragrunt
+          terragrunt --version
+        working-directory: .
+
+      - name: Terragrunt Init
+        run: terragrunt run-all init --terragrunt-non-interactive
+
+      - name: Terragrunt Validate
+        run: terragrunt run-all validate --terragrunt-non-interactive
+
+      - name: Terragrunt Plan
+        id: plan
+        run: |
+          terragrunt run-all plan --terragrunt-non-interactive -out=tfplan 2>&1 | tee plan_output.txt
+          echo "plan_output<<EOF" >> $GITHUB_OUTPUT
+          cat plan_output.txt >> $GITHUB_OUTPUT
+          echo "EOF" >> $GITHUB_OUTPUT
+        continue-on-error: true
+
+      - name: Post Plan to PR
+        uses: actions/github-script@v7
+        if: github.event_name == 'pull_request'
         with:
-          terragrunt_version: "0.95.1"
+          script: |
+            const output = `#### Terragrunt Plan 📖
 
-      - name: Terragrunt plan (all)
-        run: terragrunt run --all plan --terragrunt-non-interactive
+            <details><summary>Show Plan</summary>
+
+            \`\`\`
+            ${{ steps.plan.outputs.plan_output }}
+            \`\`\`
+
+            </details>
+
+            *Triggered by @${{ github.actor }}, Commit: \`${{ github.sha }}\`*`;
+
+            github.rest.issues.createComment({
+              issue_number: context.issue.number,
+              owner: context.repo.owner,
+              repo: context.repo.repo,
+              body: output.substring(0, 65536)
+            });
+
+      - name: Plan Status
+        if: steps.plan.outcome == 'failure'
+        run: exit 1

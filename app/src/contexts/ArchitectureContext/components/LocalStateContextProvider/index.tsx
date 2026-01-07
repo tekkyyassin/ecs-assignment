@@ -21,7 +21,7 @@ import { LocalStateContextProviderBaseProps } from "../../../types";
 import { ArchitectureInfoContext } from "../../context";
 import { ArchitectureContextProviderProps } from "../../types";
 
-const ArchitectureLocalStateContextProvider: FC<
+export const ArchitectureLocalStateContextProvider: FC<
   PropsWithChildren<
     ArchitectureContextProviderProps &
       LocalStateContextProviderBaseProps<ArchitectureInfo>
@@ -53,4 +53,4 @@ const ArchitectureLocalStateContextProvider: FC<
   );
 };
 
-export default ArchitectureLocalStateCon;
+export default ArchitectureLocalStateContextProvider;

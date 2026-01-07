@@ -5,7 +5,7 @@ import { LocalStateContextProviderBaseProps } from "../../../types";
 import { FlowContext } from "../../context";
 import { FlowContextProviderProps } from "../../types";
 
-const FlowLocalStateContextProvider: FC<
+export const FlowLocalStateContextProvider: FC<
   PropsWithChildren<
     FlowContextProviderProps & LocalStateContextProviderBaseProps<Flow>
   >
@@ -34,4 +34,4 @@ const FlowLocalStateContextProvider: FC<
   );
 };
 
-export default FlowLocalStateContextPr;
+export default FlowLocalStateContextProvider;

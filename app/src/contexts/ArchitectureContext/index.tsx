@@ -22,7 +22,7 @@ import { ArchitectureContextProviderProps } from "./types";
 import { EXAMPLE_WORKSPACE_ID } from "../../configs/constants";
 import { useExampleContext } from "../ExampleContext";
 
-const ArchitectureContextProvider: FC<
+export const ArchitectureContextProvider: FC<
   PropsWithChildren<ArchitectureContextProviderProps>
 > = (props) => {
   const { architecture } = useExampleContext();
