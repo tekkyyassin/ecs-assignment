@@ -1,43 +1,152 @@
-name: tg-deploy
+name: Terragrunt Deploy
 
 on:
   push:
-    branches: [ "main" ]
+    branches: [main]
     paths:
-      - "infra/**"
-      - ".github/workflows/**"
-  workflow_dispatch: {}
+      - 'infra/**'
+      - 'app/**'
+      - '.github/workflows/tg-deploy.yml'
+  workflow_dispatch:
+    inputs:
+      skip_docker_build:
+        description: 'Skip Docker build (use existing image)'
+        type: boolean
+        default: false
+      image_tag:
+        description: 'Image tag to deploy (if skipping build)'
+        type: string
+        required: false
+
+concurrency:
+  group: terragrunt-deploy-main
+  cancel-in-progress: false  # Never cancel in-progress deploys
 
 permissions:
   id-token: write
   contents: read
 
-concurrency:
-  group: tg-deploy-dev
-  cancel-in-progress: false
+env:
+  AWS_REGION: ${{ vars.AWS_REGION }}
+  TF_VERSION: "1.14.3"
+  TG_VERSION: "0.95.1"
+  WORKING_DIR: infra/live/env/dev
+  TM_HOST: ${{ vars.TM_HOST }}
 
 jobs:
-  apply:
+  deploy:
+    name: Build & Deploy
     runs-on: ubuntu-latest
+    environment: production  # Optional: add environment protection rules
     defaults:
       run:
-        working-directory: infra/live/env/dev
+        working-directory: ${{ env.WORKING_DIR }}
 
     steps:
-      - uses: actions/checkout@v4
+      - name: Checkout repository
+        uses: actions/checkout@v4
 
-      - uses: aws-actions/configure-aws-credentials@v4
+      - name: Configure AWS credentials (OIDC)
+        uses: aws-actions/configure-aws-credentials@v4
         with:
           role-to-assume: ${{ vars.AWS_ROLE_ARN }}
-          aws-region: ${{ vars.AWS_REGION }}
+          aws-region: ${{ env.AWS_REGION }}
+          role-session-name: gha-tg-deploy-${{ github.run_id }}
 
-      - uses: hashicorp/setup-terraform@v3
+      - name: Setup Terraform
+        uses: hashicorp/setup-terraform@v3
         with:
-          terraform_version: "1.14.3"
+          terraform_version: ${{ env.TF_VERSION }}
+          terraform_wrapper: false
 
-      - uses: gruntwork-io/terragrunt-install@v1
-        with:
-          terragrunt_version: "0.95.1"
+      - name: Install Terragrunt
+        run: |
+          curl -sL "https://github.com/gruntwork-io/terragrunt/releases/download/v${TG_VERSION}/terragrunt_linux_amd64" \
+            -o /usr/local/bin/terragrunt
+          chmod +x /usr/local/bin/terragrunt
+          terragrunt --version
+        working-directory: .
 
-      - name: Terragrunt apply (all)
-        run: terragrunt run --all apply --terragrunt-non-interactive -- -auto-approve
+      - name: Set Image Tag
+        id: image-tag
+        run: |
+          if [[ "${{ inputs.skip_docker_build }}" == "true" && -n "${{ inputs.image_tag }}" ]]; then
+            echo "IMAGE_TAG=${{ inputs.image_tag }}" >> $GITHUB_ENV
+          else
+            echo "IMAGE_TAG=${GITHUB_SHA::7}" >> $GITHUB_ENV
+          fi
+          echo "image_tag=${IMAGE_TAG:-${GITHUB_SHA::7}}" >> $GITHUB_OUTPUT
+        working-directory: .
+
+      # Step 1: Ensure ECR exists first
+      - name: Apply ECR Module
+        run: |
+          cd ecr
+          terragrunt init --terragrunt-non-interactive
+          terragrunt apply --terragrunt-non-interactive -auto-approve
+
+      - name: Get ECR Repository URL
+        id: ecr
+        run: |
+          cd ecr
+          ECR_REPO_URL=$(terragrunt output -raw repository_url)
+          echo "repository_url=${ECR_REPO_URL}" >> $GITHUB_OUTPUT
+          echo "ECR_REPO_URL=${ECR_REPO_URL}" >> $GITHUB_ENV
+
+      # Step 2: Build and push Docker image
+      - name: Login to Amazon ECR
+        if: inputs.skip_docker_build != true
+        uses: aws-actions/amazon-ecr-login@v2
+
+      - name: Build and Push Docker Image
+        if: inputs.skip_docker_build != true
+        run: |
+          cd ${{ github.workspace }}/app
+          docker build -t ${{ steps.ecr.outputs.repository_url }}:${{ env.IMAGE_TAG }} .
+          docker push ${{ steps.ecr.outputs.repository_url }}:${{ env.IMAGE_TAG }}
+          echo "✅ Pushed image: ${{ steps.ecr.outputs.repository_url }}:${{ env.IMAGE_TAG }}"
+        working-directory: .
+
+      # Step 3: Apply all infrastructure
+      - name: Terragrunt Apply All
+        run: |
+          terragrunt run-all apply \
+            --terragrunt-non-interactive \
+            -auto-approve
+        env:
+          IMAGE_TAG: ${{ env.IMAGE_TAG }}
+          ECR_REPO_URL: ${{ env.ECR_REPO_URL }}
+
+      # Step 4: Smoke test
+      - name: Wait for ECS Service Stability
+        run: |
+          echo "⏳ Waiting 60s for ECS service to stabilize..."
+          sleep 60
+
+      - name: Smoke Test - Health Check
+        run: |
+          echo "🔍 Testing https://${{ env.TM_HOST }}/health"
+          for i in {1..5}; do
+            HTTP_CODE=$(curl -s -o /dev/null -w "%{http_code}" "https://${{ env.TM_HOST }}/health" || echo "000")
+            if [[ "$HTTP_CODE" == "200" ]]; then
+              echo "✅ Health check passed (HTTP $HTTP_CODE)"
+              exit 0
+            fi
+            echo "⚠️ Attempt $i: HTTP $HTTP_CODE - retrying in 15s..."
+            sleep 15
+          done
+          echo "❌ Health check failed after 5 attempts"
+          exit 1
+        working-directory: .
+
+      - name: Deployment Summary
+        run: |
+          echo "## 🚀 Deployment Complete" >> $GITHUB_STEP_SUMMARY
+          echo "" >> $GITHUB_STEP_SUMMARY
+          echo "| Item | Value |" >> $GITHUB_STEP_SUMMARY
+          echo "|------|-------|" >> $GITHUB_STEP_SUMMARY
+          echo "| **Image Tag** | \`${{ env.IMAGE_TAG }}\` |" >> $GITHUB_STEP_SUMMARY
+          echo "| **ECR Image** | \`${{ steps.ecr.outputs.repository_url }}:${{ env.IMAGE_TAG }}\` |" >> $GITHUB_STEP_SUMMARY
+          echo "| **Endpoint** | https://${{ env.TM_HOST }} |" >> $GITHUB_STEP_SUMMARY
+          echo "| **Health** | https://${{ env.TM_HOST }}/health |" >> $GITHUB_STEP_SUMMARY
+        working-directory: .
