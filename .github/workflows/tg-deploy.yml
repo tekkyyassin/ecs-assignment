@@ -20,7 +20,7 @@ on:
 
 concurrency:
   group: terragrunt-deploy-main
-  cancel-in-progress: false  # Never cancel in-progress deploys
+  cancel-in-progress: false
 
 permissions:
   id-token: write
@@ -37,7 +37,6 @@ jobs:
   deploy:
     name: Build & Deploy
     runs-on: ubuntu-latest
-    environment: production  # Optional: add environment protection rules
     defaults:
       run:
         working-directory: ${{ env.WORKING_DIR }}
@@ -75,10 +74,8 @@ jobs:
           else
             echo "IMAGE_TAG=${GITHUB_SHA::7}" >> $GITHUB_ENV
           fi
-          echo "image_tag=${IMAGE_TAG:-${GITHUB_SHA::7}}" >> $GITHUB_OUTPUT
         working-directory: .
 
-      # Step 1: Ensure ECR exists first
       - name: Apply ECR Module
         run: |
           cd ecr
@@ -93,7 +90,6 @@ jobs:
           echo "repository_url=${ECR_REPO_URL}" >> $GITHUB_OUTPUT
           echo "ECR_REPO_URL=${ECR_REPO_URL}" >> $GITHUB_ENV
 
-      # Step 2: Build and push Docker image
       - name: Login to Amazon ECR
         if: inputs.skip_docker_build != true
         uses: aws-actions/amazon-ecr-login@v2
@@ -107,7 +103,6 @@ jobs:
           echo "✅ Pushed image: ${{ steps.ecr.outputs.repository_url }}:${{ env.IMAGE_TAG }}"
         working-directory: .
 
-      # Step 3: Apply all infrastructure
       - name: Terragrunt Apply All
         run: |
           terragrunt run-all apply \
@@ -117,7 +112,6 @@ jobs:
           IMAGE_TAG: ${{ env.IMAGE_TAG }}
           ECR_REPO_URL: ${{ env.ECR_REPO_URL }}
 
-      # Step 4: Smoke test
       - name: Wait for ECS Service Stability
         run: |
           echo "⏳ Waiting 60s for ECS service to stabilize..."

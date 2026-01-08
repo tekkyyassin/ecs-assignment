@@ -13,9 +13,9 @@ concurrency:
   cancel-in-progress: true
 
 permissions:
-  id-token: write   # Required for OIDC
+  id-token: write
   contents: read
-  pull-requests: write  # To post plan comments
+  pull-requests: write
 
 env:
   AWS_REGION: ${{ vars.AWS_REGION }}
@@ -66,9 +66,6 @@ jobs:
         id: plan
         run: |
           terragrunt run-all plan --terragrunt-non-interactive -out=tfplan 2>&1 | tee plan_output.txt
-          echo "plan_output<<EOF" >> $GITHUB_OUTPUT
-          cat plan_output.txt >> $GITHUB_OUTPUT
-          echo "EOF" >> $GITHUB_OUTPUT
         continue-on-error: true
 
       - name: Post Plan to PR
@@ -76,12 +73,14 @@ jobs:
         if: github.event_name == 'pull_request'
         with:
           script: |
+            const fs = require('fs');
+            const planOutput = fs.readFileSync('${{ env.WORKING_DIR }}/plan_output.txt', 'utf8');
             const output = `#### Terragrunt Plan 📖
 
             <details><summary>Show Plan</summary>
 
             \`\`\`
-            ${{ steps.plan.outputs.plan_output }}
+            ${planOutput.substring(0, 60000)}
             \`\`\`
 
             </details>
@@ -92,7 +91,7 @@ jobs:
               issue_number: context.issue.number,
               owner: context.repo.owner,
               repo: context.repo.repo,
-              body: output.substring(0, 65536)
+              body: output
             });
 
       - name: Plan Status
