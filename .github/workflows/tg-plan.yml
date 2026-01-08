@@ -57,15 +57,15 @@ jobs:
         working-directory: .
 
       - name: Terragrunt Init
-        run: terragrunt run-all init --terragrunt-non-interactive
+        run: terragrunt --terragrunt-non-interactive run-all init
 
       - name: Terragrunt Validate
-        run: terragrunt run-all validate --terragrunt-non-interactive
+        run: terragrunt --terragrunt-non-interactive run-all validate
 
       - name: Terragrunt Plan
         id: plan
         run: |
-          terragrunt run-all plan --terragrunt-non-interactive -out=tfplan 2>&1 | tee plan_output.txt
+          terragrunt --terragrunt-non-interactive run-all plan -out=tfplan 2>&1 | tee plan_output.txt
         continue-on-error: true
 
       - name: Post Plan to PR
