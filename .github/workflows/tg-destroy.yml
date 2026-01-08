@@ -84,20 +84,20 @@ jobs:
         working-directory: .
 
       - name: Terragrunt Init
-        run: terragrunt run-all init
+        run: terragrunt run --all init
 
       - name: Destroy All Modules
         if: inputs.target_module == 'all'
         run: |
           echo "⚠️ Destroying ALL infrastructure in reverse dependency order..."
-          terragrunt run-all destroy -auto-approve
+          terragrunt run --all destroy --auto-approve
 
       - name: Destroy Specific Module
         if: inputs.target_module != 'all'
         run: |
           echo "⚠️ Destroying module: ${{ inputs.target_module }}"
           cd ${{ inputs.target_module }}
-          terragruntdestroy -auto-approve
+          terragrunt destroy --auto-approve
 
       - name: Destruction Summary
         run: |
