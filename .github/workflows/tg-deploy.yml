@@ -81,7 +81,7 @@ jobs:
         run: |
           cd ecr
           terragrunt init
-          terragrunt apply --auto-approve
+          terragrunt apply 
 
       - name: Get ECR Repository URL
         id: ecr
@@ -106,7 +106,7 @@ jobs:
 
       - name: Terragrunt Apply All
         run: |
-          terragrunt run --all apply --auto-approve
+          terragrunt run --all apply 
         env:
           IMAGE_TAG: ${{ env.IMAGE_TAG }}
           ECR_REPO_URL: ${{ env.ECR_REPO_URL }}
