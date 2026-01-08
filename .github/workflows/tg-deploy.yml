@@ -32,7 +32,7 @@ env:
   TG_VERSION: "0.95.1"
   WORKING_DIR: infra/live/env/dev
   TM_HOST: ${{ vars.TM_HOST }}
-  TERRAGRUNT_NON_INTERACTIVE: true
+  TG_NON_INTERACTIVE: true
 
 jobs:
   deploy:
@@ -106,7 +106,7 @@ jobs:
 
       - name: Terragrunt Apply All
         run: |
-          terragrunt apply -auto-approve
+          terragrunt run-all apply -auto-approve
         env:
           IMAGE_TAG: ${{ env.IMAGE_TAG }}
           ECR_REPO_URL: ${{ env.ECR_REPO_URL }}
