@@ -14,18 +14,18 @@
   limitations under the License.
  ******************************************************************************************************************** */
 
-import { FC } from "react";
-import ThreatStatementEditor from "../../components/threats/ThreatStatementEditor";
-import ThreatStatementList from "../../components/threats/ThreatStatementList";
-import ContextAggregator from "../../contexts/ContextAggregator";
-import { useGlobalSetupContext } from "../../contexts/GlobalSetupContext/context";
-import { useThreatsContext } from "../../contexts/ThreatsContext/context";
-import { ComposerMode, DataExchangeFormat } from "../../customTypes";
+import { FC } from 'react';
+import ThreatStatementEditor from '../../components/threats/ThreatStatementEditor';
+import ThreatStatementList from '../../components/threats/ThreatStatementList';
+import ContextAggregator from '../../contexts/ContextAggregator';
+import { useGlobalSetupContext } from '../../contexts/GlobalSetupContext/context';
+import { useThreatsContext } from '../../contexts/ThreatsContext/context';
+import { ComposerMode, DataExchangeFormat } from '../../customTypes';
 
 const ThreatStatementGeneratorInner: FC = () => {
   const { view } = useThreatsContext();
   const { composerMode } = useGlobalSetupContext();
-  return view === "list" && composerMode !== "EditorOnly" ? (
+  return view === 'list' && composerMode !== 'EditorOnly' ? (
     <ThreatStatementList />
   ) : (
     <ThreatStatementEditor />

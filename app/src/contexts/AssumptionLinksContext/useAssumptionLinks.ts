@@ -14,8 +14,8 @@
   limitations under the License.
  ******************************************************************************************************************** */
 
-import { useCallback } from "react";
-import { AssumptionLink } from "../../customTypes";
+import { useCallback } from 'react';
+import { AssumptionLink } from '../../customTypes';
 
 export const isSameAssumptionLink = (
   entity1: AssumptionLink,
@@ -113,7 +113,7 @@ const useAssumptionLinks = (
   );
 
   const handleGetAssumptionEntityLinks = useCallback(
-    (assumptionId: string, type: AssumptionLink["type"]) => {
+    (assumptionId: string, type: AssumptionLink['type']) => {
       return assumptionLinkList.filter(
         (x) => x.assumptionId === assumptionId && x.type === type,
       );

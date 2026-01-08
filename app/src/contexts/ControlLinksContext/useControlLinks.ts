@@ -14,8 +14,8 @@
   limitations under the License.
  ******************************************************************************************************************** */
 
-import { useCallback } from "react";
-import { ControlLink } from "../../customTypes";
+import { useCallback } from 'react';
+import { ControlLink } from '../../customTypes';
 
 export const isSameControlLink = (
   entity1: ControlLink,

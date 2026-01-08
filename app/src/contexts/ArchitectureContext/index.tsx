@@ -14,16 +14,16 @@
   limitations under the License.
  ******************************************************************************************************************** */
 
-import { FC, PropsWithChildren } from "react";
-import ArchitectureLocalStateContextProvider from "./components/LocalStateContextProvider";
-import ArchitectureLocalStorageContextProvider from "./components/LocalStorageContextProvider";
-import { useArchitectureInfoContext } from "./context";
-import { ArchitectureContextProviderProps } from "./types";
-import { EXAMPLE_WORKSPACE_ID } from "../../configs/constants";
-import { useExampleContext } from "../ExampleContext";
+import { FC, PropsWithChildren } from 'react';
+import ArchitectureLocalStateContextProvider from './components/LocalStateContextProvider';
+import ArchitectureLocalStorageContextProvider from './components/LocalStorageContextProvider';
+import { useArchitectureInfoContext } from './context';
+import { ArchitectureContextProviderProps } from './types';
+import { EXAMPLE_WORKSPACE_ID } from '../../configs/constants';
+import { useExampleContext } from '../ExampleContext';
 
 export const ArchitectureContextProvider: FC<
-  PropsWithChildren<ArchitectureContextProviderProps>
+PropsWithChildren<ArchitectureContextProviderProps>
 > = (props) => {
   const { architecture } = useExampleContext();
 

@@ -15,11 +15,11 @@
  ******************************************************************************************************************** */
 
 /** @jsxImportSource @emotion/react */
-import Grid from "@cloudscape-design/components/grid";
-import SpaceBetween from "@cloudscape-design/components/space-between";
-import TextContent from "@cloudscape-design/components/text-content";
-import * as awsui from "@cloudscape-design/design-tokens";
-import { css } from "@emotion/react";
+import Grid from '@cloudscape-design/components/grid';
+import SpaceBetween from '@cloudscape-design/components/space-between';
+import TextContent from '@cloudscape-design/components/text-content';
+import * as awsui from '@cloudscape-design/design-tokens';
+import { css } from '@emotion/react';
 import React, {
   FC,
   useCallback,
@@ -28,56 +28,56 @@ import React, {
   useRef,
   useEffect,
   ReactNode,
-} from "react";
-import { v4 as uuidV4 } from "uuid";
-import { EditorProps } from "./types";
-import { DEFAULT_WORKSPACE_LABEL } from "../../../configs/constants";
-import { useAssumptionLinksContext } from "../../../contexts/AssumptionLinksContext/context";
-import { useAssumptionsContext } from "../../../contexts/AssumptionsContext/context";
-import { useGlobalSetupContext } from "../../../contexts/GlobalSetupContext/context";
-import { useMitigationLinksContext } from "../../../contexts/MitigationLinksContext/context";
-import { useMitigationsContext } from "../../../contexts/MitigationsContext/context";
-import { useControlLinksContext } from "../../../contexts/ControlLinksContext/context";
-import { useThreatsContext } from "../../../contexts/ThreatsContext/context";
-import { useWorkspacesContext } from "../../../contexts/WorkspacesContext/context";
-import { TemplateThreatStatement, Control } from "../../../customTypes";
-import { ThreatFieldTypes } from "../../../customTypes/threatFieldTypes";
-import threatFieldData from "../../../data/threatFieldData";
-import threatStatementExamples from "../../../data/threatStatementExamples.json";
-import threatStatementFormat from "../../../data/threatStatementFormat";
-import useEditMetadata from "../../../hooks/useEditMetadata";
-import getRecommendedEditor from "../../../utils/getRecommandedEditor";
-import renderThreatStatement from "../../../utils/renderThreatStatement";
-import scrollToTop from "../../../utils/scrollToTop";
-import AssumptionLinkComponent from "../../assumptions/AssumptionLinkView";
-import Tooltip from "../../generic/Tooltip";
-import MitigationLinkComponent from "../../mitigations/MitigationLinkView";
-import CustomTemplate from "../CustomTemplate";
-import EditorImpactedAssets from "../EditorImpactedAssets";
-import EditorImpactedGoal from "../EditorImpactedGoal";
-import EditorPrerequisites from "../EditorPrerequisites";
-import EditorThreatAction from "../EditorThreatAction";
-import EditorThreatImpact from "../EditorThreatImpact";
-import EditorThreatSource from "../EditorThreatSource";
-import FieldSelector from "../FieldSelector";
-import FinalStatement from "../FinalStatement";
-import FullExamples from "../FullExamples";
-import Header from "../Header";
-import MetadataEditor from "../MetadataEditor";
-import Metrics from "../Metrics";
-import ControlLookupComponent from "../../controls/ControlLookup";
-import { getControlProfileByName } from "../../../data/controlProfileProvider";
-import { useApplicationInfoContext } from "../../../contexts";
+} from 'react';
+import { v4 as uuidV4 } from 'uuid';
+import { EditorProps } from './types';
+import { DEFAULT_WORKSPACE_LABEL } from '../../../configs/constants';
+import { useAssumptionLinksContext } from '../../../contexts/AssumptionLinksContext/context';
+import { useAssumptionsContext } from '../../../contexts/AssumptionsContext/context';
+import { useGlobalSetupContext } from '../../../contexts/GlobalSetupContext/context';
+import { useMitigationLinksContext } from '../../../contexts/MitigationLinksContext/context';
+import { useMitigationsContext } from '../../../contexts/MitigationsContext/context';
+import { useControlLinksContext } from '../../../contexts/ControlLinksContext/context';
+import { useThreatsContext } from '../../../contexts/ThreatsContext/context';
+import { useWorkspacesContext } from '../../../contexts/WorkspacesContext/context';
+import { TemplateThreatStatement, Control } from '../../../customTypes';
+import { ThreatFieldTypes } from '../../../customTypes/threatFieldTypes';
+import threatFieldData from '../../../data/threatFieldData';
+import threatStatementExamples from '../../../data/threatStatementExamples.json';
+import threatStatementFormat from '../../../data/threatStatementFormat';
+import useEditMetadata from '../../../hooks/useEditMetadata';
+import getRecommendedEditor from '../../../utils/getRecommandedEditor';
+import renderThreatStatement from '../../../utils/renderThreatStatement';
+import scrollToTop from '../../../utils/scrollToTop';
+import AssumptionLinkComponent from '../../assumptions/AssumptionLinkView';
+import Tooltip from '../../generic/Tooltip';
+import MitigationLinkComponent from '../../mitigations/MitigationLinkView';
+import CustomTemplate from '../CustomTemplate';
+import EditorImpactedAssets from '../EditorImpactedAssets';
+import EditorImpactedGoal from '../EditorImpactedGoal';
+import EditorPrerequisites from '../EditorPrerequisites';
+import EditorThreatAction from '../EditorThreatAction';
+import EditorThreatImpact from '../EditorThreatImpact';
+import EditorThreatSource from '../EditorThreatSource';
+import FieldSelector from '../FieldSelector';
+import FinalStatement from '../FinalStatement';
+import FullExamples from '../FullExamples';
+import Header from '../Header';
+import MetadataEditor from '../MetadataEditor';
+import Metrics from '../Metrics';
+import ControlLookupComponent from '../../controls/ControlLookup';
+import { getControlProfileByName } from '../../../data/controlProfileProvider';
+import { useApplicationInfoContext } from '../../../contexts';
 
 const styles = {
   finalStatementSection: css({
-    "&:hover": {
+    '&:hover': {
       backgroundColor: awsui.colorBackgroundDropdownItemHover,
     },
   }),
   metadataContainer: css({
-    "h3>span>span": {
-      fontSize: "20px",
+    'h3>span>span': {
+      fontSize: '20px',
     },
   }),
 };
@@ -86,7 +86,7 @@ const defaultThreatStatementFormat = threatStatementFormat[63];
 
 const editorMapping: {
   [key in ThreatFieldTypes]: React.ComponentType<
-    EditorProps & { ref?: React.ForwardedRef<any> }
+  EditorProps & { ref?: React.ForwardedRef<any> }
   >;
 } = {
   threat_source: EditorThreatSource,
@@ -111,7 +111,7 @@ const ThreatStatementEditorInner: FC<{
   );
   const [suggestions, setSuggestions] = useState<string[]>([]);
   const [displayStatement, setDisplayStatement] = useState<
-    ReactNode[] | undefined
+  ReactNode[] | undefined
   >([]);
   const [customTemplateEditorVisible, setCustomTemplateEditorVisible] =
     useState(false);
@@ -168,7 +168,7 @@ const ThreatStatementEditorInner: FC<{
 
   let selectedCategory =
     applicationInfo.securityCategory == undefined
-      ? "CCCS Medium"
+      ? 'CCCS Medium'
       : applicationInfo.securityCategory;
   const controlList = useMemo(() => {
     return getControlProfileByName(selectedCategory) as Control[];
@@ -205,21 +205,21 @@ const ThreatStatementEditorInner: FC<{
         );
       }
       const displayedHtml = displayedStatement?.map((s, index) =>
-        typeof s === "string" ? (
+        typeof s === 'string' ? (
           s
-        ) : s.type === "b" ? (
+        ) : s.type === 'b' ? (
           <Tooltip
             tooltip={s.tooltip}
             key={index}
-            anchor={composerMode === "EditorOnly" ? "bottom" : "top"}
+            anchor={composerMode === 'EditorOnly' ? 'bottom' : 'top'}
           >
             <b css={styles.finalStatementSection}>{s.content}</b>
           </Tooltip>
-        ) : s.type === "span" ? (
+        ) : s.type === 'span' ? (
           <Tooltip
             tooltip={s.tooltip}
             key={index}
-            anchor={composerMode === "EditorOnly" ? "bottom" : "top"}
+            anchor={composerMode === 'EditorOnly' ? 'bottom' : 'top'}
           >
             <span css={styles.finalStatementSection}>{s.content}</span>
           </Tooltip>
@@ -253,7 +253,7 @@ const ThreatStatementEditorInner: FC<{
             linkedAssumptionIds.map((la) => ({
               assumptionId: la,
               linkedId: id,
-              type: "Threat",
+              type: 'Threat',
             })),
           );
         linkedMitigationIds &&
@@ -285,7 +285,7 @@ const ThreatStatementEditorInner: FC<{
             toAddlinkedAssumptionIds.map((la) => ({
               assumptionId: la,
               linkedId: id,
-              type: "Threat",
+              type: 'Threat',
             })),
           );
         toRemovelinkedAssumptionIds &&
@@ -294,7 +294,7 @@ const ThreatStatementEditorInner: FC<{
             toRemovelinkedAssumptionIds.map((la) => ({
               assumptionId: la,
               linkedId: id,
-              type: "Threat",
+              type: 'Threat',
             })),
           );
         const toAddlinkedMitigationIds = linkedMitigationIds.filter(
@@ -406,7 +406,7 @@ const ThreatStatementEditorInner: FC<{
   const saveButtonText = useMemo(() => {
     if (!currentWorkspace && workspaceList.length === 0) {
       // For most of use cases, if there is only the default workspace, use list to reduce cognitive load.
-      return editingStatement?.numericId === -1 ? "Add to list" : "Save";
+      return editingStatement?.numericId === -1 ? 'Add to list' : 'Save';
     }
 
     const workspace = currentWorkspace?.name || DEFAULT_WORKSPACE_LABEL;
@@ -442,7 +442,7 @@ const ThreatStatementEditorInner: FC<{
         ]);
       } else {
         const newAssumption = saveAssumption({
-          id: "new",
+          id: 'new',
           numericId: -1,
           content: assumptionIdOrNewAssumption,
         });
@@ -461,7 +461,7 @@ const ThreatStatementEditorInner: FC<{
         ]);
       } else {
         const newMitigation = saveMitigation({
-          id: "new",
+          id: 'new',
           numericId: -1,
           content: mitigationIdOrNewMitigation,
         });
@@ -489,7 +489,7 @@ const ThreatStatementEditorInner: FC<{
   return (
     <>
       <SpaceBetween direction="vertical" size="l">
-        {composerMode !== "EditorOnly" && (
+        {composerMode !== 'EditorOnly' && (
           <Header
             composerMode={composerMode}
             statement={editingStatement}
@@ -534,7 +534,7 @@ const ThreatStatementEditorInner: FC<{
                 onClick={(token) => setEditor(token as ThreatFieldTypes)}
               />
             </Grid>
-            {composerMode === "Full" && (
+            {composerMode === 'Full' && (
               <div css={styles.metadataContainer}>
                 <ControlLookupComponent
                   variant="container"
@@ -547,7 +547,7 @@ const ThreatStatementEditorInner: FC<{
                 />
               </div>
             )}
-            {composerMode === "Full" && (
+            {composerMode === 'Full' && (
               <div css={styles.metadataContainer}>
                 <MitigationLinkComponent
                   variant="container"
@@ -562,7 +562,7 @@ const ThreatStatementEditorInner: FC<{
                 />
               </div>
             )}
-            {composerMode === "Full" && (
+            {composerMode === 'Full' && (
               <div css={styles.metadataContainer}>
                 <AssumptionLinkComponent
                   variant="container"
@@ -577,7 +577,7 @@ const ThreatStatementEditorInner: FC<{
                 />
               </div>
             )}
-            {composerMode === "Full" && (
+            {composerMode === 'Full' && (
               <div css={styles.metadataContainer}>
                 <MetadataEditor
                   variant="container"

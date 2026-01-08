@@ -15,28 +15,28 @@
  ******************************************************************************************************************** */
 
 /** @jsxImportSource @emotion/react */
-import { AutosuggestProps } from "@cloudscape-design/components/autosuggest";
+import { AutosuggestProps } from '@cloudscape-design/components/autosuggest';
 import {
   BaseKeyDetail,
   CancelableEventHandler,
   NonCancelableEventHandler,
-} from "@cloudscape-design/components/internal/events";
+} from '@cloudscape-design/components/internal/events';
 import TokenGroup, {
   TokenGroupProps,
-} from "@cloudscape-design/components/token-group";
-import { FC, useCallback, useState, forwardRef } from "react";
-import { useThreatsContext } from "../../../contexts/ThreatsContext/context";
-import { ThreatStatementImpactedGoalItem } from "../../../customTypes";
-import Autosuggest from "../../generic/Autosuggest";
-import EditorLayout from "../EditorLayout";
-import ExampleList from "../ExampleList";
-import { EditorProps } from "../ThreatStatementEditor/types";
+} from '@cloudscape-design/components/token-group';
+import { FC, useCallback, useState, forwardRef } from 'react';
+import { useThreatsContext } from '../../../contexts/ThreatsContext/context';
+import { ThreatStatementImpactedGoalItem } from '../../../customTypes';
+import Autosuggest from '../../generic/Autosuggest';
+import EditorLayout from '../EditorLayout';
+import ExampleList from '../ExampleList';
+import { EditorProps } from '../ThreatStatementEditor/types';
 
 const EditorImpactedGoal: FC<EditorProps> = forwardRef<
-  AutosuggestProps.Ref,
-  EditorProps
+AutosuggestProps.Ref,
+EditorProps
 >(({ statement, setStatement, fieldData }, _ref) => {
-  const [value, setValue] = useState<string>("");
+  const [value, setValue] = useState<string>('');
   const { perFieldExamples } = useThreatsContext();
 
   const handleAddImpactedGoal = useCallback(
@@ -52,7 +52,7 @@ const EditorImpactedGoal: FC<EditorProps> = forwardRef<
               : [impactedGoal],
           },
       );
-      setValue("");
+      setValue('');
     },
     [setStatement],
   );
@@ -74,9 +74,9 @@ const EditorImpactedGoal: FC<EditorProps> = forwardRef<
               ...prevStatement,
               impactedGoal: prevStatement.impactedGoal
                 ? [
-                    ...prevStatement.impactedGoal?.slice(0, itemIndex),
-                    ...prevStatement.impactedGoal?.slice(itemIndex + 1),
-                  ]
+                  ...prevStatement.impactedGoal?.slice(0, itemIndex),
+                  ...prevStatement.impactedGoal?.slice(itemIndex + 1),
+                ]
                 : [],
             },
         );
@@ -87,9 +87,9 @@ const EditorImpactedGoal: FC<EditorProps> = forwardRef<
   const handleExampleClicked = useCallback(
     (example: string) => {
       const tokens = example
-        .replace("and/or", "")
-        .replace("and", "")
-        .replace("or", "")
+        .replace('and/or', '')
+        .replace('and', '')
+        .replace('or', '')
         .split(/[\s,]+/);
       tokens.forEach((token) => handleAddImpactedGoal(token));
     },
@@ -100,7 +100,7 @@ const EditorImpactedGoal: FC<EditorProps> = forwardRef<
     ({ detail }) => {
       if (detail.keyCode === 13) {
         handleAddImpactedGoal?.(value);
-        setValue("");
+        setValue('');
       }
     },
     [handleAddImpactedGoal, value],

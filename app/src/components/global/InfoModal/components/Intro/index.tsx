@@ -15,17 +15,17 @@
  ******************************************************************************************************************** */
 
 /** @jsxImportSource @emotion/react */
-import Grid from "@cloudscape-design/components/grid";
-import { css } from "@emotion/react";
-import { FC } from "react";
-import styles from "../../styles";
-import InfoModalBase from "../InfoModalBase";
+import Grid from '@cloudscape-design/components/grid';
+import { css } from '@emotion/react';
+import { FC } from 'react';
+import styles from '../../styles';
+import InfoModalBase from '../InfoModalBase';
 
 const InfoModalIntro: FC = () => {
   return (
     <InfoModalBase title="threat-composer">
       <p>
-        This tool has{" "}
+        This tool has{' '}
         <span css={css(styles.contentHighlight)}>
           a singular focus on the <i>“What can go wrong?”</i> threat modeling
           step

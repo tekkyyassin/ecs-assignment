@@ -14,16 +14,16 @@
   limitations under the License.
  ******************************************************************************************************************** */
 
-import Autosuggest from "@cloudscape-design/components/autosuggest";
+import Autosuggest from '@cloudscape-design/components/autosuggest';
 import ExpandableSection, {
   ExpandableSectionProps,
-} from "@cloudscape-design/components/expandable-section";
-import TokenGroup from "@cloudscape-design/components/token-group";
-import React, { FC, useMemo } from "react";
-import { Control } from "../../../customTypes";
+} from '@cloudscape-design/components/expandable-section';
+import TokenGroup from '@cloudscape-design/components/token-group';
+import React, { FC, useMemo } from 'react';
+import { Control } from '../../../customTypes';
 
 export interface ControlLinkProps {
-  variant?: ExpandableSectionProps["variant"];
+  variant?: ExpandableSectionProps['variant'];
   linkedControlIds: string[];
   controlList: Control[];
   onAddControlLink: (controlId: string) => void;
@@ -37,7 +37,7 @@ const ControlLinkComponent: FC<ControlLinkProps> = ({
   onAddControlLink,
   onRemoveControlLink,
 }) => {
-  const [searchValue, setSearchValue] = React.useState("");
+  const [searchValue, setSearchValue] = React.useState('');
 
   const linkedControls = useMemo(() => {
     return controlList.filter((al) => linkedControlIds.includes(al.id));
@@ -60,7 +60,7 @@ const ControlLinkComponent: FC<ControlLinkProps> = ({
   return (
     <ExpandableSection
       variant={variant}
-      headingTagOverride={variant === "container" ? "h3" : undefined}
+      headingTagOverride={variant === 'container' ? 'h3' : undefined}
       headerText={`Linked controls (${linkedControls.length})`}
     >
       <Autosuggest
@@ -72,7 +72,7 @@ const ControlLinkComponent: FC<ControlLinkProps> = ({
         }))}
         onSelect={({ detail }) => {
           onAddControlLink(detail.value);
-          setSearchValue("");
+          setSearchValue('');
         }}
         filteringType="manual"
         enteredTextLabel={(value) => `Add new control: "${value}"`}
@@ -81,7 +81,7 @@ const ControlLinkComponent: FC<ControlLinkProps> = ({
       />
       <div
         style={{
-          display: "flex",
+          display: 'flex',
         }}
       >
         <TokenGroup

@@ -15,15 +15,15 @@
  ******************************************************************************************************************** */
 
 /** @jsxImportSource @emotion/react */
-import Icon from "@cloudscape-design/components/icon";
-import TextContent from "@cloudscape-design/components/text-content";
-import * as awsui from "@cloudscape-design/design-tokens";
-import { css } from "@emotion/react";
-import { FC } from "react";
-import ReactMarkdown from "react-markdown";
+import Icon from '@cloudscape-design/components/icon';
+import TextContent from '@cloudscape-design/components/text-content';
+import * as awsui from '@cloudscape-design/design-tokens';
+import { css } from '@emotion/react';
+import { FC } from 'react';
+import ReactMarkdown from 'react-markdown';
 
-import frontmatter from "remark-frontmatter";
-import gfm from "remark-gfm";
+import frontmatter from 'remark-frontmatter';
+import gfm from 'remark-gfm';
 
 const externalPattern = /^((https?):\/\/)/;
 
@@ -33,54 +33,54 @@ export interface MarkdownViewerProps {
 }
 
 const styles = css({
-  "@media print": {
-    color: "black !important",
+  '@media print': {
+    color: 'black !important',
   },
 
-  "& img": {
-    maxWidth: "1024px",
-    width: "100%",
+  '& img': {
+    maxWidth: '1024px',
+    width: '100%',
   },
 
-  "& h1": {
+  '& h1': {
     marginTop: `${awsui.spaceScaledS} !important`,
     marginBottom: `${awsui.spaceScaledS} !important`,
   },
 
-  "& h2": {
+  '& h2': {
     marginTop: `${awsui.spaceScaledL} !important`,
     marginBottom: `${awsui.spaceScaledS} !important`,
   },
 
-  "& h3": {
+  '& h3': {
     marginTop: `${awsui.spaceScaledS} !important`,
     marginBottom: `${awsui.spaceScaledS} !important`,
   },
 
-  "& h4": {
+  '& h4': {
     marginTop: `${awsui.spaceScaledS} !important`,
     marginBottom: `${awsui.spaceScaledS} !important`,
   },
 
-  "& table": {
-    borderCollapse: "collapse",
+  '& table': {
+    borderCollapse: 'collapse',
   },
 
-  "& tr": {
+  '& tr': {
     borderTop: `1px solid ${awsui.colorChartsLineGrid}`,
   },
 
-  "& th": {
-    padding: "6px 13px",
+  '& th': {
+    padding: '6px 13px',
     border: `1px solid ${awsui.colorChartsLineGrid}`,
   },
 
-  "& td": {
-    padding: "6px 13px",
+  '& td': {
+    padding: '6px 13px',
     border: `1px solid ${awsui.colorChartsLineGrid}`,
   },
 
-  "table tr:nth-of-type(2n)": {
+  'table tr:nth-of-type(2n)': {
     background: awsui.colorBackgroundCellShaded,
   },
 });

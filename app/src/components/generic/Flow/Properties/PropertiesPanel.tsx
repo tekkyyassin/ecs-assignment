@@ -1,4 +1,4 @@
-import { memo, useEffect, useState } from "react";
+import { memo, useEffect, useState } from 'react';
 
 import {
   ColumnLayout,
@@ -9,12 +9,12 @@ import {
   TagEditor,
   ExpandableSection,
   Multiselect,
-} from "@cloudscape-design/components";
+} from '@cloudscape-design/components';
 import {
   dataFeaturesOptions,
   securityFeaturesOptions,
   techFeaturesOptions,
-} from "./panel-config";
+} from './panel-config';
 
 export default memo(
   ({ component, changeHandler }: { component: any; changeHandler: any }) => {
@@ -37,16 +37,16 @@ export default memo(
           <ColumnLayout borders="vertical" columns={3} variant="text-grid">
             <FormField label="name" stretch={true}>
               <Textarea
-                value={data.name || ""}
-                onChange={(e) => updateData("name", e.detail?.value, "")}
+                value={data.name || ''}
+                onChange={(e) => updateData('name', e.detail?.value, '')}
                 placeholder="name"
                 rows={3}
               />
             </FormField>
             <FormField label="description" stretch={true}>
               <Textarea
-                value={data.description || ""}
-                onChange={(e) => updateData("description", e.detail?.value, "")}
+                value={data.description || ''}
+                onChange={(e) => updateData('description', e.detail?.value, '')}
                 placeholder="description"
                 rows={3}
               />
@@ -55,14 +55,14 @@ export default memo(
               <Checkbox
                 checked={data?.outOfScope || false}
                 onChange={(e) =>
-                  updateData("outOfScope", e.detail?.checked, false)
+                  updateData('outOfScope', e.detail?.checked, false)
                 }
               >
                 out of scope
               </Checkbox>
               <Textarea
-                value={data.scopeReason || ""}
-                onChange={(e) => updateData("scopeReason", e.detail?.value, "")}
+                value={data.scopeReason || ''}
+                onChange={(e) => updateData('scopeReason', e.detail?.value, '')}
                 placeholder="a kind reminder for future-you"
                 rows={2}
               />
@@ -76,7 +76,7 @@ export default memo(
               disabled={data?.outOfScope || false}
               options={dataFeaturesOptions(component?.type)}
               onChange={(e) =>
-                updateData("dataTags", e.detail?.selectedOptions, [])
+                updateData('dataTags', e.detail?.selectedOptions, [])
               }
             />
             <Multiselect
@@ -86,7 +86,7 @@ export default memo(
               disabled={data?.outOfScope || false}
               options={techFeaturesOptions(component?.type)}
               onChange={(e) =>
-                updateData("techTags", e.detail?.selectedOptions, [])
+                updateData('techTags', e.detail?.selectedOptions, [])
               }
             />
             <Multiselect
@@ -96,7 +96,7 @@ export default memo(
               disabled={data?.outOfScope || false}
               options={securityFeaturesOptions(component?.type)}
               onChange={(e) =>
-                updateData("securityTags", e.detail?.selectedOptions, [])
+                updateData('securityTags', e.detail?.selectedOptions, [])
               }
             />
           </ColumnLayout>
@@ -106,20 +106,20 @@ export default memo(
                 i18nStrings={{
                   tagLimit: (availableTags, tagLimit) =>
                     availableTags === tagLimit
-                      ? "You can add up to " + tagLimit + " tags."
+                      ? 'You can add up to ' + tagLimit + ' tags.'
                       : availableTags === 1
-                        ? "You can add up to 1 more tag."
-                        : "You can add up to " + availableTags + " more tags.",
-                  keyHeader: "Key",
-                  valueHeader: "Value (optional)",
-                  addButton: "Add new tag",
-                  removeButton: "Remove",
-                  keyPlaceholder: "Enter key",
-                  valuePlaceholder: "Enter value",
-                  emptyKeyError: "You must specify a tag key",
+                        ? 'You can add up to 1 more tag.'
+                        : 'You can add up to ' + availableTags + ' more tags.',
+                  keyHeader: 'Key',
+                  valueHeader: 'Value (optional)',
+                  addButton: 'Add new tag',
+                  removeButton: 'Remove',
+                  keyPlaceholder: 'Enter key',
+                  valuePlaceholder: 'Enter value',
+                  emptyKeyError: 'You must specify a tag key',
                 }}
                 tags={data.tags}
-                onChange={(e) => updateData("tags", e.detail?.tags, [])}
+                onChange={(e) => updateData('tags', e.detail?.tags, [])}
                 tagLimit={5}
               />
             </ExpandableSection>

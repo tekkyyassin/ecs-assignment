@@ -14,21 +14,21 @@
   limitations under the License.
  ******************************************************************************************************************** */
 
-import { FC, PropsWithChildren, useCallback, useState } from "react";
-import { ControlProfile } from "../../../../customTypes";
-import { LocalStateContextProviderBaseProps } from "../../../types";
-import { ControlProfilesContext } from "../../context";
-import { ControlProfilesContextProviderProps } from "../../types";
-import useControlProfiles from "../../useControlProfiles";
+import { FC, PropsWithChildren, useCallback, useState } from 'react';
+import { ControlProfile } from '../../../../customTypes';
+import { LocalStateContextProviderBaseProps } from '../../../types';
+import { ControlProfilesContext } from '../../context';
+import { ControlProfilesContextProviderProps } from '../../types';
+import useControlProfiles from '../../useControlProfiles';
 
 const ControlProfilesLocalStateContextProvider: FC<
-  PropsWithChildren<
-    ControlProfilesContextProviderProps &
-      LocalStateContextProviderBaseProps<ControlProfile[]>
-  >
+PropsWithChildren<
+ControlProfilesContextProviderProps &
+LocalStateContextProviderBaseProps<ControlProfile[]>
+>
 > = ({ children, initialValue }) => {
   const [controlProfileList, setControlProfileList] = useState<
-    ControlProfile[]
+  ControlProfile[]
   >(initialValue || []);
 
   const { handlRemoveControlProfile, handleSaveControlProfile } =

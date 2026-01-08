@@ -14,35 +14,35 @@
   limitations under the License.
  ******************************************************************************************************************** */
 
-import DeleteConfirmationDialog from "@aws-northstar/ui/components/DeleteConfirmationDialog";
-import Alert from "@cloudscape-design/components/alert";
-import Button from "@cloudscape-design/components/button";
+import DeleteConfirmationDialog from '@aws-northstar/ui/components/DeleteConfirmationDialog';
+import Alert from '@cloudscape-design/components/alert';
+import Button from '@cloudscape-design/components/button';
 import ButtonDropdown, {
   ButtonDropdownProps,
-} from "@cloudscape-design/components/button-dropdown";
+} from '@cloudscape-design/components/button-dropdown';
 import {
   CancelableEventHandler,
   NonCancelableEventHandler,
-} from "@cloudscape-design/components/internal/events";
-import Select, { SelectProps } from "@cloudscape-design/components/select";
-import SpaceBetween from "@cloudscape-design/components/space-between";
-import { FC, useMemo, useState, useCallback, PropsWithChildren } from "react";
+} from '@cloudscape-design/components/internal/events';
+import Select, { SelectProps } from '@cloudscape-design/components/select';
+import SpaceBetween from '@cloudscape-design/components/space-between';
+import { FC, useMemo, useState, useCallback, PropsWithChildren } from 'react';
 import {
   DEFAULT_WORKSPACE_ID,
   DEFAULT_WORKSPACE_LABEL,
   EXAMPLE_WORKSPACE_ID,
   EXAMPLE_WORKSPACE_LABEL,
-} from "../../../configs/constants";
-import { useGlobalSetupContext } from "../../../contexts/GlobalSetupContext";
-import { useWorkspacesContext } from "../../../contexts/WorkspacesContext";
+} from '../../../configs/constants';
+import { useGlobalSetupContext } from '../../../contexts/GlobalSetupContext';
+import { useWorkspacesContext } from '../../../contexts/WorkspacesContext';
 import {
   DataExchangeFormat,
   TemplateThreatStatement,
-} from "../../../customTypes";
-import useImportExport from "../../../hooks/useExportImport";
-import useRemoveData from "../../../hooks/useRemoveData";
-import AddWorkspace from "../../workspaces/EditWorkspace";
-import FileImport from "../../workspaces/FileImport";
+} from '../../../customTypes';
+import useImportExport from '../../../hooks/useExportImport';
+import useRemoveData from '../../../hooks/useRemoveData';
+import AddWorkspace from '../../workspaces/EditWorkspace';
+import FileImport from '../../workspaces/FileImport';
 
 export interface WorkspaceSelectorProps {
   embededMode: boolean;
@@ -103,7 +103,7 @@ const WorkspaceSelector: FC<PropsWithChildren<WorkspaceSelectorProps>> = ({
     workspaceList &&
       workspaceList.length > 0 &&
       options.push({
-        label: "Workspaces",
+        label: 'Workspaces',
         options: workspaceList.map((w) => ({
           label: w.name,
           value: w.id,
@@ -135,29 +135,29 @@ const WorkspaceSelector: FC<PropsWithChildren<WorkspaceSelectorProps>> = ({
     useCallback(
       async ({ detail }) => {
         switch (detail.id) {
-          case "add":
+          case 'add':
             setAddWorkspaceModalVisible(true);
             break;
-          case "import":
+          case 'import':
             setFileImportModalVisible(true);
             break;
-          case "exportAll":
+          case 'exportAll':
             exportAll();
             break;
-          case "exportFilteredList":
+          case 'exportFilteredList':
             exportSelectedThreats(filteredThreats || []);
             break;
-          case "removeAll":
+          case 'removeAll':
             setRemoveDataModalVisible(true);
             break;
-          case "delete":
+          case 'delete':
             currentWorkspace && setRemoveWorkspaceModalVisible(true);
             break;
-          case "renameWorkspace":
+          case 'renameWorkspace':
             setEditWorkspaceModalVisible(true);
             break;
           default:
-            console.log("Unknown action", detail.id);
+            console.log('Unknown action', detail.id);
         }
       },
       [
@@ -176,7 +176,7 @@ const WorkspaceSelector: FC<PropsWithChildren<WorkspaceSelectorProps>> = ({
     try {
       await removeData?.();
     } catch (e) {
-      console.log("Error in removing data from workspace", e);
+      console.log('Error in removing data from workspace', e);
     } finally {
       setRemoveDataModalVisible(false);
     }
@@ -189,7 +189,7 @@ const WorkspaceSelector: FC<PropsWithChildren<WorkspaceSelectorProps>> = ({
       try {
         await deleteCurrentWorkspace(toDeleteWorkspaceId);
       } catch (e) {
-        console.log("Error in deleting workspace", e);
+        console.log('Error in deleting workspace', e);
       } finally {
         setRemoveWorkspaceModalVisible(false);
         setIsRemovingWorkspace(false);
@@ -222,48 +222,48 @@ const WorkspaceSelector: FC<PropsWithChildren<WorkspaceSelectorProps>> = ({
         <ButtonDropdown
           items={[
             ...[
-              { id: "add", text: "Add new workspace" },
+              { id: 'add', text: 'Add new workspace' },
               {
-                id: "import",
-                text: "Import",
+                id: 'import',
+                text: 'Import',
                 disabled: currentWorkspace?.id === EXAMPLE_WORKSPACE_ID,
               },
               {
-                id: "exportAll",
+                id: 'exportAll',
                 text: embededMode
-                  ? "Export all statements from current workspace"
-                  : "Export data from current workspace",
+                  ? 'Export all statements from current workspace'
+                  : 'Export data from current workspace',
                 disabled: embededMode && !enabledExportAll,
               },
             ],
             ...(embededMode
               ? [
-                  {
-                    id: "exportFilteredList",
-                    text: "Export filtered statement list from current workspace",
-                    disabled: !enabledExportFiltered,
-                  },
-                ]
+                {
+                  id: 'exportFilteredList',
+                  text: 'Export filtered statement list from current workspace',
+                  disabled: !enabledExportFiltered,
+                },
+              ]
               : []),
             {
-              id: "removeAll",
+              id: 'removeAll',
               text: embededMode
-                ? "Remove all statements from current workspace"
-                : "Remove data from current workspace",
+                ? 'Remove all statements from current workspace'
+                : 'Remove data from current workspace',
               disabled:
                 (embededMode && !enabledRemoveAll) ||
                 currentWorkspace?.id === EXAMPLE_WORKSPACE_ID,
             },
             {
-              id: "delete",
-              text: "Delete workspace",
+              id: 'delete',
+              text: 'Delete workspace',
               disabled:
                 !currentWorkspace ||
                 currentWorkspace.id === EXAMPLE_WORKSPACE_ID,
             },
             {
-              id: "renameWorkspace",
-              text: "Rename workspace",
+              id: 'renameWorkspace',
+              text: 'Rename workspace',
               disabled:
                 !currentWorkspace ||
                 currentWorkspace.id === EXAMPLE_WORKSPACE_ID,
@@ -316,13 +316,13 @@ const WorkspaceSelector: FC<PropsWithChildren<WorkspaceSelectorProps>> = ({
             action={<Button onClick={() => exportAll()}>Export data</Button>}
             type="warning"
           >
-            Delete{" "}
+            Delete{' '}
             <b>
-              Data from{" "}
+              Data from{' '}
               {currentWorkspace
                 ? `workspace ${currentWorkspace.name}`
-                : "Default workspace"}
-            </b>{" "}
+                : 'Default workspace'}
+            </b>{' '}
             permenantly? This action cannot be undone.
             <br />
             You can export the data to a json file as backup.

@@ -14,11 +14,11 @@
   limitations under the License.
  ******************************************************************************************************************** */
 
-import Autosuggest from "@cloudscape-design/components/autosuggest";
-import ExpandableSection from "@cloudscape-design/components/expandable-section";
-import TokenGroup from "@cloudscape-design/components/token-group";
-import React, { FC, useMemo } from "react";
-import { TemplateThreatStatement } from "../../../customTypes";
+import Autosuggest from '@cloudscape-design/components/autosuggest';
+import ExpandableSection from '@cloudscape-design/components/expandable-section';
+import TokenGroup from '@cloudscape-design/components/token-group';
+import React, { FC, useMemo } from 'react';
+import { TemplateThreatStatement } from '../../../customTypes';
 
 export interface ThreatLinkProps {
   linkedThreatIds: string[];
@@ -33,7 +33,7 @@ const ThreatLinkComponent: FC<ThreatLinkProps> = ({
   onAddThreatLink,
   onRemoveThreatLink,
 }) => {
-  const [searchValue, setSearchValue] = React.useState("");
+  const [searchValue, setSearchValue] = React.useState('');
 
   const linkedThreats = useMemo(() => {
     return threatList.filter((al) => linkedThreatIds.includes(al.id));
@@ -63,7 +63,7 @@ const ThreatLinkComponent: FC<ThreatLinkProps> = ({
         }))}
         onSelect={({ detail }) => {
           onAddThreatLink(detail.value);
-          setSearchValue("");
+          setSearchValue('');
         }}
         filteringType="manual"
         enteredTextLabel={(value) => `Use: "${value}"`}
@@ -72,7 +72,7 @@ const ThreatLinkComponent: FC<ThreatLinkProps> = ({
       />
       <div
         style={{
-          display: "flex",
+          display: 'flex',
         }}
       >
         <TokenGroup

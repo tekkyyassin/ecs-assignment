@@ -14,22 +14,22 @@
   limitations under the License.
  ******************************************************************************************************************** */
 
-import Button from "@cloudscape-design/components/button";
-import Container from "@cloudscape-design/components/container";
-import FormField from "@cloudscape-design/components/form-field";
-import SegmentedControl from "@cloudscape-design/components/segmented-control";
-import Checkbox from "@cloudscape-design/components/checkbox";
-import Header from "@cloudscape-design/components/header";
-import SpaceBetween from "@cloudscape-design/components/space-between";
-import { FC, useState, useCallback, useMemo, useEffect } from "react";
-import { useApplicationInfoContext } from "../../../contexts/ApplicationContext/context";
+import Button from '@cloudscape-design/components/button';
+import Container from '@cloudscape-design/components/container';
+import FormField from '@cloudscape-design/components/form-field';
+import SegmentedControl from '@cloudscape-design/components/segmented-control';
+import Checkbox from '@cloudscape-design/components/checkbox';
+import Header from '@cloudscape-design/components/header';
+import SpaceBetween from '@cloudscape-design/components/space-between';
+import { FC, useState, useCallback, useMemo, useEffect } from 'react';
+import { useApplicationInfoContext } from '../../../contexts/ApplicationContext/context';
 import {
   ApplicationInfoSchema,
   EditableComponentBaseProps,
-} from "../../../customTypes";
-import Input from "../../generic/Input";
-import MarkdownEditor from "../../generic/MarkdownEditor";
-import MarkdownViewer from "../../generic/MarkdownViewer";
+} from '../../../customTypes';
+import Input from '../../generic/Input';
+import MarkdownEditor from '../../generic/MarkdownEditor';
+import MarkdownViewer from '../../generic/MarkdownViewer';
 
 const ApplicationInfo: FC<EditableComponentBaseProps> = ({
   onEditModeChange,
@@ -38,9 +38,9 @@ const ApplicationInfo: FC<EditableComponentBaseProps> = ({
   const [editMode, setEditMode] = useState(
     !applicationInfo.name && !applicationInfo.description,
   );
-  const [content, setContent] = useState("");
-  const [name, setName] = useState("");
-  const [securityCategory, setSecurityCategory] = useState("CCCS Medium");
+  const [content, setContent] = useState('');
+  const [name, setName] = useState('');
+  const [securityCategory, setSecurityCategory] = useState('CCCS Medium');
   const [checkedIaaS, setCheckedIaaS] = useState(false);
   const [checkedPaaS, setCheckedPaaS] = useState(false);
   const [checkedSaaS, setCheckedSaaS] = useState(false);
@@ -86,9 +86,9 @@ const ApplicationInfo: FC<EditableComponentBaseProps> = ({
   ]);
 
   const handleEdit = useCallback(() => {
-    setContent(applicationInfo.description || "");
-    setName(applicationInfo.name || "");
-    setSecurityCategory(applicationInfo.securityCategory || "CCCS Medium");
+    setContent(applicationInfo.description || '');
+    setName(applicationInfo.name || '');
+    setSecurityCategory(applicationInfo.securityCategory || 'CCCS Medium');
     setCheckedIaaS(applicationInfo.useIaaS || false);
     setCheckedPaaS(applicationInfo.usePaaS || false);
     setCheckedSaaS(applicationInfo.useSaaS || false);
@@ -117,7 +117,7 @@ const ApplicationInfo: FC<EditableComponentBaseProps> = ({
     <Container
       header={
         <Header actions={actions}>
-          {applicationInfo.name || "Application Introduction"}
+          {applicationInfo.name || 'Application Introduction'}
         </Header>
       }
     >
@@ -147,9 +147,9 @@ const ApplicationInfo: FC<EditableComponentBaseProps> = ({
               onChange={({ detail }) => setSecurityCategory(detail.selectedId)}
               label="This application / feature require the following GC Cloud Profile"
               options={[
-                { text: "CCCS Low", id: "CCCS Low" },
-                { text: "CCCS Medium", id: "CCCS Medium" },
-                { text: "CCCS High", id: "CCCS High" },
+                { text: 'CCCS Low', id: 'CCCS Low' },
+                { text: 'CCCS Medium', id: 'CCCS Medium' },
+                { text: 'CCCS High', id: 'CCCS High' },
               ]}
             />
           </FormField>
@@ -208,32 +208,32 @@ const ApplicationInfo: FC<EditableComponentBaseProps> = ({
         </SpaceBetween>
       ) : (
         <SpaceBetween direction="vertical" size="l">
-          <MarkdownViewer>{applicationInfo.description || ""}</MarkdownViewer>
-          <Header>{"GC cloud profile"}</Header>
+          <MarkdownViewer>{applicationInfo.description || ''}</MarkdownViewer>
+          <Header>{'GC cloud profile'}</Header>
           <MarkdownViewer>
-            {applicationInfo.securityCategory || ""}
+            {applicationInfo.securityCategory || ''}
           </MarkdownViewer>
-          <Header>{"Cloud service models"}</Header>
+          <Header>{'Cloud service models'}</Header>
           <MarkdownViewer>
             {[
-              applicationInfo.useIaaS ? "IaaS" : "",
-              applicationInfo.usePaaS ? "PaaS" : "",
-              applicationInfo.useSaaS ? "SaaS" : "",
+              applicationInfo.useIaaS ? 'IaaS' : '',
+              applicationInfo.usePaaS ? 'PaaS' : '',
+              applicationInfo.useSaaS ? 'SaaS' : '',
             ]
               .filter(Boolean)
-              .join(", ")}
+              .join(', ')}
           </MarkdownViewer>
-          <Header>{"Cloud stack components"}</Header>
+          <Header>{'Cloud stack components'}</Header>
           <MarkdownViewer>
             {[
-              applicationInfo.useData ? "Data" : "",
-              applicationInfo.useStorage ? "Storage" : "",
-              applicationInfo.useApplication ? "Application" : "",
-              applicationInfo.useCompute ? "Compute" : "",
-              applicationInfo.useNetwork ? "Network" : "",
+              applicationInfo.useData ? 'Data' : '',
+              applicationInfo.useStorage ? 'Storage' : '',
+              applicationInfo.useApplication ? 'Application' : '',
+              applicationInfo.useCompute ? 'Compute' : '',
+              applicationInfo.useNetwork ? 'Network' : '',
             ]
               .filter(Boolean)
-              .join(", ")}
+              .join(', ')}
           </MarkdownViewer>
         </SpaceBetween>
       )}

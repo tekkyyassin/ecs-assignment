@@ -13,8 +13,8 @@
   See the License for the specific language governing permissions and
   limitations under the License.
  ******************************************************************************************************************** */
-import { memo, useState, useEffect } from "react";
-import { useCollection } from "@cloudscape-design/collection-hooks";
+import { memo, useState, useEffect } from 'react';
+import { useCollection } from '@cloudscape-design/collection-hooks';
 import {
   Box,
   Button,
@@ -24,7 +24,7 @@ import {
   Pagination,
   Table,
   PropertyFilter,
-} from "@cloudscape-design/components";
+} from '@cloudscape-design/components';
 import {
   columnDefinitions,
   getMatchesCountText,
@@ -32,8 +32,8 @@ import {
   collectionPreferencesProps,
   filteringConstants,
   filteringProperties,
-} from "./table-config";
-import { useThreatsContext } from "../../../../contexts/ThreatsContext";
+} from './table-config';
+import { useThreatsContext } from '../../../../contexts/ThreatsContext';
 
 function EmptyState({ title, subtitle, action }) {
   return (
@@ -41,7 +41,7 @@ function EmptyState({ title, subtitle, action }) {
       <Box variant="strong" textAlign="center" color="inherit">
         {title}
       </Box>
-      <Box variant="p" padding={{ bottom: "s" }} color="inherit">
+      <Box variant="p" padding={{ bottom: 's' }} color="inherit">
         {subtitle}
       </Box>
       {action}
@@ -77,7 +77,7 @@ export default memo(
     const [preferences, setPreferences] =
       useState<CollectionPreferencesProps.Preferences>({
         pageSize: 10,
-        visibleContent: ["statement", "priority", "stride"],
+        visibleContent: ['statement', 'priority', 'stride'],
         wrapLines: true,
       });
 
@@ -94,12 +94,12 @@ export default memo(
         output.id = item.id;
         output.statement = item.statement;
         output.priority = item.metadata?.find(
-          (m) => m.key === "Priority",
+          (m) => m.key === 'Priority',
         )?.value;
         output.stride = item.metadata
-          ?.find((m) => m.key === "STRIDE")
+          ?.find((m) => m.key === 'STRIDE')
           ?.value.sort()
-          .join(",");
+          .join(',');
         return output;
       }),
       {
@@ -121,7 +121,7 @@ export default memo(
               title="No matches"
               subtitle=""
               action={
-                <Button onClick={() => actions.setFiltering("")}>
+                <Button onClick={() => actions.setFiltering('')}>
                   Clear filter
                 </Button>
               }
@@ -133,7 +133,7 @@ export default memo(
         selection: {
           defaultSelectedItems: component?.data.threats,
           keepSelection: true,
-          trackBy: "id",
+          trackBy: 'id',
         },
       },
     );
@@ -169,7 +169,7 @@ export default memo(
         trackBy="id"
         selectedItems={data.threats}
         onSelectionChange={(e) =>
-          updateData("threats", e.detail.selectedItems, [])
+          updateData('threats', e.detail.selectedItems, [])
         }
         stickyHeader
         resizableColumns

@@ -16,9 +16,9 @@
 
 import ButtonDropdown, {
   ButtonDropdownProps,
-} from "@cloudscape-design/components/button-dropdown";
-import { CancelableEventHandler } from "@cloudscape-design/components/internal/events";
-import { FC, useCallback } from "react";
+} from '@cloudscape-design/components/button-dropdown';
+import { CancelableEventHandler } from '@cloudscape-design/components/internal/events';
+import { FC, useCallback } from 'react';
 
 export interface GenericListMoreActionsProps {
   enabledRemoveAll: boolean;
@@ -33,11 +33,11 @@ const GenericListMoreActions: FC<GenericListMoreActionsProps> = ({
     useCallback(
       ({ detail }) => {
         switch (detail.id) {
-          case "removeAll":
+          case 'removeAll':
             onRemoveAll?.();
             break;
           default:
-            console.log("Unknown action", detail.id);
+            console.log('Unknown action', detail.id);
         }
       },
       [onRemoveAll],
@@ -46,8 +46,8 @@ const GenericListMoreActions: FC<GenericListMoreActionsProps> = ({
     <ButtonDropdown
       items={[
         {
-          id: "removeAll",
-          text: "Remove all statements",
+          id: 'removeAll',
+          text: 'Remove all statements',
           disabled: !enabledRemoveAll,
         },
       ]}

@@ -15,11 +15,11 @@
  ******************************************************************************************************************** */
 
 /** @jsxImportSource @emotion/react */
-import Grid from "@cloudscape-design/components/grid";
-import { css } from "@emotion/react";
-import { FC } from "react";
-import styles from "../../styles";
-import InfoModalBase from "../InfoModalBase";
+import Grid from '@cloudscape-design/components/grid';
+import { css } from '@emotion/react';
+import { FC } from 'react';
+import styles from '../../styles';
+import InfoModalBase from '../InfoModalBase';
 
 const InfoModalFeatures: FC = () => {
   return (
@@ -46,10 +46,10 @@ const InfoModalFeatures: FC = () => {
               </svg>
             </div>
             <div>
-              Renders{" "}
+              Renders{' '}
               <span css={css(styles.contentHighlight)}>
                 structured threat statements
-              </span>{" "}
+              </span>{' '}
               based on user input
             </div>
           </div>
@@ -69,7 +69,7 @@ const InfoModalFeatures: FC = () => {
             <div>
               <span css={css(styles.contentHighlight)}>
                 Adaptive threat statement structure
-              </span>{" "}
+              </span>{' '}
               to support progressively more complete user input
             </div>
           </div>
@@ -88,7 +88,7 @@ const InfoModalFeatures: FC = () => {
             <div>
               <span css={css(styles.contentHighlight)}>
                 Dynamic suggestions
-              </span>{" "}
+              </span>{' '}
               based on supplied and missing user input
             </div>
           </div>
@@ -106,10 +106,10 @@ const InfoModalFeatures: FC = () => {
               </svg>
             </div>
             <div>
-              Complete threat statement{" "}
+              Complete threat statement{' '}
               <span css={css(styles.contentHighlight)}>
                 examples to aid contextual brainstorming
-              </span>{" "}
+              </span>{' '}
               and re-use
             </div>
           </div>

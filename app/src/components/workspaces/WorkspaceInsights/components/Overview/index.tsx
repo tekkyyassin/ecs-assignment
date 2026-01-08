@@ -15,43 +15,43 @@
  ******************************************************************************************************************** */
 
 /** @jsxImportSource @emotion/react */
-import { SpaceBetween } from "@cloudscape-design/components";
-import Badge from "@cloudscape-design/components/badge";
-import Box from "@cloudscape-design/components/box";
-import ColumnLayout from "@cloudscape-design/components/column-layout";
-import Icon from "@cloudscape-design/components/icon";
-import Link, { LinkProps } from "@cloudscape-design/components/link";
-import { css } from "@emotion/react";
-import { useMemo, FC, ReactNode } from "react";
+import { SpaceBetween } from '@cloudscape-design/components';
+import Badge from '@cloudscape-design/components/badge';
+import Box from '@cloudscape-design/components/box';
+import ColumnLayout from '@cloudscape-design/components/column-layout';
+import Icon from '@cloudscape-design/components/icon';
+import Link, { LinkProps } from '@cloudscape-design/components/link';
+import { css } from '@emotion/react';
+import { useMemo, FC, ReactNode } from 'react';
 import {
   LEVEL_HIGH,
   LEVEL_LOW,
   LEVEL_MEDIUM,
   LEVEL_NOT_SET,
-} from "../../../../../configs";
-import { useAssumptionLinksContext } from "../../../../../contexts";
-import { useMitigationLinksContext } from "../../../../../contexts/MitigationLinksContext";
-import { useControlLinksContext } from "../../../../../contexts/ControlLinksContext";
-import { useThreatsContext } from "../../../../../contexts/ThreatsContext";
-import filterThreatsByMetadata from "../../../../../utils/filterThreatsByMetadata";
-import useLinkClicked from "../../hooks/useLinkClicked";
+} from '../../../../../configs';
+import { useAssumptionLinksContext } from '../../../../../contexts';
+import { useMitigationLinksContext } from '../../../../../contexts/MitigationLinksContext';
+import { useControlLinksContext } from '../../../../../contexts/ControlLinksContext';
+import { useThreatsContext } from '../../../../../contexts/ThreatsContext';
+import filterThreatsByMetadata from '../../../../../utils/filterThreatsByMetadata';
+import useLinkClicked from '../../hooks/useLinkClicked';
 
 const styles = {
   container: css({
-    height: "100%",
-    display: "flex",
-    flexDirection: "column",
+    height: '100%',
+    display: 'flex',
+    flexDirection: 'column',
   }),
   contentContainer: css({
     flex: 1,
-    display: "flex",
-    alignItems: "flex-end",
+    display: 'flex',
+    alignItems: 'flex-end',
   }),
 };
 
 const NumberWithWarningSign: FC<{
   displayedNumber: number;
-  onLinkClicked: LinkProps["onFollow"];
+  onLinkClicked: LinkProps['onFollow'];
 }> = ({ displayedNumber, onLinkClicked }) => {
   return displayedNumber > 0 ? (
     <SpaceBetween direction="horizontal" size="xxs">
@@ -70,7 +70,7 @@ const NumberWithWarningSign: FC<{
 const LabelValuePair: FC<{
   label: string | ReactNode;
   value: number;
-  onLinkFollow: LinkProps["onFollow"];
+  onLinkFollow: LinkProps['onFollow'];
   showWarning?: boolean;
 }> = ({ label, value, onLinkFollow, showWarning }) => {
   return (
@@ -121,20 +121,20 @@ const Overview: FC = () => {
   }, [statementList, controlLinkList]);
 
   const missingPriority = useMemo(() => {
-    return filterThreatsByMetadata(statementList, "Priority").length;
+    return filterThreatsByMetadata(statementList, 'Priority').length;
   }, [statementList]);
 
   const countHigh = useMemo(() => {
-    return filterThreatsByMetadata(statementList, "Priority", LEVEL_HIGH)
+    return filterThreatsByMetadata(statementList, 'Priority', LEVEL_HIGH)
       .length;
   }, [statementList]);
 
   const countMed = useMemo(() => {
-    return filterThreatsByMetadata(statementList, "Priority", "Medium").length;
+    return filterThreatsByMetadata(statementList, 'Priority', 'Medium').length;
   }, [statementList]);
 
   const countLow = useMemo(() => {
-    return filterThreatsByMetadata(statementList, "Priority", "Low").length;
+    return filterThreatsByMetadata(statementList, 'Priority', 'Low').length;
   }, [statementList]);
 
   return (

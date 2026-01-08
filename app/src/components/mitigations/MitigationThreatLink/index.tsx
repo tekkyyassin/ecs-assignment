@@ -14,11 +14,11 @@
   limitations under the License.
  ******************************************************************************************************************** */
 
-import { FC, useEffect, useState } from "react";
-import { useMitigationLinksContext } from "../../../contexts/MitigationLinksContext/context";
-import { useThreatsContext } from "../../../contexts/ThreatsContext/context";
-import { MitigationLink } from "../../../customTypes";
-import ThreatLinkView from "../../threats/ThreatLinkView";
+import { FC, useEffect, useState } from 'react';
+import { useMitigationLinksContext } from '../../../contexts/MitigationLinksContext/context';
+import { useThreatsContext } from '../../../contexts/ThreatsContext/context';
+import { MitigationLink } from '../../../customTypes';
+import ThreatLinkView from '../../threats/ThreatLinkView';
 
 export interface MitigationThreatLinkProps {
   mitigationId: string;

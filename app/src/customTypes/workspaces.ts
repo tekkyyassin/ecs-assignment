@@ -14,8 +14,8 @@
   limitations under the License.
  ******************************************************************************************************************** */
 
-import { z } from "zod";
-import { SINGLE_FIELD_INPUT_SMALL_MAX_LENGTH } from "../configs";
+import { z } from 'zod';
+import { SINGLE_FIELD_INPUT_SMALL_MAX_LENGTH } from '../configs';
 
 export const WorkspaceSchema = z.object({
   id: z.string().length(36),

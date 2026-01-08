@@ -14,19 +14,19 @@
   limitations under the License.
  ******************************************************************************************************************** */
 
-import Box from "@cloudscape-design/components/box";
-import Button from "@cloudscape-design/components/button";
-import ColumnLayout from "@cloudscape-design/components/column-layout";
-import Container from "@cloudscape-design/components/container";
-import ContentLayout from "@cloudscape-design/components/content-layout";
-import Header from "@cloudscape-design/components/header";
-import Link from "@cloudscape-design/components/link";
-import SpaceBetween from "@cloudscape-design/components/space-between";
-import TextContent from "@cloudscape-design/components/text-content";
-import { FC } from "react";
-import HowItWorks from "../../../assets/how-it-works.png";
-import SwitchToExample from "../../../assets/switch-to-example-workspace.gif";
-import { useGlobalSetupContext } from "../../../contexts";
+import Box from '@cloudscape-design/components/box';
+import Button from '@cloudscape-design/components/button';
+import ColumnLayout from '@cloudscape-design/components/column-layout';
+import Container from '@cloudscape-design/components/container';
+import ContentLayout from '@cloudscape-design/components/content-layout';
+import Header from '@cloudscape-design/components/header';
+import Link from '@cloudscape-design/components/link';
+import SpaceBetween from '@cloudscape-design/components/space-between';
+import TextContent from '@cloudscape-design/components/text-content';
+import { FC } from 'react';
+import HowItWorks from '../../../assets/how-it-works.png';
+import SwitchToExample from '../../../assets/switch-to-example-workspace.gif';
+import { useGlobalSetupContext } from '../../../contexts';
 
 const LandingPage: FC = () => {
   const { setFileImportModalVisible, onDefineWorkload } =
@@ -57,10 +57,10 @@ const LandingPage: FC = () => {
           <Box padding="xxl">
             <img
               style={{
-                display: "block",
-                marginLeft: "auto",
-                marginRight: "auto",
-                width: "80%",
+                display: 'block',
+                marginLeft: 'auto',
+                marginRight: 'auto',
+                width: '80%',
               }}
               src={HowItWorks}
             />
@@ -93,7 +93,7 @@ const LandingPage: FC = () => {
             </TextContent>
             <img
               style={{
-                display: "block",
+                display: 'block',
               }}
               src={SwitchToExample}
             />

@@ -14,11 +14,11 @@
   limitations under the License.
  ******************************************************************************************************************** */
 
-import * as awsui from "@cloudscape-design/design-tokens";
-import { css } from "@emotion/react";
+import * as awsui from '@cloudscape-design/design-tokens';
+import { css } from '@emotion/react';
 
 const svg = css({
-  "&>path": {
+  '&>path': {
     stroke: awsui.colorTextInteractiveDefault,
     fill: awsui.colorTextInteractiveDefault,
   },

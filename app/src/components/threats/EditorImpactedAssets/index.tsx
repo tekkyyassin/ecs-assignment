@@ -15,29 +15,29 @@
  ******************************************************************************************************************** */
 
 /** @jsxImportSource @emotion/react */
-import { AutosuggestProps } from "@cloudscape-design/components/autosuggest";
+import { AutosuggestProps } from '@cloudscape-design/components/autosuggest';
 import {
   BaseKeyDetail,
   CancelableEventHandler,
   NonCancelableEventHandler,
-} from "@cloudscape-design/components/internal/events";
+} from '@cloudscape-design/components/internal/events';
 import TokenGroup, {
   TokenGroupProps,
-} from "@cloudscape-design/components/token-group";
-import { FC, useCallback, useState, forwardRef } from "react";
-import { useThreatsContext } from "../../../contexts/ThreatsContext/context";
-import { ThreatStatementImpactedAssetItem } from "../../../customTypes";
-import Autosuggest from "../../generic/Autosuggest";
-import EditorLayout from "../EditorLayout";
-import ExampleList from "../ExampleList";
-import { EditorProps } from "../ThreatStatementEditor/types";
+} from '@cloudscape-design/components/token-group';
+import { FC, useCallback, useState, forwardRef } from 'react';
+import { useThreatsContext } from '../../../contexts/ThreatsContext/context';
+import { ThreatStatementImpactedAssetItem } from '../../../customTypes';
+import Autosuggest from '../../generic/Autosuggest';
+import EditorLayout from '../EditorLayout';
+import ExampleList from '../ExampleList';
+import { EditorProps } from '../ThreatStatementEditor/types';
 
 const EditorImpactedAssets: FC<EditorProps> = forwardRef<
-  AutosuggestProps.Ref,
-  EditorProps
+AutosuggestProps.Ref,
+EditorProps
 >(({ statement, setStatement, fieldData }, _ref) => {
   const { perFieldExamples, previousInputs } = useThreatsContext();
-  const [value, setValue] = useState<string>("");
+  const [value, setValue] = useState<string>('');
   const handleAddAsset = useCallback(
     (asset: string) => {
       setStatement(
@@ -51,7 +51,7 @@ const EditorImpactedAssets: FC<EditorProps> = forwardRef<
               : [asset],
           },
       );
-      setValue("");
+      setValue('');
     },
     [setStatement],
   );
@@ -73,9 +73,9 @@ const EditorImpactedAssets: FC<EditorProps> = forwardRef<
               ...prevStatement,
               impactedAssets: prevStatement.impactedAssets
                 ? [
-                    ...prevStatement.impactedAssets?.slice(0, itemIndex),
-                    ...prevStatement.impactedAssets?.slice(itemIndex + 1),
-                  ]
+                  ...prevStatement.impactedAssets?.slice(0, itemIndex),
+                  ...prevStatement.impactedAssets?.slice(itemIndex + 1),
+                ]
                 : [],
             },
         );
@@ -87,7 +87,7 @@ const EditorImpactedAssets: FC<EditorProps> = forwardRef<
     ({ detail }) => {
       if (detail.keyCode === 13) {
         handleAddAsset?.(value);
-        setValue("");
+        setValue('');
       }
     },
     [handleAddAsset, value],

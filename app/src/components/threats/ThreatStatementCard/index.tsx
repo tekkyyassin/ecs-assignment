@@ -15,22 +15,22 @@
  ******************************************************************************************************************** */
 
 /** @jsxImportSource @emotion/react */
-import { SpaceBetween } from "@cloudscape-design/components";
+import { SpaceBetween } from '@cloudscape-design/components';
 import ButtonDropdown, {
   ButtonDropdownProps,
-} from "@cloudscape-design/components/button-dropdown";
-import ColumnLayout from "@cloudscape-design/components/column-layout";
-import { CancelableEventHandler } from "@cloudscape-design/components/internal/events";
-import TextContent from "@cloudscape-design/components/text-content";
-import { FC, useCallback, useMemo } from "react";
-import { TemplateThreatStatement } from "../../../customTypes";
-import AssumptionLink from "../../assumptions/AssumptionLink";
-import CopyToClipbord from "../../generic/CopyToClipboard";
-import GenericCard from "../../generic/GenericCard";
-import MitigationLink from "../../mitigations/MitigationLink";
-import ControlLink from "../../controls/ControlLink";
-import MetadataEditor from "../MetadataEditor";
-import PriorityBadge from "../PriorityBadge";
+} from '@cloudscape-design/components/button-dropdown';
+import ColumnLayout from '@cloudscape-design/components/column-layout';
+import { CancelableEventHandler } from '@cloudscape-design/components/internal/events';
+import TextContent from '@cloudscape-design/components/text-content';
+import { FC, useCallback, useMemo } from 'react';
+import { TemplateThreatStatement } from '../../../customTypes';
+import AssumptionLink from '../../assumptions/AssumptionLink';
+import CopyToClipbord from '../../generic/CopyToClipboard';
+import GenericCard from '../../generic/GenericCard';
+import MitigationLink from '../../mitigations/MitigationLink';
+import ControlLink from '../../controls/ControlLink';
+import MetadataEditor from '../MetadataEditor';
+import PriorityBadge from '../PriorityBadge';
 
 export interface ThreatStatementCardProps {
   showLinkedEntities?: boolean;
@@ -67,11 +67,11 @@ const ThreatStatementCard: FC<ThreatStatementCardProps> = ({
     useCallback(
       ({ detail }) => {
         switch (detail.id) {
-          case "copyToCurrentWorkspace":
+          case 'copyToCurrentWorkspace':
             onCopy?.(statement.id);
             break;
           default:
-            console.log("Unknown action", detail.id);
+            console.log('Unknown action', detail.id);
         }
       },
       [onCopy, statement.id],
@@ -80,7 +80,7 @@ const ThreatStatementCard: FC<ThreatStatementCardProps> = ({
   const moreActions = useMemo(() => {
     return (
       <ButtonDropdown
-        items={[{ id: "copyToCurrentWorkspace", text: "Duplicate" }]}
+        items={[{ id: 'copyToCurrentWorkspace', text: 'Duplicate' }]}
         ariaLabel="More actions"
         variant="icon"
         onItemClick={handleMoreActions}
@@ -91,9 +91,9 @@ const ThreatStatementCard: FC<ThreatStatementCardProps> = ({
   const displayStatement = useMemo(() => {
     if (statement.displayedStatement) {
       return statement.displayedStatement.map((s, index) =>
-        typeof s === "string" ? (
+        typeof s === 'string' ? (
           s
-        ) : s.type === "b" ? (
+        ) : s.type === 'b' ? (
           <b key={index}>{s.content}</b>
         ) : (
           s.content
@@ -101,7 +101,7 @@ const ThreatStatementCard: FC<ThreatStatementCardProps> = ({
       );
     }
 
-    return statement.statement || "";
+    return statement.statement || '';
   }, [statement]);
 
   return (

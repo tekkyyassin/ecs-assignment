@@ -15,18 +15,18 @@
  ******************************************************************************************************************** */
 
 /** @jsxImportSource @emotion/react */
-import Box from "@cloudscape-design/components/box";
-import SegmentedControl from "@cloudscape-design/components/segmented-control";
-import * as awsui from "@cloudscape-design/design-tokens";
-import { css } from "@emotion/react";
-import { FC } from "react";
-import svgStyles from "../../../styles/svg";
-import getMobileMediaQuery from "../../../utils/getMobileMediaQuery";
-import Tooltip from "../Tooltip";
+import Box from '@cloudscape-design/components/box';
+import SegmentedControl from '@cloudscape-design/components/segmented-control';
+import * as awsui from '@cloudscape-design/design-tokens';
+import { css } from '@emotion/react';
+import { FC } from 'react';
+import svgStyles from '../../../styles/svg';
+import getMobileMediaQuery from '../../../utils/getMobileMediaQuery';
+import Tooltip from '../Tooltip';
 
-export const WITHOUT_NO_LINKED_ENTITY = "WITHOUT_LINKED_ENTITY";
-export const ALL = "ALL";
-export const WITH_LINKED_ENTITY = "WITH_LINKED_ENTITY";
+export const WITHOUT_NO_LINKED_ENTITY = 'WITHOUT_LINKED_ENTITY';
+export const ALL = 'ALL';
+export const WITH_LINKED_ENTITY = 'WITH_LINKED_ENTITY';
 
 export interface LinkedEntityFilterProps {
   label: string;
@@ -38,11 +38,11 @@ export interface LinkedEntityFilterProps {
 
 const styles = {
   root: css({
-    display: "flex",
-    alignItems: "center",
+    display: 'flex',
+    alignItems: 'center',
     gap: awsui.spaceScaledS,
     [getMobileMediaQuery()]: {
-      display: "block",
+      display: 'block',
     },
   }),
 };
@@ -80,7 +80,7 @@ const LinkedEntityFilter: FC<LinkedEntityFilterProps> = ({
             ),
           },
           {
-            iconAlt: "All",
+            iconAlt: 'All',
             id: ALL,
             iconSvg: (
               <Tooltip tooltip={`Show all ${callerName}`}>

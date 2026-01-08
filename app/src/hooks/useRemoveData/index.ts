@@ -14,20 +14,20 @@
   limitations under the License.
  ******************************************************************************************************************** */
 
-import { useCallback } from "react";
-import { useWorkspacesContext } from "../../contexts";
-import { useApplicationInfoContext } from "../../contexts/ApplicationContext";
-import { useArchitectureInfoContext } from "../../contexts/ArchitectureContext";
-import { useAssumptionLinksContext } from "../../contexts/AssumptionLinksContext";
-import { useAssumptionsContext } from "../../contexts/AssumptionsContext";
-import { useDataflowInfoContext } from "../../contexts/DataflowContext";
-import { useGlobalSetupContext } from "../../contexts/GlobalSetupContext";
-import { useMitigationLinksContext } from "../../contexts/MitigationLinksContext";
-import { useMitigationsContext } from "../../contexts/MitigationsContext";
-import { useThreatsContext } from "../../contexts/ThreatsContext";
-import { useFlowContext } from "../../contexts/FlowContext";
-import { useControlsContext } from "../../contexts/ControlsContext";
-import { useControlLinksContext } from "../../contexts/ControlLinksContext";
+import { useCallback } from 'react';
+import { useWorkspacesContext } from '../../contexts';
+import { useApplicationInfoContext } from '../../contexts/ApplicationContext';
+import { useArchitectureInfoContext } from '../../contexts/ArchitectureContext';
+import { useAssumptionLinksContext } from '../../contexts/AssumptionLinksContext';
+import { useAssumptionsContext } from '../../contexts/AssumptionsContext';
+import { useDataflowInfoContext } from '../../contexts/DataflowContext';
+import { useGlobalSetupContext } from '../../contexts/GlobalSetupContext';
+import { useMitigationLinksContext } from '../../contexts/MitigationLinksContext';
+import { useMitigationsContext } from '../../contexts/MitigationsContext';
+import { useThreatsContext } from '../../contexts/ThreatsContext';
+import { useFlowContext } from '../../contexts/FlowContext';
+import { useControlsContext } from '../../contexts/ControlsContext';
+import { useControlLinksContext } from '../../contexts/ControlLinksContext';
 
 const useRemoveData = () => {
   const { composerMode } = useGlobalSetupContext();
@@ -70,7 +70,7 @@ const useRemoveData = () => {
   } = useControlLinksContext();
 
   const removeData = useCallback(async () => {
-    if (composerMode === "Full") {
+    if (composerMode === 'Full') {
       return Promise.all([
         removeApplicationInfo(),
         removeArchitectureInfo(),

@@ -14,19 +14,19 @@
   limitations under the License.
  ******************************************************************************************************************** */
 
-import Alert from "@cloudscape-design/components/alert";
-import Box from "@cloudscape-design/components/box";
-import Button from "@cloudscape-design/components/button";
-import Header from "@cloudscape-design/components/header";
-import Modal from "@cloudscape-design/components/modal";
-import SpaceBetween from "@cloudscape-design/components/space-between";
-import React, { FC, useMemo, useState } from "react";
+import Alert from '@cloudscape-design/components/alert';
+import Box from '@cloudscape-design/components/box';
+import Button from '@cloudscape-design/components/button';
+import Header from '@cloudscape-design/components/header';
+import Modal from '@cloudscape-design/components/modal';
+import SpaceBetween from '@cloudscape-design/components/space-between';
+import React, { FC, useMemo, useState } from 'react';
 import {
   TemplateThreatStatement,
   TemplateThreatStatementSchema,
-} from "../../../customTypes";
-import renderThreatStatement from "../../../utils/renderThreatStatement";
-import Textarea from "../../generic/Textarea";
+} from '../../../customTypes';
+import renderThreatStatement from '../../../utils/renderThreatStatement';
+import Textarea from '../../generic/Textarea';
 
 export interface CustomTemplateProps {
   visible: boolean;
@@ -91,13 +91,13 @@ const CustomTemplate: FC<CustomTemplateProps> = ({
           type="info"
           header={
             isUsingDefaultTemplate
-              ? "Default template is used"
-              : "Custom template is used"
+              ? 'Default template is used'
+              : 'Custom template is used'
           }
         >
           {isUsingDefaultTemplate
-            ? "You can create a custom template to control how your statement is renderer. It is only applicable to the currently editing statement."
-            : "You can edit the custom template or reset it to the default template. It is only applicable to the currently editing statement. "}
+            ? 'You can create a custom template to control how your statement is renderer. It is only applicable to the currently editing statement.'
+            : 'You can edit the custom template or reset it to the default template. It is only applicable to the currently editing statement. '}
         </Alert>
         <Box>
           <p>

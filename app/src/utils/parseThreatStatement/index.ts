@@ -14,14 +14,14 @@
   limitations under the License.
  ******************************************************************************************************************** */
 
-import a from "indefinite";
+import a from 'indefinite';
 import {
   TemplateThreatStatement,
   ThreatFieldTypes,
   threatFieldTypeMapping,
-} from "../../customTypes";
-import correctIndefiniteArticle from "../correctIndefiniteArticle";
-import getFieldContentByToken from "../getFieldContentByToken";
+} from '../../customTypes';
+import correctIndefiniteArticle from '../correctIndefiniteArticle';
+import getFieldContentByToken from '../getFieldContentByToken';
 
 interface ThreatStatementParseArgType<T> {
   template: string;
@@ -40,13 +40,13 @@ const parseThreatStatement = <T extends any>(
   const output: T[] = [];
   let template = args.template;
   while (true) {
-    const startIndex = template.indexOf("[");
+    const startIndex = template.indexOf('[');
     if (startIndex < 0) {
       break;
     }
     let before = template.slice(0, startIndex);
 
-    const endIndex = template.indexOf("]");
+    const endIndex = template.indexOf(']');
     if (endIndex < 0) {
       break;
     }
@@ -56,9 +56,9 @@ const parseThreatStatement = <T extends any>(
     );
 
     // This is to cater for the A for the threat source.
-    if (before === "A ") {
+    if (before === 'A ') {
       before = before.replace(
-        "A",
+        'A',
         a(content, { capitalize: true, articleOnly: true }),
       );
     }
@@ -68,7 +68,7 @@ const parseThreatStatement = <T extends any>(
 
     const filled = !!(
       value &&
-      (typeof value === "string" || (Array.isArray(value) && value.length > 0))
+      (typeof value === 'string' || (Array.isArray(value) && value.length > 0))
     );
 
     output.push(...args.outputProcessor(token, content, before, filled));

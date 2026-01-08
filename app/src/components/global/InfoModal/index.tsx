@@ -15,20 +15,20 @@
  ******************************************************************************************************************** */
 
 /** @jsxImportSource @emotion/react */
-import { ClassNames } from "@emotion/react";
-import React, { FC, useState, useEffect, useRef, useMemo } from "react";
-import Carousel from "react-simply-carousel";
-import InfoModalCopy from "./components/Copy";
-import InfoModalEditor from "./components/Editor";
-import InfoModalFeatures from "./components/Features";
-import InfoModalFullExamples from "./components/FullExample";
-import InfoModalGetStarted from "./components/GetStarted";
-import InfoModalIntro from "./components/Intro";
-import InfoModalMoreFeatures from "./components/MoreFeatures";
-import InfoModalSelector from "./components/Selector";
-import styles from "./styles";
-import { useMobileMediaQuery } from "../../../hooks/useMediaQuery";
-import Modal from "../../generic/Modal";
+import { ClassNames } from '@emotion/react';
+import React, { FC, useState, useEffect, useRef, useMemo } from 'react';
+import Carousel from 'react-simply-carousel';
+import InfoModalCopy from './components/Copy';
+import InfoModalEditor from './components/Editor';
+import InfoModalFeatures from './components/Features';
+import InfoModalFullExamples from './components/FullExample';
+import InfoModalGetStarted from './components/GetStarted';
+import InfoModalIntro from './components/Intro';
+import InfoModalMoreFeatures from './components/MoreFeatures';
+import InfoModalSelector from './components/Selector';
+import styles from './styles';
+import { useMobileMediaQuery } from '../../../hooks/useMediaQuery';
+import Modal from '../../generic/Modal';
 
 const TOTAL_SLIDES = 8;
 
@@ -48,17 +48,17 @@ const InfoModal: FC<InfoModalProps> = ({ visible, setVisible }) => {
 
   useEffect(() => {
     const handleKeyDown = (event: any) => {
-      if (event.key === "ArrowRight") {
+      if (event.key === 'ArrowRight') {
         setActiveSlide((cur) => cur + 1);
-      } else if (event.key === "ArrowLeft") {
+      } else if (event.key === 'ArrowLeft') {
         setActiveSlide((cur) => (cur === 0 ? cur : cur - 1));
       }
     };
 
-    document.addEventListener("keydown", handleKeyDown, false);
+    document.addEventListener('keydown', handleKeyDown, false);
 
     return () => {
-      document.removeEventListener("keydown", handleKeyDown, false);
+      document.removeEventListener('keydown', handleKeyDown, false);
     };
   }, [setActiveSlide]);
 
@@ -94,12 +94,12 @@ const InfoModal: FC<InfoModalProps> = ({ visible, setVisible }) => {
               activeSlideProps={{}}
               onRequestChange={setActiveSlide}
               forwardBtnProps={{
-                children: ">",
+                children: '>',
                 className: cx(css(styles.navBtn), css(styles.nextBtn)),
                 hidden: activeSlide === TOTAL_SLIDES - 1,
               }}
               backwardBtnProps={{
-                children: "<",
+                children: '<',
                 className: cx(css(styles.navBtn), css(styles.prevBtn)),
                 hidden: activeSlide === 0,
               }}
@@ -124,7 +124,7 @@ const InfoModal: FC<InfoModalProps> = ({ visible, setVisible }) => {
               <div
                 className={css(styles.slide)}
                 style={{
-                  ["--slide-width" as any]: contentRefDimention.width,
+                  ['--slide-width' as any]: contentRefDimention.width,
                 }}
                 key="intro"
               >
@@ -133,7 +133,7 @@ const InfoModal: FC<InfoModalProps> = ({ visible, setVisible }) => {
               <div
                 className={css(styles.slide)}
                 style={{
-                  ["--slide-width" as any]: contentRefDimention.width,
+                  ['--slide-width' as any]: contentRefDimention.width,
                 }}
                 key="tenets"
               >
@@ -142,7 +142,7 @@ const InfoModal: FC<InfoModalProps> = ({ visible, setVisible }) => {
               <div
                 className={css(styles.slide)}
                 style={{
-                  ["--slide-width" as any]: contentRefDimention.width,
+                  ['--slide-width' as any]: contentRefDimention.width,
                 }}
                 key="features"
               >
@@ -152,7 +152,7 @@ const InfoModal: FC<InfoModalProps> = ({ visible, setVisible }) => {
                 <div
                   className={css(styles.slide)}
                   style={{
-                    ["--slide-width" as any]: contentRefDimention.width,
+                    ['--slide-width' as any]: contentRefDimention.width,
                   }}
                   key="selector"
                 >
@@ -163,7 +163,7 @@ const InfoModal: FC<InfoModalProps> = ({ visible, setVisible }) => {
                 <div
                   className={css(styles.slide)}
                   style={{
-                    ["--slide-width" as any]: contentRefDimention.width,
+                    ['--slide-width' as any]: contentRefDimention.width,
                   }}
                   key="editor"
                 >
@@ -174,7 +174,7 @@ const InfoModal: FC<InfoModalProps> = ({ visible, setVisible }) => {
                 <div
                   className={css(styles.slide)}
                   style={{
-                    ["--slide-width" as any]: contentRefDimention.width,
+                    ['--slide-width' as any]: contentRefDimention.width,
                   }}
                   key="fullexamples"
                 >
@@ -185,7 +185,7 @@ const InfoModal: FC<InfoModalProps> = ({ visible, setVisible }) => {
                 <div
                   className={css(styles.slide)}
                   style={{
-                    ["--slide-width" as any]: contentRefDimention.width,
+                    ['--slide-width' as any]: contentRefDimention.width,
                   }}
                   key="copy"
                 >
@@ -195,7 +195,7 @@ const InfoModal: FC<InfoModalProps> = ({ visible, setVisible }) => {
               <div
                 className={css(styles.slide)}
                 style={{
-                  ["--slide-width" as any]: contentRefDimention.width,
+                  ['--slide-width' as any]: contentRefDimention.width,
                 }}
                 key="getstarted"
               >

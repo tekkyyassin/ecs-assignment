@@ -14,20 +14,20 @@
   limitations under the License.
  ******************************************************************************************************************** */
 
-import { FC, PropsWithChildren } from "react";
-import DiagramLocalStateContextProvider from "./components/LocalStateContextProvider";
-import DiagramLocalStorageContextProvider from "./components/LocalStorageContextProvider";
-import { useDiagramInfoContext } from "./context";
-import { DiagramContextProviderProps } from "./types";
-import { EXAMPLE_WORKSPACE_ID } from "../../configs/constants";
-import { useExampleContext } from "../ExampleContext";
+import { FC, PropsWithChildren } from 'react';
+import DiagramLocalStateContextProvider from './components/LocalStateContextProvider';
+import DiagramLocalStorageContextProvider from './components/LocalStorageContextProvider';
+import { useDiagramInfoContext } from './context';
+import { DiagramContextProviderProps } from './types';
+import { EXAMPLE_WORKSPACE_ID } from '../../configs/constants';
+import { useExampleContext } from '../ExampleContext';
 
-var workspaceId: string = "1";
+var workspaceId: string = '1';
 const DiagramContextProvider: FC<
-  PropsWithChildren<DiagramContextProviderProps>
+PropsWithChildren<DiagramContextProviderProps>
 > = (props) => {
   const { diagram } = useExampleContext();
-  workspaceId = props.workspaceId || "";
+  workspaceId = props.workspaceId || '';
 
   return props.workspaceId === EXAMPLE_WORKSPACE_ID ? (
     <DiagramLocalStateContextProvider initialValue={diagram} {...props} />

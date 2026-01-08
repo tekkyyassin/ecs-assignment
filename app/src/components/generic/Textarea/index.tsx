@@ -16,15 +16,15 @@
 
 import FormField, {
   FormFieldProps,
-} from "@cloudscape-design/components/form-field";
-import { BaseChangeDetail } from "@cloudscape-design/components/input/interfaces";
-import { NonCancelableEventHandler } from "@cloudscape-design/components/internal/events";
+} from '@cloudscape-design/components/form-field';
+import { BaseChangeDetail } from '@cloudscape-design/components/input/interfaces';
+import { NonCancelableEventHandler } from '@cloudscape-design/components/internal/events';
 import TextareaComponent, {
   TextareaProps as TextareaComponetProps,
-} from "@cloudscape-design/components/textarea";
-import React, { FC, useCallback } from "react";
-import { z } from "zod";
-import useContentValidation from "../../../hooks/useContentValidation";
+} from '@cloudscape-design/components/textarea';
+import React, { FC, useCallback } from 'react';
+import { z } from 'zod';
+import useContentValidation from '../../../hooks/useContentValidation';
 
 export interface TextAreaProps extends FormFieldProps, TextareaComponetProps {
   ref?: React.ForwardedRef<any>;
@@ -35,8 +35,8 @@ export interface TextAreaProps extends FormFieldProps, TextareaComponetProps {
 }
 
 const Textarea: FC<TextAreaProps> = React.forwardRef<
-  TextareaComponetProps.Ref,
-  TextAreaProps
+TextareaComponetProps.Ref,
+TextAreaProps
 >(({ value, onChange, validateData, singleLine, ...props }, ref) => {
   const { tempValue, errorText, handleChange } = useContentValidation(
     value,
@@ -49,12 +49,12 @@ const Textarea: FC<TextAreaProps> = React.forwardRef<
       (event) =>
         singleLine
           ? handleChange({
-              ...event,
-              detail: {
-                ...event.detail,
-                value: event.detail.value.replace(/\n|\r/i, " "),
-              },
-            })
+            ...event,
+            detail: {
+              ...event.detail,
+              value: event.detail.value.replace(/\n|\r/i, ' '),
+            },
+          })
           : handleChange(event),
       [singleLine, handleChange],
     );

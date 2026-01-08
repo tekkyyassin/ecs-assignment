@@ -14,8 +14,8 @@
   limitations under the License.
  ******************************************************************************************************************** */
 
-import Multiselect from "@cloudscape-design/components/multiselect";
-import React, { FC, useMemo } from "react";
+import Multiselect from '@cloudscape-design/components/multiselect';
+import React, { FC, useMemo } from 'react';
 
 export interface AssetSelectorProps {
   allAssets: string[];
@@ -43,7 +43,7 @@ const AssetSelector: FC<AssetSelectorProps> = ({
       }))}
       onChange={({ detail }) =>
         setSelectedAssets(
-          detail.selectedOptions?.map((o) => o.value || "") || [],
+          detail.selectedOptions?.map((o) => o.value || '') || [],
         )
       }
       deselectAriaLabel={(e) => `Remove ${e.label}`}

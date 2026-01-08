@@ -14,12 +14,12 @@
   limitations under the License.
  ******************************************************************************************************************** */
 
-import { FC, useCallback, useEffect, useMemo, useState } from "react";
-import { ControlLink, Control } from "../../../customTypes";
-import { useControlLinksContext } from "../../../contexts/ControlLinksContext/context";
-import ControlLookupComponent from "../../controls/ControlLookup";
-import { getControlProfileByName } from "../../../data/controlProfileProvider";
-import { useApplicationInfoContext } from "../../../contexts";
+import { FC, useCallback, useEffect, useMemo, useState } from 'react';
+import { ControlLink, Control } from '../../../customTypes';
+import { useControlLinksContext } from '../../../contexts/ControlLinksContext/context';
+import ControlLookupComponent from '../../controls/ControlLookup';
+import { getControlProfileByName } from '../../../data/controlProfileProvider';
+import { useApplicationInfoContext } from '../../../contexts';
 
 export interface ControlLinkProps {
   linkedEntityId: string;
@@ -30,7 +30,7 @@ const ControlLinkComponent: FC<ControlLinkProps> = ({ linkedEntityId }) => {
 
   let selectedCategory =
     applicationInfo.securityCategory == undefined
-      ? "CCCS Medium"
+      ? 'CCCS Medium'
       : applicationInfo.securityCategory;
   const controlList = useMemo(() => {
     return getControlProfileByName(selectedCategory) as Control[];

@@ -13,7 +13,7 @@
   See the License for the specific language governing permissions and
   limitations under the License.
  ******************************************************************************************************************** */
-import DataflowInfoComponent from "../../components/dataflow/DataflowInfo";
+import DataflowInfoComponent from '../../components/dataflow/DataflowInfo';
 
 const UIDataflow = () => {
   return <DataflowInfoComponent />;

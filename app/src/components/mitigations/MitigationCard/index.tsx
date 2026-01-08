@@ -14,20 +14,20 @@
   limitations under the License.
  ******************************************************************************************************************** */
 
-import Button from "@cloudscape-design/components/button";
-import ColumnLayout from "@cloudscape-design/components/column-layout";
-import SpaceBetween from "@cloudscape-design/components/space-between";
-import TextContent from "@cloudscape-design/components/text-content";
-import { FC, useState, useCallback } from "react";
-import { Mitigation, MitigationSchema } from "../../../customTypes";
-import useEditMetadata from "../../../hooks/useEditMetadata";
-import AssumptionLink from "../../assumptions/AssumptionLink";
-import ControlLink from "../../controls/ControlLink";
-import CopyToClipbord from "../../generic/CopyToClipboard";
-import MetadataEditor from "../../generic/EntityMetadataEditor";
-import GenericCard from "../../generic/GenericCard";
-import Textarea from "../../generic/Textarea";
-import MitigationThreatLink from "../MitigationThreatLink";
+import Button from '@cloudscape-design/components/button';
+import ColumnLayout from '@cloudscape-design/components/column-layout';
+import SpaceBetween from '@cloudscape-design/components/space-between';
+import TextContent from '@cloudscape-design/components/text-content';
+import { FC, useState, useCallback } from 'react';
+import { Mitigation, MitigationSchema } from '../../../customTypes';
+import useEditMetadata from '../../../hooks/useEditMetadata';
+import AssumptionLink from '../../assumptions/AssumptionLink';
+import ControlLink from '../../controls/ControlLink';
+import CopyToClipbord from '../../generic/CopyToClipboard';
+import MetadataEditor from '../../generic/EntityMetadataEditor';
+import GenericCard from '../../generic/GenericCard';
+import Textarea from '../../generic/Textarea';
+import MitigationThreatLink from '../MitigationThreatLink';
 
 export interface MitigationCardProps {
   entity: Mitigation;
@@ -97,7 +97,7 @@ const MitigationCard: FC<MitigationCardProps> = ({
             </SpaceBetween>
           ) : (
             <TextContent>
-              <CopyToClipbord>{entity.content || ""}</CopyToClipbord>
+              <CopyToClipbord>{entity.content || ''}</CopyToClipbord>
             </TextContent>
           )}
           <SpaceBetween direction="vertical" size="s">

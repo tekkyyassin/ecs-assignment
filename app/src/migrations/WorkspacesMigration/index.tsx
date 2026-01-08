@@ -1,8 +1,8 @@
-import { FC, ReactNode, useEffect } from "react";
-import useLocalStorageState from "use-local-storage-state";
-import { v4 as uuidv4 } from "uuid";
-import { LOCAL_STORAGE_KEY_WORKSPACE_LIST_MIGRATION } from "../../configs/localStorageKeys";
-import { useWorkspacesContext } from "../../contexts/WorkspacesContext/context";
+import { FC, ReactNode, useEffect } from 'react';
+import useLocalStorageState from 'use-local-storage-state';
+import { v4 as uuidv4 } from 'uuid';
+import { LOCAL_STORAGE_KEY_WORKSPACE_LIST_MIGRATION } from '../../configs/localStorageKeys';
+import { useWorkspacesContext } from '../../contexts/WorkspacesContext/context';
 
 export interface WorkspacesMigrationProps {
   children: ReactNode;
@@ -27,7 +27,7 @@ const WorkspacesMigration: FC<WorkspacesMigrationProps> = ({ children }) => {
     }
 
     // New format already (object list)
-    if (typeof workspaceList[0] !== "string") {
+    if (typeof workspaceList[0] !== 'string') {
       setMigrationComplete(true);
       return;
     }

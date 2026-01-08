@@ -14,11 +14,11 @@
   limitations under the License.
  ******************************************************************************************************************** */
 
-import { z } from "zod";
+import { z } from 'zod';
 import {
   FREE_TEXT_INPUT_MAX_LENGTH,
   SINGLE_FIELD_INPUT_MAX_LENGTH,
-} from "../configs";
+} from '../configs';
 
 export const ApplicationInfoSchema = z
   .object({

@@ -14,18 +14,18 @@
   limitations under the License.
  ******************************************************************************************************************** */
 
-import a from "indefinite";
+import a from 'indefinite';
 
 const correctIndefiniteArticle = (statement: string) => {
   const output = statement.replace(
     /\b(a|an) ([\s\(\"'“‘-]?\w*)\b/gim,
     (_match, article: string, following: string) => {
-      var input = following.replace(/^[\s\(\"'“‘-]+|\s+$/g, "");
+      var input = following.replace(/^[\s\(\"'“‘-]+|\s+$/g, '');
       var newArticle = a(input, {
-        capitalize: article.startsWith("A"),
+        capitalize: article.startsWith('A'),
         articleOnly: true,
       });
-      return newArticle + " " + following;
+      return newArticle + ' ' + following;
     },
   );
 

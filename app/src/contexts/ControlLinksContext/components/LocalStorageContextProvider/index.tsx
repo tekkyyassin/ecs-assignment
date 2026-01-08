@@ -14,14 +14,14 @@
   limitations under the License.
  ******************************************************************************************************************** */
 
-import { FC, PropsWithChildren, useCallback } from "react";
-import useLocalStorageState from "use-local-storage-state";
-import { LOCAL_STORAGE_KEY_CONTROL_LINK_LIST } from "../../../../configs/localStorageKeys";
-import { ControlLink } from "../../../../customTypes";
-import removeLocalStorageKey from "../../../../utils/removeLocalStorageKey";
-import { ControlLinksContext } from "../../context";
-import { ControlLinksContextProviderProps } from "../../types";
-import useControlLinks from "../../useControlLinks";
+import { FC, PropsWithChildren, useCallback } from 'react';
+import useLocalStorageState from 'use-local-storage-state';
+import { LOCAL_STORAGE_KEY_CONTROL_LINK_LIST } from '../../../../configs/localStorageKeys';
+import { ControlLink } from '../../../../customTypes';
+import removeLocalStorageKey from '../../../../utils/removeLocalStorageKey';
+import { ControlLinksContext } from '../../context';
+import { ControlLinksContextProviderProps } from '../../types';
+import useControlLinks from '../../useControlLinks';
 
 const getLocalStorageKey = (workspaceId: string | null) => {
   if (workspaceId) {
@@ -32,7 +32,7 @@ const getLocalStorageKey = (workspaceId: string | null) => {
 };
 
 const ControlLinksLocalStorageContextProvider: FC<
-  PropsWithChildren<ControlLinksContextProviderProps>
+PropsWithChildren<ControlLinksContextProviderProps>
 > = ({ children, workspaceId: currentWorkspaceId }) => {
   const [controlLinkList, setControlLinkList, { removeItem }] =
     useLocalStorageState<ControlLink[]>(

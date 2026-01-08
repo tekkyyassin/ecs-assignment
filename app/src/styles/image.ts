@@ -14,11 +14,11 @@
   limitations under the License.
  ******************************************************************************************************************** */
 
-import { css } from "@emotion/react";
+import { css } from '@emotion/react';
 
 const styles = css({
-  maxWidth: "1024px",
-  width: "100%",
+  maxWidth: '1024px',
+  width: '100%',
 });
 
 export default styles;

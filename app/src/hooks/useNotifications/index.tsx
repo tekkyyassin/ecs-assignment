@@ -13,10 +13,10 @@
   See the License for the specific language governing permissions and
   limitations under the License.
  ******************************************************************************************************************** */
-import { useMemo } from "react";
-import Notifications from "../../components/Notifications";
+import { useMemo } from 'react';
+import Notifications from '../../components/Notifications';
 
-const toDisplayNotification = process.env.REACT_APP_GITHUB_PAGES === "true";
+const toDisplayNotification = process.env.REACT_APP_GITHUB_PAGES === 'true';
 
 const useNotifications = (addPadding?: boolean) => {
   return useMemo(

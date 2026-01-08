@@ -13,7 +13,7 @@
   See the License for the specific language governing permissions and
   limitations under the License.
  ******************************************************************************************************************** */
-import DiagramInfoComponent from "../../components/diagram/DiagramInfo";
+import DiagramInfoComponent from '../../components/diagram/DiagramInfo';
 
 const UIDiagram = () => {
   //return <div><h1>DIAGRAM</h1></div>;

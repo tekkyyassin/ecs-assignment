@@ -14,25 +14,25 @@
   limitations under the License.
  ******************************************************************************************************************** */
 /** @jsxImportSource @emotion/react */
-import Button from "@cloudscape-design/components/button";
-import ColumnLayout from "@cloudscape-design/components/column-layout";
-import SpaceBetween from "@cloudscape-design/components/space-between";
+import Button from '@cloudscape-design/components/button';
+import ColumnLayout from '@cloudscape-design/components/column-layout';
+import SpaceBetween from '@cloudscape-design/components/space-between';
 //import TextContent from '@cloudscape-design/components/text-content';
-import { FC, useState, useCallback, useRef, useMemo, ReactNode } from "react";
-import { Control } from "../../../customTypes";
-import MitigationLink from "../../mitigations/MitigationLink";
-import CopyToClipbord from "../../generic/CopyToClipboard";
-import { DeleteConfirmationDialog } from "@aws-northstar/ui";
-import Container from "@cloudscape-design/components/container";
-import Header from "@cloudscape-design/components/header";
-import * as awsui from "@cloudscape-design/design-tokens";
-import { css } from "@emotion/react";
-import ControlThreatLink from "../ControlThreatLink";
-import getMobileMediaQuery from "../../../utils/getMobileMediaQuery";
-import Tooltip from "../../generic/Tooltip";
-import Tags from "./components/Tags";
-import { Select, TextContent } from "@cloudscape-design/components";
-import { OptionDefinition } from "@cloudscape-design/components/internal/components/option/interfaces";
+import { FC, useState, useCallback, useRef, useMemo, ReactNode } from 'react';
+import { Control } from '../../../customTypes';
+import MitigationLink from '../../mitigations/MitigationLink';
+import CopyToClipbord from '../../generic/CopyToClipboard';
+import { DeleteConfirmationDialog } from '@aws-northstar/ui';
+import Container from '@cloudscape-design/components/container';
+import Header from '@cloudscape-design/components/header';
+import * as awsui from '@cloudscape-design/design-tokens';
+import { css } from '@emotion/react';
+import ControlThreatLink from '../ControlThreatLink';
+import getMobileMediaQuery from '../../../utils/getMobileMediaQuery';
+import Tooltip from '../../generic/Tooltip';
+import Tags from './components/Tags';
+import { Select, TextContent } from '@cloudscape-design/components';
+import { OptionDefinition } from '@cloudscape-design/components/internal/components/option/interfaces';
 
 export interface ControlCardProps {
   entity: Control;
@@ -46,10 +46,10 @@ export interface ControlCardProps {
 
 const styles = {
   header: css({
-    display: "inline-flex",
-    alignItems: "center",
+    display: 'inline-flex',
+    alignItems: 'center',
     [getMobileMediaQuery()]: {
-      display: "block",
+      display: 'block',
       marginTop: awsui.spaceScaledS,
     },
   }),
@@ -57,23 +57,23 @@ const styles = {
     marginRight: awsui.spaceScaledS,
     marginLeft: awsui.spaceScaledS,
     [getMobileMediaQuery()]: {
-      marginLeft: "0px",
+      marginLeft: '0px',
     },
   }),
   info: css({
     marginLeft: awsui.spaceScaledS,
     [getMobileMediaQuery()]: {
-      marginLeft: "0px",
+      marginLeft: '0px',
     },
   }),
   finalStatementSection: css({
-    "&:hover": {
+    '&:hover': {
       backgroundColor: awsui.colorBackgroundDropdownItemHover,
     },
   }),
   metadataContainer: css({
-    "h3>span>span": {
-      fontSize: "20px",
+    'h3>span>span': {
+      fontSize: '20px',
     },
   }),
 };
@@ -94,13 +94,13 @@ const ControlCard: FC<ControlCardProps> = ({
   const [controlId, setControlId] = useState(entity.id);
   const [tags, setTags] = useState(entity.tags);
   const [metadataComments, setMetadataComments] = useState(
-    entity.metadata?.find((m) => m.key === "Comments")?.value,
+    entity.metadata?.find((m) => m.key === 'Comments')?.value,
   );
   //const [linkedControlIds, setLinkedControlIds] = useState<string[]>([]);
   const [selectedControl, setSelectedControl] = useState<OptionDefinition>({
     label: entity.content,
     value: entity.id,
-    description: entity.metadata?.find((m) => m.key === "Comments")
+    description: entity.metadata?.find((m) => m.key === 'Comments')
       ?.value as string,
     tags: entity.tags,
   });
@@ -119,13 +119,13 @@ const ControlCard: FC<ControlCardProps> = ({
     setSelectedControl({
       label: entity.content,
       value: entity.id,
-      description: entity.metadata?.find((m) => m.key === "Comments")
+      description: entity.metadata?.find((m) => m.key === 'Comments')
         ?.value as string,
       tags: entity.tags,
     });
     setTags(entity.tags);
     setMetadataComments(
-      entity.metadata?.find((m) => m.key === "Comments")?.value as string,
+      entity.metadata?.find((m) => m.key === 'Comments')?.value as string,
     );
     setEditingMode(false);
   }, [entity]);
@@ -205,7 +205,7 @@ const ControlCard: FC<ControlCardProps> = ({
                   options={controlList?.map((c) => ({
                     label: c.content,
                     value: c.id,
-                    description: c.metadata?.find((m) => m.key === "Comments")
+                    description: c.metadata?.find((m) => m.key === 'Comments')
                       ?.value as string,
                     tags: c.tags,
                   }))}
@@ -233,8 +233,8 @@ const ControlCard: FC<ControlCardProps> = ({
             </SpaceBetween>
           </ColumnLayout>
           <TextContent>
-            <CopyToClipbord content={entity.content || ""}>
-              {metadataComments || ""}
+            <CopyToClipbord content={entity.content || ''}>
+              {metadataComments || ''}
             </CopyToClipbord>
           </TextContent>
         </SpaceBetween>

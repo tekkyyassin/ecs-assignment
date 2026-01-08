@@ -13,10 +13,10 @@
   See the License for the specific language governing permissions and
   limitations under the License.
  ******************************************************************************************************************** */
-import { BreadcrumbGroupProps } from "@cloudscape-design/components";
-import { useEffect } from "react";
-import { useWorkspacesContext } from "../../contexts";
-import { useAppLayoutContext } from "../../components/FullAppLayout";
+import { BreadcrumbGroupProps } from '@cloudscape-design/components';
+import { useEffect } from 'react';
+import { useWorkspacesContext } from '../../contexts';
+import { useAppLayoutContext } from '../../components/FullAppLayout';
 
 const useSetActiveBreadcrumbGroup = (
   additionPaths?: BreadcrumbGroupProps.Item[],
@@ -28,15 +28,15 @@ const useSetActiveBreadcrumbGroup = (
     setActiveBreadcrumbs([
       {
         href: currentPath,
-        text: "dashboard",
+        text: 'dashboard',
       },
       {
         href: currentPath,
-        text: "workspaces",
+        text: 'workspaces',
       },
       {
         href: currentPath,
-        text: currentWorkspace?.name || "default",
+        text: currentWorkspace?.name || 'default',
       },
       ...(additionPaths?.map((a) => ({
         ...a,

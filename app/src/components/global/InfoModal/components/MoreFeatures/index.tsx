@@ -15,11 +15,11 @@
  ******************************************************************************************************************** */
 
 /** @jsxImportSource @emotion/react */
-import Grid from "@cloudscape-design/components/grid";
-import { css } from "@emotion/react";
-import { FC } from "react";
-import styles from "../../styles";
-import InfoModalBase from "../InfoModalBase";
+import Grid from '@cloudscape-design/components/grid';
+import { css } from '@emotion/react';
+import { FC } from 'react';
+import styles from '../../styles';
+import InfoModalBase from '../InfoModalBase';
 
 const InfoModalMoreFeatures: FC = () => {
   return (
@@ -47,7 +47,7 @@ const InfoModalMoreFeatures: FC = () => {
             <div>
               <span css={css(styles.contentHighlight)}>
                 Data persisted only client-side
-              </span>{" "}
+              </span>{' '}
               within the browser
             </div>
           </div>
@@ -66,7 +66,7 @@ const InfoModalMoreFeatures: FC = () => {
             <div>
               <span css={css(styles.contentHighlight)}>
                 Import/export capabilities
-              </span>{" "}
+              </span>{' '}
               to enable persistent storage and sharing
             </div>
           </div>
@@ -85,7 +85,7 @@ const InfoModalMoreFeatures: FC = () => {
             <div>
               <span css={css(styles.contentHighlight)}>
                 Workspace separation
-              </span>{" "}
+              </span>{' '}
               to cater for multiple solution requirements
             </div>
           </div>

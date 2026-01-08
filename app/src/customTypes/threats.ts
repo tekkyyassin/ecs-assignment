@@ -14,22 +14,22 @@
   limitations under the License.
  ******************************************************************************************************************** */
 
-import { z } from "zod";
-import { EntityBaseSchema } from "./entities";
+import { z } from 'zod';
+import { EntityBaseSchema } from './entities';
 import {
   SINGLE_FIELD_INPUT_MAX_LENGTH,
   LEVEL_HIGH,
   LEVEL_MEDIUM,
   LEVEL_LOW,
   LEVEL_NOT_SET,
-} from "../configs";
+} from '../configs';
 
 export const ThreatStatementDisplayTokenSchema = z
   .object({
     /**
      * the html tag type for the content. If not type is specified. <span> will be used.
      */
-    type: z.union([z.literal("b"), z.literal("span")]).optional(),
+    type: z.union([z.literal('b'), z.literal('span')]).optional(),
     /**
      * The tooltip content of the node.
      */
@@ -119,11 +119,11 @@ export interface ThreatStatementListFilter {
   linkedControls?: boolean;
   linkedAssumptions?: boolean;
   priority?:
-    | typeof LEVEL_HIGH
-    | typeof LEVEL_MEDIUM
-    | typeof LEVEL_LOW
-    | typeof LEVEL_NOT_SET;
-  stride?: "S" | "T" | "R" | "I" | "D" | "E" | "LM" | typeof LEVEL_NOT_SET;
+  | typeof LEVEL_HIGH
+  | typeof LEVEL_MEDIUM
+  | typeof LEVEL_LOW
+  | typeof LEVEL_NOT_SET;
+  stride?: 'S' | 'T' | 'R' | 'I' | 'D' | 'E' | 'LM' | typeof LEVEL_NOT_SET;
 }
 
 export interface ThreatStatementFormat {

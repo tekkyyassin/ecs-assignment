@@ -14,11 +14,11 @@
   limitations under the License.
  ******************************************************************************************************************** */
 
-export const DEFAULT_WORKSPACE_ID = "default";
-export const DEFAULT_WORKSPACE_LABEL = "Default";
-export const EXAMPLE_WORKSPACE_ID = "example";
-export const EXAMPLE_WORKSPACE_LABEL = "Example";
-export const DEFAULT_NEW_ENTITY_ID = "new";
+export const DEFAULT_WORKSPACE_ID = 'default';
+export const DEFAULT_WORKSPACE_LABEL = 'Default';
+export const EXAMPLE_WORKSPACE_ID = 'example';
+export const EXAMPLE_WORKSPACE_LABEL = 'Example';
+export const DEFAULT_NEW_ENTITY_ID = 'new';
 
 // Tags
 export const SINGLE_FIELD_INPUT_TAG_MAX_LENGTH = 30;
@@ -35,8 +35,8 @@ export const IMAGE_BASE64_MAX_LENGTH = 500000;
 //  Architecture diagram url, data flow diagram, url
 export const IMAGE_URL_MAX_LENGTH = 2048;
 
-export const ALL_LEVELS = "All";
-export const LEVEL_NOT_SET = "-";
-export const LEVEL_HIGH = "High";
-export const LEVEL_MEDIUM = "Medium";
-export const LEVEL_LOW = "Low";
+export const ALL_LEVELS = 'All';
+export const LEVEL_NOT_SET = '-';
+export const LEVEL_HIGH = 'High';
+export const LEVEL_MEDIUM = 'Medium';
+export const LEVEL_LOW = 'Low';

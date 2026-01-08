@@ -14,16 +14,16 @@
   limitations under the License.
  ******************************************************************************************************************** */
 
-import { FC, PropsWithChildren } from "react";
-import MitigationsLocalStateContextProvider from "./components/LocalStateContextProvider";
-import MitigationsLocalStorageContextProvider from "./components/LocalStorageContextProvider";
-import { useMitigationsContext } from "./context";
-import { MitigationsContextProviderProps } from "./types";
-import { EXAMPLE_WORKSPACE_ID } from "../../configs/constants";
-import { useExampleContext } from "../ExampleContext";
+import { FC, PropsWithChildren } from 'react';
+import MitigationsLocalStateContextProvider from './components/LocalStateContextProvider';
+import MitigationsLocalStorageContextProvider from './components/LocalStorageContextProvider';
+import { useMitigationsContext } from './context';
+import { MitigationsContextProviderProps } from './types';
+import { EXAMPLE_WORKSPACE_ID } from '../../configs/constants';
+import { useExampleContext } from '../ExampleContext';
 
 const MitigationsContextProvider: FC<
-  PropsWithChildren<MitigationsContextProviderProps>
+PropsWithChildren<MitigationsContextProviderProps>
 > = (props) => {
   const { mitigations } = useExampleContext();
 

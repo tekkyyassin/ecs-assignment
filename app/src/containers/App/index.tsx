@@ -13,23 +13,23 @@
   See the License for the specific language governing permissions and
   limitations under the License.
  ******************************************************************************************************************** */
-import { FC } from "react";
-import { useSearchParams } from "react-router-dom";
-import Full from "./components/Full";
-import Standalone from "./components/Standalone";
-import GithubPagesNavigationHelper from "../../components/GithubPagesNavigationHelper";
+import { FC } from 'react';
+import { useSearchParams } from 'react-router-dom';
+import Full from './components/Full';
+import Standalone from './components/Standalone';
+import GithubPagesNavigationHelper from '../../components/GithubPagesNavigationHelper';
 
 const DEFAULT_MODE = process.env.REACT_APP_DEFAULT_MODE;
-const isGithubPages = process.env.REACT_APP_GITHUB_PAGES === "true";
+const isGithubPages = process.env.REACT_APP_GITHUB_PAGES === 'true';
 
 /**
  * Demo app for threat-composer
  */
 const App: FC = () => {
   const [searchParams] = useSearchParams();
-  const mode = searchParams.get("mode");
-  const composerMode = mode || DEFAULT_MODE || "Full";
-  return composerMode === "ThreatsOnly" || composerMode === "EditorOnly" ? (
+  const mode = searchParams.get('mode');
+  const composerMode = mode || DEFAULT_MODE || 'Full';
+  return composerMode === 'ThreatsOnly' || composerMode === 'EditorOnly' ? (
     <Standalone composeMode={composerMode} />
   ) : isGithubPages ? (
     <GithubPagesNavigationHelper>

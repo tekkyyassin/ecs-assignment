@@ -14,7 +14,7 @@
   limitations under the License.
  ******************************************************************************************************************** */
 
-import { ALL_LEVELS, LEVEL_HIGH, LEVEL_MEDIUM, LEVEL_LOW } from "./constants";
+import { ALL_LEVELS, LEVEL_HIGH, LEVEL_MEDIUM, LEVEL_LOW } from './constants';
 
 export const LEVEL_SELECTOR_OPTIONS = [
   { label: LEVEL_HIGH, value: LEVEL_HIGH },

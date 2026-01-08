@@ -17,14 +17,14 @@
 /** @jsxImportSource @emotion/react */
 import ExpandableSection, {
   ExpandableSectionProps,
-} from "@cloudscape-design/components/expandable-section";
-import Grid from "@cloudscape-design/components/grid";
-import { EntityBase } from "../../../customTypes";
-import expandablePanelHeaderStyles from "../../../styles/expandablePanelHeader";
-import CommentsEdit from "../CommentsEdit";
+} from '@cloudscape-design/components/expandable-section';
+import Grid from '@cloudscape-design/components/grid';
+import { EntityBase } from '../../../customTypes';
+import expandablePanelHeaderStyles from '../../../styles/expandablePanelHeader';
+import CommentsEdit from '../CommentsEdit';
 
 export interface MetadataEditorProps<T> {
-  variant: ExpandableSectionProps["variant"];
+  variant: ExpandableSectionProps['variant'];
   entity: T;
   onEditEntity: (
     entity: T,

@@ -14,8 +14,8 @@
   limitations under the License.
  ******************************************************************************************************************** */
 
-import { useCallback } from "react";
-import { EntityBase } from "../../customTypes";
+import { useCallback } from 'react';
+import { EntityBase } from '../../customTypes';
 
 const useEditMetadata = <T extends EntityBase>(
   onSaveEntity?: (updated: T) => void,

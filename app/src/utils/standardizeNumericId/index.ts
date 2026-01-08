@@ -15,7 +15,7 @@
  ******************************************************************************************************************** */
 
 const standardizeNumericId = (numericId?: number) => {
-  return String(numericId).padStart(4, "0");
+  return String(numericId).padStart(4, '0');
 };
 
 export default standardizeNumericId;

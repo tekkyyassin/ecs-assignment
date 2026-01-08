@@ -14,16 +14,16 @@
   limitations under the License.
  ******************************************************************************************************************** */
 
-import { FC, PropsWithChildren } from "react";
-import ControlLinksLocalStateContextProvider from "./components/LocalStateContextProvider";
-import ControlLinksLocalStorageContextProvider from "./components/LocalStorageContextProvider";
-import { useControlLinksContext } from "./context";
-import { ControlLinksContextProviderProps } from "./types";
-import { EXAMPLE_WORKSPACE_ID } from "../../configs/constants";
-import { useExampleContext } from "../ExampleContext";
+import { FC, PropsWithChildren } from 'react';
+import ControlLinksLocalStateContextProvider from './components/LocalStateContextProvider';
+import ControlLinksLocalStorageContextProvider from './components/LocalStorageContextProvider';
+import { useControlLinksContext } from './context';
+import { ControlLinksContextProviderProps } from './types';
+import { EXAMPLE_WORKSPACE_ID } from '../../configs/constants';
+import { useExampleContext } from '../ExampleContext';
 
 const ControlLinksContextProvider: FC<
-  PropsWithChildren<ControlLinksContextProviderProps>
+PropsWithChildren<ControlLinksContextProviderProps>
 > = (props) => {
   const { controlLinks } = useExampleContext();
 

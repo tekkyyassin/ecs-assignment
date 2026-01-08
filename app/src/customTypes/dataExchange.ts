@@ -14,17 +14,17 @@
   limitations under the License.
  ******************************************************************************************************************** */
 
-import { z } from "zod";
-import { ApplicationInfoSchema } from "./application";
-import { ArchitectureInfoSchema } from "./architecture";
-import { AssumptionSchema, AssumptionLinkSchema } from "./assumptions";
-import { DataflowInfoSchema } from "./dataflow";
-import { DiagramInfoSchema } from "./diagram";
-import { ControlSchema, ControlLinkSchema } from "./controls";
-import { ControlProfileSchema } from "./controlProfiles";
-import { MitigationSchema, MitigationLinkSchema } from "./mitigations";
-import { TemplateThreatStatementSchema } from "./threats";
-import { WorkspaceSchema } from "./workspaces";
+import { z } from 'zod';
+import { ApplicationInfoSchema } from './application';
+import { ArchitectureInfoSchema } from './architecture';
+import { AssumptionSchema, AssumptionLinkSchema } from './assumptions';
+import { DataflowInfoSchema } from './dataflow';
+import { DiagramInfoSchema } from './diagram';
+import { ControlSchema, ControlLinkSchema } from './controls';
+import { ControlProfileSchema } from './controlProfiles';
+import { MitigationSchema, MitigationLinkSchema } from './mitigations';
+import { TemplateThreatStatementSchema } from './threats';
+import { WorkspaceSchema } from './workspaces';
 
 export const DataExchangeFormatSchema = z
   .object({

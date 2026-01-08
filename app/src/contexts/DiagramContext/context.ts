@@ -14,8 +14,8 @@
   limitations under the License.
  ******************************************************************************************************************** */
 
-import { useContext, createContext } from "react";
-import { DiagramInfo } from "../../customTypes";
+import { useContext, createContext } from 'react';
+import { DiagramInfo } from '../../customTypes';
 
 export interface DiagramInfoContextApi {
   diagramInfo: DiagramInfo;

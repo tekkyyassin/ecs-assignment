@@ -14,30 +14,30 @@
   limitations under the License.
  ******************************************************************************************************************** */
 
-import sanitizeHtml from ".";
+import sanitizeHtml from '.';
 
 const testObj = {
   num: 1,
-  str1: "hello",
+  str1: 'hello',
   str2: "world<script>alert('hello')</script>",
 };
 
 const result = {
   num: 1,
-  str1: "hello",
-  str2: "world",
+  str1: 'hello',
+  str2: 'world',
 };
 
-describe("sanitizeHtml", () => {
-  test("parses an object to saniztise html string if there is any", () => {
+describe('sanitizeHtml', () => {
+  test('parses an object to saniztise html string if there is any', () => {
     expect(sanitizeHtml(testObj)).toEqual(result);
   });
 
-  test("parses an array of object to saniztise html string if there is any", () => {
+  test('parses an array of object to saniztise html string if there is any', () => {
     expect(sanitizeHtml([testObj, testObj])).toEqual([result, result]);
   });
 
-  test("parses nested object to saniztise html string if there is any", () => {
+  test('parses nested object to saniztise html string if there is any', () => {
     expect(
       sanitizeHtml({
         ...testObj,

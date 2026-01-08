@@ -14,25 +14,25 @@
   limitations under the License.
  ******************************************************************************************************************** */
 
-import Button from "@cloudscape-design/components/button";
-import Container from "@cloudscape-design/components/container";
-import Grid from "@cloudscape-design/components/grid";
-import Header from "@cloudscape-design/components/header";
-import SpaceBetween from "@cloudscape-design/components/space-between";
-import TextFilter from "@cloudscape-design/components/text-filter";
-import { FC, useCallback, useMemo, useState } from "react";
-import { useAssumptionLinksContext } from "../../../contexts";
-import { useAssumptionsContext } from "../../../contexts/AssumptionsContext/context";
-import { Assumption, AssumptionLink } from "../../../customTypes";
-import { addTagToEntity, removeTagFromEntity } from "../../../utils/entityTag";
+import Button from '@cloudscape-design/components/button';
+import Container from '@cloudscape-design/components/container';
+import Grid from '@cloudscape-design/components/grid';
+import Header from '@cloudscape-design/components/header';
+import SpaceBetween from '@cloudscape-design/components/space-between';
+import TextFilter from '@cloudscape-design/components/text-filter';
+import { FC, useCallback, useMemo, useState } from 'react';
+import { useAssumptionLinksContext } from '../../../contexts';
+import { useAssumptionsContext } from '../../../contexts/AssumptionsContext/context';
+import { Assumption, AssumptionLink } from '../../../customTypes';
+import { addTagToEntity, removeTagFromEntity } from '../../../utils/entityTag';
 import LinkedEntityFilter, {
   ALL,
   WITHOUT_NO_LINKED_ENTITY,
   WITH_LINKED_ENTITY,
-} from "../../generic/LinkedEntityFilter";
-import TagSelector from "../../generic/TagSelector";
-import AssumptionCard from "../AssumptionCard";
-import AssumptionCreationCard from "../AssumptionCreationCard";
+} from '../../generic/LinkedEntityFilter';
+import TagSelector from '../../generic/TagSelector';
+import AssumptionCard from '../AssumptionCard';
+import AssumptionCreationCard from '../AssumptionCreationCard';
 
 const AssumptionList: FC = () => {
   const { assumptionList, removeAssumption, saveAssumption } =
@@ -44,7 +44,7 @@ const AssumptionList: FC = () => {
     removeAssumptionLinksByAssumptionId,
   } = useAssumptionLinksContext();
 
-  const [filteringText, setFilteringText] = useState("");
+  const [filteringText, setFilteringText] = useState('');
 
   const [selectedTags, setSelectedTags] = useState<string[]>([]);
 
@@ -101,7 +101,7 @@ const AssumptionList: FC = () => {
     if (selectedLinkedThreatsFilter !== ALL) {
       output = output.filter((st) => {
         return assumptionLinkList.some(
-          (al) => al.assumptionId === st.id && al.type === "Threat",
+          (al) => al.assumptionId === st.id && al.type === 'Threat',
         )
           ? selectedLinkedThreatsFilter === WITH_LINKED_ENTITY
           : selectedLinkedThreatsFilter === WITHOUT_NO_LINKED_ENTITY;
@@ -111,7 +111,7 @@ const AssumptionList: FC = () => {
     if (selectedLinkedMitigationFilter !== ALL) {
       output = output.filter((st) => {
         return assumptionLinkList.some(
-          (al) => al.assumptionId === st.id && al.type === "Mitigation",
+          (al) => al.assumptionId === st.id && al.type === 'Mitigation',
         )
           ? selectedLinkedMitigationFilter === WITH_LINKED_ENTITY
           : selectedLinkedMitigationFilter === WITHOUT_NO_LINKED_ENTITY;
@@ -121,7 +121,7 @@ const AssumptionList: FC = () => {
     if (selectedLinkedControlFilter !== ALL) {
       output = output.filter((st) => {
         return assumptionLinkList.some(
-          (al) => al.assumptionId === st.id && al.type === "Control",
+          (al) => al.assumptionId === st.id && al.type === 'Control',
         )
           ? selectedLinkedControlFilter === WITH_LINKED_ENTITY
           : selectedLinkedControlFilter === WITHOUT_NO_LINKED_ENTITY;
@@ -147,7 +147,7 @@ const AssumptionList: FC = () => {
 
   const hasNoFilter = useMemo(() => {
     return (
-      filteringText === "" &&
+      filteringText === '' &&
       selectedLinkedMitigationFilter === ALL &&
       selectedLinkedControlFilter === ALL &&
       selectedLinkedThreatsFilter === ALL &&
@@ -168,7 +168,7 @@ const AssumptionList: FC = () => {
   }, [assumptionList]);
 
   const handleClearFilter = useCallback(() => {
-    setFilteringText("");
+    setFilteringText('');
     setSelectedTags([]);
     setSelectedLinkedMitigationFilter(ALL);
     setSelectedLinkedControlFilter(ALL);
@@ -189,7 +189,7 @@ const AssumptionList: FC = () => {
         assumptionLinks.push({
           linkedId: id,
           assumptionId: updated.id,
-          type: "Mitigation",
+          type: 'Mitigation',
         });
       });
 
@@ -197,7 +197,7 @@ const AssumptionList: FC = () => {
         assumptionLinks.push({
           linkedId: id,
           assumptionId: updated.id,
-          type: "Threat",
+          type: 'Threat',
         });
       });
 

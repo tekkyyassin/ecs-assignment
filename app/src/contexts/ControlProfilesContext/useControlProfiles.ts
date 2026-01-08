@@ -14,8 +14,8 @@
   limitations under the License.
  ******************************************************************************************************************** */
 
-import { useCallback } from "react";
-import { ControlProfile } from "../../customTypes";
+import { useCallback } from 'react';
+import { ControlProfile } from '../../customTypes';
 
 const useControlProfiles = (
   _controlProfileList: ControlProfile[],

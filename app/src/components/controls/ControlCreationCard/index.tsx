@@ -14,9 +14,9 @@
   limitations under the License.
  ******************************************************************************************************************** */
 /** @jsxImportSource @emotion/react */
-import SpaceBetween from "@cloudscape-design/components/space-between";
-import { FC, useState, useCallback, useRef, useMemo } from "react";
-import { Control } from "../../../customTypes";
+import SpaceBetween from '@cloudscape-design/components/space-between';
+import { FC, useState, useCallback, useRef, useMemo } from 'react';
+import { Control } from '../../../customTypes';
 import {
   Button,
   ColumnLayout,
@@ -25,16 +25,16 @@ import {
   Select,
   TextContent,
   Alert,
-} from "@cloudscape-design/components";
-import { OptionDefinition } from "@cloudscape-design/components/internal/components/option/interfaces";
-import getMobileMediaQuery from "../../../utils/getMobileMediaQuery";
-import * as awsui from "@cloudscape-design/design-tokens";
-import { css } from "@emotion/react";
-import Tags from "../ControlCard/components/Tags";
-import { DEFAULT_NEW_ENTITY_ID } from "../../../configs";
-import ThreatLinkView from "../../threats/ThreatLinkView";
-import { useMitigationsContext, useThreatsContext } from "../../../contexts";
-import MitigationLinkView from "../../mitigations/MitigationLinkView";
+} from '@cloudscape-design/components';
+import { OptionDefinition } from '@cloudscape-design/components/internal/components/option/interfaces';
+import getMobileMediaQuery from '../../../utils/getMobileMediaQuery';
+import * as awsui from '@cloudscape-design/design-tokens';
+import { css } from '@emotion/react';
+import Tags from '../ControlCard/components/Tags';
+import { DEFAULT_NEW_ENTITY_ID } from '../../../configs';
+import ThreatLinkView from '../../threats/ThreatLinkView';
+import { useMitigationsContext, useThreatsContext } from '../../../contexts';
+import MitigationLinkView from '../../mitigations/MitigationLinkView';
 
 export interface ControlCreationCardProps {
   onSave?: (
@@ -49,10 +49,10 @@ export interface ControlCreationCardProps {
 
 const styles = {
   header: css({
-    display: "inline-flex",
-    alignItems: "center",
+    display: 'inline-flex',
+    alignItems: 'center',
     [getMobileMediaQuery()]: {
-      display: "block",
+      display: 'block',
       marginTop: awsui.spaceScaledS,
     },
   }),
@@ -60,23 +60,23 @@ const styles = {
     marginRight: awsui.spaceScaledS,
     marginLeft: awsui.spaceScaledS,
     [getMobileMediaQuery()]: {
-      marginLeft: "0px",
+      marginLeft: '0px',
     },
   }),
   info: css({
     marginLeft: awsui.spaceScaledS,
     [getMobileMediaQuery()]: {
-      marginLeft: "0px",
+      marginLeft: '0px',
     },
   }),
   finalStatementSection: css({
-    "&:hover": {
+    '&:hover': {
       backgroundColor: awsui.colorBackgroundDropdownItemHover,
     },
   }),
   metadataContainer: css({
-    "h3>span>span": {
-      fontSize: "20px",
+    'h3>span>span': {
+      fontSize: '20px',
     },
   }),
 };
@@ -92,15 +92,15 @@ const ControlCreationCard: FC<ControlCreationCardProps> = ({
     return {
       id: DEFAULT_NEW_ENTITY_ID,
       numericId: -1,
-      content: "",
+      content: '',
       metadata: [
         {
-          key: "Comments",
-          value: "",
+          key: 'Comments',
+          value: '',
         },
         {
-          key: "STRIDE",
-          value: "",
+          key: 'STRIDE',
+          value: '',
         },
       ],
     };
@@ -114,7 +114,7 @@ const ControlCreationCard: FC<ControlCreationCardProps> = ({
   const [controlId, setControlId] = useState(editingEntity.id);
   const [tags, setTags] = useState(editingEntity.tags);
   const [metadataComments, setMetadataComments] = useState(
-    editingEntity.metadata?.find((m) => m.key === "Comments")?.value,
+    editingEntity.metadata?.find((m) => m.key === 'Comments')?.value,
   );
   const { statementList } = useThreatsContext();
   const { mitigationList, saveMitigation } = useMitigationsContext();
@@ -126,29 +126,29 @@ const ControlCreationCard: FC<ControlCreationCardProps> = ({
       return;
     }
 
-    editingEntity.id = controlId || "new";
-    editingEntity.content = (selectedControl?.label as string) || "";
+    editingEntity.id = controlId || 'new';
+    editingEntity.content = (selectedControl?.label as string) || '';
     editingEntity.tags = tags || [];
     if (
       editingEntity.metadata &&
-      editingEntity.metadata.find((m) => m.key === "Comments")
+      editingEntity.metadata.find((m) => m.key === 'Comments')
     ) {
-      editingEntity.metadata!.find((m) => m.key === "Comments")!.value =
-        selectedControl?.description || "";
+      editingEntity.metadata!.find((m) => m.key === 'Comments')!.value =
+        selectedControl?.description || '';
     }
     if (
       editingEntity.metadata &&
-      editingEntity.metadata.find((m) => m.key === "STRIDE")
+      editingEntity.metadata.find((m) => m.key === 'STRIDE')
     ) {
-      editingEntity.metadata!.find((m) => m.key === "STRIDE")!.value =
+      editingEntity.metadata!.find((m) => m.key === 'STRIDE')!.value =
         (selectedControl?.filteringTags as string[]) || [];
     }
     onSave?.(editingEntity, linkedMitigationIds, linkedThreatIds);
     setEditingEntity(DEFAULT_ENTITY);
-    setControlId("new");
+    setControlId('new');
     setSelectedControl(null);
     setTags([]);
-    setMetadataComments("");
+    setMetadataComments('');
     setLinkedMitigationIds([]);
     setLinkedThreatIds([]);
   }, [
@@ -166,10 +166,10 @@ const ControlCreationCard: FC<ControlCreationCardProps> = ({
 
   const handleReset = useCallback(() => {
     setEditingEntity(DEFAULT_ENTITY);
-    setControlId("new");
+    setControlId('new');
     setSelectedControl(null);
     setTags([]);
-    setMetadataComments("");
+    setMetadataComments('');
     setLinkedMitigationIds([]);
     setLinkedThreatIds([]);
   }, [DEFAULT_ENTITY]);
@@ -192,7 +192,7 @@ const ControlCreationCard: FC<ControlCreationCardProps> = ({
         const newMitigation = saveMitigation({
           numericId: -1,
           content: mitigationIdOrNewMitigation,
-          id: "new",
+          id: 'new',
         });
         setLinkedMitigationIds((prev) => [...prev, newMitigation.id]);
       }
@@ -210,7 +210,7 @@ const ControlCreationCard: FC<ControlCreationCardProps> = ({
         header={
           <Header>
             <div css={styles.header}>
-              {"Add new control"}
+              {'Add new control'}
               <div css={styles.tags}>
                 <Tags
                   tags={tags}
@@ -258,13 +258,13 @@ const ControlCreationCard: FC<ControlCreationCardProps> = ({
               options={controlList?.map((c) => ({
                 label: c.content,
                 labelTag: (
-                  c.metadata?.find((m) => m.key === "STRIDE")?.value as string[]
-                ).join(","),
+                  c.metadata?.find((m) => m.key === 'STRIDE')?.value as string[]
+                ).join(','),
                 value: c.id,
-                description: c.metadata?.find((m) => m.key === "Comments")
+                description: c.metadata?.find((m) => m.key === 'Comments')
                   ?.value as string,
                 tags: c.tags,
-                filteringTags: c.metadata?.find((m) => m.key === "STRIDE")
+                filteringTags: c.metadata?.find((m) => m.key === 'STRIDE')
                   ?.value as string[],
               }))}
               filteringType="auto"
@@ -291,7 +291,7 @@ const ControlCreationCard: FC<ControlCreationCardProps> = ({
               />
             </SpaceBetween>
           </ColumnLayout>
-          <TextContent>{metadataComments || ""}</TextContent>
+          <TextContent>{metadataComments || ''}</TextContent>
         </SpaceBetween>
       </Container>
     </div>

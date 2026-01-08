@@ -14,17 +14,17 @@
   limitations under the License.
  ******************************************************************************************************************** */
 
-import Button from "@cloudscape-design/components/button";
-import ColumnLayout from "@cloudscape-design/components/column-layout";
-import SpaceBetween from "@cloudscape-design/components/space-between";
-import { FC, ReactNode, useCallback } from "react";
-import { DEFAULT_NEW_ENTITY_ID } from "../../../configs";
-import { ContentEntityBase, EntityBase } from "../../../customTypes";
-import useEditMetadata from "../../../hooks/useEditMetadata";
-import { addTagToEntity, removeTagFromEntity } from "../../../utils/entityTag";
-import Textarea, { TextAreaProps } from "../../generic/Textarea";
-import MetadataEditor from "../EntityMetadataEditor";
-import GenericCard from "../GenericCard";
+import Button from '@cloudscape-design/components/button';
+import ColumnLayout from '@cloudscape-design/components/column-layout';
+import SpaceBetween from '@cloudscape-design/components/space-between';
+import { FC, ReactNode, useCallback } from 'react';
+import { DEFAULT_NEW_ENTITY_ID } from '../../../configs';
+import { ContentEntityBase, EntityBase } from '../../../customTypes';
+import useEditMetadata from '../../../hooks/useEditMetadata';
+import { addTagToEntity, removeTagFromEntity } from '../../../utils/entityTag';
+import Textarea, { TextAreaProps } from '../../generic/Textarea';
+import MetadataEditor from '../EntityMetadataEditor';
+import GenericCard from '../GenericCard';
 
 export interface GenericEntityCreationCardProps {
   editingEntity: ContentEntityBase;
@@ -33,13 +33,13 @@ export interface GenericEntityCreationCardProps {
   onSave?: () => void;
   onReset?: () => void;
   customEditors?: ReactNode;
-  validateData?: TextAreaProps["validateData"];
+  validateData?: TextAreaProps['validateData'];
 }
 
 export const DEFAULT_ENTITY = {
   id: DEFAULT_NEW_ENTITY_ID,
   numericId: -1,
-  content: "",
+  content: '',
 };
 
 const GenericEntityCreationCard: FC<GenericEntityCreationCardProps> = ({

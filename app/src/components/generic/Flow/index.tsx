@@ -1,4 +1,4 @@
-import { useCallback, useEffect, useState } from "react";
+import { useCallback, useEffect, useState } from 'react';
 import ReactFlow, {
   Controls,
   Background,
@@ -14,29 +14,29 @@ import ReactFlow, {
   applyEdgeChanges,
   applyNodeChanges,
   MarkerType,
-} from "reactflow";
-import styled from "@emotion/styled";
-import Container from "@cloudscape-design/components/container";
-import Header from "@cloudscape-design/components/header";
-import SpaceBetween from "@cloudscape-design/components/space-between";
-import { v4 } from "uuid";
-import "reactflow/dist/style.css";
+} from 'reactflow';
+import styled from '@emotion/styled';
+import Container from '@cloudscape-design/components/container';
+import Header from '@cloudscape-design/components/header';
+import SpaceBetween from '@cloudscape-design/components/space-between';
+import { v4 } from 'uuid';
+import 'reactflow/dist/style.css';
 
-import ActorNode from "./Nodes/ActorNode";
-import DatastoreNode from "./Nodes/DatastoreNode";
-import ProcessNode from "./Nodes/ProcessNode";
-import TrustBoundaryNode from "./Nodes/TrustBoundaryNode";
-import NodeSelector from "./Nodes/NodeSelector";
+import ActorNode from './Nodes/ActorNode';
+import DatastoreNode from './Nodes/DatastoreNode';
+import ProcessNode from './Nodes/ProcessNode';
+import TrustBoundaryNode from './Nodes/TrustBoundaryNode';
+import NodeSelector from './Nodes/NodeSelector';
 
-import BiDirectionalEdge from "./Edges/BiDirectionalEdge";
+import BiDirectionalEdge from './Edges/BiDirectionalEdge';
 
-import PropertiesPanel from "./Properties/PropertiesPanel";
-import SaveButton from "./SaveButton/SaveButton";
-import ZIndexChanger from "./Nodes/ZIndexChanger";
+import PropertiesPanel from './Properties/PropertiesPanel';
+import SaveButton from './SaveButton/SaveButton';
+import ZIndexChanger from './Nodes/ZIndexChanger';
 
-import ThreatList from "./Threats/ThreatList";
+import ThreatList from './Threats/ThreatList';
 
-import { useFlowContext, useThreatsContext } from "../../../contexts";
+import { useFlowContext, useThreatsContext } from '../../../contexts';
 
 const edgeTypes = {
   biDirectional: BiDirectionalEdge,
@@ -66,8 +66,8 @@ function Flow() {
 
   // Save and restore state
   const [rfInstance, setRfInstance] = useState<ReactFlowInstance<
-    any,
-    any
+  any,
+  any
   > | null>(null);
   const [saveState, setSaveState] = useState(true);
   const [nodes, setNodes] = useNodesState([]);
@@ -84,7 +84,7 @@ function Flow() {
 
   const restoreFlow = useCallback(async () => {
     if (flow.content) {
-      const diagram = JSON.parse(flow.content || "{}");
+      const diagram = JSON.parse(flow.content || '{}');
       const { x = 0, y = 0, zoom = 1 } = diagram.viewport;
       setNodes(diagram.nodes || []);
       setEdges(diagram.edges || []);
@@ -104,7 +104,7 @@ function Flow() {
   // Nodes and edges state
   const [nodeDataValue, setNodeDataValue] = useState({});
   const [selectedComponent, setSelectedComponent] = useState<
-    Node | Edge | null
+  Node | Edge | null
   >(null);
 
   useEffect(() => {
@@ -150,9 +150,9 @@ function Flow() {
       setNodes((oldNodes) => applyNodeChanges(changes, oldNodes));
       for (let selection of changes.filter(
         (c) =>
-          c.type === "select" ||
-          (c.type === "position" && c.dragging === false) ||
-          c.type === "remove",
+          c.type === 'select' ||
+          (c.type === 'position' && c.dragging === false) ||
+          c.type === 'remove',
       )) {
         if (selection.selected || selection.dragging === false) {
           setSelectedComponent(
@@ -171,7 +171,7 @@ function Flow() {
       setNodeDataValue({});
       setEdges((oldEdges) => applyEdgeChanges(changes, oldEdges));
       setSelectedComponent(null);
-      for (let selection of changes.filter((c) => c.type === "select")) {
+      for (let selection of changes.filter((c) => c.type === 'select')) {
         if (selection.selected) {
           setSelectedComponent(
             edges.find((edge) => edge.id === selection.id) as Edge | null,
@@ -189,12 +189,12 @@ function Flow() {
       const newEdge = {
         ...params,
         id: v4(),
-        type: "biDirectional",
+        type: 'biDirectional',
         data: {
-          name: "Data",
-          description: "",
+          name: 'Data',
+          description: '',
           outOfScope: false,
-          scopeReason: "",
+          scopeReason: '',
           dataTags: [],
           techTags: [],
           securityTags: [],
@@ -219,9 +219,9 @@ function Flow() {
           id: v4(),
           data: {
             name: type,
-            description: "",
+            description: '',
             outOfScope: false,
-            scopeReason: "",
+            scopeReason: '',
             dataTags: [],
             techTags: [],
             securityTags: [],
@@ -249,11 +249,11 @@ function Flow() {
         }
         const index = nds.indexOf(selectedNode);
         const newIndex =
-          direction === "last"
+          direction === 'last'
             ? 0
-            : direction === "down"
+            : direction === 'down'
               ? index - 1
-              : direction === "up"
+              : direction === 'up'
                 ? index + 1
                 : nds.length - 1;
         const node = nds.splice(index, 1)[0];
@@ -280,7 +280,7 @@ function Flow() {
       type: MarkerType.ArrowClosed,
       width: 20,
       height: 20,
-      color: "#b1b1b7",
+      color: '#b1b1b7',
     },
   });
 

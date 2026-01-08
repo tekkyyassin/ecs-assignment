@@ -14,32 +14,32 @@
   limitations under the License.
  ******************************************************************************************************************** */
 
-import Button from "@cloudscape-design/components/button";
-import Container from "@cloudscape-design/components/container";
-import Grid from "@cloudscape-design/components/grid";
-import Header from "@cloudscape-design/components/header";
-import SpaceBetween from "@cloudscape-design/components/space-between";
-import TextFilter from "@cloudscape-design/components/text-filter";
-import { FC, useCallback, useMemo, useState } from "react";
+import Button from '@cloudscape-design/components/button';
+import Container from '@cloudscape-design/components/container';
+import Grid from '@cloudscape-design/components/grid';
+import Header from '@cloudscape-design/components/header';
+import SpaceBetween from '@cloudscape-design/components/space-between';
+import TextFilter from '@cloudscape-design/components/text-filter';
+import { FC, useCallback, useMemo, useState } from 'react';
 import {
   useMitigationLinksContext,
   useControlLinksContext,
   useApplicationInfoContext,
-} from "../../../contexts";
-import { useControlsContext } from "../../../contexts/ControlsContext/context";
-import { MitigationLink, Control, ControlLink } from "../../../customTypes";
+} from '../../../contexts';
+import { useControlsContext } from '../../../contexts/ControlsContext/context';
+import { MitigationLink, Control, ControlLink } from '../../../customTypes';
 import LinkedEntityFilter, {
   ALL,
   WITHOUT_NO_LINKED_ENTITY,
   WITH_LINKED_ENTITY,
-} from "../../generic/LinkedEntityFilter";
-import TagSelector from "../../generic/TagSelector";
-import { OPTIONS as STRIDEOptions } from "../../generic/STRIDESelector";
-import { LEVEL_NOT_SET } from "../../../configs";
-import ControlCard from "../ControlCard";
-import ControlCreationCard from "../ControlCreationCard";
-import { Link, Multiselect } from "@cloudscape-design/components";
-import { getControlProfileByName } from "../../../data/controlProfileProvider";
+} from '../../generic/LinkedEntityFilter';
+import TagSelector from '../../generic/TagSelector';
+import { OPTIONS as STRIDEOptions } from '../../generic/STRIDESelector';
+import { LEVEL_NOT_SET } from '../../../configs';
+import ControlCard from '../ControlCard';
+import ControlCreationCard from '../ControlCreationCard';
+import { Link, Multiselect } from '@cloudscape-design/components';
+import { getControlProfileByName } from '../../../data/controlProfileProvider';
 
 const ControlList: FC = () => {
   const { applicationInfo } = useApplicationInfoContext();
@@ -58,11 +58,11 @@ const ControlList: FC = () => {
     removeMitigationLinksByLinkedEntityId,
   } = useMitigationLinksContext();
 
-  const [filteringText, setFilteringText] = useState("");
+  const [filteringText, setFilteringText] = useState('');
 
   let selectedCategory =
     applicationInfo.securityCategory == undefined
-      ? "CCCS Medium"
+      ? 'CCCS Medium'
       : applicationInfo.securityCategory;
   const controlList = useMemo(() => {
     return getControlProfileByName(selectedCategory) as Control[];
@@ -74,29 +74,29 @@ const ControlList: FC = () => {
         return [...all, ...(cur.tags?.filter((ia) => !all.includes(ia)) || [])];
       }, [])
       .filter((t) => t !== applicationInfo.securityCategory)
-      .concat(["Data", "Storage", "Application", "Compute", "Network"]);
+      .concat(['Data', 'Storage', 'Application', 'Compute', 'Network']);
   }, [applicationInfo.securityCategory, controlList]);
 
   const [selectedTags, setSelectedTags] = useState<string[]>(
     allTags
       .filter((t) => {
         return (
-          t.includes(applicationInfo.securityCategory || "") ||
-          (t === "CSP Stacked IaaS" && applicationInfo.useIaaS) ||
-          (t === "CSP Stacked PaaS" && applicationInfo.usePaaS) ||
-          (t === "CSP Stacked SaaS" && applicationInfo.useSaaS) ||
-          (t.includes("Data") && applicationInfo.useData) ||
-          (t.includes("Storage") && applicationInfo.useStorage) ||
-          (t.includes("Application") && applicationInfo.useApplication) ||
-          (t.includes("Compute") && applicationInfo.useCompute) ||
-          (t.includes("Network") && applicationInfo.useNetwork)
+          t.includes(applicationInfo.securityCategory || '') ||
+          (t === 'CSP Stacked IaaS' && applicationInfo.useIaaS) ||
+          (t === 'CSP Stacked PaaS' && applicationInfo.usePaaS) ||
+          (t === 'CSP Stacked SaaS' && applicationInfo.useSaaS) ||
+          (t.includes('Data') && applicationInfo.useData) ||
+          (t.includes('Storage') && applicationInfo.useStorage) ||
+          (t.includes('Application') && applicationInfo.useApplication) ||
+          (t.includes('Compute') && applicationInfo.useCompute) ||
+          (t.includes('Network') && applicationInfo.useNetwork)
         );
       })
-      .concat(["Technical"]),
+      .concat(['Technical']),
   );
 
   const STRIDE_OPTION_NO_VALUE = {
-    label: "STRIDE Not Set",
+    label: 'STRIDE Not Set',
     value: LEVEL_NOT_SET,
   };
 
@@ -125,7 +125,7 @@ const ControlList: FC = () => {
 
   const hasNoFilter = useMemo(() => {
     return (
-      filteringText === "" &&
+      filteringText === '' &&
       selectedLinkedMitigationsFilter === ALL &&
       selectedLinkedThreatsFilter === ALL &&
       selectedTags.length === 0
@@ -138,7 +138,7 @@ const ControlList: FC = () => {
   ]);
 
   const handleClearFilter = useCallback(() => {
-    setFilteringText("");
+    setFilteringText('');
     setSelectedTags([]);
     setSelectedLinkedMitigationsFilter(ALL);
     setSelectedLinkedThreatsFilter(ALL);
@@ -182,21 +182,21 @@ const ControlList: FC = () => {
       );
     }
     if (selectedTags && selectedTags.length > 0) {
-      console.log("selectedTags", selectedTags);
+      console.log('selectedTags', selectedTags);
       output = output.filter((c) => {
         return c.tags?.some((t) => selectedTags.includes(t));
       });
     }
     if (selectedSTRIDEs && selectedSTRIDEs.length > 0) {
       output = output.filter((c) => {
-        const stride = c.metadata?.find((m) => m.key === "STRIDE");
+        const stride = c.metadata?.find((m) => m.key === 'STRIDE');
         const includedNoValue = selectedSTRIDEs.includes(LEVEL_NOT_SET);
         if (
           includedNoValue &&
           (!stride ||
             !stride.value ||
             stride.value.length === 0 ||
-            (stride.value.length === 1 && stride.value[0] === ""))
+            (stride.value.length === 1 && stride.value[0] === ''))
         ) {
           return true;
         }
@@ -317,7 +317,7 @@ const ControlList: FC = () => {
                 ]}
                 onChange={({ detail }) =>
                   setSelectedSTRIDEs(
-                    detail.selectedOptions?.map((o) => o.value || "") || [],
+                    detail.selectedOptions?.map((o) => o.value || '') || [],
                   )
                 }
                 deselectAriaLabel={(e) => `Remove ${e.label}`}

@@ -14,17 +14,17 @@
   limitations under the License.
  ******************************************************************************************************************** */
 
-import { FC, PropsWithChildren, useCallback, useState } from "react";
-import { Control } from "../../../../customTypes";
-import { LocalStateContextProviderBaseProps } from "../../../types";
-import { ControlsContext } from "../../context";
-import { ControlsContextProviderProps } from "../../types";
-import useControls from "../../useControls";
+import { FC, PropsWithChildren, useCallback, useState } from 'react';
+import { Control } from '../../../../customTypes';
+import { LocalStateContextProviderBaseProps } from '../../../types';
+import { ControlsContext } from '../../context';
+import { ControlsContextProviderProps } from '../../types';
+import useControls from '../../useControls';
 
 const ControlsLocalStateContextProvider: FC<
-  PropsWithChildren<
-    ControlsContextProviderProps & LocalStateContextProviderBaseProps<Control[]>
-  >
+PropsWithChildren<
+ControlsContextProviderProps & LocalStateContextProviderBaseProps<Control[]>
+>
 > = ({ children, initialValue }) => {
   const [controlList, setControlList] = useState<Control[]>(initialValue || []);
 

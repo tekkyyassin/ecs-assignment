@@ -14,21 +14,21 @@
   limitations under the License.
  ******************************************************************************************************************** */
 
-import { FC, PropsWithChildren, useCallback, useState } from "react";
-import { AssumptionLink } from "../../../../customTypes";
-import { LocalStateContextProviderBaseProps } from "../../../types";
-import { AssumptionLinksContext } from "../../context";
-import { AssumptionLinksContextProviderProps } from "../../types";
-import useAssumptionLinks from "../../useAssumptionLinks";
+import { FC, PropsWithChildren, useCallback, useState } from 'react';
+import { AssumptionLink } from '../../../../customTypes';
+import { LocalStateContextProviderBaseProps } from '../../../types';
+import { AssumptionLinksContext } from '../../context';
+import { AssumptionLinksContextProviderProps } from '../../types';
+import useAssumptionLinks from '../../useAssumptionLinks';
 
 const AssumptionLinksLocalStorageContextProvider: FC<
-  PropsWithChildren<
-    AssumptionLinksContextProviderProps &
-      LocalStateContextProviderBaseProps<AssumptionLink[]>
-  >
+PropsWithChildren<
+AssumptionLinksContextProviderProps &
+LocalStateContextProviderBaseProps<AssumptionLink[]>
+>
 > = ({ children, initialValue }) => {
   const [assumptionLinkList, setAssumptionLinkList] = useState<
-    AssumptionLink[]
+  AssumptionLink[]
   >(initialValue || []);
 
   const {

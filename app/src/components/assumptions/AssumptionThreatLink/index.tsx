@@ -14,11 +14,11 @@
   limitations under the License.
  ******************************************************************************************************************** */
 
-import { FC, useEffect, useState } from "react";
-import { useAssumptionLinksContext } from "../../../contexts/AssumptionLinksContext/context";
-import { useThreatsContext } from "../../../contexts/ThreatsContext/context";
-import { AssumptionLink } from "../../../customTypes";
-import ThreatLinkView from "../../threats/ThreatLinkView";
+import { FC, useEffect, useState } from 'react';
+import { useAssumptionLinksContext } from '../../../contexts/AssumptionLinksContext/context';
+import { useThreatsContext } from '../../../contexts/ThreatsContext/context';
+import { AssumptionLink } from '../../../customTypes';
+import ThreatLinkView from '../../threats/ThreatLinkView';
 
 export interface AssumptionThreatLinkProps {
   assumptionId: string;
@@ -33,7 +33,7 @@ const AssumptionThreatLinkComponent: FC<AssumptionThreatLinkProps> = ({
   const { getAssumptionEntityLinks } = useAssumptionLinksContext();
 
   useEffect(() => {
-    const _assumptionLinks = getAssumptionEntityLinks(assumptionId, "Threat");
+    const _assumptionLinks = getAssumptionEntityLinks(assumptionId, 'Threat');
     setAssumptionLinks(_assumptionLinks || []);
   }, [getAssumptionEntityLinks, assumptionId]);
 
@@ -48,7 +48,7 @@ const AssumptionThreatLinkComponent: FC<AssumptionThreatLinkProps> = ({
         addAssumptionLink({
           linkedId: threatId,
           assumptionId,
-          type: "Threat",
+          type: 'Threat',
         })
       }
       onRemoveThreatLink={(threatId) =>

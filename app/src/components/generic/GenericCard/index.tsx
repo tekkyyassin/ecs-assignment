@@ -15,13 +15,13 @@
  ******************************************************************************************************************** */
 
 /** @jsxImportSource @emotion/react */
-import { DeleteConfirmationDialog } from "@aws-northstar/ui";
-import Button from "@cloudscape-design/components/button";
-import Container from "@cloudscape-design/components/container";
-import Header from "@cloudscape-design/components/header";
-import SpaceBetween from "@cloudscape-design/components/space-between";
-import * as awsui from "@cloudscape-design/design-tokens";
-import { css } from "@emotion/react";
+import { DeleteConfirmationDialog } from '@aws-northstar/ui';
+import Button from '@cloudscape-design/components/button';
+import Container from '@cloudscape-design/components/container';
+import Header from '@cloudscape-design/components/header';
+import SpaceBetween from '@cloudscape-design/components/space-between';
+import * as awsui from '@cloudscape-design/design-tokens';
+import { css } from '@emotion/react';
 import {
   FC,
   PropsWithChildren,
@@ -29,10 +29,10 @@ import {
   useRef,
   ReactNode,
   useState,
-} from "react";
-import Tags from "./components/Tags";
-import getMobileMediaQuery from "../../../utils/getMobileMediaQuery";
-import Tooltip from "../Tooltip";
+} from 'react';
+import Tags from './components/Tags';
+import getMobileMediaQuery from '../../../utils/getMobileMediaQuery';
+import Tooltip from '../Tooltip';
 
 export interface GenericCardProps {
   header: string;
@@ -49,10 +49,10 @@ export interface GenericCardProps {
 
 const styles = {
   header: css({
-    display: "inline-flex",
-    alignItems: "center",
+    display: 'inline-flex',
+    alignItems: 'center',
     [getMobileMediaQuery()]: {
-      display: "block",
+      display: 'block',
       marginTop: awsui.spaceScaledS,
     },
   }),
@@ -60,13 +60,13 @@ const styles = {
     marginRight: awsui.spaceScaledS,
     marginLeft: awsui.spaceScaledS,
     [getMobileMediaQuery()]: {
-      marginLeft: "0px",
+      marginLeft: '0px',
     },
   }),
   info: css({
     marginLeft: awsui.spaceScaledS,
     [getMobileMediaQuery()]: {
-      marginLeft: "0px",
+      marginLeft: '0px',
     },
   }),
 };

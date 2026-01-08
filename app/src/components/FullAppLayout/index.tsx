@@ -15,16 +15,16 @@
  ******************************************************************************************************************** */
 import AppLayoutComponent, {
   AppLayoutProps as AppLayoutComponentProps,
-} from "@cloudscape-design/components/app-layout";
-import Box from "@cloudscape-design/components/box";
+} from '@cloudscape-design/components/app-layout';
+import Box from '@cloudscape-design/components/box';
 import BreadcrumbGroup, {
   BreadcrumbGroupProps,
-} from "@cloudscape-design/components/breadcrumb-group";
-import { CancelableEventHandler } from "@cloudscape-design/components/internal/events";
+} from '@cloudscape-design/components/breadcrumb-group';
+import { CancelableEventHandler } from '@cloudscape-design/components/internal/events';
 import SideNavigation, {
   SideNavigationProps,
-} from "@cloudscape-design/components/side-navigation";
-import { TopNavigationProps } from "@cloudscape-design/components/top-navigation";
+} from '@cloudscape-design/components/side-navigation';
+import { TopNavigationProps } from '@cloudscape-design/components/top-navigation';
 import {
   FC,
   ReactNode,
@@ -36,9 +36,9 @@ import {
   useContext,
   useMemo,
   useEffect,
-} from "react";
-import { useNavigate, useSearchParams, useLocation } from "react-router-dom";
-import { NavHeaderProps } from "../NavHeader";
+} from 'react';
+import { useNavigate, useSearchParams, useLocation } from 'react-router-dom';
+import { NavHeaderProps } from '../NavHeader';
 
 export type AppLayoutProps = (
   | NavHeaderProps
@@ -46,39 +46,39 @@ export type AppLayoutProps = (
 ) & {
   headerProps?: Partial<TopNavigationProps>;
 } & (
-    | {
-        navigationItems: SideNavigationProps.Item[];
-      }
-    | { navigation: ReactElement<SideNavigationProps> }
-  ) & { breadcrumbGroup?: ReactNode } & {
-    title: string;
-    defaultBreadcrumb?: string;
-  } & { breadcrumbGroupHide?: boolean } & {
-    availableRoutes?: string[];
-  } & AppLayoutComponentProps;
+  | {
+    navigationItems: SideNavigationProps.Item[];
+  }
+  | { navigation: ReactElement<SideNavigationProps> }
+) & { breadcrumbGroup?: ReactNode } & {
+  title: string;
+  defaultBreadcrumb?: string;
+} & { breadcrumbGroupHide?: boolean } & {
+  availableRoutes?: string[];
+} & AppLayoutComponentProps;
 
 export interface AppLayoutContextApi {
   setContentType: React.Dispatch<
-    React.SetStateAction<AppLayoutComponentProps["contentType"]>
+  React.SetStateAction<AppLayoutComponentProps['contentType']>
   >;
 
   setNotifications: React.Dispatch<
-    React.SetStateAction<AppLayoutComponentProps["notifications"]>
+  React.SetStateAction<AppLayoutComponentProps['notifications']>
   >;
 
   setNavigationOpen: React.Dispatch<React.SetStateAction<boolean>>;
 
   setTools: React.Dispatch<
-    React.SetStateAction<AppLayoutComponentProps["tools"]>
+  React.SetStateAction<AppLayoutComponentProps['tools']>
   >;
   setToolsHide: React.Dispatch<React.SetStateAction<boolean>>;
   setToolsOpen: React.Dispatch<React.SetStateAction<boolean>>;
   setToolsWidth: React.Dispatch<
-    React.SetStateAction<AppLayoutComponentProps["toolsWidth"]>
+  React.SetStateAction<AppLayoutComponentProps['toolsWidth']>
   >;
 
   setActiveBreadcrumbs: React.Dispatch<
-    React.SetStateAction<BreadcrumbGroupProps.Item[]>
+  React.SetStateAction<BreadcrumbGroupProps.Item[]>
   >;
 }
 
@@ -105,7 +105,7 @@ export const AppLayoutContext =
  */
 const AppLayout: FC<PropsWithChildren<AppLayoutProps>> = ({
   title,
-  defaultBreadcrumb = "dashboard",
+  defaultBreadcrumb = 'dashboard',
   children,
   headerProps,
   breadcrumbGroupHide,
@@ -124,8 +124,8 @@ const AppLayout: FC<PropsWithChildren<AppLayoutProps>> = ({
   const location = useLocation();
 
   const headerHref = useMemo(() => {
-    const mode = searchParams.get("mode");
-    const href = "href" in props ? props.href : "/";
+    const mode = searchParams.get('mode');
+    const href = 'href' in props ? props.href : '/';
     return mode ? `${href}/?mode=${mode}` : href;
   }, [searchParams, props]);
 
@@ -136,15 +136,15 @@ const AppLayout: FC<PropsWithChildren<AppLayoutProps>> = ({
 
   const [activeHref, setActiveHref] = useState(headerHref);
   const [activeBreadcrumbs, setActiveBreadcrumbs] = useState<
-    BreadcrumbGroupProps.Item[]
+  BreadcrumbGroupProps.Item[]
   >([{ text: defaultBreadcrumb, href: headerHref }]);
 
   useEffect(() => {
-    setActiveHref(`${location.pathname}${location.search || ""}`);
+    setActiveHref(`${location.pathname}${location.search || ''}`);
   }, [location]);
 
   const onNavigate: CancelableEventHandler<
-    BreadcrumbGroupProps.ClickDetail | SideNavigationProps.FollowDetail
+  BreadcrumbGroupProps.ClickDetail | SideNavigationProps.FollowDetail
   > = useCallback(
     (e) => {
       if (!e.detail.external) {
@@ -174,17 +174,17 @@ const AppLayout: FC<PropsWithChildren<AppLayoutProps>> = ({
         setActiveBreadcrumbs,
       }}
     >
-      {"header" in props ? props.header : undefined}
+      {'header' in props ? props.header : undefined}
       <AppLayoutComponent
         breadcrumbs={
-          breadcrumbGroupHide ? undefined : "breadcrumbGroup" in props ? (
+          breadcrumbGroupHide ? undefined : 'breadcrumbGroup' in props ? (
             props.breadcrumbGroup
           ) : (
             <BreadcrumbGroup onFollow={onNavigate} items={activeBreadcrumbs} />
           )
         }
         navigation={
-          "navigation" in props ? (
+          'navigation' in props ? (
             props.navigation
           ) : (
             <div>
@@ -198,8 +198,8 @@ const AppLayout: FC<PropsWithChildren<AppLayoutProps>> = ({
           )
         }
         content={
-          !contentType || contentType === "default" ? (
-            <Box padding={{ top: "l" }}>{children}</Box>
+          !contentType || contentType === 'default' ? (
+            <Box padding={{ top: 'l' }}>{children}</Box>
           ) : (
             children
           )

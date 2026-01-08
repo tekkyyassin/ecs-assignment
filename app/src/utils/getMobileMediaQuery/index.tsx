@@ -14,7 +14,7 @@
   limitations under the License.
  ******************************************************************************************************************** */
 
-import { MOBILE_BREAKPOINT, SMALL_DEVICE_BREAKPOINT } from "../../configs";
+import { MOBILE_BREAKPOINT, SMALL_DEVICE_BREAKPOINT } from '../../configs';
 
 const getMobileMediaQuery = () => {
   return `@media (max-width: ${MOBILE_BREAKPOINT}px)`;

@@ -14,13 +14,13 @@
   limitations under the License.
  ******************************************************************************************************************** */
 
-import Button from "@cloudscape-design/components/button";
+import Button from '@cloudscape-design/components/button';
 import FormField, {
   FormFieldProps,
-} from "@cloudscape-design/components/form-field";
-import SpaceBetween from "@cloudscape-design/components/space-between";
-import React, { FC, useCallback, useRef, useMemo } from "react";
-import FileTokenLabel from "./components/FileTokenLabel";
+} from '@cloudscape-design/components/form-field';
+import SpaceBetween from '@cloudscape-design/components/space-between';
+import React, { FC, useCallback, useRef, useMemo } from 'react';
+import FileTokenLabel from './components/FileTokenLabel';
 
 export interface FileUploadProps extends FormFieldProps {
   accept?: string;
@@ -38,7 +38,7 @@ const FileUpload: FC<FileUploadProps> = ({
   secondaryControl,
   errorText,
   info,
-  buttonText = "Choose file",
+  buttonText = 'Choose file',
   name,
   accept,
   files,
@@ -99,7 +99,7 @@ const FileUpload: FC<FileUploadProps> = ({
         <input
           ref={inputElement}
           name={name}
-          style={{ display: "none" }}
+          style={{ display: 'none' }}
           type="file"
           accept={accept}
           onChange={handleFileSelectionChange}

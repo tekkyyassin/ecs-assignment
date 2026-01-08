@@ -14,14 +14,14 @@
   limitations under the License.
  ******************************************************************************************************************** */
 
-import { FC, PropsWithChildren, useCallback } from "react";
-import useLocalStorageState from "use-local-storage-state";
-import { LOCAL_STORAGE_KEY_MITIGATION_LINK_LIST } from "../../../../configs/localStorageKeys";
-import { MitigationLink } from "../../../../customTypes";
-import removeLocalStorageKey from "../../../../utils/removeLocalStorageKey";
-import { MitigationLinksContext } from "../../context";
-import { MitigationLinksContextProviderProps } from "../../types";
-import useMitigationLinks from "../../useMitigationLinks";
+import { FC, PropsWithChildren, useCallback } from 'react';
+import useLocalStorageState from 'use-local-storage-state';
+import { LOCAL_STORAGE_KEY_MITIGATION_LINK_LIST } from '../../../../configs/localStorageKeys';
+import { MitigationLink } from '../../../../customTypes';
+import removeLocalStorageKey from '../../../../utils/removeLocalStorageKey';
+import { MitigationLinksContext } from '../../context';
+import { MitigationLinksContextProviderProps } from '../../types';
+import useMitigationLinks from '../../useMitigationLinks';
 
 const getLocalStorageKey = (workspaceId: string | null) => {
   if (workspaceId) {
@@ -32,7 +32,7 @@ const getLocalStorageKey = (workspaceId: string | null) => {
 };
 
 const MitigationLinksLocalStorageContextProvider: FC<
-  PropsWithChildren<MitigationLinksContextProviderProps>
+PropsWithChildren<MitigationLinksContextProviderProps>
 > = ({ children, workspaceId: currentWorkspaceId }) => {
   const [mitigationLinkList, setMitigationLinkList, { removeItem }] =
     useLocalStorageState<MitigationLink[]>(

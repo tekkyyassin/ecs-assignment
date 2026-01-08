@@ -15,11 +15,11 @@
  ******************************************************************************************************************** */
 
 /** @jsxImportSource @emotion/react */
-import { css } from "@emotion/react";
-import { FC } from "react";
-import threatStatementFullExamples from "../../../../../assets/threat-statement-examples.png";
-import styles from "../../styles";
-import InfoModalBase from "../InfoModalBase";
+import { css } from '@emotion/react';
+import { FC } from 'react';
+import threatStatementFullExamples from '../../../../../assets/threat-statement-examples.png';
+import styles from '../../styles';
+import InfoModalBase from '../InfoModalBase';
 
 const InfoModalFullExamples: FC = () => {
   return (

@@ -14,11 +14,11 @@
   limitations under the License.
  ******************************************************************************************************************** */
 
-import { FC, useCallback, useEffect, useState } from "react";
-import { useAssumptionLinksContext } from "../../../contexts/AssumptionLinksContext/context";
-import { useMitigationsContext } from "../../../contexts/MitigationsContext/context";
-import { AssumptionLink } from "../../../customTypes";
-import MitigationLinkView from "../../mitigations/MitigationLinkView";
+import { FC, useCallback, useEffect, useState } from 'react';
+import { useAssumptionLinksContext } from '../../../contexts/AssumptionLinksContext/context';
+import { useMitigationsContext } from '../../../contexts/MitigationsContext/context';
+import { AssumptionLink } from '../../../customTypes';
+import MitigationLinkView from '../../mitigations/MitigationLinkView';
 
 export interface AssumptionThreatLinkProps {
   assumptionId: string;
@@ -35,7 +35,7 @@ const AssumptionThreatLinkComponent: FC<AssumptionThreatLinkProps> = ({
   useEffect(() => {
     const _assumptionLinks = getAssumptionEntityLinks(
       assumptionId,
-      "Mitigation",
+      'Mitigation',
     );
     setAssumptionLinks(_assumptionLinks || []);
   }, [getAssumptionEntityLinks, assumptionId]);
@@ -49,16 +49,16 @@ const AssumptionThreatLinkComponent: FC<AssumptionThreatLinkProps> = ({
         addAssumptionLink({
           linkedId: mitigationIdOrNewMitigation,
           assumptionId,
-          type: "Mitigation",
+          type: 'Mitigation',
         });
       } else {
         const newMitigation = saveMitigation({
           numericId: -1,
           content: mitigationIdOrNewMitigation,
-          id: "new",
+          id: 'new',
         });
         addAssumptionLink({
-          type: "Mitigation",
+          type: 'Mitigation',
           linkedId: newMitigation.id,
           assumptionId,
         });

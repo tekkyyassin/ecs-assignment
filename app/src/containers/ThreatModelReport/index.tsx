@@ -13,20 +13,20 @@
   See the License for the specific language governing permissions and
   limitations under the License.
  ******************************************************************************************************************** */
-import { FC, useCallback, useState } from "react";
-import ThreatModel from "../../components/report/ThreatModel";
-import ThreatModelView from "../../components/report/ThreatModel/components/ThreatModelView";
+import { FC, useCallback, useState } from 'react';
+import ThreatModel from '../../components/report/ThreatModel';
+import ThreatModelView from '../../components/report/ThreatModel/components/ThreatModelView';
 
 const ThreatModelReport: FC = () => {
   const [isPreview] = useState(() => {
     const urlParams = new URLSearchParams(window.location.search);
-    const previewParams = urlParams.get("preview");
-    return previewParams === "true";
+    const previewParams = urlParams.get('preview');
+    return previewParams === 'true';
   });
 
   const [data] = useState(() => {
     const urlParams = new URLSearchParams(window.location.search);
-    const dataKey = urlParams.get("dataKey");
+    const dataKey = urlParams.get('dataKey');
     const dataStr = dataKey && window.localStorage.getItem(dataKey);
 
     if (dataStr) {
@@ -42,11 +42,11 @@ const ThreatModelReport: FC = () => {
 
   const handlePrintButtonClick = useCallback(() => {
     const urlParams = new URLSearchParams(window.location.search);
-    urlParams.set("preview", "true");
+    urlParams.set('preview', 'true');
     window.open(
       `${window.location.pathname}?${urlParams.toString()}`,
-      "_blank",
-      "noopener,noreferrer,resizable",
+      '_blank',
+      'noopener,noreferrer,resizable',
     );
   }, []);
 

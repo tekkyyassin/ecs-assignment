@@ -14,16 +14,16 @@
   limitations under the License.
  ******************************************************************************************************************** */
 
-import Autosuggest from "@cloudscape-design/components/autosuggest";
+import Autosuggest from '@cloudscape-design/components/autosuggest';
 import ExpandableSection, {
   ExpandableSectionProps,
-} from "@cloudscape-design/components/expandable-section";
-import TokenGroup from "@cloudscape-design/components/token-group";
-import React, { FC, useMemo } from "react";
-import { Assumption } from "../../../customTypes";
+} from '@cloudscape-design/components/expandable-section';
+import TokenGroup from '@cloudscape-design/components/token-group';
+import React, { FC, useMemo } from 'react';
+import { Assumption } from '../../../customTypes';
 
 export interface AssumptionLinkProps {
-  variant?: ExpandableSectionProps["variant"];
+  variant?: ExpandableSectionProps['variant'];
   linkedAssumptionIds: string[];
   assumptionList: Assumption[];
   onAddAssumptionLink: (assumptionId: string) => void;
@@ -37,7 +37,7 @@ const AssumptionLinkComponent: FC<AssumptionLinkProps> = ({
   onRemoveAssumptionLink,
   variant,
 }) => {
-  const [searchValue, setSearchValue] = React.useState("");
+  const [searchValue, setSearchValue] = React.useState('');
 
   const linkedAssumptions = useMemo(() => {
     return assumptionList.filter((al) => linkedAssumptionIds.includes(al.id));
@@ -60,7 +60,7 @@ const AssumptionLinkComponent: FC<AssumptionLinkProps> = ({
   return (
     <ExpandableSection
       variant={variant}
-      headingTagOverride={variant === "container" ? "h3" : undefined}
+      headingTagOverride={variant === 'container' ? 'h3' : undefined}
       headerText={`Linked assumptions (${linkedAssumptions.length})`}
     >
       <Autosuggest
@@ -72,7 +72,7 @@ const AssumptionLinkComponent: FC<AssumptionLinkProps> = ({
         }))}
         onSelect={({ detail }) => {
           onAddAssumptionLink(detail.value);
-          setSearchValue("");
+          setSearchValue('');
         }}
         filteringType="manual"
         enteredTextLabel={(value) => `Add new assumption: "${value}"`}

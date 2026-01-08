@@ -14,7 +14,7 @@
   limitations under the License.
  ******************************************************************************************************************** */
 
-import { z } from "zod";
+import { z } from 'zod';
 import {
   FREE_TEXT_INPUT_MAX_LENGTH,
   SINGLE_FIELD_INPUT_SMALL_MAX_LENGTH,
@@ -25,8 +25,8 @@ import {
   REGEX_CONTENT_IMAGE_BASE64,
   IMAGE_BASE64_MAX_LENGTH,
   IMAGE_URL_MAX_LENGTH,
-} from "../configs";
-import STRIDE from "../data/stride";
+} from '../configs';
+import STRIDE from '../data/stride';
 
 export const TagSchema = z
   .string()
@@ -45,20 +45,20 @@ export const MetadataSchema = z
   .strict()
   .refine(
     (data) => {
-      if (data.key === "Comments") {
+      if (data.key === 'Comments') {
         return MetadataCommentSchema.safeParse(data.value).success;
       }
 
-      if (data.key === "STRIDE") {
+      if (data.key === 'STRIDE') {
         return (
           Array.isArray(data.value) &&
           data.value.every((v) => STRIDE.map((s) => s.value).includes(v))
         );
       }
 
-      if (data.key === "Priority") {
+      if (data.key === 'Priority') {
         return (
-          typeof data.value === "string" &&
+          typeof data.value === 'string' &&
           LEVEL_SELECTOR_OPTIONS.map((o) => o.value).includes(data.value)
         );
       }
@@ -138,7 +138,7 @@ export const BaseImageInfoSchema = z
           );
         },
         {
-          message: "Invalid image format",
+          message: 'Invalid image format',
           path: [],
         },
       ),

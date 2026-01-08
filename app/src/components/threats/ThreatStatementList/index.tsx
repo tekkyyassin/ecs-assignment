@@ -15,55 +15,55 @@
  ******************************************************************************************************************** */
 
 /** @jsxImportSource @emotion/react */
-import Button from "@cloudscape-design/components/button";
-import Container from "@cloudscape-design/components/container";
-import Grid from "@cloudscape-design/components/grid";
-import Header from "@cloudscape-design/components/header";
-import Multiselect from "@cloudscape-design/components/multiselect";
-import SpaceBetween from "@cloudscape-design/components/space-between";
-import TextFilter from "@cloudscape-design/components/text-filter";
-import { css } from "@emotion/react";
-import { FC, useCallback, useMemo, useState } from "react";
+import Button from '@cloudscape-design/components/button';
+import Container from '@cloudscape-design/components/container';
+import Grid from '@cloudscape-design/components/grid';
+import Header from '@cloudscape-design/components/header';
+import Multiselect from '@cloudscape-design/components/multiselect';
+import SpaceBetween from '@cloudscape-design/components/space-between';
+import TextFilter from '@cloudscape-design/components/text-filter';
+import { css } from '@emotion/react';
+import { FC, useCallback, useMemo, useState } from 'react';
 import {
   LEVEL_SELECTOR_OPTIONS,
   DEFAULT_NEW_ENTITY_ID,
   LEVEL_NOT_SET,
-} from "../../../configs";
+} from '../../../configs';
 import {
   useAssumptionLinksContext,
   useMitigationLinksContext,
   useControlLinksContext,
-} from "../../../contexts";
-import { useGlobalSetupContext } from "../../../contexts/GlobalSetupContext/context";
-import { useThreatsContext } from "../../../contexts/ThreatsContext/context";
+} from '../../../contexts';
+import { useGlobalSetupContext } from '../../../contexts/GlobalSetupContext/context';
+import { useThreatsContext } from '../../../contexts/ThreatsContext/context';
 import {
   TemplateThreatStatement,
   ThreatStatementListFilter,
-} from "../../../customTypes";
-import useEditMetadata from "../../../hooks/useEditMetadata";
-import { addTagToEntity, removeTagFromEntity } from "../../../utils/entityTag";
-import AssetSelector from "../../generic/AssetSelector";
+} from '../../../customTypes';
+import useEditMetadata from '../../../hooks/useEditMetadata';
+import { addTagToEntity, removeTagFromEntity } from '../../../utils/entityTag';
+import AssetSelector from '../../generic/AssetSelector';
 import LinkedEntityFilter, {
   ALL,
   WITHOUT_NO_LINKED_ENTITY,
   WITH_LINKED_ENTITY,
-} from "../../generic/LinkedEntityFilter";
-import { OPTIONS as STRIDEOptions } from "../../generic/STRIDESelector";
-import TagSelector from "../../generic/TagSelector";
-import WorkspaceSelector from "../../workspaces/WorkspaceSelector";
-import SortByComponent, { SortByOption, DEFAULT_SORT_BY } from "../SortBy";
-import ThreatStatementCard from "../ThreatStatementCard";
+} from '../../generic/LinkedEntityFilter';
+import { OPTIONS as STRIDEOptions } from '../../generic/STRIDESelector';
+import TagSelector from '../../generic/TagSelector';
+import WorkspaceSelector from '../../workspaces/WorkspaceSelector';
+import SortByComponent, { SortByOption, DEFAULT_SORT_BY } from '../SortBy';
+import ThreatStatementCard from '../ThreatStatementCard';
 
 const LevelOptionsWithNoValue = [
   ...LEVEL_SELECTOR_OPTIONS,
   {
-    label: "Priority Not Set",
+    label: 'Priority Not Set',
     value: LEVEL_NOT_SET,
   },
 ];
 
 const STRIDE_OPTION_NO_VALUE = {
-  label: "STRIDE Not Set",
+  label: 'STRIDE Not Set',
   value: LEVEL_NOT_SET,
 };
 
@@ -77,9 +77,9 @@ const LELEV_MAPPING: any = {
 
 const styles = {
   btnClearFilter: css({
-    height: "100%",
-    display: "flex",
-    alignItems: "center",
+    height: '100%',
+    display: 'flex',
+    alignItems: 'center',
   }),
 };
 
@@ -125,7 +125,7 @@ const ThreatStatementList: FC<ThreatStatementListProps> = ({
     ],
   );
 
-  const [filteringText, setFilteringText] = useState("");
+  const [filteringText, setFilteringText] = useState('');
   const [sortBy, setSortBy] = useState<SortByOption>(DEFAULT_SORT_BY);
 
   const [selectedImpactedGoal, setSelectedImpactedGoal] = useState<string[]>(
@@ -133,7 +133,7 @@ const ThreatStatementList: FC<ThreatStatementListProps> = ({
   );
 
   const [selectedImpactedAssets, setSelectedImpactedAssets] = useState<
-    string[]
+  string[]
   >([]);
 
   const [selectedTags, setSelectedTags] = useState<string[]>([]);
@@ -148,7 +148,7 @@ const ThreatStatementList: FC<ThreatStatementListProps> = ({
 
   const [selectedLinkedAssumptionFilter, setSelectedLinkedAssumptionFilter] =
     useState(
-      initialFilter && typeof initialFilter.linkedAssumptions !== "undefined"
+      initialFilter && typeof initialFilter.linkedAssumptions !== 'undefined'
         ? initialFilter.linkedAssumptions
           ? WITH_LINKED_ENTITY
           : WITHOUT_NO_LINKED_ENTITY
@@ -157,7 +157,7 @@ const ThreatStatementList: FC<ThreatStatementListProps> = ({
 
   const [selectedLinkedMitigationFilter, setSelectedLinkedMitigationFilter] =
     useState(
-      initialFilter && typeof initialFilter.linkedMitigations !== "undefined"
+      initialFilter && typeof initialFilter.linkedMitigations !== 'undefined'
         ? initialFilter.linkedMitigations
           ? WITH_LINKED_ENTITY
           : WITHOUT_NO_LINKED_ENTITY
@@ -166,7 +166,7 @@ const ThreatStatementList: FC<ThreatStatementListProps> = ({
 
   const [selectedLinkedControlFilter, setSelectedLinkedControlFilter] =
     useState(
-      initialFilter && typeof initialFilter.linkedControls !== "undefined"
+      initialFilter && typeof initialFilter.linkedControls !== 'undefined'
         ? initialFilter.linkedControls
           ? WITH_LINKED_ENTITY
           : WITHOUT_NO_LINKED_ENTITY
@@ -228,7 +228,7 @@ const ThreatStatementList: FC<ThreatStatementListProps> = ({
 
     if (selectedPriorities && selectedPriorities.length > 0) {
       output = output.filter((st) => {
-        const priority = st.metadata?.find((m) => m.key === "Priority");
+        const priority = st.metadata?.find((m) => m.key === 'Priority');
         const includedNoValue = selectedPriorities.includes(LEVEL_NOT_SET);
         if (
           includedNoValue &&
@@ -246,7 +246,7 @@ const ThreatStatementList: FC<ThreatStatementListProps> = ({
 
     if (selectedSTRIDEs && selectedSTRIDEs.length > 0) {
       output = output.filter((st) => {
-        const stride = st.metadata?.find((m) => m.key === "STRIDE");
+        const stride = st.metadata?.find((m) => m.key === 'STRIDE');
         const includedNoValue = selectedSTRIDEs.includes(LEVEL_NOT_SET);
         if (
           includedNoValue &&
@@ -286,11 +286,11 @@ const ThreatStatementList: FC<ThreatStatementListProps> = ({
       });
     }
 
-    if (sortBy.field === "Priority") {
+    if (sortBy.field === 'Priority') {
       output = output.sort((op1, op2) => {
-        const priority1 = op1.metadata?.find((m) => m.key === "Priority")
+        const priority1 = op1.metadata?.find((m) => m.key === 'Priority')
           ?.value as string;
-        const priority2 = op2.metadata?.find((m) => m.key === "Priority")
+        const priority2 = op2.metadata?.find((m) => m.key === 'Priority')
           ?.value as string;
         const priorityValue1 = (priority1 && LELEV_MAPPING[priority1]) || 0;
         const priorityValue2 = (priority2 && LELEV_MAPPING[priority2]) || 0;
@@ -328,7 +328,7 @@ const ThreatStatementList: FC<ThreatStatementListProps> = ({
 
   const hasNoFilter = useMemo(() => {
     return (
-      filteringText === "" &&
+      filteringText === '' &&
       selectedImpactedAssets.length === 0 &&
       selectedImpactedGoal.length === 0 &&
       selectedTags.length === 0 &&
@@ -369,7 +369,7 @@ const ThreatStatementList: FC<ThreatStatementListProps> = ({
   const actions = useMemo(() => {
     return (
       <>
-        {composerMode !== "Full" ? (
+        {composerMode !== 'Full' ? (
           <WorkspaceSelector
             embededMode={true}
             enabledExportAll={statementList.length > 0}
@@ -425,7 +425,7 @@ const ThreatStatementList: FC<ThreatStatementListProps> = ({
   }, [statementList]);
 
   const handleClearFilter = useCallback(() => {
-    setFilteringText("");
+    setFilteringText('');
     setSelectedImpactedAssets([]);
     setSelectedImpactedGoal([]);
     setSelectedTags([]);
@@ -437,26 +437,26 @@ const ThreatStatementList: FC<ThreatStatementListProps> = ({
   }, []);
 
   const gridDefinition = useMemo(() => {
-    return composerMode === "Full"
+    return composerMode === 'Full'
       ? [
-          { colspan: { default: 12, xs: 6, s: 2 } },
-          { colspan: { default: 12, xs: 6, s: 2 } },
-          { colspan: { default: 12, xs: 6, s: 2 } },
-          { colspan: { default: 12, xs: 6, s: 2 } },
-          { colspan: { default: 12, xs: 6, s: 2 } },
-          { colspan: { default: 12, xs: 6, s: 3 } },
-          { colspan: { default: 12, xs: 6, s: 3 } },
-          { colspan: { default: 12, xs: 6, s: 3 } },
-          { colspan: { default: 12, xs: 6, s: 2 } },
-        ]
+        { colspan: { default: 12, xs: 6, s: 2 } },
+        { colspan: { default: 12, xs: 6, s: 2 } },
+        { colspan: { default: 12, xs: 6, s: 2 } },
+        { colspan: { default: 12, xs: 6, s: 2 } },
+        { colspan: { default: 12, xs: 6, s: 2 } },
+        { colspan: { default: 12, xs: 6, s: 3 } },
+        { colspan: { default: 12, xs: 6, s: 3 } },
+        { colspan: { default: 12, xs: 6, s: 3 } },
+        { colspan: { default: 12, xs: 6, s: 2 } },
+      ]
       : [
-          { colspan: { default: 12, xs: 6, s: 2 } },
-          { colspan: { default: 12, xs: 6, s: 2 } },
-          { colspan: { default: 12, xs: 6, s: 2.5 } },
-          { colspan: { default: 12, xs: 6, s: 2.5 } },
-          { colspan: { default: 12, xs: 5, s: 2 } },
-          { colspan: { default: 1 } },
-        ];
+        { colspan: { default: 12, xs: 6, s: 2 } },
+        { colspan: { default: 12, xs: 6, s: 2 } },
+        { colspan: { default: 12, xs: 6, s: 2.5 } },
+        { colspan: { default: 12, xs: 6, s: 2.5 } },
+        { colspan: { default: 12, xs: 5, s: 2 } },
+        { colspan: { default: 1 } },
+      ];
   }, [composerMode]);
 
   return (
@@ -468,7 +468,7 @@ const ThreatStatementList: FC<ThreatStatementListProps> = ({
               actions={actions}
               counter={`(${filteredStatementList.length})`}
               info={
-                composerMode === "Full" ? undefined : (
+                composerMode === 'Full' ? undefined : (
                   <Button
                     variant="icon"
                     iconName="status-info"
@@ -497,7 +497,7 @@ const ThreatStatementList: FC<ThreatStatementListProps> = ({
                 }))}
                 onChange={({ detail }) =>
                   setSelectedPriorities(
-                    detail.selectedOptions?.map((o) => o.value || "") || [],
+                    detail.selectedOptions?.map((o) => o.value || '') || [],
                   )
                 }
                 deselectAriaLabel={(e) => `Remove ${e.label}`}
@@ -517,7 +517,7 @@ const ThreatStatementList: FC<ThreatStatementListProps> = ({
                 ]}
                 onChange={({ detail }) =>
                   setSelectedSTRIDEs(
-                    detail.selectedOptions?.map((o) => o.value || "") || [],
+                    detail.selectedOptions?.map((o) => o.value || '') || [],
                   )
                 }
                 deselectAriaLabel={(e) => `Remove ${e.label}`}
@@ -538,7 +538,7 @@ const ThreatStatementList: FC<ThreatStatementListProps> = ({
                 }))}
                 onChange={({ detail }) =>
                   setSelectedImpactedGoal(
-                    detail.selectedOptions?.map((o) => o.value || "") || [],
+                    detail.selectedOptions?.map((o) => o.value || '') || [],
                   )
                 }
                 deselectAriaLabel={(e) => `Remove ${e.label}`}
@@ -554,7 +554,7 @@ const ThreatStatementList: FC<ThreatStatementListProps> = ({
                 selectedTags={selectedTags}
                 setSelectedTags={setSelectedTags}
               />
-              {composerMode === "Full" && (
+              {composerMode === 'Full' && (
                 <LinkedEntityFilter
                   label="Linked controls"
                   entityDisplayName="controls"
@@ -563,7 +563,7 @@ const ThreatStatementList: FC<ThreatStatementListProps> = ({
                   setSelected={setSelectedLinkedControlFilter}
                 />
               )}
-              {composerMode === "Full" && (
+              {composerMode === 'Full' && (
                 <LinkedEntityFilter
                   label="Linked mitigations"
                   entityDisplayName="mitigations"
@@ -572,7 +572,7 @@ const ThreatStatementList: FC<ThreatStatementListProps> = ({
                   setSelected={setSelectedLinkedMitigationFilter}
                 />
               )}
-              {composerMode === "Full" && (
+              {composerMode === 'Full' && (
                 <LinkedEntityFilter
                   label="Linked assumptions"
                   entityDisplayName="assumptions"
@@ -581,7 +581,7 @@ const ThreatStatementList: FC<ThreatStatementListProps> = ({
                   setSelected={setSelectedLinkedAssumptionFilter}
                 />
               )}
-              {composerMode === "Full" ? (
+              {composerMode === 'Full' ? (
                 <div css={styles.btnClearFilter}>
                   <div>
                     <Button onClick={handleClearFilter} disabled={hasNoFilter}>
@@ -623,7 +623,7 @@ const ThreatStatementList: FC<ThreatStatementListProps> = ({
             onEditMetadata={handleEditMetadata}
             onAddTagToStatement={handleAddTagToStatement}
             onRemoveTagFromStatement={handleRemoveTagFromStatement}
-            showLinkedEntities={composerMode === "Full"}
+            showLinkedEntities={composerMode === 'Full'}
           />
         ))}
       </SpaceBetween>

@@ -14,13 +14,13 @@
   limitations under the License.
  ******************************************************************************************************************** */
 
-import { FC, PropsWithChildren, useCallback } from "react";
-import useLocalStorageState from "use-local-storage-state";
-import { LOCAL_STORAGE_KEY_DIAGRAM_INFO } from "../../../../configs/localStorageKeys";
-import { DiagramInfo } from "../../../../customTypes";
-import removeLocalStorageKey from "../../../../utils/removeLocalStorageKey";
-import { DiagramInfoContext, useDiagramInfoContext } from "../../context";
-import { DiagramContextProviderProps } from "../../types";
+import { FC, PropsWithChildren, useCallback } from 'react';
+import useLocalStorageState from 'use-local-storage-state';
+import { LOCAL_STORAGE_KEY_DIAGRAM_INFO } from '../../../../configs/localStorageKeys';
+import { DiagramInfo } from '../../../../customTypes';
+import removeLocalStorageKey from '../../../../utils/removeLocalStorageKey';
+import { DiagramInfoContext, useDiagramInfoContext } from '../../context';
+import { DiagramContextProviderProps } from '../../types';
 
 const getLocalStorageKey = (workspaceId: string | null) => {
   if (workspaceId) {
@@ -31,7 +31,7 @@ const getLocalStorageKey = (workspaceId: string | null) => {
 };
 
 const DiagramLocalStorageContextProvider: FC<
-  PropsWithChildren<DiagramContextProviderProps>
+PropsWithChildren<DiagramContextProviderProps>
 > = ({ children, workspaceId: currentWorkspaceId }) => {
   const [diagramInfo, setDiagramInfo, { removeItem }] =
     useLocalStorageState<DiagramInfo>(getLocalStorageKey(currentWorkspaceId), {

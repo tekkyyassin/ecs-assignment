@@ -14,9 +14,9 @@
   limitations under the License.
  ******************************************************************************************************************** */
 
-import { useContext, createContext } from "react";
-import { Control } from "../../customTypes";
-export type View = "list" | "editor";
+import { useContext, createContext } from 'react';
+import { Control } from '../../customTypes';
+export type View = 'list' | 'editor';
 
 export interface ControlsContextApi {
   controlList: Control[];
@@ -32,9 +32,9 @@ const initialState: ControlsContextApi = {
   setControlList: () => {},
   removeControl: () => {},
   saveControl: () => ({
-    id: "new",
+    id: 'new',
     numericId: -1,
-    content: "",
+    content: '',
   }),
   removeAllControls: () => Promise.resolve(),
   onDeleteWorkspace: () => Promise.resolve(),

@@ -25,7 +25,7 @@ import {
   TemplateThreatStatement,
   ControlProfile,
   Flow,
-} from "../../customTypes";
+} from '../../customTypes';
 
 export const hasApplicationName = (applicationInfo: ApplicationInfo) => {
   return !!applicationInfo.name;

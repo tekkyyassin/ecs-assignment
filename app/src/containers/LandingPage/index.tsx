@@ -14,9 +14,9 @@
   limitations under the License.
  ******************************************************************************************************************** */
 
-import { FC } from "react";
-import LandingPageComponent from "../../components/workspaces/LandingPage";
-import { ContextAggregator } from "../../contexts";
+import { FC } from 'react';
+import LandingPageComponent from '../../components/workspaces/LandingPage';
+import { ContextAggregator } from '../../contexts';
 
 const LandingPage: FC = () => {
   return (

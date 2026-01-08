@@ -15,26 +15,26 @@
  ******************************************************************************************************************** */
 
 /** @jsxImportSource @emotion/react */
-import Button from "@cloudscape-design/components/button";
-import Container from "@cloudscape-design/components/container";
-import Header from "@cloudscape-design/components/header";
-import SpaceBetween from "@cloudscape-design/components/space-between";
-import { FC, useCallback, useState, useMemo, useEffect } from "react";
+import Button from '@cloudscape-design/components/button';
+import Container from '@cloudscape-design/components/container';
+import Header from '@cloudscape-design/components/header';
+import SpaceBetween from '@cloudscape-design/components/space-between';
+import { FC, useCallback, useState, useMemo, useEffect } from 'react';
 import {
   BaseImageInfo,
   EditableComponentBaseProps,
-} from "../../../customTypes";
-import imageStyles from "../../../styles/image";
-import ImageEdit from "../ImageEdit";
-import MarkdownEditor, { MarkdownEditorProps } from "../MarkdownEditor";
-import MarkdownViewer from "../MarkdownViewer";
+} from '../../../customTypes';
+import imageStyles from '../../../styles/image';
+import ImageEdit from '../ImageEdit';
+import MarkdownEditor, { MarkdownEditorProps } from '../MarkdownEditor';
+import MarkdownViewer from '../MarkdownViewer';
 
 export interface BaseDiagramInfoProps extends EditableComponentBaseProps {
   entity: BaseImageInfo;
   headerTitle: string;
   diagramTitle: string;
   onConfirm: (info: BaseImageInfo) => void;
-  validateData?: MarkdownEditorProps["validateData"];
+  validateData?: MarkdownEditorProps['validateData'];
 }
 
 const BaseDiagramInfo: FC<BaseDiagramInfoProps> = ({
@@ -48,8 +48,8 @@ const BaseDiagramInfo: FC<BaseDiagramInfoProps> = ({
   const [editMode, setEditMode] = useState(
     !entity.description && !entity.image,
   );
-  const [image, setImage] = useState<string>("");
-  const [content, setContent] = useState("");
+  const [image, setImage] = useState<string>('');
+  const [content, setContent] = useState('');
 
   useEffect(() => {
     onEditModeChange?.(editMode);
@@ -64,8 +64,8 @@ const BaseDiagramInfo: FC<BaseDiagramInfoProps> = ({
   }, [image, content, onConfirm]);
 
   const handleEdit = useCallback(() => {
-    setContent(entity.description || "");
-    setImage(entity.image || "");
+    setContent(entity.description || '');
+    setImage(entity.image || '');
     setEditMode(true);
   }, [entity, setContent, setEditMode, setImage]);
 
@@ -107,7 +107,7 @@ const BaseDiagramInfo: FC<BaseDiagramInfoProps> = ({
           <Header variant="h3" key="diagramInfo">
             Introduction
           </Header>
-          <MarkdownViewer>{entity.description || ""}</MarkdownViewer>
+          <MarkdownViewer>{entity.description || ''}</MarkdownViewer>
           <Header variant="h3" key="diagram">
             {diagramTitle}
           </Header>

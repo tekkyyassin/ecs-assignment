@@ -14,10 +14,10 @@
   limitations under the License.
  ******************************************************************************************************************** */
 
-import { SelectProps } from "@cloudscape-design/components/select";
-import React, { FC, useMemo } from "react";
-import { TemplateThreatStatement } from "../../../customTypes";
-import LevelSelector from "../../generic/LevelSelector";
+import { SelectProps } from '@cloudscape-design/components/select';
+import React, { FC, useMemo } from 'react';
+import { TemplateThreatStatement } from '../../../customTypes';
+import LevelSelector from '../../generic/LevelSelector';
 
 export interface PriorityEditProps {
   showLabel?: boolean;
@@ -33,12 +33,12 @@ export interface PriorityEditProps {
 }
 
 const PriorityEdit: FC<PriorityEditProps> = React.forwardRef<
-  React.ForwardedRef<SelectProps.Ref>,
-  PriorityEditProps
+React.ForwardedRef<SelectProps.Ref>,
+PriorityEditProps
 >(({ editingStatement, onEditMetadata, showLabel = true, ...props }, ref) => {
   const priority = useMemo(() => {
     return (
-      (editingStatement.metadata?.find((m) => m.key === "Priority")
+      (editingStatement.metadata?.find((m) => m.key === 'Priority')
         ?.value as string) || undefined
     );
   }, [editingStatement.metadata]);
@@ -49,10 +49,10 @@ const PriorityEdit: FC<PriorityEditProps> = React.forwardRef<
       {...props}
       allowNoValue
       placeholder="Select Prority"
-      label={showLabel ? "Priority" : undefined}
+      label={showLabel ? 'Priority' : undefined}
       selectedLevel={priority}
       setSelectedLevel={(selectedLevel) =>
-        onEditMetadata(editingStatement, "Priority", selectedLevel)
+        onEditMetadata(editingStatement, 'Priority', selectedLevel)
       }
     />
   );

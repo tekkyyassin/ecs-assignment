@@ -17,7 +17,7 @@
 import {
   DataExchangeFormat,
   DataExchangeFormatSchema,
-} from "../../customTypes";
+} from '../../customTypes';
 
 const validateData = (data: DataExchangeFormat) => {
   const validation = DataExchangeFormatSchema.safeParse(data);

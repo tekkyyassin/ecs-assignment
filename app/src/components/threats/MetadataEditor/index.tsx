@@ -17,17 +17,17 @@
 /** @jsxImportSource @emotion/react */
 import ExpandableSection, {
   ExpandableSectionProps,
-} from "@cloudscape-design/components/expandable-section";
-import Grid from "@cloudscape-design/components/grid";
-import { FC, useMemo } from "react";
-import { TemplateThreatStatement } from "../../../customTypes";
-import expandablePanelHeaderStyles from "../../../styles/expandablePanelHeader";
-import CommentsEdit from "../../generic/CommentsEdit";
-import STRIDESELECTOR from "../../generic/STRIDESelector";
-import PriorityEdit from "../PriorityEdit";
+} from '@cloudscape-design/components/expandable-section';
+import Grid from '@cloudscape-design/components/grid';
+import { FC, useMemo } from 'react';
+import { TemplateThreatStatement } from '../../../customTypes';
+import expandablePanelHeaderStyles from '../../../styles/expandablePanelHeader';
+import CommentsEdit from '../../generic/CommentsEdit';
+import STRIDESELECTOR from '../../generic/STRIDESelector';
+import PriorityEdit from '../PriorityEdit';
 
 export interface MetadataEditorProps {
-  variant: ExpandableSectionProps["variant"];
+  variant: ExpandableSectionProps['variant'];
   editingStatement: TemplateThreatStatement;
   onEditMetadata: (
     statement: TemplateThreatStatement,
@@ -43,7 +43,7 @@ const MetadataEditor: FC<MetadataEditorProps> = ({
 }) => {
   const stride = useMemo(() => {
     return (
-      (editingStatement.metadata?.find((m) => m.key === "STRIDE")
+      (editingStatement.metadata?.find((m) => m.key === 'STRIDE')
         ?.value as string[]) || undefined
     );
   }, [editingStatement.metadata]);
@@ -52,7 +52,7 @@ const MetadataEditor: FC<MetadataEditorProps> = ({
     <ExpandableSection
       headerText={
         <span
-          css={variant === "default" ? expandablePanelHeaderStyles : undefined}
+          css={variant === 'default' ? expandablePanelHeaderStyles : undefined}
         >
           Metadata
         </span>
@@ -75,7 +75,7 @@ const MetadataEditor: FC<MetadataEditorProps> = ({
           label="STRIDE"
           selected={stride}
           setSelected={(selected) =>
-            onEditMetadata(editingStatement, "STRIDE", selected)
+            onEditMetadata(editingStatement, 'STRIDE', selected)
           }
         />
         <CommentsEdit entity={editingStatement} onEditEntity={onEditMetadata} />

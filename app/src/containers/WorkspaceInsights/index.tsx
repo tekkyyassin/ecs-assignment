@@ -14,9 +14,9 @@
   limitations under the License.
  ******************************************************************************************************************** */
 
-import { FC } from "react";
-import WorkspaceInsightsComponent from "../../components/workspaces/WorkspaceInsights";
-import { ContextAggregator } from "../../contexts";
+import { FC } from 'react';
+import WorkspaceInsightsComponent from '../../components/workspaces/WorkspaceInsights';
+import { ContextAggregator } from '../../contexts';
 
 const WorkspaceInsights: FC = () => {
   return (

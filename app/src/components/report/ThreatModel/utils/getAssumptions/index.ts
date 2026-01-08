@@ -14,35 +14,35 @@
   limitations under the License.
  ******************************************************************************************************************** */
 
-import { DataExchangeFormat } from "../../../../../customTypes";
-import escapeMarkdown from "../../../../../utils/escapeMarkdown";
-import parseTableCellContent from "../../../../../utils/parseTableCellContent";
-import standardizeNumericId from "../../../../../utils/standardizeNumericId";
+import { DataExchangeFormat } from '../../../../../customTypes';
+import escapeMarkdown from '../../../../../utils/escapeMarkdown';
+import parseTableCellContent from '../../../../../utils/parseTableCellContent';
+import standardizeNumericId from '../../../../../utils/standardizeNumericId';
 
 export const getAssumptionsContent = async (data: DataExchangeFormat) => {
   const rows: string[] = [];
-  rows.push("## Assumptions");
+  rows.push('## Assumptions');
 
-  rows.push("\n");
+  rows.push('\n');
 
   rows.push(
-    "| Assumption Number | Assumption | Linked Threats | Linked Controls | Linked Mitigations | Comments |",
+    '| Assumption Number | Assumption | Linked Threats | Linked Controls | Linked Mitigations | Comments |',
   );
-  rows.push("| --- | --- | --- | --- | --- | --- |");
+  rows.push('| --- | --- | --- | --- | --- | --- |');
 
   if (data.assumptions) {
     const promises = data.assumptions?.map(async (x) => {
       const threatLinks =
         data.assumptionLinks?.filter(
-          (al) => al.assumptionId === x.id && al.type === "Threat",
+          (al) => al.assumptionId === x.id && al.type === 'Threat',
         ) || [];
       const mitigationLinks =
         data.assumptionLinks?.filter(
-          (al) => al.assumptionId === x.id && al.type === "Mitigation",
+          (al) => al.assumptionId === x.id && al.type === 'Mitigation',
         ) || [];
       const controlLinks =
         data.assumptionLinks?.filter(
-          (al) => al.assumptionId === x.id && al.type === "Control",
+          (al) => al.assumptionId === x.id && al.type === 'Control',
         ) || [];
 
       const threatsContent = threatLinks
@@ -50,12 +50,12 @@ export const getAssumptionsContent = async (data: DataExchangeFormat) => {
           const threat = data.threats?.find((s) => s.id === tl.linkedId);
           if (threat) {
             const threatId = `T-${standardizeNumericId(threat.numericId)}`;
-            return `[**${threatId}**](#${threatId}): ${escapeMarkdown(threat.statement || "")}`;
+            return `[**${threatId}**](#${threatId}): ${escapeMarkdown(threat.statement || '')}`;
           }
           return null;
         })
         .filter((t) => !!t)
-        .join("<br/>");
+        .join('<br/>');
 
       const mitigationsContent = mitigationLinks
         .map((tl) => {
@@ -69,7 +69,7 @@ export const getAssumptionsContent = async (data: DataExchangeFormat) => {
           return null;
         })
         .filter((t) => !!t)
-        .join("<br/>");
+        .join('<br/>');
 
       const controlsContent = controlLinks
         .map((cl) => {
@@ -81,11 +81,11 @@ export const getAssumptionsContent = async (data: DataExchangeFormat) => {
           return null;
         })
         .filter((c) => !!c)
-        .join("<br/>");
+        .join('<br/>');
 
       const assumptionId = `A-${standardizeNumericId(x.numericId)}`;
       const comments = await parseTableCellContent(
-        (x.metadata?.find((m) => m.key === "Comments")?.value as string) || "",
+        (x.metadata?.find((m) => m.key === 'Comments')?.value as string) || '',
       );
       return `| ${assumptionId} | ${escapeMarkdown(x.content)} | ${threatsContent} | ${controlsContent} | ${mitigationsContent} | ${comments} |`;
     });
@@ -93,7 +93,7 @@ export const getAssumptionsContent = async (data: DataExchangeFormat) => {
     rows.push(...(await Promise.all(promises)));
   }
 
-  rows.push("\n");
+  rows.push('\n');
 
-  return rows.join("\n");
+  return rows.join('\n');
 };

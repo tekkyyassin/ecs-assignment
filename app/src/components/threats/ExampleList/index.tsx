@@ -15,25 +15,25 @@
  ******************************************************************************************************************** */
 
 /** @jsxImportSource @emotion/react */
-import Button from "@cloudscape-design/components/button";
-import Grid from "@cloudscape-design/components/grid";
-import Input from "@cloudscape-design/components/input";
-import SpaceBetween from "@cloudscape-design/components/space-between";
-import TextContent from "@cloudscape-design/components/text-content";
-import Toggle from "@cloudscape-design/components/toggle";
-import * as awsui from "@cloudscape-design/design-tokens";
-import { css } from "@emotion/react";
-import { useCallback, useMemo, useState } from "react";
-import { useThreatsContext } from "../../../contexts/ThreatsContext/context";
-import { PerFieldExample } from "../../../customTypes";
-import renderArrayField from "../../../utils/renderArrayField";
-import shuffle from "../../../utils/shuffle";
+import Button from '@cloudscape-design/components/button';
+import Grid from '@cloudscape-design/components/grid';
+import Input from '@cloudscape-design/components/input';
+import SpaceBetween from '@cloudscape-design/components/space-between';
+import TextContent from '@cloudscape-design/components/text-content';
+import Toggle from '@cloudscape-design/components/toggle';
+import * as awsui from '@cloudscape-design/design-tokens';
+import { css } from '@emotion/react';
+import { useCallback, useMemo, useState } from 'react';
+import { useThreatsContext } from '../../../contexts/ThreatsContext/context';
+import { PerFieldExample } from '../../../customTypes';
+import renderArrayField from '../../../utils/renderArrayField';
+import shuffle from '../../../utils/shuffle';
 
 export const DEFAULT_NUM_DISPLAY = 5;
 
 const styles = {
   list: css({
-    "& button": {
+    '& button': {
       padding: `0px ${awsui.spaceStaticXxs} !important`,
     },
   }),
@@ -53,13 +53,13 @@ const ExampleList = <T extends string | PerFieldExample | string[]>({
   const [showMoreExamples, setShowMoreExamples] = useState(false);
   const [showFullExample, setShowFullExample] = useState(false);
   const { threatStatementExamples } = useThreatsContext();
-  const [filterText, setFilterText] = useState("");
+  const [filterText, setFilterText] = useState('');
 
   const randomDislayList = useMemo(() => {
     let randomExamples = shuffle(examples);
     if (filterText) {
       randomExamples = randomExamples.filter((re) => {
-        if (typeof re === "string") {
+        if (typeof re === 'string') {
           return re.toLowerCase().indexOf(filterText) >= 0;
         }
 
@@ -79,7 +79,7 @@ const ExampleList = <T extends string | PerFieldExample | string[]>({
   const showFullExampleToggle = useMemo(() => {
     if (examples && examples.length > 0) {
       return (
-        typeof examples[0] !== "string" &&
+        typeof examples[0] !== 'string' &&
         !!(examples[0] as PerFieldExample).example
       );
     }
@@ -89,7 +89,7 @@ const ExampleList = <T extends string | PerFieldExample | string[]>({
 
   const renderExample = useCallback(
     (example: T) => {
-      if (typeof example === "string") {
+      if (typeof example === 'string') {
         return (
           <Button variant="link" onClick={() => onSelect(example)}>
             {example}
@@ -100,7 +100,7 @@ const ExampleList = <T extends string | PerFieldExample | string[]>({
       if (
         Array.isArray(example) &&
         example.length > 0 &&
-        typeof example[0] === "string"
+        typeof example[0] === 'string'
       ) {
         const exampleStr = renderArrayField(example);
         return (
@@ -113,8 +113,8 @@ const ExampleList = <T extends string | PerFieldExample | string[]>({
       const perFieldExamples = example as PerFieldExample;
 
       if (
-        typeof perFieldExamples.fromId !== "undefined" &&
-        typeof perFieldExamples.example !== "undefined"
+        typeof perFieldExamples.fromId !== 'undefined' &&
+        typeof perFieldExamples.example !== 'undefined'
       ) {
         if (showFullExample) {
           const fullExample =
@@ -189,12 +189,12 @@ const ExampleList = <T extends string | PerFieldExample | string[]>({
         {randomDislayList.length > DEFAULT_NUM_DISPLAY && (
           <Button
             iconName={
-              showMoreExamples ? "treeview-collapse" : "treeview-expand"
+              showMoreExamples ? 'treeview-collapse' : 'treeview-expand'
             }
             onClick={() => setShowMoreExamples((prev) => !prev)}
             variant="link"
           >
-            {showMoreExamples ? "Show less examples" : "Show more examples"}
+            {showMoreExamples ? 'Show less examples' : 'Show more examples'}
           </Button>
         )}
       </SpaceBetween>

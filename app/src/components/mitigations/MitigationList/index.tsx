@@ -14,33 +14,33 @@
   limitations under the License.
  ******************************************************************************************************************** */
 
-import Button from "@cloudscape-design/components/button";
-import Container from "@cloudscape-design/components/container";
-import Grid from "@cloudscape-design/components/grid";
-import Header from "@cloudscape-design/components/header";
-import SpaceBetween from "@cloudscape-design/components/space-between";
-import TextFilter from "@cloudscape-design/components/text-filter";
-import { FC, useCallback, useMemo, useState } from "react";
+import Button from '@cloudscape-design/components/button';
+import Container from '@cloudscape-design/components/container';
+import Grid from '@cloudscape-design/components/grid';
+import Header from '@cloudscape-design/components/header';
+import SpaceBetween from '@cloudscape-design/components/space-between';
+import TextFilter from '@cloudscape-design/components/text-filter';
+import { FC, useCallback, useMemo, useState } from 'react';
 import {
   useAssumptionLinksContext,
   useControlLinksContext,
   useMitigationLinksContext,
-} from "../../../contexts";
-import { useMitigationsContext } from "../../../contexts/MitigationsContext/context";
+} from '../../../contexts';
+import { useMitigationsContext } from '../../../contexts/MitigationsContext/context';
 import {
   AssumptionLink,
   ControlLink,
   Mitigation,
   MitigationLink,
-} from "../../../customTypes";
+} from '../../../customTypes';
 import LinkedEntityFilter, {
   ALL,
   WITHOUT_NO_LINKED_ENTITY,
   WITH_LINKED_ENTITY,
-} from "../../generic/LinkedEntityFilter";
-import TagSelector from "../../generic/TagSelector";
-import MitigationCard from "../MitigationCard";
-import MitigationCreationCard from "../MitigationCreationCard";
+} from '../../generic/LinkedEntityFilter';
+import TagSelector from '../../generic/TagSelector';
+import MitigationCard from '../MitigationCard';
+import MitigationCreationCard from '../MitigationCreationCard';
 
 const MitigationList: FC = () => {
   const { mitigationList, removeMitigation, saveMitigation } =
@@ -64,7 +64,7 @@ const MitigationList: FC = () => {
     removeControlLinksByLinkedEntityId,
   } = useControlLinksContext();
 
-  const [filteringText, setFilteringText] = useState("");
+  const [filteringText, setFilteringText] = useState('');
 
   const [selectedTags, setSelectedTags] = useState<string[]>([]);
 
@@ -94,7 +94,7 @@ const MitigationList: FC = () => {
 
   const hasNoFilter = useMemo(() => {
     return (
-      filteringText === "" &&
+      filteringText === '' &&
       selectedLinkedAssumptionsFilter === ALL &&
       selectedLinkedControlsFilter === ALL &&
       selectedLinkedThreatsFilter === ALL &&
@@ -109,7 +109,7 @@ const MitigationList: FC = () => {
   ]);
 
   const handleClearFilter = useCallback(() => {
-    setFilteringText("");
+    setFilteringText('');
     setSelectedTags([]);
     setSelectedLinkedControlsFilter(ALL);
     setSelectedLinkedAssumptionsFilter(ALL);
@@ -232,7 +232,7 @@ const MitigationList: FC = () => {
         assumptionLinks.push({
           linkedId: updated.id,
           assumptionId: id,
-          type: "Mitigation",
+          type: 'Mitigation',
         });
       });
 

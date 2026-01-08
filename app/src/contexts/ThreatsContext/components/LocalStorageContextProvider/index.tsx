@@ -14,19 +14,19 @@
   limitations under the License.
  ******************************************************************************************************************** */
 
-import { FC, PropsWithChildren, useCallback, useEffect } from "react";
-import useLocalStorageState from "use-local-storage-state";
+import { FC, PropsWithChildren, useCallback, useEffect } from 'react';
+import useLocalStorageState from 'use-local-storage-state';
 import {
   LOCAL_STORAGE_KEY_STATEMENT_LIST,
   LOCAL_STORAGE_KEY_EDITING_STATEMENT,
-} from "../../../../configs/localStorageKeys";
-import { TemplateThreatStatement } from "../../../../customTypes";
-import removeLocalStorageKey from "../../../../utils/removeLocalStorageKey";
-import { useGlobalSetupContext } from "../../../GlobalSetupContext/context";
-import { ThreatsContext } from "../../context";
-import useThreatExamples from "../../hooks/useThreatExamples";
-import useThreats from "../../hooks/useThreats";
-import { ThreatsContextProviderProps } from "../../types";
+} from '../../../../configs/localStorageKeys';
+import { TemplateThreatStatement } from '../../../../customTypes';
+import removeLocalStorageKey from '../../../../utils/removeLocalStorageKey';
+import { useGlobalSetupContext } from '../../../GlobalSetupContext/context';
+import { ThreatsContext } from '../../context';
+import useThreatExamples from '../../hooks/useThreatExamples';
+import useThreats from '../../hooks/useThreats';
+import { ThreatsContextProviderProps } from '../../types';
 
 const getLocalStorageKey = (workspaceId: string | null) => {
   if (workspaceId) {
@@ -37,7 +37,7 @@ const getLocalStorageKey = (workspaceId: string | null) => {
 };
 
 const ThreatsContextProvider: FC<
-  PropsWithChildren<ThreatsContextProviderProps>
+PropsWithChildren<ThreatsContextProviderProps>
 > = ({
   children,
   workspaceId: currentWorkspaceId,
@@ -122,8 +122,8 @@ const ThreatsContextProvider: FC<
 
   useEffect(() => {
     if (
-      (composerMode === "EditorOnly" && !editingStatementExist) ||
-      (composerMode === "ThreatsOnly" &&
+      (composerMode === 'EditorOnly' && !editingStatementExist) ||
+      (composerMode === 'ThreatsOnly' &&
         !hasVisitBefore &&
         !editingStatementExist &&
         lenStatementList === 0 &&

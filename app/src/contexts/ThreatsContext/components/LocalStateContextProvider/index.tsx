@@ -14,20 +14,20 @@
   limitations under the License.
  ******************************************************************************************************************** */
 
-import { FC, PropsWithChildren, useCallback, useState } from "react";
-import { TemplateThreatStatement } from "../../../../customTypes";
-import { useGlobalSetupContext } from "../../../GlobalSetupContext/context";
-import { LocalStateContextProviderBaseProps } from "../../../types";
-import { ThreatsContext } from "../../context";
-import useThreatExamples from "../../hooks/useThreatExamples";
-import useThreats from "../../hooks/useThreats";
-import { ThreatsContextProviderProps } from "../../types";
+import { FC, PropsWithChildren, useCallback, useState } from 'react';
+import { TemplateThreatStatement } from '../../../../customTypes';
+import { useGlobalSetupContext } from '../../../GlobalSetupContext/context';
+import { LocalStateContextProviderBaseProps } from '../../../types';
+import { ThreatsContext } from '../../context';
+import useThreatExamples from '../../hooks/useThreatExamples';
+import useThreats from '../../hooks/useThreats';
+import { ThreatsContextProviderProps } from '../../types';
 
 const ThreatsContextProvider: FC<
-  PropsWithChildren<
-    ThreatsContextProviderProps &
-      LocalStateContextProviderBaseProps<TemplateThreatStatement[]>
-  >
+PropsWithChildren<
+ThreatsContextProviderProps &
+LocalStateContextProviderBaseProps<TemplateThreatStatement[]>
+>
 > = ({ children, initialValue, onThreatListView, onThreatEditorView }) => {
   const [editingStatement, setEditingStatement] =
     useState<TemplateThreatStatement | null>(null);
@@ -37,7 +37,7 @@ const ThreatsContextProvider: FC<
   );
 
   const [filteredStatementList, setFilteredStatementList] = useState<
-    TemplateThreatStatement[]
+  TemplateThreatStatement[]
   >(initialValue || []);
 
   const { composerMode } = useGlobalSetupContext();

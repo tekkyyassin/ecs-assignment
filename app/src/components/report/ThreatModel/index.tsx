@@ -14,12 +14,12 @@
   limitations under the License.
  ******************************************************************************************************************** */
 
-import { FC, useMemo } from "react";
-import ThreatModelView from "./components/ThreatModelView";
-import { useGlobalSetupContext, useWorkspacesContext } from "../../../contexts";
-import useImportExport from "../../../hooks/useExportImport";
-import useHasContent from "../../../hooks/useHasContent";
-import getExportFileName from "../../../utils/getExportFileName";
+import { FC, useMemo } from 'react';
+import ThreatModelView from './components/ThreatModelView';
+import { useGlobalSetupContext, useWorkspacesContext } from '../../../contexts';
+import useImportExport from '../../../hooks/useExportImport';
+import useHasContent from '../../../hooks/useHasContent';
+import getExportFileName from '../../../utils/getExportFileName';
 
 export interface ThreatModelProps {
   onPrintButtonClick?: () => void;

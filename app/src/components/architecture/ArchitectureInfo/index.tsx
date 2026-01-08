@@ -14,13 +14,13 @@
   limitations under the License.
  ******************************************************************************************************************** */
 
-import { FC } from "react";
-import { useArchitectureInfoContext } from "../../../contexts/ArchitectureContext/context";
+import { FC } from 'react';
+import { useArchitectureInfoContext } from '../../../contexts/ArchitectureContext/context';
 import {
   ArchitectureInfoSchema,
   EditableComponentBaseProps,
-} from "../../../customTypes";
-import BaseDiagramInfo from "../../generic/BaseDiagramInfo";
+} from '../../../customTypes';
+import BaseDiagramInfo from '../../generic/BaseDiagramInfo';
 
 const ArchitectureInfo: FC<EditableComponentBaseProps> = (props) => {
   const { architectureInfo, setArchitectureInfo } =

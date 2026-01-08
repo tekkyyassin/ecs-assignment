@@ -15,10 +15,10 @@
  ******************************************************************************************************************** */
 
 /** @jsxImportSource @emotion/react */
-import { FC, PropsWithChildren } from "react";
-import { ExampleContext, useExampleContext } from "./context";
-import { DataExchangeFormat } from "../../customTypes";
-import threatModelExamples from "../../data/threatModelExample.json";
+import { FC, PropsWithChildren } from 'react';
+import { ExampleContext, useExampleContext } from './context';
+import { DataExchangeFormat } from '../../customTypes';
+import threatModelExamples from '../../data/threatModelExample.json';
 
 const ExampleContextProvider: FC<PropsWithChildren<{}>> = ({ children }) => {
   return (

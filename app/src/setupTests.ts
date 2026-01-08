@@ -13,7 +13,7 @@
   See the License for the specific language governing permissions and
   limitations under the License.
  ******************************************************************************************************************** */
-import "@testing-library/jest-dom";
+import '@testing-library/jest-dom';
 
 // To make sure that the tests are working, it's important that you are using
 // this implementation of ResizeObserver and DOMMatrixReadOnly

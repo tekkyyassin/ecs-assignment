@@ -14,9 +14,9 @@
   limitations under the License.
  ******************************************************************************************************************** */
 
-import { useContext, createContext } from "react";
-import { Mitigation } from "../../customTypes";
-export type View = "list" | "editor";
+import { useContext, createContext } from 'react';
+import { Mitigation } from '../../customTypes';
+export type View = 'list' | 'editor';
 
 export interface MitigationsContextApi {
   mitigationList: Mitigation[];
@@ -32,9 +32,9 @@ const initialState: MitigationsContextApi = {
   setMitigationList: () => {},
   removeMitigation: () => {},
   saveMitigation: () => ({
-    id: "new",
+    id: 'new',
     numericId: -1,
-    content: "",
+    content: '',
   }),
   removeAllMitigations: () => Promise.resolve(),
   onDeleteWorkspace: () => Promise.resolve(),

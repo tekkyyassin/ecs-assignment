@@ -15,22 +15,22 @@
  ******************************************************************************************************************** */
 
 /** @jsxImportSource @emotion/react */
-import Button from "@cloudscape-design/components/button";
-import ColumnLayout from "@cloudscape-design/components/column-layout";
-import { InputProps } from "@cloudscape-design/components/input";
-import TextContent from "@cloudscape-design/components/text-content";
-import { FC, useCallback, useEffect, useRef, forwardRef } from "react";
-import { useThreatsContext } from "../../../contexts/ThreatsContext/context";
-import { TemplateThreatStatementSchema } from "../../../customTypes";
-import Input from "../../generic/Input";
-import EditorLayout from "../EditorLayout";
-import styles from "../EditorLayout/styles";
-import ExampleList from "../ExampleList";
-import { EditorProps } from "../ThreatStatementEditor/types";
+import Button from '@cloudscape-design/components/button';
+import ColumnLayout from '@cloudscape-design/components/column-layout';
+import { InputProps } from '@cloudscape-design/components/input';
+import TextContent from '@cloudscape-design/components/text-content';
+import { FC, useCallback, useEffect, useRef, forwardRef } from 'react';
+import { useThreatsContext } from '../../../contexts/ThreatsContext/context';
+import { TemplateThreatStatementSchema } from '../../../customTypes';
+import Input from '../../generic/Input';
+import EditorLayout from '../EditorLayout';
+import styles from '../EditorLayout/styles';
+import ExampleList from '../ExampleList';
+import { EditorProps } from '../ThreatStatementEditor/types';
 
 const EditorThreatSource: FC<EditorProps> = forwardRef<
-  InputProps.Ref,
-  EditorProps
+InputProps.Ref,
+EditorProps
 >(({ statement, setStatement, fieldData }, ref) => {
   const { perFieldExamples, previousInputs } = useThreatsContext();
 
@@ -63,7 +63,7 @@ const EditorThreatSource: FC<EditorProps> = forwardRef<
             ref={ref}
             spellcheck
             onChange={({ detail }) => handleChange(detail.value)}
-            value={statement.threatSource || ""}
+            value={statement.threatSource || ''}
             placeholder="Enter threat source"
             validateData={
               TemplateThreatStatementSchema.shape.threatSource.safeParse
@@ -76,7 +76,7 @@ const EditorThreatSource: FC<EditorProps> = forwardRef<
             <Button
               variant="icon"
               iconName="close"
-              onClick={() => handleChange("")}
+              onClick={() => handleChange('')}
             />
           </div>
         )}

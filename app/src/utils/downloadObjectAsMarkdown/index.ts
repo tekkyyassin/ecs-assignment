@@ -16,10 +16,10 @@
 
 const downloadContentAsMarkdown = (content: any, exportName: string) => {
   var dataStr =
-    "data:text/markdown;charset=utf-8," + encodeURIComponent(content);
-  var downloadAnchorNode = document.createElement("a");
-  downloadAnchorNode.setAttribute("href", dataStr);
-  downloadAnchorNode.setAttribute("download", exportName + ".md");
+    'data:text/markdown;charset=utf-8,' + encodeURIComponent(content);
+  var downloadAnchorNode = document.createElement('a');
+  downloadAnchorNode.setAttribute('href', dataStr);
+  downloadAnchorNode.setAttribute('download', exportName + '.md');
   document.body.appendChild(downloadAnchorNode);
   downloadAnchorNode.click();
   downloadAnchorNode.remove();

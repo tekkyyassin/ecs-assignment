@@ -18,8 +18,8 @@ import {
   TemplateThreatStatement,
   ThreatFieldTypes,
   threatFieldTypeMapping,
-} from "../../customTypes";
-import calculateFieldCombination from "../calculateFieldCombination";
+} from '../../customTypes';
+import calculateFieldCombination from '../calculateFieldCombination';
 
 const allFields = Object.keys(threatFieldTypeMapping);
 

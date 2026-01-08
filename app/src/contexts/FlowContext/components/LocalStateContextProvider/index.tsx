@@ -1,14 +1,14 @@
-import { FC, PropsWithChildren, useCallback, useState } from "react";
-import { Flow } from "../../../../customTypes";
-import { FLOW_DEFAULT_VALUE } from "../../../constants";
-import { LocalStateContextProviderBaseProps } from "../../../types";
-import { FlowContext } from "../../context";
-import { FlowContextProviderProps } from "../../types";
+import { FC, PropsWithChildren, useCallback, useState } from 'react';
+import { Flow } from '../../../../customTypes';
+import { FLOW_DEFAULT_VALUE } from '../../../constants';
+import { LocalStateContextProviderBaseProps } from '../../../types';
+import { FlowContext } from '../../context';
+import { FlowContextProviderProps } from '../../types';
 
 export const FlowLocalStateContextProvider: FC<
-  PropsWithChildren<
-    FlowContextProviderProps & LocalStateContextProviderBaseProps<Flow>
-  >
+PropsWithChildren<
+FlowContextProviderProps & LocalStateContextProviderBaseProps<Flow>
+>
 > = ({ children, initialValue }) => {
   const [flow, setFlow] = useState<Flow>(initialValue || FLOW_DEFAULT_VALUE);
 

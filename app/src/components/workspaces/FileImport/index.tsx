@@ -14,18 +14,18 @@
   limitations under the License.
  ******************************************************************************************************************** */
 
-import Alert from "@cloudscape-design/components/alert";
-import Box from "@cloudscape-design/components/box";
-import Button from "@cloudscape-design/components/button";
-import Modal from "@cloudscape-design/components/modal";
-import ProgressBar from "@cloudscape-design/components/progress-bar";
-import SpaceBetween from "@cloudscape-design/components/space-between";
-import TextContent from "@cloudscape-design/components/text-content";
-import React, { FC, useCallback, useEffect, useMemo, useState } from "react";
-import { DataExchangeFormat } from "../../../customTypes";
-import useImportExport from "../../../hooks/useExportImport";
+import Alert from '@cloudscape-design/components/alert';
+import Box from '@cloudscape-design/components/box';
+import Button from '@cloudscape-design/components/button';
+import Modal from '@cloudscape-design/components/modal';
+import ProgressBar from '@cloudscape-design/components/progress-bar';
+import SpaceBetween from '@cloudscape-design/components/space-between';
+import TextContent from '@cloudscape-design/components/text-content';
+import React, { FC, useCallback, useEffect, useMemo, useState } from 'react';
+import { DataExchangeFormat } from '../../../customTypes';
+import useImportExport from '../../../hooks/useExportImport';
 
-import FileUpload from "../../generic/FileUpload";
+import FileUpload from '../../generic/FileUpload';
 
 export interface FileImportProps {
   composerMode: string;
@@ -55,7 +55,7 @@ const FileImport: FC<FileImportProps> = ({
 
   const handleImport = useCallback(
     (files: File[]) => {
-      setError("");
+      setError('');
       setData(undefined);
       setLoading(true);
 
@@ -63,9 +63,9 @@ const FileImport: FC<FileImportProps> = ({
         const file = files[0];
         const reader = new FileReader();
 
-        reader.addEventListener("load", (event) => {
+        reader.addEventListener('load', (event) => {
           const result = event.target?.result;
-          setError("");
+          setError('');
           try {
             const importedData = parseImportedData(
               JSON.parse(result as string),
@@ -78,7 +78,7 @@ const FileImport: FC<FileImportProps> = ({
           }
         });
 
-        reader.addEventListener("progress", (event) => {
+        reader.addEventListener('progress', (event) => {
           if (event.loaded && event.total) {
             const percent = (event.loaded / event.total) * 100;
             setLoadingPercentage(percent);
@@ -163,7 +163,7 @@ const FileImport: FC<FileImportProps> = ({
             Importing data will override all the data in current workspace. This
             action cannot be undone.
             <br />
-            You can export the data to a json file as backup or create a new{" "}
+            You can export the data to a json file as backup or create a new{' '}
             <b>workspace</b>.
           </TextContent>
         </Alert>
@@ -193,14 +193,14 @@ const FileImport: FC<FileImportProps> = ({
           </Alert>
         )}
         {!onPreview &&
-          composerMode !== "Full" &&
+          composerMode !== 'Full' &&
           data &&
           data.threats &&
           data.threats.length > 0 && (
-            <Alert key="info" statusIconAriaLabel="Info" type="info">
-              {data.threats.length} threat statement loaded
-            </Alert>
-          )}
+          <Alert key="info" statusIconAriaLabel="Info" type="info">
+            {data.threats.length} threat statement loaded
+          </Alert>
+        )}
       </SpaceBetween>
     </Modal>
   );

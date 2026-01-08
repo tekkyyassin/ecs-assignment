@@ -15,48 +15,48 @@
  ******************************************************************************************************************** */
 
 /** @jsxImportSource @emotion/react */
-import Box from "@cloudscape-design/components/box";
-import Button from "@cloudscape-design/components/button";
-import Header from "@cloudscape-design/components/header";
-import Popover from "@cloudscape-design/components/popover";
-import SpaceBetween from "@cloudscape-design/components/space-between";
-import Spinner from "@cloudscape-design/components/spinner";
-import StatusIndicator from "@cloudscape-design/components/status-indicator";
-import * as awsui from "@cloudscape-design/design-tokens";
-import { css } from "@emotion/react";
-import { FC, useEffect, useCallback, useState, ReactNode } from "react";
+import Box from '@cloudscape-design/components/box';
+import Button from '@cloudscape-design/components/button';
+import Header from '@cloudscape-design/components/header';
+import Popover from '@cloudscape-design/components/popover';
+import SpaceBetween from '@cloudscape-design/components/space-between';
+import Spinner from '@cloudscape-design/components/spinner';
+import StatusIndicator from '@cloudscape-design/components/status-indicator';
+import * as awsui from '@cloudscape-design/design-tokens';
+import { css } from '@emotion/react';
+import { FC, useEffect, useCallback, useState, ReactNode } from 'react';
 import {
   DataExchangeFormat,
   HasContentDetails,
   ViewNavigationEvent,
-} from "../../../../../customTypes";
-import printStyles from "../../../../../styles/print";
-import downloadContentAsMarkdown from "../../../../../utils/downloadObjectAsMarkdown";
-import sanitizeHtml from "../../../../../utils/sanitizeHtml";
-import MarkdownViewer from "../../../../generic/MarkdownViewer";
-import { getApplicationInfoContent } from "../../utils/getApplicationInfo";
-import { getApplicationName } from "../../utils/getApplicationName";
-import { getArchitectureContent } from "../../utils/getArchitecture";
-import { getAssetsContent } from "../../utils/getAssets";
-import { getAssumptionsContent } from "../../utils/getAssumptions";
-import { getControlsContent } from "../../utils/getControls";
+} from '../../../../../customTypes';
+import printStyles from '../../../../../styles/print';
+import downloadContentAsMarkdown from '../../../../../utils/downloadObjectAsMarkdown';
+import sanitizeHtml from '../../../../../utils/sanitizeHtml';
+import MarkdownViewer from '../../../../generic/MarkdownViewer';
+import { getApplicationInfoContent } from '../../utils/getApplicationInfo';
+import { getApplicationName } from '../../utils/getApplicationName';
+import { getArchitectureContent } from '../../utils/getArchitecture';
+import { getAssetsContent } from '../../utils/getAssets';
+import { getAssumptionsContent } from '../../utils/getAssumptions';
+import { getControlsContent } from '../../utils/getControls';
 //import { getDataflowContent } from '../../utils/getDataFlow';
-import { getMitigationsContent } from "../../utils/getMitigations";
-import { getThreatsContent } from "../../utils/getThreats";
+import { getMitigationsContent } from '../../utils/getMitigations';
+import { getThreatsContent } from '../../utils/getThreats';
 
 const styles = {
   text: css({
-    display: "flex",
-    alignItems: "center",
-    height: "100%",
+    display: 'flex',
+    alignItems: 'center',
+    height: '100%',
   }),
   nextStepsContainer: css({
     borderTop: `2px solid ${awsui.colorBorderDividerDefault}`,
     paddingTop: awsui.spaceScaledS,
   }),
   noData: css({
-    textAlign: "center",
-    width: "100%",
+    textAlign: 'center',
+    width: '100%',
   }),
 };
 
@@ -78,7 +78,7 @@ const ThreatModelView: FC<ThreatModelViewProps> = ({
   hasContentDetails,
   ...props
 }) => {
-  const [content, setContent] = useState("");
+  const [content, setContent] = useState('');
   const [loading, setLoading] = useState(true);
 
   useEffect(() => {
@@ -86,36 +86,36 @@ const ThreatModelView: FC<ThreatModelViewProps> = ({
       setLoading(true);
       const sanitizedData = sanitizeHtml(data);
       const processedContent = (
-        composerMode === "Full"
+        composerMode === 'Full'
           ? [
-              (!hasContentDetails || hasContentDetails.applicationName) &&
+            (!hasContentDetails || hasContentDetails.applicationName) &&
                 (await getApplicationName(sanitizedData)),
-              (!hasContentDetails || hasContentDetails.applicationInfo) &&
+            (!hasContentDetails || hasContentDetails.applicationInfo) &&
                 (await getApplicationInfoContent(sanitizedData)),
-              (!hasContentDetails || hasContentDetails.architecture) &&
+            (!hasContentDetails || hasContentDetails.architecture) &&
                 (await getArchitectureContent(sanitizedData)),
-              //(!hasContentDetails || hasContentDetails.dataflow) && await getDataflowContent(sanitizedData),
-              (!hasContentDetails || hasContentDetails.assumptions) &&
+            //(!hasContentDetails || hasContentDetails.dataflow) && await getDataflowContent(sanitizedData),
+            (!hasContentDetails || hasContentDetails.assumptions) &&
                 (await getAssumptionsContent(sanitizedData)),
-              (!hasContentDetails || hasContentDetails.threats) &&
+            (!hasContentDetails || hasContentDetails.threats) &&
                 (await getThreatsContent(sanitizedData)),
-              (!hasContentDetails || hasContentDetails.controls) &&
+            (!hasContentDetails || hasContentDetails.controls) &&
                 (await getControlsContent(sanitizedData)),
-              (!hasContentDetails || hasContentDetails.mitigations) &&
+            (!hasContentDetails || hasContentDetails.mitigations) &&
                 (await getMitigationsContent(sanitizedData)),
-              (!hasContentDetails || hasContentDetails.threats) &&
+            (!hasContentDetails || hasContentDetails.threats) &&
                 (await getAssetsContent(sanitizedData)),
-            ]
+          ]
           : [await getThreatsContent(sanitizedData, true)]
       )
         .filter((x) => !!x)
-        .join("\n");
+        .join('\n');
 
       setContent(processedContent);
       setLoading(false);
     };
 
-    updateContent().catch((err) => console.log("Error", err));
+    updateContent().catch((err) => console.log('Error', err));
   }, [data, composerMode, hasContentDetails]);
 
   const handleCopyMarkdown = useCallback(async () => {
@@ -245,28 +245,28 @@ const ThreatModelView: FC<ThreatModelViewProps> = ({
             fontWeight="bold"
             css={styles.noData}
           >
-            {loading ? <Spinner /> : "No data available"}
+            {loading ? <Spinner /> : 'No data available'}
           </Box>
         )}
         {!isPreview &&
-          composerMode === "Full" &&
+          composerMode === 'Full' &&
           hasContentDetails &&
           Object.values(hasContentDetails).some((x) => !x) && (
-            <div css={printStyles.hiddenPrint}>
-              <Box css={styles.nextStepsContainer}>
-                <SpaceBetween direction="horizontal" size="xs">
-                  <Box
-                    key="boxSuggestedSteps"
-                    fontWeight="bold"
-                    css={styles.text}
-                  >
-                    Suggested next steps:{" "}
-                  </Box>
-                  {getNextStepButtons()}
-                </SpaceBetween>
-              </Box>
-            </div>
-          )}
+          <div css={printStyles.hiddenPrint}>
+            <Box css={styles.nextStepsContainer}>
+              <SpaceBetween direction="horizontal" size="xs">
+                <Box
+                  key="boxSuggestedSteps"
+                  fontWeight="bold"
+                  css={styles.text}
+                >
+                    Suggested next steps:{' '}
+                </Box>
+                {getNextStepButtons()}
+              </SpaceBetween>
+            </Box>
+          </div>
+        )}
       </SpaceBetween>
     </div>
   );

@@ -14,11 +14,11 @@
   limitations under the License.
  ******************************************************************************************************************** */
 
-import { FC, useEffect, useState } from "react";
-import { useThreatsContext } from "../../../contexts/ThreatsContext/context";
-import { ControlLink } from "../../../customTypes";
-import ThreatLinkView from "../../threats/ThreatLinkView";
-import { useControlLinksContext } from "../../../contexts/ControlLinksContext/context";
+import { FC, useEffect, useState } from 'react';
+import { useThreatsContext } from '../../../contexts/ThreatsContext/context';
+import { ControlLink } from '../../../customTypes';
+import ThreatLinkView from '../../threats/ThreatLinkView';
+import { useControlLinksContext } from '../../../contexts/ControlLinksContext/context';
 
 export interface ControlThreatLinkProps {
   controlId: string;

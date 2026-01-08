@@ -14,18 +14,18 @@
   limitations under the License.
  ******************************************************************************************************************** */
 
-import SpaceBetween from "@cloudscape-design/components/space-between";
-import { FC, useState, useCallback } from "react";
-import { useMitigationsContext } from "../../../contexts/MitigationsContext/context";
-import { useControlsContext } from "../../../contexts/ControlsContext/context";
-import { useThreatsContext } from "../../../contexts/ThreatsContext/context";
-import { Assumption } from "../../../customTypes";
+import SpaceBetween from '@cloudscape-design/components/space-between';
+import { FC, useState, useCallback } from 'react';
+import { useMitigationsContext } from '../../../contexts/MitigationsContext/context';
+import { useControlsContext } from '../../../contexts/ControlsContext/context';
+import { useThreatsContext } from '../../../contexts/ThreatsContext/context';
+import { Assumption } from '../../../customTypes';
 import GenericEntityCreationCard, {
   DEFAULT_ENTITY,
-} from "../../generic/GenericEntityCreationCard";
-import MitigationLinkView from "../../mitigations/MitigationLinkView";
-import ControlLinkView from "../../controls/ControlLinkView";
-import ThreatLinkView from "../../threats/ThreatLinkView";
+} from '../../generic/GenericEntityCreationCard';
+import MitigationLinkView from '../../mitigations/MitigationLinkView';
+import ControlLinkView from '../../controls/ControlLinkView';
+import ThreatLinkView from '../../threats/ThreatLinkView';
 
 export interface AssumptionCreationCardProps {
   onSave?: (
@@ -85,7 +85,7 @@ const AssumptionCreationCard: FC<AssumptionCreationCardProps> = ({
         const newMitigation = saveMitigation({
           numericId: -1,
           content: mitigationIdOrNewMitigation,
-          id: "new",
+          id: 'new',
         });
         setLinkedMitigationIds((prev) => [...prev, newMitigation.id]);
       }
@@ -101,7 +101,7 @@ const AssumptionCreationCard: FC<AssumptionCreationCardProps> = ({
         const newControl = saveControl({
           numericId: -1,
           content: controlIdOrNewControl,
-          id: "new",
+          id: 'new',
         });
         setLinkedControlIds((prev) => [...prev, newControl.id]);
       }

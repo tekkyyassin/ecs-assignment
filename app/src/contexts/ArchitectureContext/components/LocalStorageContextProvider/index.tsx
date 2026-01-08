@@ -14,14 +14,14 @@
   limitations under the License.
  ******************************************************************************************************************** */
 
-import { FC, PropsWithChildren, useCallback } from "react";
-import useLocalStorageState from "use-local-storage-state";
-import { LOCAL_STORAGE_KEY_ARCHIECTURE_INFO } from "../../../../configs/localStorageKeys";
-import { ArchitectureInfo } from "../../../../customTypes";
-import removeLocalStorageKey from "../../../../utils/removeLocalStorageKey";
-import { INFO_DEFAULT_VALUE } from "../../../constants";
-import { ArchitectureInfoContext } from "../../context";
-import { ArchitectureContextProviderProps } from "../../types";
+import { FC, PropsWithChildren, useCallback } from 'react';
+import useLocalStorageState from 'use-local-storage-state';
+import { LOCAL_STORAGE_KEY_ARCHIECTURE_INFO } from '../../../../configs/localStorageKeys';
+import { ArchitectureInfo } from '../../../../customTypes';
+import removeLocalStorageKey from '../../../../utils/removeLocalStorageKey';
+import { INFO_DEFAULT_VALUE } from '../../../constants';
+import { ArchitectureInfoContext } from '../../context';
+import { ArchitectureContextProviderProps } from '../../types';
 
 const getLocalStorageKey = (workspaceId: string | null) => {
   if (workspaceId) {
@@ -32,7 +32,7 @@ const getLocalStorageKey = (workspaceId: string | null) => {
 };
 
 const ArchitectureLocalStorageContextProvider: FC<
-  PropsWithChildren<ArchitectureContextProviderProps>
+PropsWithChildren<ArchitectureContextProviderProps>
 > = ({ children, workspaceId: currentWorkspaceId }) => {
   const [architectureInfo, setArchitectureInfo, { removeItem }] =
     useLocalStorageState<ArchitectureInfo>(

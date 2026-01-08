@@ -15,17 +15,17 @@
  ******************************************************************************************************************** */
 
 /** @jsxImportSource @emotion/react */
-import Box from "@cloudscape-design/components/box";
-import Grid from "@cloudscape-design/components/grid";
-import { FC } from "react";
-import MarkdownViewer from "../MarkdownViewer";
-import Textarea, { TextAreaProps } from "../Textarea";
+import Box from '@cloudscape-design/components/box';
+import Grid from '@cloudscape-design/components/grid';
+import { FC } from 'react';
+import MarkdownViewer from '../MarkdownViewer';
+import Textarea, { TextAreaProps } from '../Textarea';
 
 const parentHeaderLevelMapping: any = {
-  h1: "##",
-  h2: "###",
-  h3: "####",
-  h4: "#####",
+  h1: '##',
+  h2: '###',
+  h3: '####',
+  h4: '#####',
 };
 
 export interface MarkdownEditorProps {
@@ -33,9 +33,9 @@ export interface MarkdownEditorProps {
   value: string;
   label: string;
   description?: string;
-  parentHeaderLevel?: "h1" | "h2" | "h3";
+  parentHeaderLevel?: 'h1' | 'h2' | 'h3';
   rows?: number;
-  validateData?: TextAreaProps["validateData"];
+  validateData?: TextAreaProps['validateData'];
 }
 
 const MarkdownEditor: FC<MarkdownEditorProps> = ({
@@ -60,7 +60,7 @@ const MarkdownEditor: FC<MarkdownEditorProps> = ({
         constraintText={`Styling with Markdown is supported. ${
           parentHeaderLevel
             ? `Use ${parentHeaderLevelMapping[parentHeaderLevel]} as sub headers to match the rendered header level for this section`
-            : ""
+            : ''
         }
       `}
         stretch

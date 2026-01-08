@@ -15,8 +15,8 @@
  ******************************************************************************************************************** */
 
 /** @jsxImportSource @emotion/react */
-import Button from "@cloudscape-design/components/button";
-import { TextareaProps } from "@cloudscape-design/components/textarea";
+import Button from '@cloudscape-design/components/button';
+import { TextareaProps } from '@cloudscape-design/components/textarea';
 import {
   FC,
   useCallback,
@@ -24,18 +24,18 @@ import {
   useRef,
   RefObject,
   useImperativeHandle,
-} from "react";
-import { useThreatsContext } from "../../../contexts/ThreatsContext";
-import { TemplateThreatStatementSchema } from "../../../customTypes";
-import Textarea from "../../generic/Textarea";
-import EditorLayout from "../EditorLayout";
-import styles from "../EditorLayout/styles";
-import ExampleList from "../ExampleList";
-import { EditorProps } from "../ThreatStatementEditor/types";
+} from 'react';
+import { useThreatsContext } from '../../../contexts/ThreatsContext';
+import { TemplateThreatStatementSchema } from '../../../customTypes';
+import Textarea from '../../generic/Textarea';
+import EditorLayout from '../EditorLayout';
+import styles from '../EditorLayout/styles';
+import ExampleList from '../ExampleList';
+import { EditorProps } from '../ThreatStatementEditor/types';
 
 const EditorThreatAction: FC<EditorProps> = forwardRef<
-  TextareaProps.Ref,
-  EditorProps
+TextareaProps.Ref,
+EditorProps
 >(({ statement, setStatement, fieldData }, ref) => {
   const inputRef = useRef<TextareaProps.Ref>();
   const { perFieldExamples } = useThreatsContext();
@@ -80,7 +80,7 @@ const EditorThreatAction: FC<EditorProps> = forwardRef<
             ref={inputRef as RefObject<TextareaProps.Ref>}
             spellcheck
             onChange={({ detail }) => handleChange(detail.value)}
-            value={statement.threatAction || ""}
+            value={statement.threatAction || ''}
             placeholder="Enter threat action"
             validateData={
               TemplateThreatStatementSchema.shape.threatAction.safeParse
@@ -95,7 +95,7 @@ const EditorThreatAction: FC<EditorProps> = forwardRef<
             <Button
               variant="icon"
               iconName="close"
-              onClick={() => handleChange("")}
+              onClick={() => handleChange('')}
             />
           </div>
         )}

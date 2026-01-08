@@ -17,10 +17,10 @@
 import {
   CancelableEventHandler,
   BaseNavigationDetail,
-} from "@cloudscape-design/components/internal/events";
-import { useCallback } from "react";
-import { useThreatsContext } from "../../../../../contexts/ThreatsContext";
-import { ThreatStatementListFilter } from "../../../../../customTypes";
+} from '@cloudscape-design/components/internal/events';
+import { useCallback } from 'react';
+import { useThreatsContext } from '../../../../../contexts/ThreatsContext';
+import { ThreatStatementListFilter } from '../../../../../customTypes';
 
 const useLinkClicked = () => {
   const { onThreatListView } = useThreatsContext();

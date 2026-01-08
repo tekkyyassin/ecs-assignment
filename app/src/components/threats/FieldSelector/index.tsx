@@ -15,16 +15,16 @@
  ******************************************************************************************************************** */
 
 /** @jsxImportSource @emotion/react */
-import Button from "@cloudscape-design/components/button";
+import Button from '@cloudscape-design/components/button';
 import ButtonDropdown, {
   ButtonDropdownProps,
-} from "@cloudscape-design/components/button-dropdown";
-import Container from "@cloudscape-design/components/container";
-import Header from "@cloudscape-design/components/header";
-import { CancelableEventHandler } from "@cloudscape-design/components/internal/events";
-import SpaceBetween from "@cloudscape-design/components/space-between";
-import TextContent from "@cloudscape-design/components/text-content";
-import { css } from "@emotion/react";
+} from '@cloudscape-design/components/button-dropdown';
+import Container from '@cloudscape-design/components/container';
+import Header from '@cloudscape-design/components/header';
+import { CancelableEventHandler } from '@cloudscape-design/components/internal/events';
+import SpaceBetween from '@cloudscape-design/components/space-between';
+import TextContent from '@cloudscape-design/components/text-content';
+import { css } from '@emotion/react';
 import {
   ReactNode,
   FC,
@@ -32,18 +32,18 @@ import {
   useState,
   useEffect,
   useCallback,
-} from "react";
-import ExpandableToken from "./components/ExpandableToken";
-import Token from "./components/Token";
-import { useGlobalSetupContext } from "../../../contexts/GlobalSetupContext/context";
-import { ComposerMode, TemplateThreatStatement } from "../../../customTypes";
-import { ThreatFieldTypes } from "../../../customTypes/threatFieldTypes";
-import threatFieldData from "../../../data/threatFieldData";
-import threatStatementFormat from "../../../data/threatStatementFormat";
+} from 'react';
+import ExpandableToken from './components/ExpandableToken';
+import Token from './components/Token';
+import { useGlobalSetupContext } from '../../../contexts/GlobalSetupContext/context';
+import { ComposerMode, TemplateThreatStatement } from '../../../customTypes';
+import { ThreatFieldTypes } from '../../../customTypes/threatFieldTypes';
+import threatFieldData from '../../../data/threatFieldData';
+import threatStatementFormat from '../../../data/threatStatementFormat';
 
-import getRecommendedEditor from "../../../utils/getRecommandedEditor";
-import parseThreatStatement from "../../../utils/parseThreatStatement";
-import Suggestions from "../Suggestions";
+import getRecommendedEditor from '../../../utils/getRecommandedEditor';
+import parseThreatStatement from '../../../utils/parseThreatStatement';
+import Suggestions from '../Suggestions';
 
 const defaultThreatStatementFormat = threatStatementFormat[63];
 
@@ -60,7 +60,7 @@ export interface FieldSelectorProps {
 
 const styles = {
   selector: css({
-    lineHeight: "2.5",
+    lineHeight: '2.5',
   }),
 };
 const FieldSelector: FC<FieldSelectorProps> = ({
@@ -76,7 +76,7 @@ const FieldSelector: FC<FieldSelectorProps> = ({
   const [expandedImpactedGoal, setExpandedImpactedGoal] = useState(false);
 
   useEffect(() => {
-    currentEditor === "impacted_goal" && setExpandedImpactedGoal(true);
+    currentEditor === 'impacted_goal' && setExpandedImpactedGoal(true);
   }, [currentEditor]);
 
   useEffect(() => {
@@ -99,13 +99,13 @@ const FieldSelector: FC<FieldSelectorProps> = ({
     ) => {
       const output: ReactNode[] = [];
       if (
-        token === "impacted_goal" &&
+        token === 'impacted_goal' &&
         !expandedImpactedGoal &&
         !filled &&
         !statement.customTemplate
       ) {
         // If impacted goal is empty, display shorten message.
-        output.push(",");
+        output.push(',');
         output.push(
           <ExpandableToken
             key="field_selector_impacted_goal_expand"
@@ -113,14 +113,14 @@ const FieldSelector: FC<FieldSelectorProps> = ({
             expanded={false}
             onClick={() => {
               setExpandedImpactedGoal(true);
-              setEditor("impacted_goal");
+              setEditor('impacted_goal');
             }}
           />,
         );
         renderShortenImpactedGoal = true;
       } else {
         if (renderShortenImpactedGoal) {
-          output.push("negatively impacting ");
+          output.push('negatively impacting ');
         } else {
           output.push(before);
         }
@@ -137,7 +137,7 @@ const FieldSelector: FC<FieldSelectorProps> = ({
           </Token>,
         );
 
-        token === "impacted_goal" &&
+        token === 'impacted_goal' &&
           !filled &&
           output.push(
             <ExpandableToken
@@ -173,11 +173,11 @@ const FieldSelector: FC<FieldSelectorProps> = ({
     useCallback(
       ({ detail }) => {
         switch (detail.id) {
-          case "customTemplate":
+          case 'customTemplate':
             setCustomTemplateEditorVisible(true);
             break;
           default:
-            console.log("Unknown action", detail.id);
+            console.log('Unknown action', detail.id);
         }
       },
       [setCustomTemplateEditorVisible],
@@ -188,7 +188,7 @@ const FieldSelector: FC<FieldSelectorProps> = ({
       header={
         <Header
           info={
-            composerMode === "Full" ? undefined : (
+            composerMode === 'Full' ? undefined : (
               <Button
                 variant="icon"
                 iconName="status-info"
@@ -198,14 +198,14 @@ const FieldSelector: FC<FieldSelectorProps> = ({
           }
           actions={
             <SpaceBetween direction="horizontal" size="s">
-              {composerMode === "EditorOnly" && (
+              {composerMode === 'EditorOnly' && (
                 <Button onClick={onStartOver}>Start over</Button>
               )}
               <Button onClick={onGiveExampleClick}>
                 Give me a random example
               </Button>
               <ButtonDropdown
-                items={[{ id: "customTemplate", text: "Custom Template" }]}
+                items={[{ id: 'customTemplate', text: 'Custom Template' }]}
                 ariaLabel="More actions"
                 variant="icon"
                 onItemClick={handleMoreActions}

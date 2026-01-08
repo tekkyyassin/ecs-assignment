@@ -14,11 +14,11 @@
   limitations under the License.
  ******************************************************************************************************************** */
 
-import { ReactNode, FC, useEffect } from "react";
-import useLocalStorageState from "use-local-storage-state";
-import { v4 as uuidv4 } from "uuid";
-import { LOCAL_STORAGE_KEY_THREATS_LIST_MIGRATION } from "../../configs/localStorageKeys";
-import { useThreatsContext } from "../../contexts/ThreatsContext/context";
+import { ReactNode, FC, useEffect } from 'react';
+import useLocalStorageState from 'use-local-storage-state';
+import { v4 as uuidv4 } from 'uuid';
+import { LOCAL_STORAGE_KEY_THREATS_LIST_MIGRATION } from '../../configs/localStorageKeys';
+import { useThreatsContext } from '../../contexts/ThreatsContext/context';
 
 export interface WorkspacesMigrationProps {
   children: ReactNode;

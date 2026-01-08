@@ -14,16 +14,16 @@
   limitations under the License.
  ******************************************************************************************************************** */
 
-import Autosuggest from "@cloudscape-design/components/autosuggest";
+import Autosuggest from '@cloudscape-design/components/autosuggest';
 import ExpandableSection, {
   ExpandableSectionProps,
-} from "@cloudscape-design/components/expandable-section";
-import TokenGroup from "@cloudscape-design/components/token-group";
-import React, { FC, useMemo } from "react";
-import { Mitigation } from "../../../customTypes";
+} from '@cloudscape-design/components/expandable-section';
+import TokenGroup from '@cloudscape-design/components/token-group';
+import React, { FC, useMemo } from 'react';
+import { Mitigation } from '../../../customTypes';
 
 export interface MitigationLinkProps {
-  variant?: ExpandableSectionProps["variant"];
+  variant?: ExpandableSectionProps['variant'];
   linkedMitigationIds: string[];
   mitigationList: Mitigation[];
   onAddMitigationLink: (mitigationId: string) => void;
@@ -37,7 +37,7 @@ const MitigationLinkComponent: FC<MitigationLinkProps> = ({
   onAddMitigationLink,
   onRemoveMitigationLink,
 }) => {
-  const [searchValue, setSearchValue] = React.useState("");
+  const [searchValue, setSearchValue] = React.useState('');
 
   const linkedMitigations = useMemo(() => {
     return mitigationList.filter((al) => linkedMitigationIds.includes(al.id));
@@ -60,7 +60,7 @@ const MitigationLinkComponent: FC<MitigationLinkProps> = ({
   return (
     <ExpandableSection
       variant={variant}
-      headingTagOverride={variant === "container" ? "h3" : undefined}
+      headingTagOverride={variant === 'container' ? 'h3' : undefined}
       headerText={`Linked mitigations (${linkedMitigations.length})`}
     >
       <Autosuggest
@@ -72,7 +72,7 @@ const MitigationLinkComponent: FC<MitigationLinkProps> = ({
         }))}
         onSelect={({ detail }) => {
           onAddMitigationLink(detail.value);
-          setSearchValue("");
+          setSearchValue('');
         }}
         filteringType="manual"
         enteredTextLabel={(value) => `Add new mitigation: "${value}"`}
@@ -81,7 +81,7 @@ const MitigationLinkComponent: FC<MitigationLinkProps> = ({
       />
       <div
         style={{
-          display: "flex",
+          display: 'flex',
         }}
       >
         <TokenGroup

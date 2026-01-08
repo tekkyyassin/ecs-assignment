@@ -14,13 +14,13 @@
   limitations under the License.
  ******************************************************************************************************************** */
 
-import Box from "@cloudscape-design/components/box";
-import Button from "@cloudscape-design/components/button";
-import FormField from "@cloudscape-design/components/form-field";
-import Header from "@cloudscape-design/components/header";
-import { InputProps } from "@cloudscape-design/components/input";
-import Modal from "@cloudscape-design/components/modal";
-import SpaceBetween from "@cloudscape-design/components/space-between";
+import Box from '@cloudscape-design/components/box';
+import Button from '@cloudscape-design/components/button';
+import FormField from '@cloudscape-design/components/form-field';
+import Header from '@cloudscape-design/components/header';
+import { InputProps } from '@cloudscape-design/components/input';
+import Modal from '@cloudscape-design/components/modal';
+import SpaceBetween from '@cloudscape-design/components/space-between';
 import React, {
   FC,
   RefObject,
@@ -29,9 +29,9 @@ import React, {
   useMemo,
   useRef,
   useState,
-} from "react";
-import { WorkspaceSchema } from "../../../customTypes";
-import Input from "../../generic/Input";
+} from 'react';
+import { WorkspaceSchema } from '../../../customTypes';
+import Input from '../../generic/Input';
 
 export interface EditWorkspaceProps {
   visible: boolean;
@@ -49,7 +49,7 @@ const EditWorkspace: FC<EditWorkspaceProps> = ({
   ...props
 }) => {
   const inputRef = useRef<InputProps.Ref>();
-  const [value, setValue] = useState(props.value || "");
+  const [value, setValue] = useState(props.value || '');
 
   const handleConfirm = useCallback(() => {
     onConfirm(value);
@@ -72,7 +72,7 @@ const EditWorkspace: FC<EditWorkspaceProps> = ({
             disabled={value.length < 3}
             onClick={handleConfirm}
           >
-            {editMode ? "Update" : "Add"}
+            {editMode ? 'Update' : 'Add'}
           </Button>
         </SpaceBetween>
       </Box>
@@ -82,7 +82,7 @@ const EditWorkspace: FC<EditWorkspaceProps> = ({
   return (
     <Modal
       header={
-        <Header>{editMode ? "Update workspace" : "Add new workspace"}</Header>
+        <Header>{editMode ? 'Update workspace' : 'Add new workspace'}</Header>
       }
       visible={visible}
       footer={footer}

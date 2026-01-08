@@ -15,19 +15,19 @@
  ******************************************************************************************************************** */
 
 /** @jsxImportSource @emotion/react */
-import Button from "@cloudscape-design/components/button";
+import Button from '@cloudscape-design/components/button';
 import {
   CancelableEventHandler,
   BaseKeyDetail,
-} from "@cloudscape-design/components/internal/events";
-import TokenGroup from "@cloudscape-design/components/token-group";
-import * as awsui from "@cloudscape-design/design-tokens";
-import { css } from "@emotion/react";
-import { FC, useCallback, useState } from "react";
-import { TagSchema } from "../../../../../customTypes";
-import { useMobileMediaQuery } from "../../../../../hooks/useMediaQuery";
-import getMobileMediaQuery from "../../../../../utils/getMobileMediaQuery";
-import Input from "../../../../generic/Input";
+} from '@cloudscape-design/components/internal/events';
+import TokenGroup from '@cloudscape-design/components/token-group';
+import * as awsui from '@cloudscape-design/design-tokens';
+import { css } from '@emotion/react';
+import { FC, useCallback, useState } from 'react';
+import { TagSchema } from '../../../../../customTypes';
+import { useMobileMediaQuery } from '../../../../../hooks/useMediaQuery';
+import getMobileMediaQuery from '../../../../../utils/getMobileMediaQuery';
+import Input from '../../../../generic/Input';
 
 export interface TagsProps {
   tags?: string[];
@@ -38,15 +38,15 @@ export interface TagsProps {
 
 const styles = {
   tags: css({
-    "&>div": {
-      display: "inline-block",
+    '&>div': {
+      display: 'inline-block',
     },
   }),
   input: css({
     marginLeft: awsui.spaceScaledS,
     [getMobileMediaQuery()]: {
-      display: "block !important",
-      marginLeft: "0px",
+      display: 'block !important',
+      marginLeft: '0px',
       marginTop: awsui.spaceScaledS,
     },
   }),
@@ -58,14 +58,14 @@ const Tags: FC<TagsProps> = ({
   onAddTagToEntity,
   onRemoveTagFromEntity,
 }) => {
-  const [value, setValue] = useState("");
+  const [value, setValue] = useState('');
   const isMoblieView = useMobileMediaQuery();
 
   const handleKeyDown: CancelableEventHandler<BaseKeyDetail> = useCallback(
     ({ detail }) => {
       if (detail.keyCode === 13 && value) {
         onAddTagToEntity?.(entityId, value);
-        setValue("");
+        setValue('');
       }
     },
     [onAddTagToEntity, entityId, value],
@@ -73,7 +73,7 @@ const Tags: FC<TagsProps> = ({
 
   const handleAddTag = useCallback(() => {
     onAddTagToEntity?.(entityId, value);
-    setValue("");
+    setValue('');
   }, [onAddTagToEntity, entityId, value]);
 
   return (

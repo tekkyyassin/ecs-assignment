@@ -15,13 +15,13 @@
  ******************************************************************************************************************** */
 
 /** @jsxImportSource @emotion/react */
-import Badge from "@cloudscape-design/components/badge";
-import { SelectProps } from "@cloudscape-design/components/select";
-import * as awsui from "@cloudscape-design/design-tokens";
-import { css } from "@emotion/react";
-import { FC, useMemo, useState, useRef } from "react";
-import PriorityEdit from "..//PriorityEdit";
-import { TemplateThreatStatement } from "../../../customTypes";
+import Badge from '@cloudscape-design/components/badge';
+import { SelectProps } from '@cloudscape-design/components/select';
+import * as awsui from '@cloudscape-design/design-tokens';
+import { css } from '@emotion/react';
+import { FC, useMemo, useState, useRef } from 'react';
+import PriorityEdit from '..//PriorityEdit';
+import { TemplateThreatStatement } from '../../../customTypes';
 
 export interface PriorityBadgeProps {
   editingStatement: TemplateThreatStatement;
@@ -33,10 +33,10 @@ export interface PriorityBadgeProps {
 }
 
 const PRIORITY_COLOR_MAPPING: any = {
-  High: "red",
-  Medium: "blue",
-  Low: "green",
-  NoSet: "grey",
+  High: 'red',
+  Medium: 'blue',
+  Low: 'green',
+  NoSet: 'grey',
 };
 
 const PriorityBadge: FC<PriorityBadgeProps> = ({
@@ -46,7 +46,7 @@ const PriorityBadge: FC<PriorityBadgeProps> = ({
   const ref = useRef<SelectProps.Ref>();
   const priority = useMemo(() => {
     return (
-      (editingStatement.metadata?.find((m) => m.key === "Priority")
+      (editingStatement.metadata?.find((m) => m.key === 'Priority')
         ?.value as string) || undefined
     );
   }, [editingStatement.metadata]);
@@ -87,8 +87,8 @@ const PriorityBadge: FC<PriorityBadgeProps> = ({
             verticalalign: middle;
           `}
         >
-          <Badge color={PRIORITY_COLOR_MAPPING[priority || "NoSet"] || "grey"}>
-            {priority || "Priority Not Set"}
+          <Badge color={PRIORITY_COLOR_MAPPING[priority || 'NoSet'] || 'grey'}>
+            {priority || 'Priority Not Set'}
           </Badge>
         </button>
       )}

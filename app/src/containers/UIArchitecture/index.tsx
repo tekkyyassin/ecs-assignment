@@ -13,7 +13,7 @@
   See the License for the specific language governing permissions and
   limitations under the License.
  ******************************************************************************************************************** */
-import ArchitectureInfoComponent from "../../components/architecture/ArchitectureInfo";
+import ArchitectureInfoComponent from '../../components/architecture/ArchitectureInfo';
 
 const UIArchitecture = () => {
   return <ArchitectureInfoComponent />;

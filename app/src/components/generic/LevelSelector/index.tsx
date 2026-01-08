@@ -14,12 +14,12 @@
   limitations under the License.
  ******************************************************************************************************************** */
 
-import FormField from "@cloudscape-design/components/form-field";
-import Select, { SelectProps } from "@cloudscape-design/components/select";
-import React, { FC } from "react";
-import { LEVEL_SELECTOR_OPTIONS } from "../../../configs";
+import FormField from '@cloudscape-design/components/form-field';
+import Select, { SelectProps } from '@cloudscape-design/components/select';
+import React, { FC } from 'react';
+import { LEVEL_SELECTOR_OPTIONS } from '../../../configs';
 
-export const NO_VALUE = "-";
+export const NO_VALUE = '-';
 
 export interface LevelSelectorProps {
   label?: string;
@@ -32,8 +32,8 @@ export interface LevelSelectorProps {
 }
 
 const LevelSelector: FC<LevelSelectorProps> = React.forwardRef<
-  SelectProps.Ref,
-  LevelSelectorProps
+SelectProps.Ref,
+LevelSelectorProps
 >(
   (
     {
@@ -64,12 +64,12 @@ const LevelSelector: FC<LevelSelectorProps> = React.forwardRef<
           options={
             allowNoValue
               ? [
-                  {
-                    label: NO_VALUE,
-                    value: NO_VALUE,
-                  },
-                  ...LEVEL_SELECTOR_OPTIONS,
-                ]
+                {
+                  label: NO_VALUE,
+                  value: NO_VALUE,
+                },
+                ...LEVEL_SELECTOR_OPTIONS,
+              ]
               : LEVEL_SELECTOR_OPTIONS
           }
           selectedAriaLabel="Selected"

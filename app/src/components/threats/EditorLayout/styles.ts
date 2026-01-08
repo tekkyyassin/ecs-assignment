@@ -14,8 +14,8 @@
   limitations under the License.
  ******************************************************************************************************************** */
 
-import * as awsui from "@cloudscape-design/design-tokens";
-import { css } from "@emotion/react";
+import * as awsui from '@cloudscape-design/design-tokens';
+import { css } from '@emotion/react';
 
 const styles = {
   container: css({
@@ -23,23 +23,23 @@ const styles = {
     marginBottom: awsui.spaceScaledXxxl,
   }),
   textEditorLayout: css({
-    position: "relative",
+    position: 'relative',
   }),
   input: css({
-    display: "inline-block",
-    width: "100%",
+    display: 'inline-block',
+    width: '100%',
   }),
   inputClear: css({
-    position: "absolute",
-    float: "right",
-    top: "10px",
-    right: "5px",
+    position: 'absolute',
+    float: 'right',
+    top: '10px',
+    right: '5px',
   }),
   inputClearSmall: css({
-    position: "absolute",
-    float: "right",
-    top: "1px",
-    right: "5px",
+    position: 'absolute',
+    float: 'right',
+    top: '1px',
+    right: '5px',
   }),
 };
 

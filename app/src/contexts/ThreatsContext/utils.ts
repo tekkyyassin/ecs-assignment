@@ -14,7 +14,7 @@
   limitations under the License.
  ******************************************************************************************************************** */
 
-import { PerFieldExample, TemplateThreatStatement } from "../../customTypes";
+import { PerFieldExample, TemplateThreatStatement } from '../../customTypes';
 
 export const addNewValueToStringArray = (arr: string[], newValue?: string) => {
   return newValue && !arr.includes(newValue) ? [...arr, newValue] : arr;
@@ -58,12 +58,12 @@ export const addNewValueToPerFieldExampleArray = (
 ) => {
   return newValue[field]
     ? [
-        ...arr,
-        {
-          example: newValue[field] as string,
-          fromId,
-          stride: [],
-        },
-      ]
+      ...arr,
+      {
+        example: newValue[field] as string,
+        fromId,
+        stride: [],
+      },
+    ]
     : arr;
 };

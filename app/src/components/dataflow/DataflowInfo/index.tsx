@@ -14,13 +14,13 @@
   limitations under the License.
  ******************************************************************************************************************** */
 
-import { FC } from "react";
-import { useDataflowInfoContext } from "../../../contexts/DataflowContext/context";
+import { FC } from 'react';
+import { useDataflowInfoContext } from '../../../contexts/DataflowContext/context';
 import {
   DataflowInfoSchema,
   EditableComponentBaseProps,
-} from "../../../customTypes";
-import BaseDiagramInfo from "../../generic/BaseDiagramInfo";
+} from '../../../customTypes';
+import BaseDiagramInfo from '../../generic/BaseDiagramInfo';
 
 const DataflowInfo: FC<EditableComponentBaseProps> = (props) => {
   const { dataflowInfo, setDataflowInfo } = useDataflowInfoContext();

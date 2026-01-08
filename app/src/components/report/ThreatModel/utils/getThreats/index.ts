@@ -14,25 +14,25 @@
   limitations under the License.
  ******************************************************************************************************************** */
 
-import { DataExchangeFormat } from "../../../../../customTypes";
-import escapeMarkdown from "../../../../../utils/escapeMarkdown";
-import parseTableCellContent from "../../../../../utils/parseTableCellContent";
-import standardizeNumericId from "../../../../../utils/standardizeNumericId";
+import { DataExchangeFormat } from '../../../../../customTypes';
+import escapeMarkdown from '../../../../../utils/escapeMarkdown';
+import parseTableCellContent from '../../../../../utils/parseTableCellContent';
+import standardizeNumericId from '../../../../../utils/standardizeNumericId';
 
 export const getThreatsContent = async (
   data: DataExchangeFormat,
   threatsOnly = false,
 ) => {
   const rows: string[] = [];
-  rows.push("## Threats");
+  rows.push('## Threats');
 
-  rows.push("\n");
+  rows.push('\n');
 
   rows.push(
-    `| Threat Number | Threat | ${threatsOnly ? "" : "Security Controls | Mitigations | Assumptions |"} Priority | STRIDE | Comments |`,
+    `| Threat Number | Threat | ${threatsOnly ? '' : 'Security Controls | Mitigations | Assumptions |'} Priority | STRIDE | Comments |`,
   );
   rows.push(
-    `| --- | --- | ${threatsOnly ? "" : "--- | --- | --- |"} --- | --- | --- |`,
+    `| --- | --- | ${threatsOnly ? '' : '--- | --- | --- |'} --- | --- | --- |`,
   );
 
   if (data.threats) {
@@ -56,7 +56,7 @@ export const getThreatsContent = async (
           return null;
         })
         .filter((al) => !!al)
-        .join("<br/>");
+        .join('<br/>');
 
       const mitigationsContent = mitigationLinks
         .map((ml) => {
@@ -70,7 +70,7 @@ export const getThreatsContent = async (
           return null;
         })
         .filter((ml) => !!ml)
-        .join("<br/>");
+        .join('<br/>');
 
       const controlsContent = controlLinks
         .map((ml) => {
@@ -82,23 +82,23 @@ export const getThreatsContent = async (
           return null;
         })
         .filter((cl) => !!cl)
-        .join("<br/>");
+        .join('<br/>');
 
       const priority =
-        x.metadata?.find((m) => m.key === "Priority")?.value || "";
+        x.metadata?.find((m) => m.key === 'Priority')?.value || '';
       const STRIDE = (
-        (x.metadata?.find((m) => m.key === "STRIDE")?.value || []) as string[]
-      ).join(", ");
+        (x.metadata?.find((m) => m.key === 'STRIDE')?.value || []) as string[]
+      ).join(', ');
       const comments = await parseTableCellContent(
-        (x.metadata?.find((m) => m.key === "Comments")?.value as string) || "",
+        (x.metadata?.find((m) => m.key === 'Comments')?.value as string) || '',
       );
-      return `| ${threatId} | ${escapeMarkdown(x.statement || "")} | ${threatsOnly ? "" : `${controlsContent} | ${mitigationsContent} | ${assumptionsContent} | `} ${priority} | ${STRIDE} | ${comments} |`;
+      return `| ${threatId} | ${escapeMarkdown(x.statement || '')} | ${threatsOnly ? '' : `${controlsContent} | ${mitigationsContent} | ${assumptionsContent} | `} ${priority} | ${STRIDE} | ${comments} |`;
     });
 
     rows.push(...(await Promise.all(promises)));
   }
 
-  rows.push("\n");
+  rows.push('\n');
 
-  return rows.join("\n");
+  return rows.join('\n');
 };

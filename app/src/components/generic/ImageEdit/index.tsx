@@ -15,17 +15,17 @@
  ******************************************************************************************************************** */
 
 /** @jsxImportSource @emotion/react */
-import FormField from "@cloudscape-design/components/form-field";
-import Header from "@cloudscape-design/components/header";
-import RadioGroup from "@cloudscape-design/components/radio-group";
-import SpaceBetween from "@cloudscape-design/components/space-between";
-import imageCompression from "browser-image-compression";
-import { FC, useCallback, useEffect, useState } from "react";
-import { ImageUrlSchema } from "../../../customTypes";
-import imageStyles from "../../../styles/image";
-import getBase64 from "../../../utils/getBase64";
-import Input from "../../generic/Input";
-import FileUpload from "../FileUpload";
+import FormField from '@cloudscape-design/components/form-field';
+import Header from '@cloudscape-design/components/header';
+import RadioGroup from '@cloudscape-design/components/radio-group';
+import SpaceBetween from '@cloudscape-design/components/space-between';
+import imageCompression from 'browser-image-compression';
+import { FC, useCallback, useEffect, useState } from 'react';
+import { ImageUrlSchema } from '../../../customTypes';
+import imageStyles from '../../../styles/image';
+import getBase64 from '../../../utils/getBase64';
+import Input from '../../generic/Input';
+import FileUpload from '../FileUpload';
 
 export interface ImageUploadProps {
   value: string;
@@ -33,22 +33,22 @@ export interface ImageUploadProps {
 }
 
 const ImageEdit: FC<ImageUploadProps> = ({ value, onChange }) => {
-  const isValueBase64String = value && value.startsWith("data:");
+  const isValueBase64String = value && value.startsWith('data:');
   const [selectedFiles, setSelectedFiles] = useState<File[]>([]);
   const [inputValue, setInputValue] = useState(
-    isValueBase64String ? "" : value,
+    isValueBase64String ? '' : value,
   );
   const [imageSource, setImageSource] = useState<string>(
-    !value ? "no" : isValueBase64String ? "file" : "url",
+    !value ? 'no' : isValueBase64String ? 'file' : 'url',
   );
-  const [image, setImage] = useState<string>(isValueBase64String ? value : "");
+  const [image, setImage] = useState<string>(isValueBase64String ? value : '');
 
   useEffect(() => {
-    if (imageSource === "no") {
-      onChange("");
-    } else if (imageSource === "file") {
+    if (imageSource === 'no') {
+      onChange('');
+    } else if (imageSource === 'file') {
       onChange(image);
-    } else if (imageSource === "url") {
+    } else if (imageSource === 'url') {
       onChange(inputValue);
     }
   }, [onChange, imageSource, image, inputValue]);
@@ -66,7 +66,7 @@ const ImageEdit: FC<ImageUploadProps> = ({ value, onChange }) => {
       return base64String;
     } catch (error) {
       console.log(error);
-      return "";
+      return '';
     }
   }, []);
 
@@ -75,7 +75,7 @@ const ImageEdit: FC<ImageUploadProps> = ({ value, onChange }) => {
       setSelectedFiles(_selectedFiles);
       if (_selectedFiles.length > 0) {
         const _image = await handleImageUpload(_selectedFiles[0]);
-        setImage(_image || "");
+        setImage(_image || '');
       }
     },
     [handleImageUpload],
@@ -88,13 +88,13 @@ const ImageEdit: FC<ImageUploadProps> = ({ value, onChange }) => {
           onChange={({ detail }) => setImageSource(detail.value)}
           value={imageSource}
           items={[
-            { value: "file", label: "From file upload" },
-            { value: "url", label: "From url" },
-            { value: "no", label: "No Image" },
+            { value: 'file', label: 'From file upload' },
+            { value: 'url', label: 'From url' },
+            { value: 'no', label: 'No Image' },
           ]}
         />
       </FormField>
-      {imageSource === "file" && (
+      {imageSource === 'file' && (
         <SpaceBetween direction="vertical" size="s">
           {image && (
             <Header key="header" variant="h3">
@@ -118,7 +118,7 @@ const ImageEdit: FC<ImageUploadProps> = ({ value, onChange }) => {
           />
         </SpaceBetween>
       )}
-      {imageSource === "url" && (
+      {imageSource === 'url' && (
         <FormField label="Image Url" key="imageUrl">
           {inputValue && (
             <Header key="header" variant="h3">

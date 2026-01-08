@@ -14,11 +14,11 @@
   limitations under the License.
  ******************************************************************************************************************** */
 
-import { FC, useCallback, useEffect, useState } from "react";
-import { useAssumptionLinksContext } from "../../../contexts/AssumptionLinksContext/context";
-import { useControlsContext } from "../../../contexts/ControlsContext/context";
-import { AssumptionLink } from "../../../customTypes";
-import ControlLinkView from "../../controls/ControlLinkView";
+import { FC, useCallback, useEffect, useState } from 'react';
+import { useAssumptionLinksContext } from '../../../contexts/AssumptionLinksContext/context';
+import { useControlsContext } from '../../../contexts/ControlsContext/context';
+import { AssumptionLink } from '../../../customTypes';
+import ControlLinkView from '../../controls/ControlLinkView';
 
 export interface AssumptionThreatLinkProps {
   assumptionId: string;
@@ -33,7 +33,7 @@ const AssumptionThreatLinkComponent: FC<AssumptionThreatLinkProps> = ({
   const { getAssumptionEntityLinks } = useAssumptionLinksContext();
 
   useEffect(() => {
-    const _assumptionLinks = getAssumptionEntityLinks(assumptionId, "Control");
+    const _assumptionLinks = getAssumptionEntityLinks(assumptionId, 'Control');
     setAssumptionLinks(_assumptionLinks || []);
   }, [getAssumptionEntityLinks, assumptionId]);
 
@@ -46,16 +46,16 @@ const AssumptionThreatLinkComponent: FC<AssumptionThreatLinkProps> = ({
         addAssumptionLink({
           linkedId: controlIdOrNewControl,
           assumptionId,
-          type: "Control",
+          type: 'Control',
         });
       } else {
         const newControl = saveControl({
           numericId: -1,
           content: controlIdOrNewControl,
-          id: "new",
+          id: 'new',
         });
         addAssumptionLink({
-          type: "Control",
+          type: 'Control',
           linkedId: newControl.id,
           assumptionId,
         });

@@ -14,18 +14,18 @@
   limitations under the License.
  ******************************************************************************************************************** */
 
-import { useMemo } from "react";
-import { useApplicationInfoContext } from "../../contexts/ApplicationContext";
-import { useArchitectureInfoContext } from "../../contexts/ArchitectureContext";
-import { useAssumptionsContext } from "../../contexts/AssumptionsContext";
-import { useDataflowInfoContext } from "../../contexts/DataflowContext";
-import { useDiagramInfoContext } from "../../contexts/DiagramContext";
-import { useFlowContext } from "../../contexts/FlowContext";
-import { useMitigationsContext } from "../../contexts/MitigationsContext";
-import { useControlsContext } from "../../contexts/ControlsContext";
-import { useControlProfilesContext } from "../../contexts/ControlProfilesContext";
-import { useThreatsContext } from "../../contexts/ThreatsContext";
-import { HasContentDetails } from "../../customTypes";
+import { useMemo } from 'react';
+import { useApplicationInfoContext } from '../../contexts/ApplicationContext';
+import { useArchitectureInfoContext } from '../../contexts/ArchitectureContext';
+import { useAssumptionsContext } from '../../contexts/AssumptionsContext';
+import { useDataflowInfoContext } from '../../contexts/DataflowContext';
+import { useDiagramInfoContext } from '../../contexts/DiagramContext';
+import { useFlowContext } from '../../contexts/FlowContext';
+import { useMitigationsContext } from '../../contexts/MitigationsContext';
+import { useControlsContext } from '../../contexts/ControlsContext';
+import { useControlProfilesContext } from '../../contexts/ControlProfilesContext';
+import { useThreatsContext } from '../../contexts/ThreatsContext';
+import { HasContentDetails } from '../../customTypes';
 import {
   hasApplicationName,
   hasApplicationInfo,
@@ -38,7 +38,7 @@ import {
   hasControlProfiles,
   hasThreats,
   hasFlow,
-} from "../../utils/hasContent";
+} from '../../utils/hasContent';
 
 const useHasContent = () => {
   const { applicationInfo } = useApplicationInfoContext();

@@ -14,8 +14,8 @@
   limitations under the License.
  ******************************************************************************************************************** */
 
-import { ALL_LEVELS } from "../../configs";
-import { TemplateThreatStatement } from "../../customTypes";
+import { ALL_LEVELS } from '../../configs';
+import { TemplateThreatStatement } from '../../customTypes';
 
 const filterThreatsByMetadata = (
   threatList: TemplateThreatStatement[],

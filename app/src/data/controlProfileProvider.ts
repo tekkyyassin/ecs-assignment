@@ -1,4 +1,4 @@
-import controlProfiles from "./controlProfiles.json";
+import controlProfiles from './controlProfiles.json';
 
 export const getControlProfileByName = (name: string) => {
   let profiles = controlProfiles.securityProfiles.reduce((acc, cur) => {
@@ -6,7 +6,7 @@ export const getControlProfileByName = (name: string) => {
     return acc;
   }, {});
   if (profiles[name] == undefined) {
-    return profiles["CCCS Medium"];
+    return profiles['CCCS Medium'];
   }
   return profiles[name];
 };

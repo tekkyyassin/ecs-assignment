@@ -14,8 +14,8 @@
   limitations under the License.
  ******************************************************************************************************************** */
 
-import Button from "@cloudscape-design/components/button";
-import { FC, PropsWithChildren, useCallback } from "react";
+import Button from '@cloudscape-design/components/button';
+import { FC, PropsWithChildren, useCallback } from 'react';
 
 export interface CopyToClipbordProps {
   /**
@@ -31,7 +31,7 @@ const CopyToClipbord: FC<PropsWithChildren<CopyToClipbordProps>> = ({
   const handleClick = useCallback(async () => {
     if (content) {
       await navigator.clipboard.writeText(content);
-    } else if (typeof children === "string") {
+    } else if (typeof children === 'string') {
       await navigator.clipboard.writeText(children);
     }
   }, [children, content]);

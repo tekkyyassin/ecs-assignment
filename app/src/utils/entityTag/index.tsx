@@ -14,7 +14,7 @@
   limitations under the License.
  ******************************************************************************************************************** */
 
-import { EntityBase } from "../../customTypes";
+import { EntityBase } from '../../customTypes';
 
 export const addTagToEntity = (entity: EntityBase, tag: string) => {
   const updated: EntityBase = {

@@ -14,15 +14,15 @@
   limitations under the License.
  ******************************************************************************************************************** */
 
-import { FC, useEffect, useState, useCallback } from "react";
-import { useAssumptionLinksContext } from "../../../contexts/AssumptionLinksContext/context";
-import { useAssumptionsContext } from "../../../contexts/AssumptionsContext/context";
-import { AssumptionLink } from "../../../customTypes";
-import AssumptionLinkView from "../AssumptionLinkView";
+import { FC, useEffect, useState, useCallback } from 'react';
+import { useAssumptionLinksContext } from '../../../contexts/AssumptionLinksContext/context';
+import { useAssumptionsContext } from '../../../contexts/AssumptionsContext/context';
+import { AssumptionLink } from '../../../customTypes';
+import AssumptionLinkView from '../AssumptionLinkView';
 
 export interface AssumptionLinkProps {
   linkedEntityId: string;
-  type: AssumptionLink["type"];
+  type: AssumptionLink['type'];
 }
 
 const AssumptionLinkComponent: FC<AssumptionLinkProps> = ({
@@ -54,7 +54,7 @@ const AssumptionLinkComponent: FC<AssumptionLinkProps> = ({
         const newAssumption = saveAssumption({
           numericId: -1,
           content: assumptionIdOrNewAssumption,
-          id: "new",
+          id: 'new',
         });
         addAssumptionLink({
           type,

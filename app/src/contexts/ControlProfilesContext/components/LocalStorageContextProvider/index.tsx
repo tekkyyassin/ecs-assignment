@@ -14,14 +14,14 @@
   limitations under the License.
  ******************************************************************************************************************** */
 
-import { FC, PropsWithChildren, useCallback } from "react";
-import useLocalStorageState from "use-local-storage-state";
-import { LOCAL_STORAGE_KEY_CONTROL_LIST } from "../../../../configs/localStorageKeys";
-import { ControlProfile } from "../../../../customTypes";
-import removeLocalStorageKey from "../../../../utils/removeLocalStorageKey";
-import { ControlProfilesContext } from "../../context";
-import { ControlProfilesContextProviderProps } from "../../types";
-import useControlProfiles from "../../useControlProfiles";
+import { FC, PropsWithChildren, useCallback } from 'react';
+import useLocalStorageState from 'use-local-storage-state';
+import { LOCAL_STORAGE_KEY_CONTROL_LIST } from '../../../../configs/localStorageKeys';
+import { ControlProfile } from '../../../../customTypes';
+import removeLocalStorageKey from '../../../../utils/removeLocalStorageKey';
+import { ControlProfilesContext } from '../../context';
+import { ControlProfilesContextProviderProps } from '../../types';
+import useControlProfiles from '../../useControlProfiles';
 
 const getLocalStorageKey = (workspaceId: string | null) => {
   if (workspaceId) {
@@ -32,7 +32,7 @@ const getLocalStorageKey = (workspaceId: string | null) => {
 };
 
 const ControlProfilesLocalStorageContextProvider: FC<
-  PropsWithChildren<ControlProfilesContextProviderProps>
+PropsWithChildren<ControlProfilesContextProviderProps>
 > = ({ children, workspaceId: currentWorkspaceId }) => {
   const [controlProfileList, setControlProfileList, { removeItem }] =
     useLocalStorageState<ControlProfile[]>(

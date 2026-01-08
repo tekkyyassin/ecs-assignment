@@ -16,20 +16,20 @@
 
 import CloudscapeAutosuggest, {
   AutosuggestProps as CloudscapeAutosuggestProps,
-} from "@cloudscape-design/components/autosuggest";
+} from '@cloudscape-design/components/autosuggest';
 import FormField, {
   FormFieldProps,
-} from "@cloudscape-design/components/form-field";
+} from '@cloudscape-design/components/form-field';
 import {
   BaseKeyDetail,
   CancelableEventHandler,
-} from "@cloudscape-design/components/internal/events";
-import React, { FC, useCallback, useState } from "react";
-import { z } from "zod";
-import useContentValidation from "../../../hooks/useContentValidation";
+} from '@cloudscape-design/components/internal/events';
+import React, { FC, useCallback, useState } from 'react';
+import { z } from 'zod';
+import useContentValidation from '../../../hooks/useContentValidation';
 
 export interface AutosuggestProps
-  extends FormFieldProps, Omit<CloudscapeAutosuggestProps, "errorText"> {
+  extends FormFieldProps, Omit<CloudscapeAutosuggestProps, 'errorText'> {
   ref?: React.ForwardedRef<any>;
   validateData?: (
     newValue: string,
@@ -37,8 +37,8 @@ export interface AutosuggestProps
 }
 
 const Autosuggest: FC<AutosuggestProps> = React.forwardRef<
-  CloudscapeAutosuggestProps.Ref,
-  AutosuggestProps
+CloudscapeAutosuggestProps.Ref,
+AutosuggestProps
 >(({ onChange, value, validateData, errorText: _errorText, ...props }, ref) => {
   const [resetErrorText, setResetErrorText] = useState<boolean>();
   const { tempValue, errorText, handleChange } = useContentValidation(

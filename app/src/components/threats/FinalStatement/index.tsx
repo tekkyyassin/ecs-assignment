@@ -15,11 +15,11 @@
  ******************************************************************************************************************** */
 
 /** @jsxImportSource @emotion/react */
-import TextContent from "@cloudscape-design/components/text-content";
-import { css } from "@emotion/react";
-import { FC, ReactNode } from "react";
-import { TemplateThreatStatement } from "../../../customTypes";
-import CopyToClipbord from "../../generic/CopyToClipboard";
+import TextContent from '@cloudscape-design/components/text-content';
+import { css } from '@emotion/react';
+import { FC, ReactNode } from 'react';
+import { TemplateThreatStatement } from '../../../customTypes';
+import CopyToClipbord from '../../generic/CopyToClipboard';
 
 export interface FinalStatementProps {
   statement: TemplateThreatStatement;

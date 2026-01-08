@@ -14,20 +14,20 @@
   limitations under the License.
  ******************************************************************************************************************** */
 
-import { useMemo } from "react";
-import { TemplateThreatStatement } from "../../../../customTypes";
-import threatStatementExamplesData from "../../../../data/threatStatementExamples.json";
-import renderThreatStatement from "../../../../utils/renderThreatStatement";
+import { useMemo } from 'react';
+import { TemplateThreatStatement } from '../../../../customTypes';
+import threatStatementExamplesData from '../../../../data/threatStatementExamples.json';
+import renderThreatStatement from '../../../../utils/renderThreatStatement';
 import {
   PerFieldExamplesType,
   DEFAULT_PER_FIELD_EXAMPLES,
-} from "../../context";
+} from '../../context';
 import {
   addNewValueToStringArray,
   addNewValueArrayToStringArray,
   addNewValueArrayToStringArrayArray,
   addNewValueToPerFieldExampleArray,
-} from "../../utils";
+} from '../../utils';
 
 const useThreatExamples = (statementList: TemplateThreatStatement[]) => {
   const threatStatementExamples = useMemo(() => {
@@ -55,19 +55,19 @@ const useThreatExamples = (statementList: TemplateThreatStatement[]) => {
           ),
           prerequisites: addNewValueToPerFieldExampleArray(
             agg.prerequisites,
-            "prerequisites",
+            'prerequisites',
             st,
             index,
           ),
           threat_action: addNewValueToPerFieldExampleArray(
             agg.threat_action,
-            "threatAction",
+            'threatAction',
             st,
             index,
           ),
           threat_impact: addNewValueToPerFieldExampleArray(
             agg.threat_impact,
-            "threatImpact",
+            'threatImpact',
             st,
             index,
           ),
@@ -101,19 +101,19 @@ const useThreatExamples = (statementList: TemplateThreatStatement[]) => {
             ),
             prerequisites: addNewValueToPerFieldExampleArray(
               agg.prerequisites,
-              "prerequisites",
+              'prerequisites',
               st,
               index,
             ),
             threat_action: addNewValueToPerFieldExampleArray(
               agg.threat_action,
-              "threatAction",
+              'threatAction',
               st,
               index,
             ),
             threat_impact: addNewValueToPerFieldExampleArray(
               agg.threat_impact,
-              "threatImpact",
+              'threatImpact',
               st,
               index,
             ),

@@ -14,14 +14,14 @@
   limitations under the License.
  ******************************************************************************************************************** */
 
-import { FC, PropsWithChildren, useCallback } from "react";
-import useLocalStorageState from "use-local-storage-state";
-import { LOCAL_STORAGE_KEY_ASSUMPTION_LINK_LIST } from "../../../../configs/localStorageKeys";
-import { AssumptionLink } from "../../../../customTypes";
-import removeLocalStorageKey from "../../../../utils/removeLocalStorageKey";
-import { AssumptionLinksContext } from "../../context";
-import { AssumptionLinksContextProviderProps } from "../../types";
-import useAssumptionLinks from "../../useAssumptionLinks";
+import { FC, PropsWithChildren, useCallback } from 'react';
+import useLocalStorageState from 'use-local-storage-state';
+import { LOCAL_STORAGE_KEY_ASSUMPTION_LINK_LIST } from '../../../../configs/localStorageKeys';
+import { AssumptionLink } from '../../../../customTypes';
+import removeLocalStorageKey from '../../../../utils/removeLocalStorageKey';
+import { AssumptionLinksContext } from '../../context';
+import { AssumptionLinksContextProviderProps } from '../../types';
+import useAssumptionLinks from '../../useAssumptionLinks';
 
 const getLocalStorageKey = (workspaceId: string | null) => {
   if (workspaceId) {
@@ -32,7 +32,7 @@ const getLocalStorageKey = (workspaceId: string | null) => {
 };
 
 const AssumptionLinksLocalStorageContextProvider: FC<
-  PropsWithChildren<AssumptionLinksContextProviderProps>
+PropsWithChildren<AssumptionLinksContextProviderProps>
 > = ({ children, workspaceId: currentWorkspaceId }) => {
   const [assumptionLinkList, setAssumptionLinkList, { removeItem }] =
     useLocalStorageState<AssumptionLink[]>(

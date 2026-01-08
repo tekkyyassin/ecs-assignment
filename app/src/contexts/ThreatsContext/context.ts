@@ -14,14 +14,14 @@
   limitations under the License.
  ******************************************************************************************************************** */
 
-import { useContext, createContext } from "react";
+import { useContext, createContext } from 'react';
 import {
   PerFieldExample,
   TemplateThreatStatement,
   ThreatStatementListFilter,
-} from "../../customTypes";
-import threatStatementExamplesData from "../../data/threatStatementExamples.json";
-export type View = "list" | "editor";
+} from '../../customTypes';
+import threatStatementExamplesData from '../../data/threatStatementExamples.json';
+export type View = 'list' | 'editor';
 
 export type PerFieldExamplesType = {
   threat_source: string[];
@@ -53,7 +53,7 @@ export interface ThreatsContextApi {
   previousInputs: PerFieldExamplesType;
   setView: React.Dispatch<React.SetStateAction<View>>;
   setEditingStatement: React.Dispatch<
-    React.SetStateAction<TemplateThreatStatement | null>
+  React.SetStateAction<TemplateThreatStatement | null>
   >;
   addStatement: (idToCopy?: string) => void;
   removeStatement: (id: string) => void;
@@ -66,7 +66,7 @@ export interface ThreatsContextApi {
 }
 
 const initialState: ThreatsContextApi = {
-  view: "list",
+  view: 'list',
   editingStatement: null,
   statementList: [],
   setStatementList: () => {},

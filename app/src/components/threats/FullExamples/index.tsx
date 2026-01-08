@@ -14,14 +14,14 @@
   limitations under the License.
  ******************************************************************************************************************** */
 
-import Box from "@cloudscape-design/components/box";
-import Button from "@cloudscape-design/components/button";
-import ExpandableSection from "@cloudscape-design/components/expandable-section";
+import Box from '@cloudscape-design/components/box';
+import Button from '@cloudscape-design/components/button';
+import ExpandableSection from '@cloudscape-design/components/expandable-section';
 import PropertyFilter, {
   PropertyFilterProps,
-} from "@cloudscape-design/components/property-filter";
-import SpaceBetween from "@cloudscape-design/components/space-between";
-import TextContent from "@cloudscape-design/components/text-content";
+} from '@cloudscape-design/components/property-filter';
+import SpaceBetween from '@cloudscape-design/components/space-between';
+import TextContent from '@cloudscape-design/components/text-content';
 import {
   FC,
   useState,
@@ -29,12 +29,12 @@ import {
   useCallback,
   useImperativeHandle,
   forwardRef,
-} from "react";
-import { useThreatsContext } from "../../../contexts/ThreatsContext/context";
-import { TemplateThreatStatement } from "../../../customTypes";
-import STRIDE from "../../../data/stride";
-import intersectArrays from "../../../utils/intersectArrays";
-import shuffle from "../../../utils/shuffle";
+} from 'react';
+import { useThreatsContext } from '../../../contexts/ThreatsContext/context';
+import { TemplateThreatStatement } from '../../../customTypes';
+import STRIDE from '../../../data/stride';
+import intersectArrays from '../../../utils/intersectArrays';
+import shuffle from '../../../utils/shuffle';
 
 export interface FullExamplesProps {
   onClick: (example: TemplateThreatStatement) => void;
@@ -47,21 +47,21 @@ const parseToken = (
   const targetValue = token.value?.slice(0, 1).toUpperCase();
   const result: number[] = [];
   statements.forEach((st, index) => {
-    if (token.propertyKey === "STRIDE") {
-      const value = st.metadata?.find((m) => m.key === "STRIDE")
+    if (token.propertyKey === 'STRIDE') {
+      const value = st.metadata?.find((m) => m.key === 'STRIDE')
         ?.value as string[];
-      if (!value && token.operator === "!=") {
+      if (!value && token.operator === '!=') {
         result.push(index);
       }
 
-      if (value && token.operator === "=" && value.includes(targetValue)) {
+      if (value && token.operator === '=' && value.includes(targetValue)) {
         result.push(index);
       }
 
-      if (token.operator !== "=" && (!value || !value.includes(targetValue))) {
+      if (token.operator !== '=' && (!value || !value.includes(targetValue))) {
         result.push(index);
       }
-    } else if (!token.propertyKey && token.operator === ":") {
+    } else if (!token.propertyKey && token.operator === ':') {
       if (
         st.statement &&
         st.statement.toLocaleLowerCase().indexOf(token.value) >= 0
@@ -82,7 +82,7 @@ const FullExamples: FC<FullExamplesProps & { ref?: React.ForwardedRef<any> }> =
     const [expanded, setExpanded] = useState(false);
     const [query, setQuery] = useState<PropertyFilterProps.Query>({
       tokens: [],
-      operation: "and",
+      operation: 'and',
     });
 
     useImperativeHandle(ref, () => {
@@ -111,7 +111,7 @@ const FullExamples: FC<FullExamplesProps & { ref?: React.ForwardedRef<any> }> =
         if (queryResult.length === 1) {
           mergeResult = queryResult[0];
         } else {
-          if (query.operation === "or") {
+          if (query.operation === 'or') {
             mergeResult = queryResult.reduce((arr: number[], cur: number[]) => {
               const result = [...arr];
               cur.forEach((n) => {
@@ -138,7 +138,7 @@ const FullExamples: FC<FullExamplesProps & { ref?: React.ForwardedRef<any> }> =
       const options: PropertyFilterProps.FilteringOption[] = [];
       options.push(
         ...STRIDE.map((v) => ({
-          propertyKey: "STRIDE",
+          propertyKey: 'STRIDE',
           value: v.label,
         })),
       );
@@ -150,10 +150,10 @@ const FullExamples: FC<FullExamplesProps & { ref?: React.ForwardedRef<any> }> =
       useMemo(() => {
         return [
           {
-            key: "STRIDE",
-            operators: ["=", "!="],
-            propertyLabel: "STRIDE",
-            groupValuesLabel: "STRIDE values",
+            key: 'STRIDE',
+            operators: ['=', '!='],
+            propertyLabel: 'STRIDE',
+            groupValuesLabel: 'STRIDE values',
           },
         ];
       }, []);
@@ -170,32 +170,32 @@ const FullExamples: FC<FullExamplesProps & { ref?: React.ForwardedRef<any> }> =
               onChange={({ detail }) => setQuery(detail)}
               query={query}
               i18nStrings={{
-                filteringAriaLabel: "your choice",
-                dismissAriaLabel: "Dismiss",
-                filteringPlaceholder: "Filter examples by metadata or content",
-                groupValuesText: "Values",
-                groupPropertiesText: "Properties",
-                operatorsText: "Operators",
-                operationAndText: "and",
-                operationOrText: "or",
-                operatorLessText: "Less than",
-                operatorLessOrEqualText: "Less than or equal",
-                operatorGreaterText: "Greater than",
-                operatorGreaterOrEqualText: "Greater than or equal",
-                operatorContainsText: "Contains",
-                operatorDoesNotContainText: "Does not contain",
-                operatorEqualsText: "Equals",
-                operatorDoesNotEqualText: "Does not equal",
-                editTokenHeader: "Edit filter",
-                propertyText: "Property",
-                operatorText: "Operator",
-                valueText: "Value",
-                cancelActionText: "Cancel",
-                applyActionText: "Apply",
-                allPropertiesLabel: "All properties",
-                tokenLimitShowMore: "Show more",
-                tokenLimitShowFewer: "Show fewer",
-                clearFiltersText: "Clear filters",
+                filteringAriaLabel: 'your choice',
+                dismissAriaLabel: 'Dismiss',
+                filteringPlaceholder: 'Filter examples by metadata or content',
+                groupValuesText: 'Values',
+                groupPropertiesText: 'Properties',
+                operatorsText: 'Operators',
+                operationAndText: 'and',
+                operationOrText: 'or',
+                operatorLessText: 'Less than',
+                operatorLessOrEqualText: 'Less than or equal',
+                operatorGreaterText: 'Greater than',
+                operatorGreaterOrEqualText: 'Greater than or equal',
+                operatorContainsText: 'Contains',
+                operatorDoesNotContainText: 'Does not contain',
+                operatorEqualsText: 'Equals',
+                operatorDoesNotEqualText: 'Does not equal',
+                editTokenHeader: 'Edit filter',
+                propertyText: 'Property',
+                operatorText: 'Operator',
+                valueText: 'Value',
+                cancelActionText: 'Cancel',
+                applyActionText: 'Apply',
+                allPropertiesLabel: 'All properties',
+                tokenLimitShowMore: 'Show more',
+                tokenLimitShowFewer: 'Show fewer',
+                clearFiltersText: 'Clear filters',
                 removeTokenButtonAriaLabel: (token) =>
                   `Remove token ${token.propertyKey} ${token.operator} ${token.value}`,
                 enteredTextLabel: (text) => `Use: "${text}"`,

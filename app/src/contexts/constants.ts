@@ -15,9 +15,9 @@
  ******************************************************************************************************************** */
 
 export const FLOW_DEFAULT_VALUE = {
-  content: "",
+  content: '',
 };
 
 export const INFO_DEFAULT_VALUE = {
-  description: "",
+  description: '',
 };

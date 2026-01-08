@@ -14,24 +14,24 @@
   limitations under the License.
  ******************************************************************************************************************** */
 
-import { useCallback } from "react";
-import { useWorkspacesContext } from "../../contexts";
-import { useApplicationInfoContext } from "../../contexts/ApplicationContext/context";
-import { useArchitectureInfoContext } from "../../contexts/ArchitectureContext/context";
-import { useAssumptionLinksContext } from "../../contexts/AssumptionLinksContext/context";
-import { useAssumptionsContext } from "../../contexts/AssumptionsContext/context";
-import { useDataflowInfoContext } from "../../contexts/DataflowContext/context";
-import { useGlobalSetupContext } from "../../contexts/GlobalSetupContext/context";
-import { useMitigationLinksContext } from "../../contexts/MitigationLinksContext/context";
-import { useMitigationsContext } from "../../contexts/MitigationsContext/context";
-import { useControlLinksContext } from "../../contexts/ControlLinksContext/context";
-import { useControlsContext } from "../../contexts/ControlsContext/context";
-import { useThreatsContext } from "../../contexts/ThreatsContext/context";
-import { DataExchangeFormat, TemplateThreatStatement } from "../../customTypes";
-import downloadObjectAsJson from "../../utils/downloadObjectAsJson";
-import getExportFileName from "../../utils/getExportFileName";
-import sanitizeHtml from "../../utils/sanitizeHtml";
-import validateData from "../../utils/validateData";
+import { useCallback } from 'react';
+import { useWorkspacesContext } from '../../contexts';
+import { useApplicationInfoContext } from '../../contexts/ApplicationContext/context';
+import { useArchitectureInfoContext } from '../../contexts/ArchitectureContext/context';
+import { useAssumptionLinksContext } from '../../contexts/AssumptionLinksContext/context';
+import { useAssumptionsContext } from '../../contexts/AssumptionsContext/context';
+import { useDataflowInfoContext } from '../../contexts/DataflowContext/context';
+import { useGlobalSetupContext } from '../../contexts/GlobalSetupContext/context';
+import { useMitigationLinksContext } from '../../contexts/MitigationLinksContext/context';
+import { useMitigationsContext } from '../../contexts/MitigationsContext/context';
+import { useControlLinksContext } from '../../contexts/ControlLinksContext/context';
+import { useControlsContext } from '../../contexts/ControlsContext/context';
+import { useThreatsContext } from '../../contexts/ThreatsContext/context';
+import { DataExchangeFormat, TemplateThreatStatement } from '../../customTypes';
+import downloadObjectAsJson from '../../utils/downloadObjectAsJson';
+import getExportFileName from '../../utils/getExportFileName';
+import sanitizeHtml from '../../utils/sanitizeHtml';
+import validateData from '../../utils/validateData';
 
 const SCHEMA_VERSION = 1.0;
 
@@ -50,7 +50,7 @@ const useImportExport = () => {
   const { controlLinkList } = useControlLinksContext();
 
   const getWorkspaceData = useCallback((): DataExchangeFormat => {
-    if (composerMode === "Full") {
+    if (composerMode === 'Full') {
       return {
         schema: SCHEMA_VERSION,
         applicationInfo,
@@ -130,14 +130,14 @@ const useImportExport = () => {
       throw new Error(
         validatedData.error.issues
           .map((i) => `${i.path}: ${i.message}`)
-          .join("\n"),
+          .join('\n'),
       );
     }
 
     const importedData = validatedData.data as DataExchangeFormat;
 
     if (!parsedData.schema || parsedData.schema !== SCHEMA_VERSION) {
-      throw new Error("Unsupported Schema version");
+      throw new Error('Unsupported Schema version');
     }
 
     return importedData;

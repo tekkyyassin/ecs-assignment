@@ -16,7 +16,7 @@
 
 const shuffle = (array: any[]) => {
   const resultArray = [...array];
-  ("");
+  ('');
   let currentIndex = array.length,
     randomIndex;
 

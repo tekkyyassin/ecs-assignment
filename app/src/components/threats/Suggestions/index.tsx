@@ -15,37 +15,37 @@
  ******************************************************************************************************************** */
 
 /** @jsxImportSource @emotion/react */
-import Button from "@cloudscape-design/components/button";
-import ExpandableSection from "@cloudscape-design/components/expandable-section";
-import SpaceBetween from "@cloudscape-design/components/space-between";
-import TextContent from "@cloudscape-design/components/text-content";
-import { css } from "@emotion/react";
-import { FC, useMemo, useCallback, useState } from "react";
-import { ThreatFieldTypes } from "../../../customTypes/threatFieldTypes";
-import threatFieldData from "../../../data/threatFieldData";
-import getMobileMediaQuery from "../../../utils/getMobileMediaQuery";
+import Button from '@cloudscape-design/components/button';
+import ExpandableSection from '@cloudscape-design/components/expandable-section';
+import SpaceBetween from '@cloudscape-design/components/space-between';
+import TextContent from '@cloudscape-design/components/text-content';
+import { css } from '@emotion/react';
+import { FC, useMemo, useCallback, useState } from 'react';
+import { ThreatFieldTypes } from '../../../customTypes/threatFieldTypes';
+import threatFieldData from '../../../data/threatFieldData';
+import getMobileMediaQuery from '../../../utils/getMobileMediaQuery';
 
 const styles = {
   suggestionGroups: css({
-    display: "table",
+    display: 'table',
   }),
   suggestionGroup: css({
-    display: "table-row",
+    display: 'table-row',
   }),
   suggestionButtonWrapper: css({
-    display: "table-cell",
-    "& > button > span": {
-      whiteSpace: "nowrap",
+    'display': 'table-cell',
+    '& > button > span': {
+      whiteSpace: 'nowrap',
     },
     [getMobileMediaQuery()]: {
-      display: "block",
+      display: 'block',
     },
   }),
   suggestion: css({
-    display: "table-cell",
-    alignSelf: "center",
+    display: 'table-cell',
+    alignSelf: 'center',
     [getMobileMediaQuery()]: {
-      display: "block",
+      display: 'block',
     },
   }),
 };
@@ -62,8 +62,8 @@ const Suggestions: FC<SuggestionsProps> = ({ suggestions, setEditor }) => {
   const suggestionGroups = useMemo(() => {
     return suggestions?.reduce(
       (group: { [groupName: string]: string[] }, suggestion: string) => {
-        if (suggestion.indexOf("[") === 0) {
-          const endIndex = suggestion.indexOf("]");
+        if (suggestion.indexOf('[') === 0) {
+          const endIndex = suggestion.indexOf(']');
           const token = suggestion.slice(1, endIndex);
           const content = suggestion.slice(endIndex + 1).trim();
           return {
@@ -93,7 +93,7 @@ const Suggestions: FC<SuggestionsProps> = ({ suggestions, setEditor }) => {
               variant="link"
               onClick={() => setEditor(token as ThreatFieldTypes)}
             >
-              {token !== "GENERAL" &&
+              {token !== 'GENERAL' &&
                 group &&
                 threatFieldData[token]?.displayTitle}
             </Button>
@@ -129,14 +129,14 @@ const Suggestions: FC<SuggestionsProps> = ({ suggestions, setEditor }) => {
           {Object.keys(suggestionGroups).length > 2 && (
             <Button
               iconName={
-                showMoresuggestions ? "treeview-collapse" : "treeview-expand"
+                showMoresuggestions ? 'treeview-collapse' : 'treeview-expand'
               }
               onClick={() => setShowMoresuggestions((prev) => !prev)}
               variant="link"
             >
               {showMoresuggestions
-                ? "Show less suggestions"
-                : "Show more suggestions"}
+                ? 'Show less suggestions'
+                : 'Show more suggestions'}
             </Button>
           )}
         </TextContent>

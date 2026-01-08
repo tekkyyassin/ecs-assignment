@@ -14,17 +14,17 @@
   limitations under the License.
  ******************************************************************************************************************** */
 
-import { FC, PropsWithChildren, useCallback, useState } from "react";
-import { DiagramInfo } from "../../../../customTypes";
-import { LocalStateContextProviderBaseProps } from "../../../types";
-import { DiagramInfoContext } from "../../context";
-import { DiagramContextProviderProps } from "../../types";
+import { FC, PropsWithChildren, useCallback, useState } from 'react';
+import { DiagramInfo } from '../../../../customTypes';
+import { LocalStateContextProviderBaseProps } from '../../../types';
+import { DiagramInfoContext } from '../../context';
+import { DiagramContextProviderProps } from '../../types';
 
 const DiagramLocalStateContextProvider: FC<
-  PropsWithChildren<
-    DiagramContextProviderProps &
-      LocalStateContextProviderBaseProps<DiagramInfo>
-  >
+PropsWithChildren<
+DiagramContextProviderProps &
+LocalStateContextProviderBaseProps<DiagramInfo>
+>
 > = ({ children, initialValue }) => {
   const [diagramInfo, setDiagramInfo] = useState<DiagramInfo>(
     initialValue || {},

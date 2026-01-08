@@ -14,14 +14,14 @@
   limitations under the License.
  ******************************************************************************************************************** */
 
-import { FC, PropsWithChildren, useCallback } from "react";
-import useLocalStorageState from "use-local-storage-state";
-import { LOCAL_STORAGE_KEY_MITIGATION_LIST } from "../../../../configs/localStorageKeys";
-import { Mitigation } from "../../../../customTypes";
-import removeLocalStorageKey from "../../../../utils/removeLocalStorageKey";
-import { MitigationsContext } from "../../context";
-import { MitigationsContextProviderProps } from "../../types";
-import useMitigations from "../../useMitigations";
+import { FC, PropsWithChildren, useCallback } from 'react';
+import useLocalStorageState from 'use-local-storage-state';
+import { LOCAL_STORAGE_KEY_MITIGATION_LIST } from '../../../../configs/localStorageKeys';
+import { Mitigation } from '../../../../customTypes';
+import removeLocalStorageKey from '../../../../utils/removeLocalStorageKey';
+import { MitigationsContext } from '../../context';
+import { MitigationsContextProviderProps } from '../../types';
+import useMitigations from '../../useMitigations';
 
 const getLocalStorageKey = (workspaceId: string | null) => {
   if (workspaceId) {
@@ -32,7 +32,7 @@ const getLocalStorageKey = (workspaceId: string | null) => {
 };
 
 const MitigationsLocalStorageContextProvider: FC<
-  PropsWithChildren<MitigationsContextProviderProps>
+PropsWithChildren<MitigationsContextProviderProps>
 > = ({ children, workspaceId: currentWorkspaceId }) => {
   const [mitigationList, setMitigationList, { removeItem }] =
     useLocalStorageState<Mitigation[]>(getLocalStorageKey(currentWorkspaceId), {

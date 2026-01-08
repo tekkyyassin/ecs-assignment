@@ -14,9 +14,9 @@
   limitations under the License.
  ******************************************************************************************************************** */
 
-import { FC } from "react";
-import WorkspaceHomeComponent from "../../components/workspaces/WorkspaceHome";
-import { ContextAggregator } from "../../contexts";
+import { FC } from 'react';
+import WorkspaceHomeComponent from '../../components/workspaces/WorkspaceHome';
+import { ContextAggregator } from '../../contexts';
 
 const WorkspaceHome: FC = () => {
   return (

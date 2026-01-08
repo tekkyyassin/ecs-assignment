@@ -13,7 +13,7 @@
   See the License for the specific language governing permissions and
   limitations under the License.
  ******************************************************************************************************************** */
-import { RouteProps } from "react-router-dom";
+import { RouteProps } from 'react-router-dom';
 import {
   ROUTE_WORKSPACE_HOME,
   ROUTE_APPLICATION_INFO,
@@ -26,22 +26,22 @@ import {
   ROUTE_THREAT_EDITOR,
   ROUTE_THREAT_LIST,
   ROUTE_VIEW_THREAT_MODEL,
-} from "../configs/routes";
+} from '../configs/routes';
 
 //import UIDataflow from '../containers/UIDataflow';
 
-import ThreatModelReport from "../containers/ThreatModelReport";
-import ThreatStatementEditor from "../containers/ThreatStatementEditor";
-import ThreatStatementList from "../containers/ThreatStatementList";
-import UIApplication from "../containers/UIApplication";
-import UIArchitecture from "../containers/UIArchitecture";
-import UIAssumptionList from "../containers/UIAssumptionList";
-import UIDiagram from "../containers/UIDiagram";
-import UIMitigationList from "../containers/UIMitigationList";
-import UIControlList from "../containers/UIControlList";
-import UIWorkspaceHome from "../containers/UIWorkspaceHome";
+import ThreatModelReport from '../containers/ThreatModelReport';
+import ThreatStatementEditor from '../containers/ThreatStatementEditor';
+import ThreatStatementList from '../containers/ThreatStatementList';
+import UIApplication from '../containers/UIApplication';
+import UIArchitecture from '../containers/UIArchitecture';
+import UIAssumptionList from '../containers/UIAssumptionList';
+import UIDiagram from '../containers/UIDiagram';
+import UIMitigationList from '../containers/UIMitigationList';
+import UIControlList from '../containers/UIControlList';
+import UIWorkspaceHome from '../containers/UIWorkspaceHome';
 
-const ROUTE_BASE_PATH = process.env.REACT_APP_ROUTE_BASE_PATH || "";
+const ROUTE_BASE_PATH = process.env.REACT_APP_ROUTE_BASE_PATH || '';
 
 const getRouteWithBasePath = (route: string) => {
   return `${ROUTE_BASE_PATH}${route}`;

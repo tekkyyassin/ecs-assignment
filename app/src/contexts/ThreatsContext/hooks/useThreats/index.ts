@@ -14,28 +14,28 @@
   limitations under the License.
  ******************************************************************************************************************** */
 
-import { useCallback, useEffect, useState } from "react";
-import { v4 as uuidV4 } from "uuid";
-import { ComposerMode, TemplateThreatStatement } from "../../../../customTypes";
-import { ThreatsContextProviderProps, View } from "../../types";
+import { useCallback, useEffect, useState } from 'react';
+import { v4 as uuidV4 } from 'uuid';
+import { ComposerMode, TemplateThreatStatement } from '../../../../customTypes';
+import { ThreatsContextProviderProps, View } from '../../types';
 
 const useThreats = (
   composerMode: ComposerMode,
   statementList: TemplateThreatStatement[],
   setStatementList: React.Dispatch<
-    React.SetStateAction<TemplateThreatStatement[]>
+  React.SetStateAction<TemplateThreatStatement[]>
   >,
   filteredStatementList: TemplateThreatStatement[],
   setFilteredStatementList: React.Dispatch<
-    React.SetStateAction<TemplateThreatStatement[]>
+  React.SetStateAction<TemplateThreatStatement[]>
   >,
   editingStatement: TemplateThreatStatement | null,
   setEditingStatement: React.Dispatch<
-    React.SetStateAction<TemplateThreatStatement | null>
+  React.SetStateAction<TemplateThreatStatement | null>
   >,
-  onThreatEditorView: ThreatsContextProviderProps["onThreatEditorView"],
+  onThreatEditorView: ThreatsContextProviderProps['onThreatEditorView'],
 ) => {
-  const [view, setView] = useState<View>("list");
+  const [view, setView] = useState<View>('list');
 
   const handleAddStatement = useCallback(
     (idToCopy?: string) => {
@@ -136,11 +136,11 @@ const useThreats = (
   );
 
   useEffect(() => {
-    if (composerMode === "ThreatsOnly") {
+    if (composerMode === 'ThreatsOnly') {
       if (editingStatement) {
-        setView("editor");
+        setView('editor');
       } else {
-        setView("list");
+        setView('list');
       }
     }
   }, [composerMode, editingStatement, setView]);
@@ -149,7 +149,7 @@ const useThreats = (
   const editingStatementExist = !!editingStatement;
 
   const handleFilterStatement = useCallback(
-    (strideFilter: "") => {
+    (strideFilter: '') => {
       const filteredStatements = filteredStatementList.filter(
         (s) => s.id === strideFilter,
       );

@@ -14,8 +14,8 @@
   limitations under the License.
  ******************************************************************************************************************** */
 
-import { z } from "zod";
-import { ContentEntityBaseSchema, EntityLinkBaseSchema } from "./entities";
+import { z } from 'zod';
+import { ContentEntityBaseSchema, EntityLinkBaseSchema } from './entities';
 
 export const AssumptionSchema = ContentEntityBaseSchema.extend({
   /**
@@ -28,9 +28,9 @@ export type Assumption = z.infer<typeof AssumptionSchema>;
 
 export const AssumptionLinkSchema = EntityLinkBaseSchema.extend({
   type: z.union([
-    z.literal("Mitigation"),
-    z.literal("Control"),
-    z.literal("Threat"),
+    z.literal('Mitigation'),
+    z.literal('Control'),
+    z.literal('Threat'),
   ]),
   /**
    * The assumption being linked.

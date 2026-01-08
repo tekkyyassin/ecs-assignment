@@ -14,20 +14,20 @@
   limitations under the License.
  ******************************************************************************************************************** */
 
-import Button from "@cloudscape-design/components/button";
-import ColumnLayout from "@cloudscape-design/components/column-layout";
-import SpaceBetween from "@cloudscape-design/components/space-between";
-import TextContent from "@cloudscape-design/components/text-content";
-import { FC, useState, useCallback } from "react";
-import { Assumption, AssumptionSchema } from "../../../customTypes";
-import useEditMetadata from "../../../hooks/useEditMetadata";
-import CopyToClipbord from "../../generic/CopyToClipboard";
-import MetadataEditor from "../../generic/EntityMetadataEditor";
-import GenericCard from "../../generic/GenericCard";
-import Textarea from "../../generic/Textarea";
-import AssumptionMitigationLink from "../AssumptionMitigationLink";
-import AssumptionThreatLink from "../AssumptionThreatLink";
-import AssumptionControlLink from "../AssumptionControlLink";
+import Button from '@cloudscape-design/components/button';
+import ColumnLayout from '@cloudscape-design/components/column-layout';
+import SpaceBetween from '@cloudscape-design/components/space-between';
+import TextContent from '@cloudscape-design/components/text-content';
+import { FC, useState, useCallback } from 'react';
+import { Assumption, AssumptionSchema } from '../../../customTypes';
+import useEditMetadata from '../../../hooks/useEditMetadata';
+import CopyToClipbord from '../../generic/CopyToClipboard';
+import MetadataEditor from '../../generic/EntityMetadataEditor';
+import GenericCard from '../../generic/GenericCard';
+import Textarea from '../../generic/Textarea';
+import AssumptionMitigationLink from '../AssumptionMitigationLink';
+import AssumptionThreatLink from '../AssumptionThreatLink';
+import AssumptionControlLink from '../AssumptionControlLink';
 
 export interface AssumptionCardProps {
   assumption: Assumption;
@@ -99,7 +99,7 @@ const AssumptionCard: FC<AssumptionCardProps> = ({
             </SpaceBetween>
           ) : (
             <TextContent>
-              <CopyToClipbord>{assumption.content || ""}</CopyToClipbord>
+              <CopyToClipbord>{assumption.content || ''}</CopyToClipbord>
             </TextContent>
           )}
           <SpaceBetween direction="vertical" size="s">

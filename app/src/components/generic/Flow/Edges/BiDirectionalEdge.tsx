@@ -1,4 +1,4 @@
-import { memo } from "react";
+import { memo } from 'react';
 import {
   getBezierPath,
   BaseEdge,
@@ -6,7 +6,7 @@ import {
   EdgeProps,
   ReactFlowState,
   EdgeLabelRenderer,
-} from "reactflow";
+} from 'reactflow';
 
 export type GetSpecialPathParams = {
   sourceX: number;
@@ -63,7 +63,7 @@ export default memo(
       targetPosition,
     };
 
-    let path = "";
+    let path = '';
     let labelX: number = 0;
     let labelY: number = 0;
 
@@ -85,15 +85,15 @@ export default memo(
           style={{
             strokeWidth: 2,
             zIndex: 1,
-            stroke: selected ? "#FF0072" : "#000",
+            stroke: selected ? '#FF0072' : '#000',
           }}
         />
         <EdgeLabelRenderer>
           <div
             style={{
-              position: "absolute",
+              position: 'absolute',
               transform: `translate(-50%, -50%) translate(${labelX}px,${labelY}px)`,
-              background: "#ffcc00",
+              background: '#ffcc00',
               padding: 10,
               borderRadius: 5,
               fontSize: 12,

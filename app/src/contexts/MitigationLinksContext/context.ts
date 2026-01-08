@@ -14,8 +14,8 @@
   limitations under the License.
  ******************************************************************************************************************** */
 
-import { useContext, createContext } from "react";
-import { MitigationLink } from "../../customTypes";
+import { useContext, createContext } from 'react';
+import { MitigationLink } from '../../customTypes';
 export interface MitigationLinksContextApi {
   mitigationLinkList: MitigationLink[];
   setMitigationLinkList: (list: MitigationLink[]) => void;

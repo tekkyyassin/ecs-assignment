@@ -15,24 +15,24 @@
  ******************************************************************************************************************** */
 
 /** @jsxImportSource @emotion/react */
-import FormField from "@cloudscape-design/components/form-field";
-import RadioGroup from "@cloudscape-design/components/radio-group";
-import Select from "@cloudscape-design/components/select";
-import SpaceBetween from "@cloudscape-design/components/space-between";
-import { css } from "@emotion/react";
-import { FC } from "react";
+import FormField from '@cloudscape-design/components/form-field';
+import RadioGroup from '@cloudscape-design/components/radio-group';
+import Select from '@cloudscape-design/components/select';
+import SpaceBetween from '@cloudscape-design/components/space-between';
+import { css } from '@emotion/react';
+import { FC } from 'react';
 
 const styles = {
   selector: css({
-    minWidth: "100px",
+    minWidth: '100px',
   }),
   radioGroup: css({
-    marginTop: "10px",
+    marginTop: '10px',
   }),
 };
 
 export const DEFAULT_SORT_BY = {
-  field: "Id",
+  field: 'Id',
   ascending: false,
 };
 
@@ -47,13 +47,13 @@ export interface SortByProps {
 }
 
 const SELECT_OPTIONS = [
-  { label: "Id", value: "Id" },
-  { label: "Priority", value: "Priority" },
+  { label: 'Id', value: 'Id' },
+  { label: 'Priority', value: 'Priority' },
 ];
 
 const SORTING_OPTIONS = [
-  { value: "ascending", label: "Ascending" },
-  { value: "descending", label: "Descending" },
+  { value: 'ascending', label: 'Ascending' },
+  { value: 'descending', label: 'Descending' },
 ];
 
 const SortByComponent: FC<SortByProps> = ({
@@ -82,10 +82,10 @@ const SortByComponent: FC<SortByProps> = ({
           onChange={({ detail }) =>
             setValue({
               ...value,
-              ascending: detail.value === "ascending",
+              ascending: detail.value === 'ascending',
             })
           }
-          value={value.ascending ? "ascending" : "descending"}
+          value={value.ascending ? 'ascending' : 'descending'}
           items={SORTING_OPTIONS}
         />
       </div>

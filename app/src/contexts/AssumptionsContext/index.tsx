@@ -14,16 +14,16 @@
   limitations under the License.
  ******************************************************************************************************************** */
 
-import { FC, PropsWithChildren } from "react";
-import AssumptionsLocalStateContextProvider from "./components/LocalStateContextProvider";
-import AssumptionsLocalStorageContextProvider from "./components/LocalStorageContextProvider";
-import { useAssumptionsContext } from "./context";
-import { AssumptionsContextProviderProps } from "./types";
-import { EXAMPLE_WORKSPACE_ID } from "../../configs/constants";
-import { useExampleContext } from "../ExampleContext";
+import { FC, PropsWithChildren } from 'react';
+import AssumptionsLocalStateContextProvider from './components/LocalStateContextProvider';
+import AssumptionsLocalStorageContextProvider from './components/LocalStorageContextProvider';
+import { useAssumptionsContext } from './context';
+import { AssumptionsContextProviderProps } from './types';
+import { EXAMPLE_WORKSPACE_ID } from '../../configs/constants';
+import { useExampleContext } from '../ExampleContext';
 
 const AssumptionsContextProvider: FC<
-  PropsWithChildren<AssumptionsContextProviderProps>
+PropsWithChildren<AssumptionsContextProviderProps>
 > = (props) => {
   const { assumptions } = useExampleContext();
 

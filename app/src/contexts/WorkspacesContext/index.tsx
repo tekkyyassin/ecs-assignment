@@ -14,17 +14,17 @@
   limitations under the License.
  ******************************************************************************************************************** */
 
-import { FC, useCallback, ReactElement, useEffect } from "react";
-import useLocalStorageState from "use-local-storage-state";
-import { v4 as uuidv4 } from "uuid";
-import { WorkspacesContext, useWorkspacesContext } from "./context";
-import { DEFAULT_WORKSPACE_ID } from "../../configs/constants";
+import { FC, useCallback, ReactElement, useEffect } from 'react';
+import useLocalStorageState from 'use-local-storage-state';
+import { v4 as uuidv4 } from 'uuid';
+import { WorkspacesContext, useWorkspacesContext } from './context';
+import { DEFAULT_WORKSPACE_ID } from '../../configs/constants';
 import {
   LOCAL_STORAGE_KEY_CURRENT_WORKSPACE,
   LOCAL_STORAGE_KEY_WORKSPACE_LIST,
-} from "../../configs/localStorageKeys";
-import { ViewNavigationEvent, Workspace } from "../../customTypes";
-import WorkspacesMigration from "../../migrations/WorkspacesMigration";
+} from '../../configs/localStorageKeys';
+import { ViewNavigationEvent, Workspace } from '../../customTypes';
+import WorkspacesMigration from '../../migrations/WorkspacesMigration';
 
 export interface WorkspacesContextProviderProps extends ViewNavigationEvent {
   workspaceId?: string;

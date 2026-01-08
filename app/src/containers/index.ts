@@ -14,4 +14,4 @@
   limitations under the License.
  ******************************************************************************************************************** */
 
-export { default as ThreatStatementGenerator } from "./UIThreatStatementGenerator";
+export { default as ThreatStatementGenerator } from './UIThreatStatementGenerator';
