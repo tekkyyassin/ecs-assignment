@@ -32,6 +32,7 @@ env:
   TG_VERSION: "0.95.1"
   WORKING_DIR: infra/live/env/dev
   TM_HOST: ${{ vars.TM_HOST }}
+  TERRAGRUNT_NON_INTERACTIVE: true
 
 jobs:
   deploy:
@@ -79,8 +80,8 @@ jobs:
       - name: Apply ECR Module
         run: |
           cd ecr
-          terragrunt --terragrunt-non-interactive init
-          terragrunt --terragrunt-non-interactive apply -auto-approve
+          terragrunt init
+          terragrunt apply -auto-approve
 
       - name: Get ECR Repository URL
         id: ecr
@@ -105,7 +106,7 @@ jobs:
 
       - name: Terragrunt Apply All
         run: |
-          terragrunt --terragrunt-non-interactive run-all apply -auto-approve
+          terragrunt apply -auto-approve
         env:
           IMAGE_TAG: ${{ env.IMAGE_TAG }}
           ECR_REPO_URL: ${{ env.ECR_REPO_URL }}
