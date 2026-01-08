@@ -76,7 +76,7 @@ jobs:
           script: |
             const fs = require('fs');
             const planOutput = fs.readFileSync('${{ env.WORKING_DIR }}/plan_output.txt', 'utf8');
-            const output = `#### Terragrunt Plan 📖
+            const output = `#### Terragrunt Plan
 
             <details><summary>Show Plan</summary>
 

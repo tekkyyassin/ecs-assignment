@@ -101,40 +101,42 @@ jobs:
           cd ${{ github.workspace }}/app
           docker build -t ${{ steps.ecr.outputs.repository_url }}:${{ env.IMAGE_TAG }} .
           docker push ${{ steps.ecr.outputs.repository_url }}:${{ env.IMAGE_TAG }}
-          echo "✅ Pushed image: ${{ steps.ecr.outputs.repository_url }}:${{ env.IMAGE_TAG }}"
+          echo "Pushed image: ${{ steps.ecr.outputs.repository_url }}:${{ env.IMAGE_TAG }}"
         working-directory: .
 
       - name: Terragrunt Apply All
         run: |
-          terragrunt run --all apply 
+           echo "DEBUG: IMAGE_TAG=$IMAGE_TAG"
+           echo "DEBUG: ECR_REPO_URL=$ECR_REPO_URL"
+           terragrunt run --all apply 
         env:
           IMAGE_TAG: ${{ env.IMAGE_TAG }}
           ECR_REPO_URL: ${{ env.ECR_REPO_URL }}
 
       - name: Wait for ECS Service Stability
         run: |
-          echo "⏳ Waiting 60s for ECS service to stabilize..."
+          echo "Waiting 60s for ECS service to stabilize..."
           sleep 60
 
       - name: Smoke Test - Health Check
         run: |
-          echo "🔍 Testing https://${{ env.TM_HOST }}/health"
+          echo "Testing https://${{ env.TM_HOST }}/health"
           for i in {1..5}; do
             HTTP_CODE=$(curl -s -o /dev/null -w "%{http_code}" "https://${{ env.TM_HOST }}/health" || echo "000")
             if [[ "$HTTP_CODE" == "200" ]]; then
-              echo "✅ Health check passed (HTTP $HTTP_CODE)"
+              echo " Health check passed (HTTP $HTTP_CODE)"
               exit 0
             fi
-            echo "⚠️ Attempt $i: HTTP $HTTP_CODE - retrying in 15s..."
+            echo "Attempt $i: HTTP $HTTP_CODE - retrying in 15s..."
             sleep 15
           done
-          echo "❌ Health check failed after 5 attempts"
+          echo "Health check failed after 5 attempts"
           exit 1
         working-directory: .
 
       - name: Deployment Summary
         run: |
-          echo "## 🚀 Deployment Complete" >> $GITHUB_STEP_SUMMARY
+          echo "## Deployment Complete" >> $GITHUB_STEP_SUMMARY
           echo "" >> $GITHUB_STEP_SUMMARY
           echo "| Item | Value |" >> $GITHUB_STEP_SUMMARY
           echo "|------|-------|" >> $GITHUB_STEP_SUMMARY
