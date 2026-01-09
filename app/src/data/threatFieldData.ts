@@ -45,8 +45,7 @@ const threatFieldData: {
     displayTitle: 'Threat action',
     displayField: 'threat action',
     tooltip: 'threat action',
-    description:
-      'What actions are being performed by, or related to the threat source?',
+    description: 'What actions are being performed by, or related to the threat source?',
   },
   threat_impact: {
     fieldId: 8,

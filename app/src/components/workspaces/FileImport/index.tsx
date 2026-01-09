@@ -67,9 +67,7 @@ const FileImport: FC<FileImportProps> = ({
           const result = event.target?.result;
           setError('');
           try {
-            const importedData = parseImportedData(
-              JSON.parse(result as string),
-            );
+            const importedData = parseImportedData(JSON.parse(result as string));
             setData(importedData);
           } catch (e: any) {
             setError(e.message);
@@ -124,24 +122,13 @@ const FileImport: FC<FileImportProps> = ({
               Preview
             </Button>
           )}
-          <Button
-            variant="primary"
-            disabled={!data}
-            onClick={() => handleConfirmImport()}
-          >
+          <Button variant="primary" disabled={!data} onClick={() => handleConfirmImport()}>
             Import
           </Button>
         </SpaceBetween>
       </Box>
     );
-  }, [
-    setVisible,
-    handleConfirmImport,
-    onPreview,
-    onPreviewClose,
-    data,
-    handlePreview,
-  ]);
+  }, [setVisible, handleConfirmImport, onPreview, onPreviewClose, data, handlePreview]);
 
   return (
     <Modal
@@ -160,18 +147,13 @@ const FileImport: FC<FileImportProps> = ({
           key="override-warning"
         >
           <TextContent>
-            Importing data will override all the data in current workspace. This
-            action cannot be undone.
+            Importing data will override all the data in current workspace. This action cannot be
+            undone.
             <br />
-            You can export the data to a json file as backup or create a new{' '}
-            <b>workspace</b>.
+            You can export the data to a json file as backup or create a new <b>workspace</b>.
           </TextContent>
         </Alert>
-        <Alert
-          statusIconAriaLabel="Warning"
-          type="warning"
-          key="content-warning"
-        >
+        <Alert statusIconAriaLabel="Warning" type="warning" key="content-warning">
           <TextContent>Only import content from trusted sources.</TextContent>
         </Alert>
         <FileUpload
@@ -181,11 +163,7 @@ const FileImport: FC<FileImportProps> = ({
           onChange={setSelectedFiles}
         />
         {loading && (
-          <ProgressBar
-            key="progress-bar"
-            value={loadingPercentage}
-            label="Loading file"
-          />
+          <ProgressBar key="progress-bar" value={loadingPercentage} label="Loading file" />
         )}
         {error && (
           <Alert key="error" statusIconAriaLabel="Error" type="error">
@@ -197,10 +175,10 @@ const FileImport: FC<FileImportProps> = ({
           data &&
           data.threats &&
           data.threats.length > 0 && (
-          <Alert key="info" statusIconAriaLabel="Info" type="info">
-            {data.threats.length} threat statement loaded
-          </Alert>
-        )}
+            <Alert key="info" statusIconAriaLabel="Info" type="info">
+              {data.threats.length} threat statement loaded
+            </Alert>
+          )}
       </SpaceBetween>
     </Modal>
   );

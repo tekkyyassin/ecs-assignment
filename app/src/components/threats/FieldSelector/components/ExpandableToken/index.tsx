@@ -24,11 +24,7 @@ export interface ExpandableTokenProps {
   tooltip: ReactNode;
 }
 
-const ExpandableToken: FC<ExpandableTokenProps> = ({
-  expanded,
-  onClick,
-  tooltip,
-}) => {
+const ExpandableToken: FC<ExpandableTokenProps> = ({ expanded, onClick, tooltip }) => {
   return (
     <Tooltip tooltip={tooltip}>
       <Button

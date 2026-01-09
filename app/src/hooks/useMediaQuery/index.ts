@@ -56,7 +56,6 @@ function useMediaQuery(query: string): boolean {
   return matches;
 }
 
-export const useMobileMediaQuery = () =>
-  useMediaQuery(`(max-width: ${MOBILE_BREAKPOINT}px)`);
+export const useMobileMediaQuery = () => useMediaQuery(`(max-width: ${MOBILE_BREAKPOINT}px)`);
 
 export default useMediaQuery;

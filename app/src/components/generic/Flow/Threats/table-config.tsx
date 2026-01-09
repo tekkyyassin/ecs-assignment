@@ -14,13 +14,7 @@
   limitations under the License.
  ******************************************************************************************************************** */
 import { PropertyFilterProperty } from '@cloudscape-design/collection-hooks';
-import {
-  Link,
-  Badge,
-  FormField,
-  Checkbox,
-  RadioGroup,
-} from '@cloudscape-design/components';
+import { Link, Badge, FormField, Checkbox, RadioGroup } from '@cloudscape-design/components';
 
 export function getMatchesCountText(count) {
   return count === 1 ? '1 match' : `${count} matches`;
@@ -28,9 +22,7 @@ export function getMatchesCountText(count) {
 
 function createLabelFunction(columnName) {
   return ({ sorted, descending }) => {
-    const sortState = sorted
-      ? `sorted ${descending ? 'descending' : 'ascending'}`
-      : 'not sorted';
+    const sortState = sorted ? `sorted ${descending ? 'descending' : 'ascending'}` : 'not sorted';
     return `${columnName}, ${sortState}.`;
   };
 }
@@ -125,8 +117,7 @@ export const filteringConstants = {
   dismissAriaLabel: 'Dismiss',
   clearAriaLabel: 'Clear',
 
-  filteringPlaceholder:
-    'Filter threats by statement, priority or STRIDE category',
+  filteringPlaceholder: 'Filter threats by statement, priority or STRIDE category',
   groupValuesText: 'Values',
   groupPropertiesText: 'Properties',
   operatorsText: 'Operators',
@@ -199,9 +190,10 @@ export const filteringProperties: PropertyFilterProperty<any>[] = [
       {
         operator: '=',
         form: ({ value, onChange }) => {
-          const categories = ['S', 'T', 'R', 'I', 'D', 'E', 'LM'].map(
-            (val) => ({ val, label: val }),
-          );
+          const categories = ['S', 'T', 'R', 'I', 'D', 'E', 'LM'].map((val) => ({
+            val,
+            label: val,
+          }));
           return (
             <FormField>
               {categories.map((option, i) => (

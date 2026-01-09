@@ -22,14 +22,7 @@ import Header from '@cloudscape-design/components/header';
 import SpaceBetween from '@cloudscape-design/components/space-between';
 import * as awsui from '@cloudscape-design/design-tokens';
 import { css } from '@emotion/react';
-import {
-  FC,
-  PropsWithChildren,
-  useMemo,
-  useRef,
-  ReactNode,
-  useState,
-} from 'react';
+import { FC, PropsWithChildren, useMemo, useRef, ReactNode, useState } from 'react';
 import Tags from './components/Tags';
 import getMobileMediaQuery from '../../../utils/getMobileMediaQuery';
 import Tooltip from '../Tooltip';
@@ -91,20 +84,12 @@ const GenericCard: FC<PropsWithChildren<GenericCardProps>> = ({
       <SpaceBetween direction="horizontal" size="s">
         {onRemove && (
           <Tooltip tooltip="Remove From Workspace">
-            <Button
-              onClick={() => setRemoveDialogVisible(true)}
-              variant="icon"
-              iconName="remove"
-            />
+            <Button onClick={() => setRemoveDialogVisible(true)} variant="icon" iconName="remove" />
           </Tooltip>
         )}
         {onEdit && (
           <Tooltip tooltip="Edit">
-            <Button
-              onClick={() => onEdit?.(entityId)}
-              variant="icon"
-              iconName="edit"
-            />
+            <Button onClick={() => onEdit?.(entityId)} variant="icon" iconName="edit" />
           </Tooltip>
         )}
         {moreActions}

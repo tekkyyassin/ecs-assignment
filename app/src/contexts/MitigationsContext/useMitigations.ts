@@ -50,8 +50,7 @@ const useMitigations = (
         let updated: Mitigation = {
           ...mitigation,
           numericId,
-          id:
-            mitigation.id === DEFAULT_NEW_ENTITY_ID ? uuidV4() : mitigation.id,
+          id: mitigation.id === DEFAULT_NEW_ENTITY_ID ? uuidV4() : mitigation.id,
           displayOrder: numericId,
         };
 
@@ -59,11 +58,7 @@ const useMitigations = (
 
         const foundIndex = prevList.findIndex((st) => st.id === updated.id);
         if (foundIndex >= 0) {
-          return [
-            ...prevList.slice(0, foundIndex),
-            updated,
-            ...prevList.slice(foundIndex + 1),
-          ];
+          return [...prevList.slice(0, foundIndex), updated, ...prevList.slice(foundIndex + 1)];
         }
 
         return [...prevList, updated];

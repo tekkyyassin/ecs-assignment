@@ -22,9 +22,7 @@ const requiredRewriteUrl = (search: string) => {
 
 const ROUTE_BASE_PATH = process.env.REACT_APP_ROUTE_BASE_PATH || '';
 
-const GithubPagesNavigationHelper: FC<PropsWithChildren<{}>> = ({
-  children,
-}) => {
+const GithubPagesNavigationHelper: FC<PropsWithChildren<{}>> = ({ children }) => {
   const navigate = useNavigate();
   useEffect(() => {
     const l = window.location;

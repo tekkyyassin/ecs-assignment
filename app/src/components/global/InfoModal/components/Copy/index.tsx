@@ -24,11 +24,7 @@ import InfoModalBase from '../InfoModalBase';
 const InfoModalCopy: FC = () => {
   return (
     <InfoModalBase>
-      <img
-        css={css(styles.image)}
-        src={threatStatementCopy}
-        alt="ThreatStatementCopyPaste"
-      />
+      <img css={css(styles.image)} src={threatStatementCopy} alt="ThreatStatementCopyPaste" />
     </InfoModalBase>
   );
 };

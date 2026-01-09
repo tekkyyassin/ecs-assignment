@@ -33,7 +33,7 @@ const styles = {
     display: 'table-row',
   }),
   suggestionButtonWrapper: css({
-    'display': 'table-cell',
+    display: 'table-cell',
     '& > button > span': {
       whiteSpace: 'nowrap',
     },
@@ -60,27 +60,22 @@ const Suggestions: FC<SuggestionsProps> = ({ suggestions, setEditor }) => {
   );
 
   const suggestionGroups = useMemo(() => {
-    return suggestions?.reduce(
-      (group: { [groupName: string]: string[] }, suggestion: string) => {
-        if (suggestion.indexOf('[') === 0) {
-          const endIndex = suggestion.indexOf(']');
-          const token = suggestion.slice(1, endIndex);
-          const content = suggestion.slice(endIndex + 1).trim();
-          return {
-            ...group,
-            [token]: group[token] ? [...group[token], content] : [content],
-          };
-        }
-
+    return suggestions?.reduce((group: { [groupName: string]: string[] }, suggestion: string) => {
+      if (suggestion.indexOf('[') === 0) {
+        const endIndex = suggestion.indexOf(']');
+        const token = suggestion.slice(1, endIndex);
+        const content = suggestion.slice(endIndex + 1).trim();
         return {
           ...group,
-          GENERAL: group.GENERAL
-            ? [...group.GENERAL, suggestion]
-            : [suggestion],
+          [token]: group[token] ? [...group[token], content] : [content],
         };
-      },
-      {},
-    );
+      }
+
+      return {
+        ...group,
+        GENERAL: group.GENERAL ? [...group.GENERAL, suggestion] : [suggestion],
+      };
+    }, {});
   }, [suggestions]);
 
   const renderSuggestionGroup = useCallback(
@@ -89,13 +84,8 @@ const Suggestions: FC<SuggestionsProps> = ({ suggestions, setEditor }) => {
       return (
         <div key={token} css={styles.suggestionGroup}>
           <div css={styles.suggestionButtonWrapper}>
-            <Button
-              variant="link"
-              onClick={() => setEditor(token as ThreatFieldTypes)}
-            >
-              {token !== 'GENERAL' &&
-                group &&
-                threatFieldData[token]?.displayTitle}
+            <Button variant="link" onClick={() => setEditor(token as ThreatFieldTypes)}>
+              {token !== 'GENERAL' && group && threatFieldData[token]?.displayTitle}
             </Button>
           </div>
           <div css={styles.suggestion}>
@@ -113,30 +103,20 @@ const Suggestions: FC<SuggestionsProps> = ({ suggestions, setEditor }) => {
 
   if (suggestions && suggestions.length > 0 && suggestionGroups) {
     return (
-      <ExpandableSection
-        headerText={`Suggestions (${suggestions.length})`}
-        defaultExpanded={true}
-      >
+      <ExpandableSection headerText={`Suggestions (${suggestions.length})`} defaultExpanded={true}>
         <TextContent>
           <div css={styles.suggestionGroups}>
             {Object.keys(suggestionGroups)
-              .slice(
-                0,
-                showMoresuggestions ? Object.keys(suggestionGroups).length : 2,
-              )
+              .slice(0, showMoresuggestions ? Object.keys(suggestionGroups).length : 2)
               .map((token) => renderSuggestionGroup(suggestionGroups, token))}
           </div>
           {Object.keys(suggestionGroups).length > 2 && (
             <Button
-              iconName={
-                showMoresuggestions ? 'treeview-collapse' : 'treeview-expand'
-              }
+              iconName={showMoresuggestions ? 'treeview-collapse' : 'treeview-expand'}
               onClick={() => setShowMoresuggestions((prev) => !prev)}
               variant="link"
             >
-              {showMoresuggestions
-                ? 'Show less suggestions'
-                : 'Show more suggestions'}
+              {showMoresuggestions ? 'Show less suggestions' : 'Show more suggestions'}
             </Button>
           )}
         </TextContent>

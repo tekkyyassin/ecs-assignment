@@ -3,9 +3,7 @@ import FlowLocalStorageContextProvider from './components/LocalStorageContextPro
 import { useFlowContext } from './context';
 import { FlowContextProviderProps } from './types';
 
-const FlowContextProvider: FC<PropsWithChildren<FlowContextProviderProps>> = (
-  props,
-) => {
+const FlowContextProvider: FC<PropsWithChildren<FlowContextProviderProps>> = (props) => {
   return <FlowLocalStorageContextProvider {...props} />;
 };
 

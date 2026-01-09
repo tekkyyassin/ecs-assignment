@@ -15,9 +15,10 @@ const getLocalStorageKey = (workspaceId: string | null) => {
   return LOCAL_STORAGE_KEY_FLOW_INFO;
 };
 
-const FlowLocalStorageContextProvider: FC<
-PropsWithChildren<FlowContextProviderProps>
-> = ({ children, workspaceId: currentWorkspaceId }) => {
+const FlowLocalStorageContextProvider: FC<PropsWithChildren<FlowContextProviderProps>> = ({
+  children,
+  workspaceId: currentWorkspaceId,
+}) => {
   const [flow, setFlow, { removeItem }] = useLocalStorageState<Flow>(
     getLocalStorageKey(currentWorkspaceId),
     {

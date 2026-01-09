@@ -70,9 +70,7 @@ const InfoModal: FC<InfoModalProps> = ({ visible, setVisible }) => {
     const clientWidth = contentRef.current?.clientWidth;
 
     return {
-      width: clientWidth
-        ? `${clientWidth - MARGIN_SLIDE_H}px`
-        : `${DEFAULT_SLIDE_WIDTH}px`,
+      width: clientWidth ? `${clientWidth - MARGIN_SLIDE_H}px` : `${DEFAULT_SLIDE_WIDTH}px`,
     };
   }, []);
 
@@ -112,10 +110,7 @@ const InfoModal: FC<InfoModalProps> = ({ visible, setVisible }) => {
                   className: css(styles.navBtnDot),
                 },
                 activeItemBtnProps: {
-                  className: cx(
-                    css(styles.navBtnDot),
-                    css(styles.navBtnDotActive),
-                  ),
+                  className: cx(css(styles.navBtnDot), css(styles.navBtnDotActive)),
                 },
               }}
               itemsToShow={isMobileView ? 1 : 2}

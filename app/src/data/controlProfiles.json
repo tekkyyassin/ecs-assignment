@@ -2429,12 +2429,7 @@
               "value": [""]
             }
           ],
-          "tags": [
-            "Operational",
-            "CCCS Medium",
-            "Client IaaS / PaaS",
-            "Client SaaS"
-          ]
+          "tags": ["Operational", "CCCS Medium", "Client IaaS / PaaS", "Client SaaS"]
         },
         {
           "id": "7caf6705-e319-4659-ae56-31cb6fe16868",
@@ -2450,12 +2445,7 @@
               "value": [""]
             }
           ],
-          "tags": [
-            "Operational",
-            "CCCS Medium",
-            "Client IaaS / PaaS",
-            "Client SaaS"
-          ]
+          "tags": ["Operational", "CCCS Medium", "Client IaaS / PaaS", "Client SaaS"]
         },
         {
           "id": "77ef607b-34de-4a62-9c82-800eec676651",
@@ -3191,12 +3181,7 @@
               "value": [""]
             }
           ],
-          "tags": [
-            "Technical",
-            "CCCS Medium",
-            "Client IaaS / PaaS",
-            "Client SaaS"
-          ]
+          "tags": ["Technical", "CCCS Medium", "Client IaaS / PaaS", "Client SaaS"]
         },
         {
           "id": "3867d91b-9aee-48be-8548-962cd6df23ea",
@@ -3632,12 +3617,7 @@
               "value": [""]
             }
           ],
-          "tags": [
-            "Operational",
-            "CCCS Medium",
-            "Client IaaS / PaaS",
-            "Client SaaS"
-          ]
+          "tags": ["Operational", "CCCS Medium", "Client IaaS / PaaS", "Client SaaS"]
         },
         {
           "id": "3f2572d9-93e7-4559-8ffb-2f9a635f7e26",
@@ -3767,12 +3747,7 @@
               "value": [""]
             }
           ],
-          "tags": [
-            "Operational",
-            "CCCS Medium",
-            "Client IaaS / PaaS",
-            "Client SaaS"
-          ]
+          "tags": ["Operational", "CCCS Medium", "Client IaaS / PaaS", "Client SaaS"]
         },
         {
           "id": "1c132ede-f2f6-43e9-957a-08fa18a1aeb8",
@@ -4767,12 +4742,7 @@
               "value": ["LM"]
             }
           ],
-          "tags": [
-            "Operational",
-            "CCCS Medium",
-            "CSP Full Stack",
-            "CSP Stacked PaaS"
-          ]
+          "tags": ["Operational", "CCCS Medium", "CSP Full Stack", "CSP Stacked PaaS"]
         },
         {
           "id": "72368697-7c08-4bb4-a9e3-c1ced62c44a5",
@@ -5090,12 +5060,7 @@
               "value": [""]
             }
           ],
-          "tags": [
-            "Operational",
-            "CCCS Medium",
-            "CSP Full Stack",
-            "CSP Stacked SaaS"
-          ]
+          "tags": ["Operational", "CCCS Medium", "CSP Full Stack", "CSP Stacked SaaS"]
         },
         {
           "id": "f2ed3a36-2f59-4b5a-b041-4c9d6017a83d",
@@ -5349,12 +5314,7 @@
               "value": [""]
             }
           ],
-          "tags": [
-            "Operational",
-            "CCCS Medium",
-            "Client IaaS / PaaS",
-            "Client SaaS"
-          ]
+          "tags": ["Operational", "CCCS Medium", "Client IaaS / PaaS", "Client SaaS"]
         },
         {
           "id": "9030289e-1930-4107-b4ab-66e23fb0b191",
@@ -5370,12 +5330,7 @@
               "value": [""]
             }
           ],
-          "tags": [
-            "Operational",
-            "CCCS Medium",
-            "Client IaaS / PaaS",
-            "Client SaaS"
-          ]
+          "tags": ["Operational", "CCCS Medium", "Client IaaS / PaaS", "Client SaaS"]
         },
         {
           "id": "e8b2797e-0c2a-407f-bda8-a95717b6911f",

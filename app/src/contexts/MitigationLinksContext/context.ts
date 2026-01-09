@@ -23,9 +23,7 @@ export interface MitigationLinksContextApi {
   getMitigtaionThreatLinks: (mitigationId: string) => MitigationLink[];
   removeMitigationLink: (mitigationId: string, linkedEntityId: string) => void;
   removeMitigationLinksByMitigationId: (mitigationId: string) => Promise<void>;
-  removeMitigationLinksByLinkedEntityId: (
-    linkedEntityId: string,
-  ) => Promise<void>;
+  removeMitigationLinksByLinkedEntityId: (linkedEntityId: string) => Promise<void>;
   removeMitigationLinks: (entity: MitigationLink[]) => void;
   addMitigationLink: (entity: MitigationLink) => void;
   addMitigationLinks: (entity: MitigationLink[]) => void;
@@ -48,8 +46,6 @@ const initialState: MitigationLinksContextApi = {
   onDeleteWorkspace: () => Promise.resolve(),
 };
 
-export const MitigationLinksContext =
-  createContext<MitigationLinksContextApi>(initialState);
+export const MitigationLinksContext = createContext<MitigationLinksContextApi>(initialState);
 
-export const useMitigationLinksContext = () =>
-  useContext(MitigationLinksContext);
+export const useMitigationLinksContext = () => useContext(MitigationLinksContext);

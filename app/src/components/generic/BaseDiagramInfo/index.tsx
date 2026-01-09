@@ -20,10 +20,7 @@ import Container from '@cloudscape-design/components/container';
 import Header from '@cloudscape-design/components/header';
 import SpaceBetween from '@cloudscape-design/components/space-between';
 import { FC, useCallback, useState, useMemo, useEffect } from 'react';
-import {
-  BaseImageInfo,
-  EditableComponentBaseProps,
-} from '../../../customTypes';
+import { BaseImageInfo, EditableComponentBaseProps } from '../../../customTypes';
 import imageStyles from '../../../styles/image';
 import ImageEdit from '../ImageEdit';
 import MarkdownEditor, { MarkdownEditorProps } from '../MarkdownEditor';
@@ -45,9 +42,7 @@ const BaseDiagramInfo: FC<BaseDiagramInfoProps> = ({
   validateData,
   onEditModeChange,
 }) => {
-  const [editMode, setEditMode] = useState(
-    !entity.description && !entity.image,
-  );
+  const [editMode, setEditMode] = useState(!entity.description && !entity.image);
   const [image, setImage] = useState<string>('');
   const [content, setContent] = useState('');
 
@@ -75,11 +70,7 @@ const BaseDiagramInfo: FC<BaseDiagramInfoProps> = ({
         <Button key="cancelBtn" onClick={() => setEditMode(false)}>
           Cancel
         </Button>
-        <Button
-          key="confirmBtn"
-          variant="primary"
-          onClick={handleSaveDiagramInfo}
-        >
+        <Button key="confirmBtn" variant="primary" onClick={handleSaveDiagramInfo}>
           Confirm
         </Button>
       </SpaceBetween>
@@ -111,9 +102,7 @@ const BaseDiagramInfo: FC<BaseDiagramInfoProps> = ({
           <Header variant="h3" key="diagram">
             {diagramTitle}
           </Header>
-          {entity.image && (
-            <img css={imageStyles} src={entity.image} alt={diagramTitle} />
-          )}
+          {entity.image && <img css={imageStyles} src={entity.image} alt={diagramTitle} />}
         </SpaceBetween>
       )}
     </Container>

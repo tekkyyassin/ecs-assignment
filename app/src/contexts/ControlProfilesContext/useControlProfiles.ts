@@ -23,9 +23,7 @@ const useControlProfiles = (
 ) => {
   const handlRemoveControlProfile = useCallback(
     (schema: string) => {
-      setControlProfileList((prevList) =>
-        prevList.filter((x) => x.schema !== schema),
-      );
+      setControlProfileList((prevList) => prevList.filter((x) => x.schema !== schema));
     },
     [setControlProfileList],
   );
@@ -42,15 +40,9 @@ const useControlProfiles = (
 
         newEntity = { ...updated };
 
-        const foundIndex = prevList.findIndex(
-          (st) => st.schema === updated.schema,
-        );
+        const foundIndex = prevList.findIndex((st) => st.schema === updated.schema);
         if (foundIndex >= 0) {
-          return [
-            ...prevList.slice(0, foundIndex),
-            updated,
-            ...prevList.slice(foundIndex + 1),
-          ];
+          return [...prevList.slice(0, foundIndex), updated, ...prevList.slice(foundIndex + 1)];
         }
 
         return [...prevList, updated];

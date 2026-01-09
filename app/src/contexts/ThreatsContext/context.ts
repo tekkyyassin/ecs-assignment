@@ -52,9 +52,7 @@ export interface ThreatsContextApi {
   perFieldExamples: PerFieldExamplesType;
   previousInputs: PerFieldExamplesType;
   setView: React.Dispatch<React.SetStateAction<View>>;
-  setEditingStatement: React.Dispatch<
-  React.SetStateAction<TemplateThreatStatement | null>
-  >;
+  setEditingStatement: React.Dispatch<React.SetStateAction<TemplateThreatStatement | null>>;
   addStatement: (idToCopy?: string) => void;
   removeStatement: (id: string) => void;
   editStatement: (id: string) => void;

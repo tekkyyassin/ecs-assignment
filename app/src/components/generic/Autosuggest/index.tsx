@@ -17,9 +17,7 @@
 import CloudscapeAutosuggest, {
   AutosuggestProps as CloudscapeAutosuggestProps,
 } from '@cloudscape-design/components/autosuggest';
-import FormField, {
-  FormFieldProps,
-} from '@cloudscape-design/components/form-field';
+import FormField, { FormFieldProps } from '@cloudscape-design/components/form-field';
 import {
   BaseKeyDetail,
   CancelableEventHandler,
@@ -37,8 +35,8 @@ export interface AutosuggestProps
 }
 
 const Autosuggest: FC<AutosuggestProps> = React.forwardRef<
-CloudscapeAutosuggestProps.Ref,
-AutosuggestProps
+  CloudscapeAutosuggestProps.Ref,
+  AutosuggestProps
 >(({ onChange, value, validateData, errorText: _errorText, ...props }, ref) => {
   const [resetErrorText, setResetErrorText] = useState<boolean>();
   const { tempValue, errorText, handleChange } = useContentValidation(

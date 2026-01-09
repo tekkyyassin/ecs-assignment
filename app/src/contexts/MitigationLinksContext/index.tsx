@@ -22,16 +22,13 @@ import { MitigationLinksContextProviderProps } from './types';
 import { EXAMPLE_WORKSPACE_ID } from '../../configs/constants';
 import { useExampleContext } from '../ExampleContext';
 
-const MitigationLinksContextProvider: FC<
-PropsWithChildren<MitigationLinksContextProviderProps>
-> = (props) => {
+const MitigationLinksContextProvider: FC<PropsWithChildren<MitigationLinksContextProviderProps>> = (
+  props,
+) => {
   const { mitigationLinks } = useExampleContext();
 
   return props.workspaceId === EXAMPLE_WORKSPACE_ID ? (
-    <MitigationLinksLocalStateContextProvider
-      initialValue={mitigationLinks}
-      {...props}
-    />
+    <MitigationLinksLocalStateContextProvider initialValue={mitigationLinks} {...props} />
   ) : (
     <MitigationLinksLocalStorageContextProvider {...props} />
   );

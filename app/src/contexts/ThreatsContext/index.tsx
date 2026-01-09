@@ -23,9 +23,10 @@ import { EXAMPLE_WORKSPACE_ID } from '../../configs/constants';
 import ThreatsMigration from '../../migrations/ThreatsMigration';
 import { useExampleContext } from '../ExampleContext';
 
-const ThreatsContextProvider: FC<
-PropsWithChildren<ThreatsContextProviderProps>
-> = ({ children, ...props }) => {
+const ThreatsContextProvider: FC<PropsWithChildren<ThreatsContextProviderProps>> = ({
+  children,
+  ...props
+}) => {
   const { threats } = useExampleContext();
 
   return props.workspaceId === EXAMPLE_WORKSPACE_ID ? (

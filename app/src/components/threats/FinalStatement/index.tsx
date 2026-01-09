@@ -26,10 +26,7 @@ export interface FinalStatementProps {
   displayStatement?: ReactNode[];
 }
 
-const FinalStatement: FC<FinalStatementProps> = ({
-  statement,
-  displayStatement,
-}) => {
+const FinalStatement: FC<FinalStatementProps> = ({ statement, displayStatement }) => {
   return (
     <TextContent>
       <p
@@ -38,8 +35,7 @@ const FinalStatement: FC<FinalStatementProps> = ({
           line-height: 1.5 !important;
         `}
       >
-        {(statement.statement ||
-          (displayStatement && displayStatement.length > 0)) && (
+        {(statement.statement || (displayStatement && displayStatement.length > 0)) && (
           <CopyToClipbord content={statement.statement}>
             {displayStatement ? displayStatement : statement.statement}
           </CopyToClipbord>

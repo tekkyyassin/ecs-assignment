@@ -17,14 +17,8 @@
 import { useCallback } from 'react';
 import { ControlLink } from '../../customTypes';
 
-export const isSameControlLink = (
-  entity1: ControlLink,
-  entity2: ControlLink,
-) => {
-  return (
-    entity1.controlId === entity2.controlId &&
-    entity1.linkedId === entity2.linkedId
-  );
+export const isSameControlLink = (entity1: ControlLink, entity2: ControlLink) => {
+  return entity1.controlId === entity2.controlId && entity1.linkedId === entity2.linkedId;
 };
 
 const useControlLinks = (
@@ -34,9 +28,7 @@ const useControlLinks = (
   const handlRemoveControlLink = useCallback(
     (controlId: string, linkedEntityId: string) => {
       setControlLinkList((prevList) =>
-        prevList.filter(
-          (x) => !(x.controlId === controlId && x.linkedId === linkedEntityId),
-        ),
+        prevList.filter((x) => !(x.controlId === controlId && x.linkedId === linkedEntityId)),
       );
     },
     [setControlLinkList],
@@ -55,18 +47,14 @@ const useControlLinks = (
 
   const handlRemoveControlLinksByControlId = useCallback(
     async (controlId: string) => {
-      setControlLinkList((prevList) =>
-        prevList.filter((x) => !(x.controlId === controlId)),
-      );
+      setControlLinkList((prevList) => prevList.filter((x) => !(x.controlId === controlId)));
     },
     [setControlLinkList],
   );
 
   const handlRemoveControlLinksByLinkedEntityId = useCallback(
     async (linkedEntityId: string) => {
-      setControlLinkList((prevList) =>
-        prevList.filter((x) => !(x.linkedId === linkedEntityId)),
-      );
+      setControlLinkList((prevList) => prevList.filter((x) => !(x.linkedId === linkedEntityId)));
     },
     [setControlLinkList],
   );
@@ -75,9 +63,7 @@ const useControlLinks = (
     (controlLink: ControlLink) => {
       setControlLinkList((prevList) => {
         const foundIndex = prevList.findIndex(
-          (st) =>
-            st.controlId === controlLink.controlId &&
-            st.linkedId === controlLink.linkedId,
+          (st) => st.controlId === controlLink.controlId && st.linkedId === controlLink.linkedId,
         );
         if (foundIndex < 0) {
           return [...prevList, controlLink];
@@ -95,8 +81,7 @@ const useControlLinks = (
         const filteredLinks = controlLinks.filter(
           (al) =>
             prevList.findIndex(
-              (pl) =>
-                pl.controlId === al.controlId && pl.linkedId === al.controlId,
+              (pl) => pl.controlId === al.controlId && pl.linkedId === al.controlId,
             ) < 0,
         );
         return [...prevList, ...filteredLinks];

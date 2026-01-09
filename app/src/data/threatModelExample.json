@@ -603,12 +603,7 @@
       "threatAction": "trick a user into importing a malicious JSON file containing malicious BASE64 images",
       "threatImpact": "exfiltration the contents of local storage to and end-point controlled by the actor",
       "impactedGoal": ["confidentiality"],
-      "impactedAssets": [
-        "threats",
-        "mitigations",
-        "assumptions",
-        "application metadata"
-      ],
+      "impactedAssets": ["threats", "mitigations", "assumptions", "application metadata"],
       "statement": "A threat actor with knowledge of a browser image render vulnerability can trick a user into importing a malicious JSON file containing malicious BASE64 images, which leads to exfiltration the contents of local storage to and end-point controlled by the actor, resulting in reduced confidentiality of threats, mitigations, assumptions and application metadata",
       "displayedStatement": [
         "A ",
@@ -939,12 +934,7 @@
       "prerequisites": "",
       "threatAction": "raise a PR (Pull Request) on the source within the Threat Composer GitHub repo",
       "threatImpact": "merging malicious code that exfiltrates user-supplied input to an end-point that they control",
-      "impactedAssets": [
-        "threats",
-        "mitigations",
-        "assumptions",
-        "application metadata"
-      ],
+      "impactedAssets": ["threats", "mitigations", "assumptions", "application metadata"],
       "statement": "A threat actor can raise a PR (Pull Request) on the source within the Threat Composer GitHub repo, which leads to merging malicious code that exfiltrates user-supplied input to an end-point that they control, negatively impacting threats, mitigations, assumptions and application metadata",
       "displayedStatement": [
         "A ",
@@ -1051,12 +1041,7 @@
       "prerequisites": "that can trick a user into importing a malicious JSON file containing script tags (or similar)",
       "threatAction": "exfiltrate the contents of local storage using XSS",
       "impactedGoal": ["confidentiality"],
-      "impactedAssets": [
-        "threats",
-        "mitigations",
-        "assumptions",
-        "application metadata"
-      ],
+      "impactedAssets": ["threats", "mitigations", "assumptions", "application metadata"],
       "statement": "A threat actor that can trick a user into importing a malicious JSON file containing script tags (or similar) can exfiltrate the contents of local storage using XSS, resulting in reduced confidentiality of threats, mitigations, assumptions and application metadata",
       "displayedStatement": [
         "A ",
@@ -1292,12 +1277,7 @@
       "prerequisites": "with possession of a similar domain name",
       "threatAction": "trick our users into interacting with an illegitimate endpoint",
       "impactedGoal": ["confidentiality"],
-      "impactedAssets": [
-        "threats",
-        "mitigations",
-        "assumptions",
-        "application metadata"
-      ],
+      "impactedAssets": ["threats", "mitigations", "assumptions", "application metadata"],
       "statement": "A threat actor with possession of a similar domain name can trick our users into interacting with an illegitimate endpoint, resulting in reduced confidentiality of threats, mitigations, assumptions and application metadata",
       "displayedStatement": [
         "A ",
@@ -1352,10 +1332,7 @@
       "threatAction": "modify the configuration of the CloudFront distribution",
       "threatImpact": "the distribution serving content from an origin that is unexpected or contains malicious content",
       "impactedGoal": ["integrity"],
-      "impactedAssets": [
-        "code running in the user's browser",
-        "application configuration"
-      ],
+      "impactedAssets": ["code running in the user's browser", "application configuration"],
       "statement": "An external threat actor who has a sufficiently privileged IAM Principal in the AWS account can modify the configuration of the CloudFront distribution, which leads to the distribution serving content from an origin that is unexpected or contains malicious content, resulting in reduced integrity of code running in the user's browser and application configuration",
       "displayedStatement": [
         "An ",
@@ -1416,12 +1393,7 @@
       "threatAction": "modify the code",
       "threatImpact": "exfiltration of user-supplied input to an attacker controlled endpoint",
       "impactedGoal": ["confidentiality"],
-      "impactedAssets": [
-        "threats",
-        "mitigations",
-        "assumptions",
-        "application metadata"
-      ],
+      "impactedAssets": ["threats", "mitigations", "assumptions", "application metadata"],
       "statement": "A threat actor with write access to the objects hosted on the static asset S3 Bucket can modify the code, which leads to exfiltration of user-supplied input to an attacker controlled endpoint, resulting in reduced confidentiality of threats, mitigations, assumptions and application metadata",
       "displayedStatement": [
         "A ",
@@ -1481,12 +1453,7 @@
       "prerequisites": "who is in a person-in-the-browser position",
       "threatAction": "read or modify locally stored user input",
       "impactedGoal": ["confidentiality"],
-      "impactedAssets": [
-        "threats",
-        "mitigations",
-        "assumptions",
-        "application metadata"
-      ],
+      "impactedAssets": ["threats", "mitigations", "assumptions", "application metadata"],
       "statement": "A threat actor who is in a person-in-the-browser position can read or modify locally stored user input, resulting in reduced confidentiality of threats, mitigations, assumptions and application metadata",
       "displayedStatement": [
         "A ",
@@ -1540,12 +1507,7 @@
       "prerequisites": "with local access to a web browser used by a valid user",
       "threatAction": "read local storage",
       "impactedGoal": ["confidentiality"],
-      "impactedAssets": [
-        "threats",
-        "mitigations",
-        "assumptions",
-        "application metadata"
-      ],
+      "impactedAssets": ["threats", "mitigations", "assumptions", "application metadata"],
       "statement": "A threat actor with local access to a web browser used by a valid user can read local storage, resulting in reduced confidentiality of threats, mitigations, assumptions and application metadata",
       "displayedStatement": [
         "A ",
@@ -1600,12 +1562,7 @@
       "threatAction": "tamper with, or replace the downloaded client-side code",
       "threatImpact": "to exfiltrating user-specified input to an attacker controlled endpoint",
       "impactedGoal": ["confidentiality"],
-      "impactedAssets": [
-        "threats",
-        "mitigations",
-        "assumptions",
-        "application metadata"
-      ],
+      "impactedAssets": ["threats", "mitigations", "assumptions", "application metadata"],
       "statement": "A threat actor who is in a person-in-the-middle position between the User and the hosting endpoint can tamper with, or replace the downloaded client-side code, which leads to to exfiltrating user-specified input to an attacker controlled endpoint, resulting in reduced confidentiality of threats, mitigations, assumptions and application metadata",
       "displayedStatement": [
         "A ",

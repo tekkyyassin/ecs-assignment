@@ -25,10 +25,7 @@ export interface AssumptionLinkProps {
   type: AssumptionLink['type'];
 }
 
-const AssumptionLinkComponent: FC<AssumptionLinkProps> = ({
-  linkedEntityId,
-  type,
-}) => {
+const AssumptionLinkComponent: FC<AssumptionLinkProps> = ({ linkedEntityId, type }) => {
   const { assumptionList, saveAssumption } = useAssumptionsContext();
   const [assumptionLinks, setAssumptionLinks] = useState<AssumptionLink[]>([]);
 
@@ -39,8 +36,7 @@ const AssumptionLinkComponent: FC<AssumptionLinkProps> = ({
     setAssumptionLinks(_assumptionLinks || []);
   }, [getLinkedAssumptionLinks, linkedEntityId]);
 
-  const { addAssumptionLink, removeAssumptionLink } =
-    useAssumptionLinksContext();
+  const { addAssumptionLink, removeAssumptionLink } = useAssumptionLinksContext();
 
   const handleAddAssumptionLink = useCallback(
     (assumptionIdOrNewAssumption: string) => {
@@ -71,9 +67,7 @@ const AssumptionLinkComponent: FC<AssumptionLinkProps> = ({
       assumptionList={assumptionList}
       linkedAssumptionIds={assumptionLinks.map((al) => al.assumptionId) || []}
       onAddAssumptionLink={handleAddAssumptionLink}
-      onRemoveAssumptionLink={(assumptionId) =>
-        removeAssumptionLink(assumptionId, linkedEntityId)
-      }
+      onRemoveAssumptionLink={(assumptionId) => removeAssumptionLink(assumptionId, linkedEntityId)}
     />
   );
 };

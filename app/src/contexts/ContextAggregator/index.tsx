@@ -15,16 +15,10 @@
  ******************************************************************************************************************** */
 
 import { FC, PropsWithChildren } from 'react';
-import {
-  ComposerMode,
-  DataExchangeFormat,
-  ViewNavigationEvent,
-} from '../../customTypes';
+import { ComposerMode, DataExchangeFormat, ViewNavigationEvent } from '../../customTypes';
 import GlobalSetupContextProvider from '../GlobalSetupContext';
 import WorkspaceContextAggregator from '../WorkspaceContextAggregator';
-import WorkspacesContextProvider, {
-  WorkspacesContextProviderProps,
-} from '../WorkspacesContext';
+import WorkspacesContextProvider, { WorkspacesContextProviderProps } from '../WorkspacesContext';
 
 export interface ContextAggregatorProps extends ViewNavigationEvent {
   composerMode?: ComposerMode;
@@ -53,10 +47,7 @@ const ContextAggregator: FC<PropsWithChildren<ContextAggregatorProps>> = ({
       onDefineWorkload={onDefineWorkload}
       composerMode={composerMode}
     >
-      <WorkspacesContextProvider
-        onWorkspaceChanged={onWorkspaceChanged}
-        {...props}
-      >
+      <WorkspacesContextProvider onWorkspaceChanged={onWorkspaceChanged} {...props}>
         {(workspaceId) => (
           <WorkspaceContextAggregator
             workspaceId={workspaceId}

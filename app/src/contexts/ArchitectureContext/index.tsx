@@ -23,15 +23,12 @@ import { EXAMPLE_WORKSPACE_ID } from '../../configs/constants';
 import { useExampleContext } from '../ExampleContext';
 
 export const ArchitectureContextProvider: FC<
-PropsWithChildren<ArchitectureContextProviderProps>
+  PropsWithChildren<ArchitectureContextProviderProps>
 > = (props) => {
   const { architecture } = useExampleContext();
 
   return props.workspaceId === EXAMPLE_WORKSPACE_ID ? (
-    <ArchitectureLocalStateContextProvider
-      initialValue={architecture}
-      {...props}
-    />
+    <ArchitectureLocalStateContextProvider initialValue={architecture} {...props} />
   ) : (
     <ArchitectureLocalStorageContextProvider {...props} />
   );

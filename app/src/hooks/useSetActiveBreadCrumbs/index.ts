@@ -18,9 +18,7 @@ import { useEffect } from 'react';
 import { useWorkspacesContext } from '../../contexts';
 import { useAppLayoutContext } from '../../components/FullAppLayout';
 
-const useSetActiveBreadcrumbGroup = (
-  additionPaths?: BreadcrumbGroupProps.Item[],
-) => {
+const useSetActiveBreadcrumbGroup = (additionPaths?: BreadcrumbGroupProps.Item[]) => {
   const { setActiveBreadcrumbs } = useAppLayoutContext();
   const { currentWorkspace } = useWorkspacesContext();
   useEffect(() => {

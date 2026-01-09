@@ -41,17 +41,11 @@ export const ThreatStatementDisplayTokenSchema = z
   })
   .strict();
 
-export type ThreatStatementDisplayToken = z.infer<
-  typeof ThreatStatementDisplayTokenSchema
->;
+export type ThreatStatementDisplayToken = z.infer<typeof ThreatStatementDisplayTokenSchema>;
 
-export const ThreatStatementImpactedGoalItem = z
-  .string()
-  .max(SINGLE_FIELD_INPUT_MAX_LENGTH);
+export const ThreatStatementImpactedGoalItem = z.string().max(SINGLE_FIELD_INPUT_MAX_LENGTH);
 
-export const ThreatStatementImpactedAssetItem = z
-  .string()
-  .max(SINGLE_FIELD_INPUT_MAX_LENGTH);
+export const ThreatStatementImpactedAssetItem = z.string().max(SINGLE_FIELD_INPUT_MAX_LENGTH);
 
 export const TemplateThreatStatementSchema = EntityBaseSchema.extend({
   /**
@@ -92,15 +86,10 @@ export const TemplateThreatStatementSchema = EntityBaseSchema.extend({
   /**
    * A list of displayed statement token
    */
-  displayedStatement: z
-    .union([ThreatStatementDisplayTokenSchema, z.string()])
-    .array()
-    .optional(),
+  displayedStatement: z.union([ThreatStatementDisplayTokenSchema, z.string()]).array().optional(),
 }).strict();
 
-export type TemplateThreatStatement = z.infer<
-  typeof TemplateThreatStatementSchema
->;
+export type TemplateThreatStatement = z.infer<typeof TemplateThreatStatementSchema>;
 
 export interface ThreatFieldData {
   fieldId: number;
@@ -118,11 +107,7 @@ export interface ThreatStatementListFilter {
   linkedMitigations?: boolean;
   linkedControls?: boolean;
   linkedAssumptions?: boolean;
-  priority?:
-  | typeof LEVEL_HIGH
-  | typeof LEVEL_MEDIUM
-  | typeof LEVEL_LOW
-  | typeof LEVEL_NOT_SET;
+  priority?: typeof LEVEL_HIGH | typeof LEVEL_MEDIUM | typeof LEVEL_LOW | typeof LEVEL_NOT_SET;
   stride?: 'S' | 'T' | 'R' | 'I' | 'D' | 'E' | 'LM' | typeof LEVEL_NOT_SET;
 }
 

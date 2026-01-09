@@ -22,14 +22,13 @@ import { MitigationLinksContextProviderProps } from '../../types';
 import useMitigationLinks from '../../useMitigationLinks';
 
 const MitigationLinksLocalStateContextProvider: FC<
-PropsWithChildren<
-MitigationLinksContextProviderProps &
-LocalStateContextProviderBaseProps<MitigationLink[]>
->
+  PropsWithChildren<
+    MitigationLinksContextProviderProps & LocalStateContextProviderBaseProps<MitigationLink[]>
+  >
 > = ({ children, initialValue }) => {
-  const [mitigationLinkList, setMitigationLinkList] = useState<
-  MitigationLink[]
-  >(initialValue || []);
+  const [mitigationLinkList, setMitigationLinkList] = useState<MitigationLink[]>(
+    initialValue || [],
+  );
 
   const {
     handlRemoveMitigationLink,
@@ -58,10 +57,8 @@ LocalStateContextProviderBaseProps<MitigationLink[]>
         getLinkedMitigationLinks: handleGetLinkedMitigationLinks,
         getMitigtaionThreatLinks: handleGetMitigationThreatLinks,
         removeMitigationLink: handlRemoveMitigationLink,
-        removeMitigationLinksByMitigationId:
-          handlRemoveMitigationLinksByMitigationId,
-        removeMitigationLinksByLinkedEntityId:
-          handlRemoveMitigationLinksByLinkedEntityId,
+        removeMitigationLinksByMitigationId: handlRemoveMitigationLinksByMitigationId,
+        removeMitigationLinksByLinkedEntityId: handlRemoveMitigationLinksByLinkedEntityId,
         removeMitigationLinks: handleRemoveMitigationLinks,
         addMitigationLink: handleAddMitigationLink,
         addMitigationLinks: handleAddMitigationLinks,

@@ -18,8 +18,6 @@ import { TemplateThreatStatement, ThreatFieldData } from '../../../customTypes';
 
 export interface EditorProps {
   statement: TemplateThreatStatement;
-  setStatement: React.Dispatch<
-  React.SetStateAction<TemplateThreatStatement | null>
-  >;
+  setStatement: React.Dispatch<React.SetStateAction<TemplateThreatStatement | null>>;
   fieldData: ThreatFieldData;
 }

@@ -16,15 +16,11 @@
 
 import { FC } from 'react';
 import { useArchitectureInfoContext } from '../../../contexts/ArchitectureContext/context';
-import {
-  ArchitectureInfoSchema,
-  EditableComponentBaseProps,
-} from '../../../customTypes';
+import { ArchitectureInfoSchema, EditableComponentBaseProps } from '../../../customTypes';
 import BaseDiagramInfo from '../../generic/BaseDiagramInfo';
 
 const ArchitectureInfo: FC<EditableComponentBaseProps> = (props) => {
-  const { architectureInfo, setArchitectureInfo } =
-    useArchitectureInfoContext();
+  const { architectureInfo, setArchitectureInfo } = useArchitectureInfoContext();
   return (
     <BaseDiagramInfo
       {...props}

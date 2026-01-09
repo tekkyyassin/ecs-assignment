@@ -32,12 +32,14 @@ const getLocalStorageKey = (workspaceId: string | null) => {
 };
 
 const MitigationsLocalStorageContextProvider: FC<
-PropsWithChildren<MitigationsContextProviderProps>
+  PropsWithChildren<MitigationsContextProviderProps>
 > = ({ children, workspaceId: currentWorkspaceId }) => {
-  const [mitigationList, setMitigationList, { removeItem }] =
-    useLocalStorageState<Mitigation[]>(getLocalStorageKey(currentWorkspaceId), {
+  const [mitigationList, setMitigationList, { removeItem }] = useLocalStorageState<Mitigation[]>(
+    getLocalStorageKey(currentWorkspaceId),
+    {
       defaultValue: [],
-    });
+    },
+  );
 
   const { handlRemoveMitigation, handleSaveMitigation } = useMitigations(
     mitigationList,

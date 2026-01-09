@@ -21,9 +21,7 @@ import BreadcrumbGroup, {
   BreadcrumbGroupProps,
 } from '@cloudscape-design/components/breadcrumb-group';
 import { CancelableEventHandler } from '@cloudscape-design/components/internal/events';
-import SideNavigation, {
-  SideNavigationProps,
-} from '@cloudscape-design/components/side-navigation';
+import SideNavigation, { SideNavigationProps } from '@cloudscape-design/components/side-navigation';
 import { TopNavigationProps } from '@cloudscape-design/components/top-navigation';
 import {
   FC,
@@ -40,46 +38,33 @@ import {
 import { useNavigate, useSearchParams, useLocation } from 'react-router-dom';
 import { NavHeaderProps } from '../NavHeader';
 
-export type AppLayoutProps = (
-  | NavHeaderProps
-  | { header: ReactElement<TopNavigationProps> }
-) & {
+export type AppLayoutProps = (NavHeaderProps | { header: ReactElement<TopNavigationProps> }) & {
   headerProps?: Partial<TopNavigationProps>;
 } & (
-  | {
-    navigationItems: SideNavigationProps.Item[];
-  }
-  | { navigation: ReactElement<SideNavigationProps> }
-) & { breadcrumbGroup?: ReactNode } & {
-  title: string;
-  defaultBreadcrumb?: string;
-} & { breadcrumbGroupHide?: boolean } & {
-  availableRoutes?: string[];
-} & AppLayoutComponentProps;
+    | {
+        navigationItems: SideNavigationProps.Item[];
+      }
+    | { navigation: ReactElement<SideNavigationProps> }
+  ) & { breadcrumbGroup?: ReactNode } & {
+    title: string;
+    defaultBreadcrumb?: string;
+  } & { breadcrumbGroupHide?: boolean } & {
+    availableRoutes?: string[];
+  } & AppLayoutComponentProps;
 
 export interface AppLayoutContextApi {
-  setContentType: React.Dispatch<
-  React.SetStateAction<AppLayoutComponentProps['contentType']>
-  >;
+  setContentType: React.Dispatch<React.SetStateAction<AppLayoutComponentProps['contentType']>>;
 
-  setNotifications: React.Dispatch<
-  React.SetStateAction<AppLayoutComponentProps['notifications']>
-  >;
+  setNotifications: React.Dispatch<React.SetStateAction<AppLayoutComponentProps['notifications']>>;
 
   setNavigationOpen: React.Dispatch<React.SetStateAction<boolean>>;
 
-  setTools: React.Dispatch<
-  React.SetStateAction<AppLayoutComponentProps['tools']>
-  >;
+  setTools: React.Dispatch<React.SetStateAction<AppLayoutComponentProps['tools']>>;
   setToolsHide: React.Dispatch<React.SetStateAction<boolean>>;
   setToolsOpen: React.Dispatch<React.SetStateAction<boolean>>;
-  setToolsWidth: React.Dispatch<
-  React.SetStateAction<AppLayoutComponentProps['toolsWidth']>
-  >;
+  setToolsWidth: React.Dispatch<React.SetStateAction<AppLayoutComponentProps['toolsWidth']>>;
 
-  setActiveBreadcrumbs: React.Dispatch<
-  React.SetStateAction<BreadcrumbGroupProps.Item[]>
-  >;
+  setActiveBreadcrumbs: React.Dispatch<React.SetStateAction<BreadcrumbGroupProps.Item[]>>;
 }
 
 const initialState = {
@@ -97,8 +82,7 @@ const initialState = {
   setActiveBreadcrumbs: () => {},
 };
 
-export const AppLayoutContext =
-  createContext<AppLayoutContextApi>(initialState);
+export const AppLayoutContext = createContext<AppLayoutContextApi>(initialState);
 
 /**
  * Provides the basic layout for all types of pages, including collapsible side navigation, tools panel, and split panel.
@@ -117,9 +101,7 @@ const AppLayout: FC<PropsWithChildren<AppLayoutProps>> = ({
 
   const [contentType, setContentType] = useState(props.contentType);
 
-  const [navigationOpen, setNavigationOpen] = useState(
-    props.navigationOpen ?? true,
-  );
+  const [navigationOpen, setNavigationOpen] = useState(props.navigationOpen ?? true);
   const [notifications, setNotifications] = useState(props.notifications);
   const location = useLocation();
 
@@ -135,16 +117,16 @@ const AppLayout: FC<PropsWithChildren<AppLayoutProps>> = ({
   const [toolsWidth, setToolsWidth] = useState(props.toolsWidth);
 
   const [activeHref, setActiveHref] = useState(headerHref);
-  const [activeBreadcrumbs, setActiveBreadcrumbs] = useState<
-  BreadcrumbGroupProps.Item[]
-  >([{ text: defaultBreadcrumb, href: headerHref }]);
+  const [activeBreadcrumbs, setActiveBreadcrumbs] = useState<BreadcrumbGroupProps.Item[]>([
+    { text: defaultBreadcrumb, href: headerHref },
+  ]);
 
   useEffect(() => {
     setActiveHref(`${location.pathname}${location.search || ''}`);
   }, [location]);
 
   const onNavigate: CancelableEventHandler<
-  BreadcrumbGroupProps.ClickDetail | SideNavigationProps.FollowDetail
+    BreadcrumbGroupProps.ClickDetail | SideNavigationProps.FollowDetail
   > = useCallback(
     (e) => {
       if (!e.detail.external) {

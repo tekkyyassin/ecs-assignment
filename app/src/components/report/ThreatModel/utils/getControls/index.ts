@@ -25,17 +25,13 @@ export const getControlsContent = async (data: DataExchangeFormat) => {
 
   rows.push('\n');
 
-  rows.push(
-    '| Control Number | Control | Threats Mitigating | Mitigations | Comments |',
-  );
+  rows.push('| Control Number | Control | Threats Mitigating | Mitigations | Comments |');
   rows.push('| --- | --- | --- | --- | --- |');
 
   if (data.controls) {
     const promises = data.controls.map(async (x) => {
-      const threats =
-        data.controlLinks?.filter((cl) => cl.controlId === x.id) || [];
-      const mitigationLinks =
-        data.mitigationLinks?.filter((ml) => ml.linkedId === x.id) || [];
+      const threats = data.controlLinks?.filter((cl) => cl.controlId === x.id) || [];
+      const mitigationLinks = data.mitigationLinks?.filter((ml) => ml.linkedId === x.id) || [];
 
       const threatsContent = threats
         .map((tl) => {
@@ -51,9 +47,7 @@ export const getControlsContent = async (data: DataExchangeFormat) => {
 
       const mitigationsContent = mitigationLinks
         .map((ml) => {
-          const mitigation = data.mitigations?.find(
-            (m) => m.id === ml.mitigationId,
-          );
+          const mitigation = data.mitigations?.find((m) => m.id === ml.mitigationId);
           if (mitigation) {
             const mitigationId = `A-${standardizeNumericId(mitigation.numericId)}`;
             return `[**${mitigationId}**](#${mitigationId}): ${escapeMarkdown(mitigation.content)}`;

@@ -22,14 +22,11 @@ import { ControlLinksContextProviderProps } from '../../types';
 import useControlLinks from '../../useControlLinks';
 
 const ControlLinksLocalStateContextProvider: FC<
-PropsWithChildren<
-ControlLinksContextProviderProps &
-LocalStateContextProviderBaseProps<ControlLink[]>
->
+  PropsWithChildren<
+    ControlLinksContextProviderProps & LocalStateContextProviderBaseProps<ControlLink[]>
+  >
 > = ({ children, initialValue }) => {
-  const [controlLinkList, setControlLinkList] = useState<ControlLink[]>(
-    initialValue || [],
-  );
+  const [controlLinkList, setControlLinkList] = useState<ControlLink[]>(initialValue || []);
 
   const {
     handlRemoveControlLink,
@@ -59,8 +56,7 @@ LocalStateContextProviderBaseProps<ControlLink[]>
         getMitigtaionThreatLinks: handleGetControlThreatLinks,
         removeControlLink: handlRemoveControlLink,
         removeControlLinksByControlId: handlRemoveControlLinksByControlId,
-        removeControlLinksByLinkedEntityId:
-          handlRemoveControlLinksByLinkedEntityId,
+        removeControlLinksByLinkedEntityId: handlRemoveControlLinksByLinkedEntityId,
         removeControlLinks: handleRemoveControlLinks,
         addControlLink: handleAddControlLink,
         addControlLinks: handleAddControlLinks,

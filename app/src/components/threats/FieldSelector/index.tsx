@@ -16,23 +16,14 @@
 
 /** @jsxImportSource @emotion/react */
 import Button from '@cloudscape-design/components/button';
-import ButtonDropdown, {
-  ButtonDropdownProps,
-} from '@cloudscape-design/components/button-dropdown';
+import ButtonDropdown, { ButtonDropdownProps } from '@cloudscape-design/components/button-dropdown';
 import Container from '@cloudscape-design/components/container';
 import Header from '@cloudscape-design/components/header';
 import { CancelableEventHandler } from '@cloudscape-design/components/internal/events';
 import SpaceBetween from '@cloudscape-design/components/space-between';
 import TextContent from '@cloudscape-design/components/text-content';
 import { css } from '@emotion/react';
-import {
-  ReactNode,
-  FC,
-  useMemo,
-  useState,
-  useEffect,
-  useCallback,
-} from 'react';
+import { ReactNode, FC, useMemo, useState, useEffect, useCallback } from 'react';
 import ExpandableToken from './components/ExpandableToken';
 import Token from './components/Token';
 import { useGlobalSetupContext } from '../../../contexts/GlobalSetupContext/context';
@@ -89,14 +80,8 @@ const FieldSelector: FC<FieldSelectorProps> = ({
   const selector = useMemo(() => {
     let renderShortenImpactedGoal = false;
 
-    let template =
-      statement.customTemplate || defaultThreatStatementFormat.template;
-    const outputProcessor = (
-      token: string,
-      content: string,
-      before: string,
-      filled: boolean,
-    ) => {
+    let template = statement.customTemplate || defaultThreatStatementFormat.template;
+    const outputProcessor = (token: string, content: string, before: string, filled: boolean) => {
       const output: ReactNode[] = [];
       if (
         token === 'impacted_goal' &&
@@ -161,13 +146,7 @@ const FieldSelector: FC<FieldSelectorProps> = ({
       template,
       outputProcessor,
     });
-  }, [
-    statement,
-    setEditor,
-    currentEditor,
-    expandedImpactedGoal,
-    setExpandedImpactedGoal,
-  ]);
+  }, [statement, setEditor, currentEditor, expandedImpactedGoal, setExpandedImpactedGoal]);
 
   const handleMoreActions: CancelableEventHandler<ButtonDropdownProps.ItemClickDetails> =
     useCallback(
@@ -189,21 +168,13 @@ const FieldSelector: FC<FieldSelectorProps> = ({
         <Header
           info={
             composerMode === 'Full' ? undefined : (
-              <Button
-                variant="icon"
-                iconName="status-info"
-                onClick={showInfoModal}
-              />
+              <Button variant="icon" iconName="status-info" onClick={showInfoModal} />
             )
           }
           actions={
             <SpaceBetween direction="horizontal" size="s">
-              {composerMode === 'EditorOnly' && (
-                <Button onClick={onStartOver}>Start over</Button>
-              )}
-              <Button onClick={onGiveExampleClick}>
-                Give me a random example
-              </Button>
+              {composerMode === 'EditorOnly' && <Button onClick={onStartOver}>Start over</Button>}
+              <Button onClick={onGiveExampleClick}>Give me a random example</Button>
               <ButtonDropdown
                 items={[{ id: 'customTemplate', text: 'Custom Template' }]}
                 ariaLabel="More actions"

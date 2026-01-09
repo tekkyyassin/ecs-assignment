@@ -35,10 +35,7 @@ describe('parseThreatStatement', () => {
 
     const outputProcessor = jest
       .fn()
-      .mockImplementation((_token, content, before, _filled) => [
-        before,
-        content,
-      ]);
+      .mockImplementation((_token, content, before, _filled) => [before, content]);
 
     const output = parseThreatStatement({
       template,

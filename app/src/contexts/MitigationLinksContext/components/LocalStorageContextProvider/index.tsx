@@ -32,15 +32,13 @@ const getLocalStorageKey = (workspaceId: string | null) => {
 };
 
 const MitigationLinksLocalStorageContextProvider: FC<
-PropsWithChildren<MitigationLinksContextProviderProps>
+  PropsWithChildren<MitigationLinksContextProviderProps>
 > = ({ children, workspaceId: currentWorkspaceId }) => {
-  const [mitigationLinkList, setMitigationLinkList, { removeItem }] =
-    useLocalStorageState<MitigationLink[]>(
-      getLocalStorageKey(currentWorkspaceId),
-      {
-        defaultValue: [],
-      },
-    );
+  const [mitigationLinkList, setMitigationLinkList, { removeItem }] = useLocalStorageState<
+    MitigationLink[]
+  >(getLocalStorageKey(currentWorkspaceId), {
+    defaultValue: [],
+  });
 
   const {
     handlRemoveMitigationLink,
@@ -72,10 +70,8 @@ PropsWithChildren<MitigationLinksContextProviderProps>
         getLinkedMitigationLinks: handleGetLinkedMitigationLinks,
         getMitigtaionThreatLinks: handleGetMitigationThreatLinks,
         removeMitigationLink: handlRemoveMitigationLink,
-        removeMitigationLinksByMitigationId:
-          handlRemoveMitigationLinksByMitigationId,
-        removeMitigationLinksByLinkedEntityId:
-          handlRemoveMitigationLinksByLinkedEntityId,
+        removeMitigationLinksByMitigationId: handlRemoveMitigationLinksByMitigationId,
+        removeMitigationLinksByLinkedEntityId: handlRemoveMitigationLinksByLinkedEntityId,
         removeMitigationLinks: handleRemoveMitigationLinks,
         addMitigationLink: handleAddMitigationLink,
         addMitigationLinks: handleAddMitigationLinks,

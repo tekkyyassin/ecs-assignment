@@ -21,15 +21,7 @@ import Header from '@cloudscape-design/components/header';
 import { InputProps } from '@cloudscape-design/components/input';
 import Modal from '@cloudscape-design/components/modal';
 import SpaceBetween from '@cloudscape-design/components/space-between';
-import React, {
-  FC,
-  RefObject,
-  useCallback,
-  useEffect,
-  useMemo,
-  useRef,
-  useState,
-} from 'react';
+import React, { FC, RefObject, useCallback, useEffect, useMemo, useRef, useState } from 'react';
 import { WorkspaceSchema } from '../../../customTypes';
 import Input from '../../generic/Input';
 
@@ -67,11 +59,7 @@ const EditWorkspace: FC<EditWorkspaceProps> = ({
           <Button variant="link" onClick={() => setVisible(false)}>
             Cancel
           </Button>
-          <Button
-            variant="primary"
-            disabled={value.length < 3}
-            onClick={handleConfirm}
-          >
+          <Button variant="primary" disabled={value.length < 3} onClick={handleConfirm}>
             {editMode ? 'Update' : 'Add'}
           </Button>
         </SpaceBetween>
@@ -81,9 +69,7 @@ const EditWorkspace: FC<EditWorkspaceProps> = ({
 
   return (
     <Modal
-      header={
-        <Header>{editMode ? 'Update workspace' : 'Add new workspace'}</Header>
-      }
+      header={<Header>{editMode ? 'Update workspace' : 'Add new workspace'}</Header>}
       visible={visible}
       footer={footer}
       onDismiss={() => setVisible(false)}

@@ -22,9 +22,7 @@ import { ControlsContextProviderProps } from './types';
 import { EXAMPLE_WORKSPACE_ID } from '../../configs/constants';
 import { useExampleContext } from '../ExampleContext';
 
-const ControlsContextProvider: FC<
-PropsWithChildren<ControlsContextProviderProps>
-> = (props) => {
+const ControlsContextProvider: FC<PropsWithChildren<ControlsContextProviderProps>> = (props) => {
   const { controls } = useExampleContext();
 
   return props.workspaceId === EXAMPLE_WORKSPACE_ID ? (

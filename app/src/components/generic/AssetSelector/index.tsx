@@ -42,9 +42,7 @@ const AssetSelector: FC<AssetSelectorProps> = ({
         value: ia,
       }))}
       onChange={({ detail }) =>
-        setSelectedAssets(
-          detail.selectedOptions?.map((o) => o.value || '') || [],
-        )
+        setSelectedAssets(detail.selectedOptions?.map((o) => o.value || '') || [])
       }
       deselectAriaLabel={(e) => `Remove ${e.label}`}
       options={sortedAssets.map((g) => ({

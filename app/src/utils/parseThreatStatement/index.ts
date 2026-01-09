@@ -26,17 +26,10 @@ import getFieldContentByToken from '../getFieldContentByToken';
 interface ThreatStatementParseArgType<T> {
   template: string;
   statement: TemplateThreatStatement;
-  outputProcessor: (
-    token: string,
-    content: string,
-    before: string,
-    filled: boolean,
-  ) => T[];
+  outputProcessor: (token: string, content: string, before: string, filled: boolean) => T[];
 }
 
-const parseThreatStatement = <T extends any>(
-  args: ThreatStatementParseArgType<T>,
-) => {
+const parseThreatStatement = <T extends any>(args: ThreatStatementParseArgType<T>) => {
   const output: T[] = [];
   let template = args.template;
   while (true) {
@@ -51,16 +44,11 @@ const parseThreatStatement = <T extends any>(
       break;
     }
     const token = template.slice(startIndex + 1, endIndex) as ThreatFieldTypes;
-    const content = correctIndefiniteArticle(
-      getFieldContentByToken(token, args.statement),
-    );
+    const content = correctIndefiniteArticle(getFieldContentByToken(token, args.statement));
 
     // This is to cater for the A for the threat source.
     if (before === 'A ') {
-      before = before.replace(
-        'A',
-        a(content, { capitalize: true, articleOnly: true }),
-      );
+      before = before.replace('A', a(content, { capitalize: true, articleOnly: true }));
     }
 
     before = correctIndefiniteArticle(before);

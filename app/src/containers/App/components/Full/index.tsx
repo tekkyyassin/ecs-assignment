@@ -42,10 +42,7 @@ import {
 import ContextAggregator from '../../../../contexts/ContextAggregator';
 import { useWorkspacesContext } from '../../../../contexts/WorkspacesContext';
 
-import {
-  DataExchangeFormat,
-  ThreatStatementListFilter,
-} from '../../../../customTypes';
+import { DataExchangeFormat, ThreatStatementListFilter } from '../../../../customTypes';
 import useNotifications from '../../../../hooks/useNotifications';
 import routes from '../../../../routes';
 
@@ -94,9 +91,7 @@ const Full: FC = () => {
     return previewParams === 'true';
   });
 
-  const [workspaceId, setWorkspaceId] = useState(
-    initialWorkspaceId || 'default',
-  );
+  const [workspaceId, setWorkspaceId] = useState(initialWorkspaceId || 'default');
 
   const handleWorkspaceChanged = useCallback(
     (newWorkspaceId: string) => {
@@ -117,8 +112,8 @@ const Full: FC = () => {
       navigate(generateUrl(ROUTE_THREAT_LIST, searchParms, workspaceId), {
         state: filter
           ? {
-            filter,
-          }
+              filter,
+            }
           : undefined,
       });
     },
@@ -127,9 +122,7 @@ const Full: FC = () => {
 
   const handleThreatEditorView = useCallback(
     (newThreatId?: string) => {
-      navigate(
-        generateUrl(ROUTE_THREAT_EDITOR, searchParms, workspaceId, newThreatId),
-      );
+      navigate(generateUrl(ROUTE_THREAT_EDITOR, searchParms, workspaceId, newThreatId));
     },
     [navigate, workspaceId, searchParms],
   );

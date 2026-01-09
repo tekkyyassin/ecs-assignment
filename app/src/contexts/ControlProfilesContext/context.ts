@@ -39,8 +39,6 @@ const initialState: ControlProfilesContextApi = {
   onDeleteWorkspace: () => Promise.resolve(),
 };
 
-export const ControlProfilesContext =
-  createContext<ControlProfilesContextApi>(initialState);
+export const ControlProfilesContext = createContext<ControlProfilesContextApi>(initialState);
 
-export const useControlProfilesContext = () =>
-  useContext(ControlProfilesContext);
+export const useControlProfilesContext = () => useContext(ControlProfilesContext);

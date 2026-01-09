@@ -17,14 +17,8 @@
 import { useCallback } from 'react';
 import { MitigationLink } from '../../customTypes';
 
-export const isSameMitigationLink = (
-  entity1: MitigationLink,
-  entity2: MitigationLink,
-) => {
-  return (
-    entity1.mitigationId === entity2.mitigationId &&
-    entity1.linkedId === entity2.linkedId
-  );
+export const isSameMitigationLink = (entity1: MitigationLink, entity2: MitigationLink) => {
+  return entity1.mitigationId === entity2.mitigationId && entity1.linkedId === entity2.linkedId;
 };
 
 const useMitigationLinks = (
@@ -34,10 +28,7 @@ const useMitigationLinks = (
   const handlRemoveMitigationLink = useCallback(
     (mitigationId: string, linkedEntityId: string) => {
       setMitigationLinkList((prevList) =>
-        prevList.filter(
-          (x) =>
-            !(x.mitigationId === mitigationId && x.linkedId === linkedEntityId),
-        ),
+        prevList.filter((x) => !(x.mitigationId === mitigationId && x.linkedId === linkedEntityId)),
       );
     },
     [setMitigationLinkList],
@@ -47,8 +38,7 @@ const useMitigationLinks = (
     (mitigationLinks: MitigationLink[]) => {
       setMitigationLinkList((prevList) => {
         return prevList.filter(
-          (pl) =>
-            mitigationLinks.findIndex((ml) => isSameMitigationLink(ml, pl)) < 0,
+          (pl) => mitigationLinks.findIndex((ml) => isSameMitigationLink(ml, pl)) < 0,
         );
       });
     },
@@ -66,9 +56,7 @@ const useMitigationLinks = (
 
   const handlRemoveMitigationLinksByLinkedEntityId = useCallback(
     async (linkedEntityId: string) => {
-      setMitigationLinkList((prevList) =>
-        prevList.filter((x) => !(x.linkedId === linkedEntityId)),
-      );
+      setMitigationLinkList((prevList) => prevList.filter((x) => !(x.linkedId === linkedEntityId)));
     },
     [setMitigationLinkList],
   );
@@ -97,9 +85,7 @@ const useMitigationLinks = (
         const filteredLinks = mitigationLinks.filter(
           (al) =>
             prevList.findIndex(
-              (pl) =>
-                pl.mitigationId === al.mitigationId &&
-                pl.linkedId === al.mitigationId,
+              (pl) => pl.mitigationId === al.mitigationId && pl.linkedId === al.mitigationId,
             ) < 0,
         );
         return [...prevList, ...filteredLinks];

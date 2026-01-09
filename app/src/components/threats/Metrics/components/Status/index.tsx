@@ -34,9 +34,7 @@ export interface StatusProps {
 const Status: FC<StatusProps> = ({ completed, label, onClick }) => {
   return (
     <button css={styles} onClick={onClick}>
-      <StatusIndicator type={completed ? 'success' : 'stopped'}>
-        {label}
-      </StatusIndicator>
+      <StatusIndicator type={completed ? 'success' : 'stopped'}>{label}</StatusIndicator>
     </button>
   );
 };

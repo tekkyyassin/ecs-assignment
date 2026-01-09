@@ -24,9 +24,7 @@ export interface AssumptionThreatLinkProps {
   assumptionId: string;
 }
 
-const AssumptionThreatLinkComponent: FC<AssumptionThreatLinkProps> = ({
-  assumptionId,
-}) => {
+const AssumptionThreatLinkComponent: FC<AssumptionThreatLinkProps> = ({ assumptionId }) => {
   const { controlList, saveControl } = useControlsContext();
   const [assumptionLinks, setAssumptionLinks] = useState<AssumptionLink[]>([]);
 
@@ -37,8 +35,7 @@ const AssumptionThreatLinkComponent: FC<AssumptionThreatLinkProps> = ({
     setAssumptionLinks(_assumptionLinks || []);
   }, [getAssumptionEntityLinks, assumptionId]);
 
-  const { addAssumptionLink, removeAssumptionLink } =
-    useAssumptionLinksContext();
+  const { addAssumptionLink, removeAssumptionLink } = useAssumptionLinksContext();
 
   const handleAddControlLink = useCallback(
     (controlIdOrNewControl: string) => {
@@ -69,9 +66,7 @@ const AssumptionThreatLinkComponent: FC<AssumptionThreatLinkProps> = ({
       controlList={controlList}
       linkedControlIds={assumptionLinks.map((ml) => ml.linkedId)}
       onAddControlLink={handleAddControlLink}
-      onRemoveControlLink={(controlId) =>
-        removeAssumptionLink(assumptionId, controlId)
-      }
+      onRemoveControlLink={(controlId) => removeAssumptionLink(assumptionId, controlId)}
     />
   );
 };

@@ -32,9 +32,7 @@ export interface GlobalSetupContextProviderProps {
   onDefineWorkload?: () => void;
 }
 
-const GlobalSetupContextProvider: FC<
-PropsWithChildren<GlobalSetupContextProviderProps>
-> = ({
+const GlobalSetupContextProvider: FC<PropsWithChildren<GlobalSetupContextProviderProps>> = ({
   children,
   composerMode = 'Full',
   onPreview,
@@ -77,10 +75,7 @@ PropsWithChildren<GlobalSetupContextProviderProps>
       >
         {children}
         {infoModalVisible && (
-          <InfoModal
-            visible={infoModalVisible}
-            setVisible={setInfoModalVisible}
-          />
+          <InfoModal visible={infoModalVisible} setVisible={setInfoModalVisible} />
         )}
       </GlobalSetupContext.Provider>
     </div>

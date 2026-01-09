@@ -35,9 +35,7 @@ export interface ImageUploadProps {
 const ImageEdit: FC<ImageUploadProps> = ({ value, onChange }) => {
   const isValueBase64String = value && value.startsWith('data:');
   const [selectedFiles, setSelectedFiles] = useState<File[]>([]);
-  const [inputValue, setInputValue] = useState(
-    isValueBase64String ? '' : value,
-  );
+  const [inputValue, setInputValue] = useState(isValueBase64String ? '' : value);
   const [imageSource, setImageSource] = useState<string>(
     !value ? 'no' : isValueBase64String ? 'file' : 'url',
   );
@@ -101,14 +99,7 @@ const ImageEdit: FC<ImageUploadProps> = ({ value, onChange }) => {
               Preview
             </Header>
           )}
-          {image && (
-            <img
-              key="image"
-              css={imageStyles}
-              src={image}
-              alt="Preview Diagram"
-            />
-          )}
+          {image && <img key="image" css={imageStyles} src={image} alt="Preview Diagram" />}
           <FileUpload
             key="fileUpload"
             label="Image Upload"
@@ -125,9 +116,7 @@ const ImageEdit: FC<ImageUploadProps> = ({ value, onChange }) => {
               Preview
             </Header>
           )}
-          {inputValue && (
-            <img css={imageStyles} src={inputValue} alt="Preview Diagram" />
-          )}
+          {inputValue && <img css={imageStyles} src={inputValue} alt="Preview Diagram" />}
           <Input
             value={inputValue}
             onChange={(event) => setInputValue(event.detail.value)}

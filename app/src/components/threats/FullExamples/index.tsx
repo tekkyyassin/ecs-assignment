@@ -17,19 +17,10 @@
 import Box from '@cloudscape-design/components/box';
 import Button from '@cloudscape-design/components/button';
 import ExpandableSection from '@cloudscape-design/components/expandable-section';
-import PropertyFilter, {
-  PropertyFilterProps,
-} from '@cloudscape-design/components/property-filter';
+import PropertyFilter, { PropertyFilterProps } from '@cloudscape-design/components/property-filter';
 import SpaceBetween from '@cloudscape-design/components/space-between';
 import TextContent from '@cloudscape-design/components/text-content';
-import {
-  FC,
-  useState,
-  useMemo,
-  useCallback,
-  useImperativeHandle,
-  forwardRef,
-} from 'react';
+import { FC, useState, useMemo, useCallback, useImperativeHandle, forwardRef } from 'react';
 import { useThreatsContext } from '../../../contexts/ThreatsContext/context';
 import { TemplateThreatStatement } from '../../../customTypes';
 import STRIDE from '../../../data/stride';
@@ -40,16 +31,12 @@ export interface FullExamplesProps {
   onClick: (example: TemplateThreatStatement) => void;
 }
 
-const parseToken = (
-  statements: TemplateThreatStatement[],
-  token: PropertyFilterProps.Token,
-) => {
+const parseToken = (statements: TemplateThreatStatement[], token: PropertyFilterProps.Token) => {
   const targetValue = token.value?.slice(0, 1).toUpperCase();
   const result: number[] = [];
   statements.forEach((st, index) => {
     if (token.propertyKey === 'STRIDE') {
-      const value = st.metadata?.find((m) => m.key === 'STRIDE')
-        ?.value as string[];
+      const value = st.metadata?.find((m) => m.key === 'STRIDE')?.value as string[];
       if (!value && token.operator === '!=') {
         result.push(index);
       }
@@ -62,10 +49,7 @@ const parseToken = (
         result.push(index);
       }
     } else if (!token.propertyKey && token.operator === ':') {
-      if (
-        st.statement &&
-        st.statement.toLocaleLowerCase().indexOf(token.value) >= 0
-      ) {
+      if (st.statement && st.statement.toLocaleLowerCase().indexOf(token.value) >= 0) {
         result.push(index);
       }
     } else {
@@ -76,8 +60,8 @@ const parseToken = (
   return result;
 };
 
-const FullExamples: FC<FullExamplesProps & { ref?: React.ForwardedRef<any> }> =
-  forwardRef(({ onClick }, ref) => {
+const FullExamples: FC<FullExamplesProps & { ref?: React.ForwardedRef<any> }> = forwardRef(
+  ({ onClick }, ref) => {
     const { threatStatementExamples } = useThreatsContext();
     const [expanded, setExpanded] = useState(false);
     const [query, setQuery] = useState<PropertyFilterProps.Query>({
@@ -104,9 +88,7 @@ const FullExamples: FC<FullExamplesProps & { ref?: React.ForwardedRef<any> }> =
     const filteredThreatStatementList = useMemo(() => {
       let resultExamples = [...threatStatementExamples];
       if (query.tokens.length > 0) {
-        const queryResult = query.tokens.map((t) =>
-          parseToken(threatStatementExamples, t),
-        );
+        const queryResult = query.tokens.map((t) => parseToken(threatStatementExamples, t));
         let mergeResult: number[] = [];
         if (queryResult.length === 1) {
           mergeResult = queryResult[0];
@@ -146,17 +128,16 @@ const FullExamples: FC<FullExamplesProps & { ref?: React.ForwardedRef<any> }> =
       return options;
     }, []);
 
-    const filteringProperties: PropertyFilterProps.FilteringProperty[] =
-      useMemo(() => {
-        return [
-          {
-            key: 'STRIDE',
-            operators: ['=', '!='],
-            propertyLabel: 'STRIDE',
-            groupValuesLabel: 'STRIDE values',
-          },
-        ];
-      }, []);
+    const filteringProperties: PropertyFilterProps.FilteringProperty[] = useMemo(() => {
+      return [
+        {
+          key: 'STRIDE',
+          operators: ['=', '!='],
+          propertyLabel: 'STRIDE',
+          groupValuesLabel: 'STRIDE values',
+        },
+      ];
+    }, []);
 
     return (
       <ExpandableSection
@@ -220,6 +201,7 @@ const FullExamples: FC<FullExamplesProps & { ref?: React.ForwardedRef<any> }> =
         </Box>
       </ExpandableSection>
     );
-  });
+  },
+);
 
 export default FullExamples;

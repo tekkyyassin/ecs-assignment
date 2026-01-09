@@ -32,15 +32,12 @@ const getLocalStorageKey = (workspaceId: string | null) => {
 };
 
 const ArchitectureLocalStorageContextProvider: FC<
-PropsWithChildren<ArchitectureContextProviderProps>
+  PropsWithChildren<ArchitectureContextProviderProps>
 > = ({ children, workspaceId: currentWorkspaceId }) => {
   const [architectureInfo, setArchitectureInfo, { removeItem }] =
-    useLocalStorageState<ArchitectureInfo>(
-      getLocalStorageKey(currentWorkspaceId),
-      {
-        defaultValue: INFO_DEFAULT_VALUE,
-      },
-    );
+    useLocalStorageState<ArchitectureInfo>(getLocalStorageKey(currentWorkspaceId), {
+      defaultValue: INFO_DEFAULT_VALUE,
+    });
 
   const handleRemoveArchitectureInfo = useCallback(async () => {
     removeItem();

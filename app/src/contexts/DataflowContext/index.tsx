@@ -22,9 +22,7 @@ import { DataflowContextProviderProps } from './types';
 import { EXAMPLE_WORKSPACE_ID } from '../../configs/constants';
 import { useExampleContext } from '../ExampleContext';
 
-const DataflowContextProvider: FC<
-PropsWithChildren<DataflowContextProviderProps>
-> = (props) => {
+const DataflowContextProvider: FC<PropsWithChildren<DataflowContextProviderProps>> = (props) => {
   const { dataflow } = useExampleContext();
 
   return props.workspaceId === EXAMPLE_WORKSPACE_ID ? (

@@ -28,15 +28,9 @@ export interface StandaloneProps {
 const Standalone: FC<StandaloneProps> = ({ composeMode }) => {
   const notifications = useNotifications(true);
   return (
-    <StandaloneAppLayout
-      title="threat-composer"
-      href={defaultHref}
-      notifications={notifications}
-    >
+    <StandaloneAppLayout title="threat-composer" href={defaultHref} notifications={notifications}>
       <ThreatStatementGenerator
-        composerMode={
-          composeMode !== 'EditorOnly' ? 'ThreatsOnly' : 'EditorOnly'
-        }
+        composerMode={composeMode !== 'EditorOnly' ? 'ThreatsOnly' : 'EditorOnly'}
       />
     </StandaloneAppLayout>
   );

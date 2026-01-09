@@ -32,9 +32,7 @@ const replacements = [
 const escapeMarkdown = (input: string, skips: string[] = []) => {
   return replacements.reduce((str, replacement) => {
     var name = replacement[2] as string;
-    return skips.indexOf(name) !== -1
-      ? str
-      : str.replace(replacement[0], replacement[1] as string);
+    return skips.indexOf(name) !== -1 ? str : str.replace(replacement[0], replacement[1] as string);
   }, input);
 };
 

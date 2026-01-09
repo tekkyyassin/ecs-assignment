@@ -15,9 +15,7 @@
  ******************************************************************************************************************** */
 
 import Button from '@cloudscape-design/components/button';
-import FormField, {
-  FormFieldProps,
-} from '@cloudscape-design/components/form-field';
+import FormField, { FormFieldProps } from '@cloudscape-design/components/form-field';
 import SpaceBetween from '@cloudscape-design/components/space-between';
 import React, { FC, useCallback, useRef, useMemo } from 'react';
 import FileTokenLabel from './components/FileTokenLabel';
@@ -64,26 +62,25 @@ const FileUpload: FC<FileUploadProps> = ({
     inputElement.current?.click();
   }, []);
 
-  const handleFileSelectionChange: React.ChangeEventHandler<HTMLInputElement> =
-    useCallback(
-      (event) => {
-        const newFiles: File[] = [];
+  const handleFileSelectionChange: React.ChangeEventHandler<HTMLInputElement> = useCallback(
+    (event) => {
+      const newFiles: File[] = [];
 
-        if (event.target.files) {
-          const targetFiles = event.target.files;
-          const len = targetFiles.length;
-          for (let i = 0; i < len; i++) {
-            const file = targetFiles.item(i);
-            if (file) {
-              newFiles.push(file);
-            }
+      if (event.target.files) {
+        const targetFiles = event.target.files;
+        const len = targetFiles.length;
+        for (let i = 0; i < len; i++) {
+          const file = targetFiles.item(i);
+          if (file) {
+            newFiles.push(file);
           }
         }
+      }
 
-        onChange?.(newFiles);
-      },
-      [onChange],
-    );
+      onChange?.(newFiles);
+    },
+    [onChange],
+  );
 
   return (
     <SpaceBetween direction="vertical" size="m">

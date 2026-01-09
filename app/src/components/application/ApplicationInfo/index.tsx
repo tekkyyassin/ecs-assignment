@@ -23,21 +23,14 @@ import Header from '@cloudscape-design/components/header';
 import SpaceBetween from '@cloudscape-design/components/space-between';
 import { FC, useState, useCallback, useMemo, useEffect } from 'react';
 import { useApplicationInfoContext } from '../../../contexts/ApplicationContext/context';
-import {
-  ApplicationInfoSchema,
-  EditableComponentBaseProps,
-} from '../../../customTypes';
+import { ApplicationInfoSchema, EditableComponentBaseProps } from '../../../customTypes';
 import Input from '../../generic/Input';
 import MarkdownEditor from '../../generic/MarkdownEditor';
 import MarkdownViewer from '../../generic/MarkdownViewer';
 
-const ApplicationInfo: FC<EditableComponentBaseProps> = ({
-  onEditModeChange,
-}) => {
+const ApplicationInfo: FC<EditableComponentBaseProps> = ({ onEditModeChange }) => {
   const { applicationInfo, setApplicationInfo } = useApplicationInfoContext();
-  const [editMode, setEditMode] = useState(
-    !applicationInfo.name && !applicationInfo.description,
-  );
+  const [editMode, setEditMode] = useState(!applicationInfo.name && !applicationInfo.description);
   const [content, setContent] = useState('');
   const [name, setName] = useState('');
   const [securityCategory, setSecurityCategory] = useState('CCCS Medium');
@@ -116,9 +109,7 @@ const ApplicationInfo: FC<EditableComponentBaseProps> = ({
   return (
     <Container
       header={
-        <Header actions={actions}>
-          {applicationInfo.name || 'Application Introduction'}
-        </Header>
+        <Header actions={actions}>{applicationInfo.name || 'Application Introduction'}</Header>
       }
     >
       {editMode ? (
@@ -210,9 +201,7 @@ const ApplicationInfo: FC<EditableComponentBaseProps> = ({
         <SpaceBetween direction="vertical" size="l">
           <MarkdownViewer>{applicationInfo.description || ''}</MarkdownViewer>
           <Header>{'GC cloud profile'}</Header>
-          <MarkdownViewer>
-            {applicationInfo.securityCategory || ''}
-          </MarkdownViewer>
+          <MarkdownViewer>{applicationInfo.securityCategory || ''}</MarkdownViewer>
           <Header>{'Cloud service models'}</Header>
           <MarkdownViewer>
             {[

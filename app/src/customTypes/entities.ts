@@ -28,14 +28,9 @@ import {
 } from '../configs';
 import STRIDE from '../data/stride';
 
-export const TagSchema = z
-  .string()
-  .nonempty()
-  .max(SINGLE_FIELD_INPUT_TAG_MAX_LENGTH);
+export const TagSchema = z.string().nonempty().max(SINGLE_FIELD_INPUT_TAG_MAX_LENGTH);
 
-export const MetadataCommentSchema = z
-  .string()
-  .max(FREE_TEXT_INPUT_SMALL_MAX_LENGTH);
+export const MetadataCommentSchema = z.string().max(FREE_TEXT_INPUT_SMALL_MAX_LENGTH);
 
 export const MetadataSchema = z
   .object({

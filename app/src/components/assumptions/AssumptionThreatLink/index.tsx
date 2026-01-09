@@ -24,9 +24,7 @@ export interface AssumptionThreatLinkProps {
   assumptionId: string;
 }
 
-const AssumptionThreatLinkComponent: FC<AssumptionThreatLinkProps> = ({
-  assumptionId,
-}) => {
+const AssumptionThreatLinkComponent: FC<AssumptionThreatLinkProps> = ({ assumptionId }) => {
   const { statementList } = useThreatsContext();
   const [assumptionLinks, setAssumptionLinks] = useState<AssumptionLink[]>([]);
 
@@ -37,8 +35,7 @@ const AssumptionThreatLinkComponent: FC<AssumptionThreatLinkProps> = ({
     setAssumptionLinks(_assumptionLinks || []);
   }, [getAssumptionEntityLinks, assumptionId]);
 
-  const { addAssumptionLink, removeAssumptionLink } =
-    useAssumptionLinksContext();
+  const { addAssumptionLink, removeAssumptionLink } = useAssumptionLinksContext();
 
   return (
     <ThreatLinkView
@@ -51,9 +48,7 @@ const AssumptionThreatLinkComponent: FC<AssumptionThreatLinkProps> = ({
           type: 'Threat',
         })
       }
-      onRemoveThreatLink={(threatId) =>
-        removeAssumptionLink(assumptionId, threatId)
-      }
+      onRemoveThreatLink={(threatId) => removeAssumptionLink(assumptionId, threatId)}
     />
   );
 };

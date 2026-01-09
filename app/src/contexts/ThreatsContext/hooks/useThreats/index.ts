@@ -22,17 +22,11 @@ import { ThreatsContextProviderProps, View } from '../../types';
 const useThreats = (
   composerMode: ComposerMode,
   statementList: TemplateThreatStatement[],
-  setStatementList: React.Dispatch<
-  React.SetStateAction<TemplateThreatStatement[]>
-  >,
+  setStatementList: React.Dispatch<React.SetStateAction<TemplateThreatStatement[]>>,
   filteredStatementList: TemplateThreatStatement[],
-  setFilteredStatementList: React.Dispatch<
-  React.SetStateAction<TemplateThreatStatement[]>
-  >,
+  setFilteredStatementList: React.Dispatch<React.SetStateAction<TemplateThreatStatement[]>>,
   editingStatement: TemplateThreatStatement | null,
-  setEditingStatement: React.Dispatch<
-  React.SetStateAction<TemplateThreatStatement | null>
-  >,
+  setEditingStatement: React.Dispatch<React.SetStateAction<TemplateThreatStatement | null>>,
   onThreatEditorView: ThreatsContextProviderProps['onThreatEditorView'],
 ) => {
   const [view, setView] = useState<View>('list');
@@ -42,13 +36,7 @@ const useThreats = (
       if (idToCopy) {
         const copiedStatement = statementList.find((st) => st.id === idToCopy);
         if (copiedStatement) {
-          const {
-            id: _id,
-            displayOrder,
-            tags,
-            metadata,
-            ...rest
-          } = copiedStatement;
+          const { id: _id, displayOrder, tags, metadata, ...rest } = copiedStatement;
           const newStatement = {
             ...rest,
             id: uuidV4(),
@@ -93,16 +81,13 @@ const useThreats = (
         let numericId = statement.numericId;
 
         if (numericId === -1) {
-          const maxId = prevList.reduce(
-            (max: number, cur: TemplateThreatStatement) => {
-              if (cur.numericId > max) {
-                return cur.numericId;
-              }
+          const maxId = prevList.reduce((max: number, cur: TemplateThreatStatement) => {
+            if (cur.numericId > max) {
+              return cur.numericId;
+            }
 
-              return max;
-            },
-            0,
-          );
+            return max;
+          }, 0);
           numericId = maxId + 1;
         }
 
@@ -150,13 +135,9 @@ const useThreats = (
 
   const handleFilterStatement = useCallback(
     (strideFilter: '') => {
-      const filteredStatements = filteredStatementList.filter(
-        (s) => s.id === strideFilter,
-      );
+      const filteredStatements = filteredStatementList.filter((s) => s.id === strideFilter);
       if (filteredStatements) {
-        setFilteredStatementList(
-          filteredStatements as TemplateThreatStatement[],
-        );
+        setFilteredStatementList(filteredStatements as TemplateThreatStatement[]);
       }
     },
     [filteredStatementList, setFilteredStatementList],

@@ -25,12 +25,9 @@ const allFields = Object.keys(threatFieldTypeMapping);
 
 const getRecommendedEditor = (statement?: TemplateThreatStatement | null) => {
   if (statement) {
-    const { fieldCombination, filledField } =
-      calculateFieldCombination(statement);
+    const { fieldCombination, filledField } = calculateFieldCombination(statement);
     if (fieldCombination !== 0) {
-      const unFilledFields = allFields.filter(
-        (af) => !filledField.includes(af),
-      );
+      const unFilledFields = allFields.filter((af) => !filledField.includes(af));
       const unFilledFieldsLen = unFilledFields.length;
       if (unFilledFieldsLen === 1) {
         return unFilledFields[0] as ThreatFieldTypes;

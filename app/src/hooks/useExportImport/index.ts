@@ -85,22 +85,14 @@ const useImportExport = () => {
   ]);
 
   const exportAll = useCallback(() => {
-    const exportFileName = getExportFileName(
-      composerMode,
-      false,
-      currentWorkspace,
-    );
+    const exportFileName = getExportFileName(composerMode, false, currentWorkspace);
     const exportObject = getWorkspaceData();
     downloadObjectAsJson(exportObject, exportFileName);
   }, [getWorkspaceData, currentWorkspace, composerMode]);
 
   const exportSelectedThreats = useCallback(
     (selectedStatementList: TemplateThreatStatement[]) => {
-      const exportFileName = getExportFileName(
-        composerMode,
-        true,
-        currentWorkspace,
-      );
+      const exportFileName = getExportFileName(composerMode, true, currentWorkspace);
       downloadObjectAsJson(
         {
           schema: SCHEMA_VERSION,
@@ -127,11 +119,7 @@ const useImportExport = () => {
     const validatedData = validateData(parsedData);
 
     if (validatedData.success === false) {
-      throw new Error(
-        validatedData.error.issues
-          .map((i) => `${i.path}: ${i.message}`)
-          .join('\n'),
-      );
+      throw new Error(validatedData.error.issues.map((i) => `${i.path}: ${i.message}`).join('\n'));
     }
 
     const importedData = validatedData.data as DataExchangeFormat;

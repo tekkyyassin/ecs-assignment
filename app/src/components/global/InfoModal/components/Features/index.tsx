@@ -46,10 +46,7 @@ const InfoModalFeatures: FC = () => {
               </svg>
             </div>
             <div>
-              Renders{' '}
-              <span css={css(styles.contentHighlight)}>
-                structured threat statements
-              </span>{' '}
+              Renders <span css={css(styles.contentHighlight)}>structured threat statements</span>{' '}
               based on user input
             </div>
           </div>
@@ -67,10 +64,8 @@ const InfoModalFeatures: FC = () => {
               </svg>
             </div>
             <div>
-              <span css={css(styles.contentHighlight)}>
-                Adaptive threat statement structure
-              </span>{' '}
-              to support progressively more complete user input
+              <span css={css(styles.contentHighlight)}>Adaptive threat statement structure</span> to
+              support progressively more complete user input
             </div>
           </div>
           <div css={[css(styles.featureSet), css(styles.contentBaseText)]}>
@@ -86,10 +81,8 @@ const InfoModalFeatures: FC = () => {
               </svg>
             </div>
             <div>
-              <span css={css(styles.contentHighlight)}>
-                Dynamic suggestions
-              </span>{' '}
-              based on supplied and missing user input
+              <span css={css(styles.contentHighlight)}>Dynamic suggestions</span> based on supplied
+              and missing user input
             </div>
           </div>
           <div css={[css(styles.featureSet), css(styles.contentBaseText)]}>

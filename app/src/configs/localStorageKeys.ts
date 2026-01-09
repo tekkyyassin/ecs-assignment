@@ -14,41 +14,26 @@
   limitations under the License.
  ******************************************************************************************************************** */
 
-export const LOCAL_STORAGE_KEY_NEW_VISIT_FLAG =
-  'ThreatStatementGenerator.newVisitFlag';
+export const LOCAL_STORAGE_KEY_NEW_VISIT_FLAG = 'ThreatStatementGenerator.newVisitFlag';
 
-export const LOCAL_STORAGE_KEY_CURRENT_WORKSPACE =
-  'ThreatStatementGenerator.currentWorkspace';
-export const LOCAL_STORAGE_KEY_WORKSPACE_LIST =
-  'ThreatStatementGenerator.workspaceList';
+export const LOCAL_STORAGE_KEY_CURRENT_WORKSPACE = 'ThreatStatementGenerator.currentWorkspace';
+export const LOCAL_STORAGE_KEY_WORKSPACE_LIST = 'ThreatStatementGenerator.workspaceList';
 
-export const LOCAL_STORAGE_KEY_EDITING_STATEMENT =
-  'ThreatStatementGenerator.editingStatement';
-export const LOCAL_STORAGE_KEY_STATEMENT_LIST =
-  'ThreatStatementGenerator.threatStatementList';
+export const LOCAL_STORAGE_KEY_EDITING_STATEMENT = 'ThreatStatementGenerator.editingStatement';
+export const LOCAL_STORAGE_KEY_STATEMENT_LIST = 'ThreatStatementGenerator.threatStatementList';
 
-export const LOCAL_STORAGE_KEY_ASSUMPTION_LIST =
-  'ThreatStatementGenerator.AssumptionList';
-export const LOCAL_STORAGE_KEY_MITIGATION_LIST =
-  'ThreatStatementGenerator.MitigationList';
-export const LOCAL_STORAGE_KEY_CONTROL_LIST =
-  'ThreatStatementGenerator.ControlList';
+export const LOCAL_STORAGE_KEY_ASSUMPTION_LIST = 'ThreatStatementGenerator.AssumptionList';
+export const LOCAL_STORAGE_KEY_MITIGATION_LIST = 'ThreatStatementGenerator.MitigationList';
+export const LOCAL_STORAGE_KEY_CONTROL_LIST = 'ThreatStatementGenerator.ControlList';
 
-export const LOCAL_STORAGE_KEY_ASSUMPTION_LINK_LIST =
-  'ThreatStatementGenerator.AssumptionLinkList';
-export const LOCAL_STORAGE_KEY_MITIGATION_LINK_LIST =
-  'ThreatStatementGenerator.MitigationLinkList';
-export const LOCAL_STORAGE_KEY_CONTROL_LINK_LIST =
-  'ThreatStatementGenerator.ControlLinkList';
+export const LOCAL_STORAGE_KEY_ASSUMPTION_LINK_LIST = 'ThreatStatementGenerator.AssumptionLinkList';
+export const LOCAL_STORAGE_KEY_MITIGATION_LINK_LIST = 'ThreatStatementGenerator.MitigationLinkList';
+export const LOCAL_STORAGE_KEY_CONTROL_LINK_LIST = 'ThreatStatementGenerator.ControlLinkList';
 
-export const LOCAL_STORAGE_KEY_APPLICATION_INFO =
-  'ThreatStatementGenerator.ApplicationInfo';
-export const LOCAL_STORAGE_KEY_ARCHIECTURE_INFO =
-  'ThreatStatementGenerator.ArchitectureInfo';
-export const LOCAL_STORAGE_KEY_DATAFLOW_INFO =
-  'ThreatStatementGenerator.DataflowInfo';
-export const LOCAL_STORAGE_KEY_DIAGRAM_INFO =
-  'ThreatStatementGenerator.DiagramInfo';
+export const LOCAL_STORAGE_KEY_APPLICATION_INFO = 'ThreatStatementGenerator.ApplicationInfo';
+export const LOCAL_STORAGE_KEY_ARCHIECTURE_INFO = 'ThreatStatementGenerator.ArchitectureInfo';
+export const LOCAL_STORAGE_KEY_DATAFLOW_INFO = 'ThreatStatementGenerator.DataflowInfo';
+export const LOCAL_STORAGE_KEY_DIAGRAM_INFO = 'ThreatStatementGenerator.DiagramInfo';
 export const LOCAL_STORAGE_KEY_FLOW_INFO = 'ThreatStatementGenerator.FlowInfo';
 
 export const LOCAL_STORAGE_KEY_WORKSPACE_LIST_MIGRATION =

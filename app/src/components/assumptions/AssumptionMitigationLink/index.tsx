@@ -24,24 +24,18 @@ export interface AssumptionThreatLinkProps {
   assumptionId: string;
 }
 
-const AssumptionThreatLinkComponent: FC<AssumptionThreatLinkProps> = ({
-  assumptionId,
-}) => {
+const AssumptionThreatLinkComponent: FC<AssumptionThreatLinkProps> = ({ assumptionId }) => {
   const { mitigationList, saveMitigation } = useMitigationsContext();
   const [assumptionLinks, setAssumptionLinks] = useState<AssumptionLink[]>([]);
 
   const { getAssumptionEntityLinks } = useAssumptionLinksContext();
 
   useEffect(() => {
-    const _assumptionLinks = getAssumptionEntityLinks(
-      assumptionId,
-      'Mitigation',
-    );
+    const _assumptionLinks = getAssumptionEntityLinks(assumptionId, 'Mitigation');
     setAssumptionLinks(_assumptionLinks || []);
   }, [getAssumptionEntityLinks, assumptionId]);
 
-  const { addAssumptionLink, removeAssumptionLink } =
-    useAssumptionLinksContext();
+  const { addAssumptionLink, removeAssumptionLink } = useAssumptionLinksContext();
 
   const handleAddMitigationLink = useCallback(
     (mitigationIdOrNewMitigation: string) => {
@@ -72,9 +66,7 @@ const AssumptionThreatLinkComponent: FC<AssumptionThreatLinkProps> = ({
       mitigationList={mitigationList}
       linkedMitigationIds={assumptionLinks.map((ml) => ml.linkedId)}
       onAddMitigationLink={handleAddMitigationLink}
-      onRemoveMitigationLink={(mitigationId) =>
-        removeAssumptionLink(assumptionId, mitigationId)
-      }
+      onRemoveMitigationLink={(mitigationId) => removeAssumptionLink(assumptionId, mitigationId)}
     />
   );
 };

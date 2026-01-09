@@ -44,9 +44,7 @@ const MitigationLinkComponent: FC<MitigationLinkProps> = ({
   }, [linkedMitigationIds, mitigationList]);
 
   const filteredMitigations = useMemo(() => {
-    const mitigations = mitigationList.filter(
-      (x) => !linkedMitigationIds.includes(x.id),
-    );
+    const mitigations = mitigationList.filter((x) => !linkedMitigationIds.includes(x.id));
 
     if (!searchValue) {
       return mitigations;

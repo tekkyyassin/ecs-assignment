@@ -14,14 +14,7 @@
   limitations under the License.
  ******************************************************************************************************************** */
 
-import {
-  Button,
-  Box,
-  SpaceBetween,
-  ColumnLayout,
-  Link,
-  Icon,
-} from '@cloudscape-design/components';
+import { Button, Box, SpaceBetween, ColumnLayout, Link, Icon } from '@cloudscape-design/components';
 import PieChart from '@cloudscape-design/components/pie-chart';
 import {
   colorChartsStatusInfo,
@@ -31,12 +24,7 @@ import {
 } from '@cloudscape-design/design-tokens';
 import { useMemo } from 'react';
 
-import {
-  LEVEL_HIGH,
-  LEVEL_LOW,
-  LEVEL_MEDIUM,
-  LEVEL_NOT_SET,
-} from '../../../../../configs';
+import { LEVEL_HIGH, LEVEL_LOW, LEVEL_MEDIUM, LEVEL_NOT_SET } from '../../../../../configs';
 import { useThreatsContext } from '../../../../../contexts/ThreatsContext';
 import filterThreatsByMetadata from '../../../../../utils/filterThreatsByMetadata';
 import useLinkClicked from '../../hooks/useLinkClicked';
@@ -56,8 +44,7 @@ const ThreatPrioritization = () => {
     [statementList],
   );
   const countMed = useMemo(
-    () =>
-      filterThreatsByMetadata(statementList, 'Priority', LEVEL_MEDIUM).length,
+    () => filterThreatsByMetadata(statementList, 'Priority', LEVEL_MEDIUM).length,
     [statementList],
   );
   const countLow = useMemo(
@@ -68,12 +55,7 @@ const ThreatPrioritization = () => {
   return (
     <ColumnLayout columns={1} borders="horizontal">
       {!statementList.length ? (
-        <Box
-          margin="xxl"
-          padding="xxl"
-          color="text-body-secondary"
-          textAlign="center"
-        >
+        <Box margin="xxl" padding="xxl" color="text-body-secondary" textAlign="center">
           <b>No threats available</b>
           <Box variant="p" color="text-body-secondary">
             Start by adding a threat to this workspace

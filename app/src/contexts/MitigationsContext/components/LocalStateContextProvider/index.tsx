@@ -22,14 +22,11 @@ import { MitigationsContextProviderProps } from '../../types';
 import useMitigations from '../../useMitigations';
 
 const MitigationsLocalStateContextProvider: FC<
-PropsWithChildren<
-MitigationsContextProviderProps &
-LocalStateContextProviderBaseProps<Mitigation[]>
->
+  PropsWithChildren<
+    MitigationsContextProviderProps & LocalStateContextProviderBaseProps<Mitigation[]>
+  >
 > = ({ children, initialValue }) => {
-  const [mitigationList, setMitigationList] = useState<Mitigation[]>(
-    initialValue || [],
-  );
+  const [mitigationList, setMitigationList] = useState<Mitigation[]>(initialValue || []);
 
   const { handlRemoveMitigation, handleSaveMitigation } = useMitigations(
     mitigationList,

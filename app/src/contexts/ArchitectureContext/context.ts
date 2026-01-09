@@ -31,8 +31,6 @@ const initialState: ArchitectureInfoContextApi = {
   onDeleteWorkspace: () => Promise.resolve(),
 };
 
-export const ArchitectureInfoContext =
-  createContext<ArchitectureInfoContextApi>(initialState);
+export const ArchitectureInfoContext = createContext<ArchitectureInfoContextApi>(initialState);
 
-export const useArchitectureInfoContext = () =>
-  useContext(ArchitectureInfoContext);
+export const useArchitectureInfoContext = () => useContext(ArchitectureInfoContext);

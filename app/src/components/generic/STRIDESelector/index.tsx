@@ -34,20 +34,12 @@ export interface STRIDESelectorProps {
   setSelected: (value: string[]) => void;
 }
 
-const STRIDESelector: FC<STRIDESelectorProps> = ({
-  label,
-  selected,
-  setSelected,
-}) => {
+const STRIDESelector: FC<STRIDESelectorProps> = ({ label, selected, setSelected }) => {
   return (
     <FormField label={label}>
       <Multiselect
-        selectedOptions={
-          selected ? OPTIONS.filter((x) => selected.includes(x.value)) : []
-        }
-        onChange={({ detail }) =>
-          setSelected(detail.selectedOptions.map((x) => x.value || ''))
-        }
+        selectedOptions={selected ? OPTIONS.filter((x) => selected.includes(x.value)) : []}
+        onChange={({ detail }) => setSelected(detail.selectedOptions.map((x) => x.value || ''))}
         options={OPTIONS}
         selectedAriaLabel="Selected"
       />

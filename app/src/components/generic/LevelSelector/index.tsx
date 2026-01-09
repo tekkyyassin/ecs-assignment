@@ -31,45 +31,26 @@ export interface LevelSelectorProps {
   onBlur?: () => void;
 }
 
-const LevelSelector: FC<LevelSelectorProps> = React.forwardRef<
-SelectProps.Ref,
-LevelSelectorProps
->(
-  (
-    {
-      label,
-      selectedLevel,
-      setSelectedLevel,
-      allowNoValue,
-      placeholder,
-      onFocus,
-      onBlur,
-    },
-    ref,
-  ) => {
+const LevelSelector: FC<LevelSelectorProps> = React.forwardRef<SelectProps.Ref, LevelSelectorProps>(
+  ({ label, selectedLevel, setSelectedLevel, allowNoValue, placeholder, onFocus, onBlur }, ref) => {
     return (
       <FormField label={label}>
         <Select
           ref={ref}
-          selectedOption={
-            LEVEL_SELECTOR_OPTIONS.find((x) => x.value === selectedLevel) ||
-            null
-          }
+          selectedOption={LEVEL_SELECTOR_OPTIONS.find((x) => x.value === selectedLevel) || null}
           onChange={({ detail }) => {
             const selected = detail.selectedOption.value;
-            setSelectedLevel?.(
-              !selected || selected === NO_VALUE ? undefined : selected,
-            );
+            setSelectedLevel?.(!selected || selected === NO_VALUE ? undefined : selected);
           }}
           options={
             allowNoValue
               ? [
-                {
-                  label: NO_VALUE,
-                  value: NO_VALUE,
-                },
-                ...LEVEL_SELECTOR_OPTIONS,
-              ]
+                  {
+                    label: NO_VALUE,
+                    value: NO_VALUE,
+                  },
+                  ...LEVEL_SELECTOR_OPTIONS,
+                ]
               : LEVEL_SELECTOR_OPTIONS
           }
           selectedAriaLabel="Selected"

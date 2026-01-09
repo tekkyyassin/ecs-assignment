@@ -15,11 +15,7 @@
  ******************************************************************************************************************** */
 
 import { FC, PropsWithChildren } from 'react';
-import {
-  ComposerMode,
-  DataExchangeFormat,
-  ViewNavigationEvent,
-} from '../../customTypes';
+import { ComposerMode, DataExchangeFormat, ViewNavigationEvent } from '../../customTypes';
 import ApplicationInfoContextProvider from '../ApplicationContext';
 import ArchitectureInfoContextProvider from '../ArchitectureContext';
 import AssumptionLinksContextProvider from '../AssumptionLinksContext';
@@ -44,9 +40,12 @@ export interface WorkspaceContextAggregatorProps extends ViewNavigationEvent {
   onImported?: () => void;
 }
 
-const WorkspaceContextInnerAggregator: FC<
-PropsWithChildren<WorkspaceContextAggregatorProps>
-> = ({ children, workspaceId, onThreatEditorView, onThreatListView }) => {
+const WorkspaceContextInnerAggregator: FC<PropsWithChildren<WorkspaceContextAggregatorProps>> = ({
+  children,
+  workspaceId,
+  onThreatEditorView,
+  onThreatListView,
+}) => {
   return (
     <ExampleContextProvider>
       <ThreatsContextProvider
@@ -62,12 +61,8 @@ PropsWithChildren<WorkspaceContextAggregatorProps>
                   <ControlLinksContextProvider workspaceId={workspaceId}>
                     <ControlProfilesContextProvider workspaceId={workspaceId}>
                       <ApplicationInfoContextProvider workspaceId={workspaceId}>
-                        <ArchitectureInfoContextProvider
-                          workspaceId={workspaceId}
-                        >
-                          <DataflowInfoContextProvider
-                            workspaceId={workspaceId}
-                          >
+                        <ArchitectureInfoContextProvider workspaceId={workspaceId}>
+                          <DataflowInfoContextProvider workspaceId={workspaceId}>
                             <FlowContextProvider workspaceId={workspaceId}>
                               {children}
                             </FlowContextProvider>
@@ -86,9 +81,7 @@ PropsWithChildren<WorkspaceContextAggregatorProps>
   );
 };
 
-const WorkspaceContextAggregator: FC<
-PropsWithChildren<WorkspaceContextAggregatorProps>
-> = ({
+const WorkspaceContextAggregator: FC<PropsWithChildren<WorkspaceContextAggregatorProps>> = ({
   children,
   workspaceId,
   composerMode,

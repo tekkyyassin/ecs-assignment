@@ -52,11 +52,8 @@ const ControlList: FC = () => {
   const { addControlLinks, controlLinkList, removeControlLinksByControlId } =
     useControlLinksContext();
 
-  const {
-    addMitigationLinks,
-    mitigationLinkList,
-    removeMitigationLinksByLinkedEntityId,
-  } = useMitigationLinksContext();
+  const { addMitigationLinks, mitigationLinkList, removeMitigationLinksByLinkedEntityId } =
+    useMitigationLinksContext();
 
   const [filteringText, setFilteringText] = useState('');
 
@@ -104,11 +101,9 @@ const ControlList: FC = () => {
 
   const [selectedSTRIDEs, setSelectedSTRIDEs] = useState<string[]>([]);
 
-  const [selectedLinkedThreatsFilter, setSelectedLinkedThreatsFilter] =
-    useState(ALL);
+  const [selectedLinkedThreatsFilter, setSelectedLinkedThreatsFilter] = useState(ALL);
 
-  const [selectedLinkedMitigationsFilter, setSelectedLinkedMitigationsFilter] =
-    useState(ALL);
+  const [selectedLinkedMitigationsFilter, setSelectedLinkedMitigationsFilter] = useState(ALL);
 
   const handleRemove = useCallback(
     async (controlId: string) => {
@@ -116,11 +111,7 @@ const ControlList: FC = () => {
       await removeMitigationLinksByLinkedEntityId(controlId);
       await removeControlLinksByControlId(controlId);
     },
-    [
-      removeMitigationLinksByLinkedEntityId,
-      removeControl,
-      removeControlLinksByControlId,
-    ],
+    [removeMitigationLinksByLinkedEntityId, removeControl, removeControlLinksByControlId],
   );
 
   const hasNoFilter = useMemo(() => {
@@ -130,12 +121,7 @@ const ControlList: FC = () => {
       selectedLinkedThreatsFilter === ALL &&
       selectedTags.length === 0
     );
-  }, [
-    filteringText,
-    selectedTags,
-    selectedLinkedThreatsFilter,
-    selectedLinkedMitigationsFilter,
-  ]);
+  }, [filteringText, selectedTags, selectedLinkedThreatsFilter, selectedLinkedMitigationsFilter]);
 
   const handleClearFilter = useCallback(() => {
     setFilteringText('');
@@ -176,9 +162,7 @@ const ControlList: FC = () => {
 
     if (filteringText) {
       output = output.filter(
-        (c) =>
-          c.content &&
-          c.content.toLowerCase().indexOf(filteringText.toLowerCase()) >= 0,
+        (c) => c.content && c.content.toLowerCase().indexOf(filteringText.toLowerCase()) >= 0,
       );
     }
     if (selectedTags && selectedTags.length > 0) {
@@ -201,10 +185,7 @@ const ControlList: FC = () => {
           return true;
         }
 
-        return (
-          stride?.value &&
-          (stride.value as string[]).some((t) => selectedSTRIDEs.includes(t))
-        );
+        return stride?.value && (stride.value as string[]).some((t) => selectedSTRIDEs.includes(t));
       });
     }
 
@@ -224,9 +205,7 @@ const ControlList: FC = () => {
       });
     }
     output = output.sort(
-      (op1, op2) =>
-        (op2.displayOrder || Number.MAX_VALUE) -
-        (op1.displayOrder || Number.MAX_VALUE),
+      (op1, op2) => (op2.displayOrder || Number.MAX_VALUE) - (op1.displayOrder || Number.MAX_VALUE),
     );
     return output;
   }, [
@@ -241,11 +220,7 @@ const ControlList: FC = () => {
   ]);
 
   const handleSaveNew = useCallback(
-    (
-      control: Control,
-      linkedMitigationIds: string[],
-      linkedThreatIds: string[],
-    ) => {
+    (control: Control, linkedMitigationIds: string[], linkedThreatIds: string[]) => {
       const updated = saveControl(control);
 
       const controlLinks: ControlLink[] = [];
@@ -276,10 +251,7 @@ const ControlList: FC = () => {
       <SpaceBetween direction="vertical" size="s">
         <Container
           header={
-            <Header
-              counter={`(${filteredList.length})`}
-              info={<Link variant="info">Info</Link>}
-            >
+            <Header counter={`(${filteredList.length})`} info={<Link variant="info">Info</Link>}>
               Control List
             </Header>
           }
@@ -308,17 +280,11 @@ const ControlList: FC = () => {
               <Multiselect
                 tokenLimit={3}
                 selectedOptions={[
-                  ...STRIDEOptions.filter((x) =>
-                    selectedSTRIDEs.includes(x.value),
-                  ),
-                  ...(selectedSTRIDEs.includes(LEVEL_NOT_SET)
-                    ? [STRIDE_OPTION_NO_VALUE]
-                    : []),
+                  ...STRIDEOptions.filter((x) => selectedSTRIDEs.includes(x.value)),
+                  ...(selectedSTRIDEs.includes(LEVEL_NOT_SET) ? [STRIDE_OPTION_NO_VALUE] : []),
                 ]}
                 onChange={({ detail }) =>
-                  setSelectedSTRIDEs(
-                    detail.selectedOptions?.map((o) => o.value || '') || [],
-                  )
+                  setSelectedSTRIDEs(detail.selectedOptions?.map((o) => o.value || '') || [])
                 }
                 deselectAriaLabel={(e) => `Remove ${e.label}`}
                 options={STRIDEOptionsWithNoValue}
@@ -343,12 +309,7 @@ const ControlList: FC = () => {
                 onClick={handleClearFilter}
                 variant="icon"
                 iconSvg={
-                  <svg
-                    focusable="false"
-                    aria-hidden="true"
-                    viewBox="0 0 24 24"
-                    tabIndex={-1}
-                  >
+                  <svg focusable="false" aria-hidden="true" viewBox="0 0 24 24" tabIndex={-1}>
                     <path d="M19.79 5.61C20.3 4.95 19.83 4 19 4H6.83l7.97 7.97 4.99-6.36zM2.81 2.81 1.39 4.22 10 13v6c0 .55.45 1 1 1h2c.55 0 1-.45 1-1v-2.17l5.78 5.78 1.41-1.41L2.81 2.81z"></path>
                   </svg>
                 }

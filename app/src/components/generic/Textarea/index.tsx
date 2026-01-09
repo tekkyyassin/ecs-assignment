@@ -14,9 +14,7 @@
   limitations under the License.
  ******************************************************************************************************************** */
 
-import FormField, {
-  FormFieldProps,
-} from '@cloudscape-design/components/form-field';
+import FormField, { FormFieldProps } from '@cloudscape-design/components/form-field';
 import { BaseChangeDetail } from '@cloudscape-design/components/input/interfaces';
 import { NonCancelableEventHandler } from '@cloudscape-design/components/internal/events';
 import TextareaComponent, {
@@ -34,41 +32,34 @@ export interface TextAreaProps extends FormFieldProps, TextareaComponetProps {
   singleLine?: boolean;
 }
 
-const Textarea: FC<TextAreaProps> = React.forwardRef<
-TextareaComponetProps.Ref,
-TextAreaProps
->(({ value, onChange, validateData, singleLine, ...props }, ref) => {
-  const { tempValue, errorText, handleChange } = useContentValidation(
-    value,
-    onChange,
-    validateData,
-  );
+const Textarea: FC<TextAreaProps> = React.forwardRef<TextareaComponetProps.Ref, TextAreaProps>(
+  ({ value, onChange, validateData, singleLine, ...props }, ref) => {
+    const { tempValue, errorText, handleChange } = useContentValidation(
+      value,
+      onChange,
+      validateData,
+    );
 
-  const handleValueChange: NonCancelableEventHandler<BaseChangeDetail> =
-    useCallback(
+    const handleValueChange: NonCancelableEventHandler<BaseChangeDetail> = useCallback(
       (event) =>
         singleLine
           ? handleChange({
-            ...event,
-            detail: {
-              ...event.detail,
-              value: event.detail.value.replace(/\n|\r/i, ' '),
-            },
-          })
+              ...event,
+              detail: {
+                ...event.detail,
+                value: event.detail.value.replace(/\n|\r/i, ' '),
+              },
+            })
           : handleChange(event),
       [singleLine, handleChange],
     );
 
-  return (
-    <FormField {...props} errorText={errorText}>
-      <TextareaComponent
-        {...props}
-        ref={ref}
-        value={tempValue}
-        onChange={handleValueChange}
-      />
-    </FormField>
-  );
-});
+    return (
+      <FormField {...props} errorText={errorText}>
+        <TextareaComponent {...props} ref={ref} value={tempValue} onChange={handleValueChange} />
+      </FormField>
+    );
+  },
+);
 
 export default Textarea;

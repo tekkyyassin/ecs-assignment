@@ -16,9 +16,7 @@
 
 /** @jsxImportSource @emotion/react */
 import { SpaceBetween } from '@cloudscape-design/components';
-import ButtonDropdown, {
-  ButtonDropdownProps,
-} from '@cloudscape-design/components/button-dropdown';
+import ButtonDropdown, { ButtonDropdownProps } from '@cloudscape-design/components/button-dropdown';
 import ColumnLayout from '@cloudscape-design/components/column-layout';
 import { CancelableEventHandler } from '@cloudscape-design/components/internal/events';
 import TextContent from '@cloudscape-design/components/text-content';
@@ -43,14 +41,8 @@ export interface ThreatStatementCardProps {
     key: string,
     value: string | string[] | undefined,
   ) => void;
-  onAddTagToStatement?: (
-    statement: TemplateThreatStatement,
-    tag: string,
-  ) => void;
-  onRemoveTagFromStatement?: (
-    statement: TemplateThreatStatement,
-    tag: string,
-  ) => void;
+  onAddTagToStatement?: (statement: TemplateThreatStatement, tag: string) => void;
+  onRemoveTagFromStatement?: (statement: TemplateThreatStatement, tag: string) => void;
 }
 
 const ThreatStatementCard: FC<ThreatStatementCardProps> = ({
@@ -91,13 +83,7 @@ const ThreatStatementCard: FC<ThreatStatementCardProps> = ({
   const displayStatement = useMemo(() => {
     if (statement.displayedStatement) {
       return statement.displayedStatement.map((s, index) =>
-        typeof s === 'string' ? (
-          s
-        ) : s.type === 'b' ? (
-          <b key={index}>{s.content}</b>
-        ) : (
-          s.content
-        ),
+        typeof s === 'string' ? s : s.type === 'b' ? <b key={index}>{s.content}</b> : s.content,
       );
     }
 
@@ -108,29 +94,18 @@ const ThreatStatementCard: FC<ThreatStatementCardProps> = ({
     <GenericCard
       header={`Threat ${statement.numericId}`}
       entityId={statement.id}
-      info={
-        <PriorityBadge
-          editingStatement={statement}
-          onEditMetadata={onEditMetadata}
-        />
-      }
+      info={<PriorityBadge editingStatement={statement} onEditMetadata={onEditMetadata} />}
       tags={statement.tags}
       moreActions={moreActions}
       onRemove={onRemove}
       onEdit={onEditInWizard}
-      onAddTagToEntity={(_entityId, tag) =>
-        onAddTagToStatement?.(statement, tag)
-      }
-      onRemoveTagFromEntity={(_entityId, tag) =>
-        onRemoveTagFromStatement?.(statement, tag)
-      }
+      onAddTagToEntity={(_entityId, tag) => onAddTagToStatement?.(statement, tag)}
+      onRemoveTagFromEntity={(_entityId, tag) => onRemoveTagFromStatement?.(statement, tag)}
     >
       <SpaceBetween direction="vertical" size="s">
         <ColumnLayout columns={showLinkedEntities ? 2 : 1}>
           <TextContent>
-            <CopyToClipbord content={statement.statement}>
-              {displayStatement}
-            </CopyToClipbord>
+            <CopyToClipbord content={statement.statement}>{displayStatement}</CopyToClipbord>
           </TextContent>
           {showLinkedEntities && (
             <SpaceBetween direction="vertical" size="s">

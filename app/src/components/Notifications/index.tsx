@@ -13,9 +13,7 @@
   See the License for the specific language governing permissions and
   limitations under the License.
  ******************************************************************************************************************** */
-import Flashbar, {
-  FlashbarProps,
-} from '@cloudscape-design/components/flashbar';
+import Flashbar, { FlashbarProps } from '@cloudscape-design/components/flashbar';
 import Link from '@cloudscape-design/components/link';
 import * as awsui from '@cloudscape-design/design-tokens';
 import { FC, useEffect, useState } from 'react';
@@ -39,14 +37,10 @@ const Notifications: FC<NotificationsProps> = ({ addPadding }) => {
           type: 'info',
           dismissible: true,
           dismissLabel: 'Dismiss message',
-          onDismiss: () =>
-            setItems((prevItems) =>
-              prevItems.filter((x) => x.id !== 'message_1'),
-            ),
+          onDismiss: () => setItems((prevItems) => prevItems.filter((x) => x.id !== 'message_1')),
           content: (
             <>
-              The 'Full' mode is now the default. To view the 'Threats Only'
-              mode navigate the{' '}
+              The 'Full' mode is now the default. To view the 'Threats Only' mode navigate the{' '}
               <Link
                 color="inverted"
                 href="https://awslabs.github.io/threat-composer?mode=ThreatsOnly"
@@ -63,14 +57,10 @@ const Notifications: FC<NotificationsProps> = ({ addPadding }) => {
           type: 'info',
           dismissible: true,
           dismissLabel: 'Dismiss message',
-          onDismiss: () =>
-            setItems((prevItems) =>
-              prevItems.filter((x) => x.id !== 'message_2'),
-            ),
+          onDismiss: () => setItems((prevItems) => prevItems.filter((x) => x.id !== 'message_2')),
           content: (
             <>
-              This GitHub Page is provided for demonstration purposes only.
-              Refer to{' '}
+              This GitHub Page is provided for demonstration purposes only. Refer to{' '}
               <Link
                 color="inverted"
                 href="https://github.com/awslabs/threat-composer"
@@ -86,10 +76,7 @@ const Notifications: FC<NotificationsProps> = ({ addPadding }) => {
       ]);
     }
 
-    window.sessionStorage.setItem(
-      LOCAL_STORAGE_KEY,
-      NOTIFICATIONS_VERSION.toString(),
-    );
+    window.sessionStorage.setItem(LOCAL_STORAGE_KEY, NOTIFICATIONS_VERSION.toString());
   }, []);
 
   return items && items.length > 0 ? (
@@ -97,9 +84,9 @@ const Notifications: FC<NotificationsProps> = ({ addPadding }) => {
       style={
         addPadding
           ? {
-            padding: awsui.spaceScaledL,
-            backgroundColor: awsui.colorBackgroundHomeHeader,
-          }
+              padding: awsui.spaceScaledL,
+              backgroundColor: awsui.colorBackgroundHomeHeader,
+            }
           : undefined
       }
     >

@@ -33,12 +33,11 @@ export const PLACEHOLDER = '<placeholder>';
 const renderThreatStatement = (
   statement: TemplateThreatStatement,
 ): {
-    statement: string;
-    displayedStatement?: (ThreatStatementDisplayToken | string)[];
-    suggestions: string[];
-  } => {
-  const { fieldCombination, filledField } =
-    calculateFieldCombination(statement);
+  statement: string;
+  displayedStatement?: (ThreatStatementDisplayToken | string)[];
+  suggestions: string[];
+} => {
+  const { fieldCombination, filledField } = calculateFieldCombination(statement);
 
   // No field is filled
   if (fieldCombination === 0) {
@@ -51,15 +50,9 @@ const renderThreatStatement = (
 
   const suggestions: string[] = [];
 
-  (
-    ['prerequisites', 'threat_action', 'threat_impact'] as ThreatFieldTypes[]
-  ).forEach((token) => {
+  (['prerequisites', 'threat_action', 'threat_impact'] as ThreatFieldTypes[]).forEach((token) => {
     const content = statement[threatFieldTypeMapping[token]];
-    if (
-      content !== '' &&
-      typeof content === 'string' &&
-      content.split(' ').length === 1
-    ) {
+    if (content !== '' && typeof content === 'string' && content.split(' ').length === 1) {
       suggestions.push(
         `[${token}] Looks like your ${token} is a single word, consider being more descriptive`,
       );
@@ -74,8 +67,7 @@ const renderThreatStatement = (
       prefix = '';
       suffix = '...';
     } else if (
-      threatFieldData[filledField[0]].fieldPosition ===
-      Object.keys(threatFieldData).length
+      threatFieldData[filledField[0]].fieldPosition === Object.keys(threatFieldData).length
     ) {
       prefix = '...';
       suffix = '';
@@ -89,9 +81,7 @@ const renderThreatStatement = (
 
   // Multiple fields are filled
   if (!statement.threatSource) {
-    suggestions.push(
-      '[threat_source] Consider specifying who or what is the source of the threat',
-    );
+    suggestions.push('[threat_source] Consider specifying who or what is the source of the threat');
   }
 
   if (!statement.prerequisites) {
@@ -116,8 +106,7 @@ const renderThreatStatement = (
     threatAction: statement.threatAction || 'perform a threat action',
   };
 
-  const { fieldCombination: updatedFieldCombination } =
-    calculateFieldCombination(updatedStatement);
+  const { fieldCombination: updatedFieldCombination } = calculateFieldCombination(updatedStatement);
 
   let format = null as any;
 
@@ -127,12 +116,7 @@ const renderThreatStatement = (
 
   suggestions.push(...(format?.suggestions || []));
 
-  const outputProcessor = (
-    token: string,
-    content: string,
-    before: string,
-    _filled: boolean,
-  ) => {
+  const outputProcessor = (token: string, content: string, before: string, _filled: boolean) => {
     const output: {
       stringOutput: string;
       displayOutput: string | ThreatStatementDisplayToken;
@@ -143,21 +127,20 @@ const renderThreatStatement = (
       displayOutput: before,
     });
 
-    const updatedContent =
-      token === 'prerequisites' && content === PLACEHOLDER ? '' : content;
+    const updatedContent = token === 'prerequisites' && content === PLACEHOLDER ? '' : content;
 
     const displayedOutput =
       token === 'threat_action'
         ? {
-          type: 'b',
-          content: updatedContent,
-          tooltip: threatFieldData[token]?.tooltip,
-        }
+            type: 'b',
+            content: updatedContent,
+            tooltip: threatFieldData[token]?.tooltip,
+          }
         : {
-          type: 'span',
-          content: updatedContent,
-          tooltip: threatFieldData[token]?.tooltip,
-        };
+            type: 'span',
+            content: updatedContent,
+            tooltip: threatFieldData[token]?.tooltip,
+          };
 
     output.push({
       stringOutput: updatedContent,

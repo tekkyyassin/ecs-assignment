@@ -50,8 +50,7 @@ const useAssumptions = (
 
         let updated: Assumption = {
           ...assumption,
-          id:
-            assumption.id === DEFAULT_NEW_ENTITY_ID ? uuidV4() : assumption.id,
+          id: assumption.id === DEFAULT_NEW_ENTITY_ID ? uuidV4() : assumption.id,
           numericId,
           displayOrder: numericId,
         };
@@ -60,11 +59,7 @@ const useAssumptions = (
 
         const foundIndex = prevList.findIndex((st) => st.id === updated.id);
         if (foundIndex >= 0) {
-          return [
-            ...prevList.slice(0, foundIndex),
-            updated,
-            ...prevList.slice(foundIndex + 1),
-          ];
+          return [...prevList.slice(0, foundIndex), updated, ...prevList.slice(foundIndex + 1)];
         }
 
         return [...prevList, updated];

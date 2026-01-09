@@ -64,9 +64,7 @@ const ControlLinkComponent: FC<ControlLinkProps> = ({ linkedEntityId }) => {
       controlList={controlList}
       linkedControlIds={controlLinks.map((ml) => ml.controlId)}
       onAddControlLink={handleAddControlLink}
-      onRemoveControlLink={(controlId) =>
-        removeControlLink(controlId, linkedEntityId)
-      }
+      onRemoveControlLink={(controlId) => removeControlLink(controlId, linkedEntityId)}
     />
   );
 };

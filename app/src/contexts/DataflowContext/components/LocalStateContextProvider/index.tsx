@@ -22,10 +22,7 @@ import { DataflowInfoContext } from '../../context';
 import { DataflowContextProviderProps } from '../../types';
 
 const ApplicationLocalStateContextProvider: FC<
-PropsWithChildren<
-DataflowContextProviderProps &
-LocalStateContextProviderBaseProps<DataflowInfo>
->
+  PropsWithChildren<DataflowContextProviderProps & LocalStateContextProviderBaseProps<DataflowInfo>>
 > = ({ children, initialValue }) => {
   const [dataflowInfo, setDataflowInfo] = useState<DataflowInfo>(
     initialValue || INFO_DEFAULT_VALUE,

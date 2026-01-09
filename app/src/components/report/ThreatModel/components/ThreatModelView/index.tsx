@@ -88,24 +88,24 @@ const ThreatModelView: FC<ThreatModelViewProps> = ({
       const processedContent = (
         composerMode === 'Full'
           ? [
-            (!hasContentDetails || hasContentDetails.applicationName) &&
+              (!hasContentDetails || hasContentDetails.applicationName) &&
                 (await getApplicationName(sanitizedData)),
-            (!hasContentDetails || hasContentDetails.applicationInfo) &&
+              (!hasContentDetails || hasContentDetails.applicationInfo) &&
                 (await getApplicationInfoContent(sanitizedData)),
-            (!hasContentDetails || hasContentDetails.architecture) &&
+              (!hasContentDetails || hasContentDetails.architecture) &&
                 (await getArchitectureContent(sanitizedData)),
-            //(!hasContentDetails || hasContentDetails.dataflow) && await getDataflowContent(sanitizedData),
-            (!hasContentDetails || hasContentDetails.assumptions) &&
+              //(!hasContentDetails || hasContentDetails.dataflow) && await getDataflowContent(sanitizedData),
+              (!hasContentDetails || hasContentDetails.assumptions) &&
                 (await getAssumptionsContent(sanitizedData)),
-            (!hasContentDetails || hasContentDetails.threats) &&
+              (!hasContentDetails || hasContentDetails.threats) &&
                 (await getThreatsContent(sanitizedData)),
-            (!hasContentDetails || hasContentDetails.controls) &&
+              (!hasContentDetails || hasContentDetails.controls) &&
                 (await getControlsContent(sanitizedData)),
-            (!hasContentDetails || hasContentDetails.mitigations) &&
+              (!hasContentDetails || hasContentDetails.mitigations) &&
                 (await getMitigationsContent(sanitizedData)),
-            (!hasContentDetails || hasContentDetails.threats) &&
+              (!hasContentDetails || hasContentDetails.threats) &&
                 (await getAssetsContent(sanitizedData)),
-          ]
+            ]
           : [await getThreatsContent(sanitizedData, true)]
       )
         .filter((x) => !!x)
@@ -154,10 +154,7 @@ const ThreatModelView: FC<ThreatModelViewProps> = ({
     }
     if (!hasContentDetails?.threats) {
       buttons.push(
-        <Button
-          key="threatListViewBtn"
-          onClick={() => props.onThreatListView?.()}
-        >
+        <Button key="threatListViewBtn" onClick={() => props.onThreatListView?.()}>
           Add Threats
         </Button>,
       );
@@ -203,24 +200,14 @@ const ThreatModelView: FC<ThreatModelViewProps> = ({
                   position="top"
                   size="small"
                   triggerType="custom"
-                  content={
-                    <StatusIndicator type="success">
-                      Content copied
-                    </StatusIndicator>
-                  }
+                  content={<StatusIndicator type="success">Content copied</StatusIndicator>}
                 >
-                  <Button
-                    key="handleCopyMarkdownBtn"
-                    onClick={handleCopyMarkdown}
-                  >
+                  <Button key="handleCopyMarkdownBtn" onClick={handleCopyMarkdown}>
                     Copy as Markdown
                   </Button>
                 </Popover>
                 {downloadFileName && (
-                  <Button
-                    key="handleDownloadMarkdownBtn"
-                    onClick={handleDownloadMarkdown}
-                  >
+                  <Button key="handleDownloadMarkdownBtn" onClick={handleDownloadMarkdown}>
                     Download as Markdown File
                   </Button>
                 )}
@@ -252,21 +239,17 @@ const ThreatModelView: FC<ThreatModelViewProps> = ({
           composerMode === 'Full' &&
           hasContentDetails &&
           Object.values(hasContentDetails).some((x) => !x) && (
-          <div css={printStyles.hiddenPrint}>
-            <Box css={styles.nextStepsContainer}>
-              <SpaceBetween direction="horizontal" size="xs">
-                <Box
-                  key="boxSuggestedSteps"
-                  fontWeight="bold"
-                  css={styles.text}
-                >
+            <div css={printStyles.hiddenPrint}>
+              <Box css={styles.nextStepsContainer}>
+                <SpaceBetween direction="horizontal" size="xs">
+                  <Box key="boxSuggestedSteps" fontWeight="bold" css={styles.text}>
                     Suggested next steps:{' '}
-                </Box>
-                {getNextStepButtons()}
-              </SpaceBetween>
-            </Box>
-          </div>
-        )}
+                  </Box>
+                  {getNextStepButtons()}
+                </SpaceBetween>
+              </Box>
+            </div>
+          )}
       </SpaceBetween>
     </div>
   );

@@ -37,11 +37,7 @@ import { useMitigationsContext, useThreatsContext } from '../../../contexts';
 import MitigationLinkView from '../../mitigations/MitigationLinkView';
 
 export interface ControlCreationCardProps {
-  onSave?: (
-    entity: Control,
-    linkedMitigationIds: string[],
-    linkedThreatIds: string[],
-  ) => void;
+  onSave?: (entity: Control, linkedMitigationIds: string[], linkedThreatIds: string[]) => void;
   onAddTagToEntity?: (entity: Control, tag: string) => void;
   onRemoveTagFromEntity?: (entity: Control, tag: string) => void;
   controlList?: Control[];
@@ -109,8 +105,7 @@ const ControlCreationCard: FC<ControlCreationCardProps> = ({
   const [linkedThreatIds, setLinkedThreatIds] = useState<string[]>([]);
   const [showAlert, setShowAlert] = useState(false);
 
-  const [selectedControl, setSelectedControl] =
-    useState<OptionDefinition | null>(null);
+  const [selectedControl, setSelectedControl] = useState<OptionDefinition | null>(null);
   const [controlId, setControlId] = useState(editingEntity.id);
   const [tags, setTags] = useState(editingEntity.tags);
   const [metadataComments, setMetadataComments] = useState(
@@ -129,17 +124,11 @@ const ControlCreationCard: FC<ControlCreationCardProps> = ({
     editingEntity.id = controlId || 'new';
     editingEntity.content = (selectedControl?.label as string) || '';
     editingEntity.tags = tags || [];
-    if (
-      editingEntity.metadata &&
-      editingEntity.metadata.find((m) => m.key === 'Comments')
-    ) {
+    if (editingEntity.metadata && editingEntity.metadata.find((m) => m.key === 'Comments')) {
       editingEntity.metadata!.find((m) => m.key === 'Comments')!.value =
         selectedControl?.description || '';
     }
-    if (
-      editingEntity.metadata &&
-      editingEntity.metadata.find((m) => m.key === 'STRIDE')
-    ) {
+    if (editingEntity.metadata && editingEntity.metadata.find((m) => m.key === 'STRIDE')) {
       editingEntity.metadata!.find((m) => m.key === 'STRIDE')!.value =
         (selectedControl?.filteringTags as string[]) || [];
     }
@@ -184,10 +173,7 @@ const ControlCreationCard: FC<ControlCreationCardProps> = ({
   const handleAddMitigationLink = useCallback(
     (mitigationIdOrNewMitigation: string) => {
       if (mitigationList.find((m) => m.id === mitigationIdOrNewMitigation)) {
-        setLinkedMitigationIds((prev) => [
-          ...prev,
-          mitigationIdOrNewMitigation,
-        ]);
+        setLinkedMitigationIds((prev) => [...prev, mitigationIdOrNewMitigation]);
       } else {
         const newMitigation = saveMitigation({
           numericId: -1,
@@ -215,9 +201,7 @@ const ControlCreationCard: FC<ControlCreationCardProps> = ({
                 <Tags
                   tags={tags}
                   entityId={controlId}
-                  onAddTagToEntity={(_entityId, tag) =>
-                    onAddTagToEntity?.(editingEntity, tag)
-                  }
+                  onAddTagToEntity={(_entityId, tag) => onAddTagToEntity?.(editingEntity, tag)}
                   onRemoveTagFromEntity={(_entityId, tag) =>
                     onRemoveTagFromEntity?.(editingEntity, tag)
                   }
@@ -230,11 +214,7 @@ const ControlCreationCard: FC<ControlCreationCardProps> = ({
         <SpaceBetween direction="vertical" size="s">
           <SpaceBetween direction="horizontal" size="s">
             <Button onClick={handleReset}>Reset</Button>
-            <Button
-              variant="primary"
-              disabled={selectedControl === null}
-              onClick={handleSave}
-            >
+            <Button variant="primary" disabled={selectedControl === null} onClick={handleSave}>
               Save
             </Button>
             <Alert
@@ -257,15 +237,13 @@ const ControlCreationCard: FC<ControlCreationCardProps> = ({
               }}
               options={controlList?.map((c) => ({
                 label: c.content,
-                labelTag: (
-                  c.metadata?.find((m) => m.key === 'STRIDE')?.value as string[]
-                ).join(','),
+                labelTag: (c.metadata?.find((m) => m.key === 'STRIDE')?.value as string[]).join(
+                  ',',
+                ),
                 value: c.id,
-                description: c.metadata?.find((m) => m.key === 'Comments')
-                  ?.value as string,
+                description: c.metadata?.find((m) => m.key === 'Comments')?.value as string,
                 tags: c.tags,
-                filteringTags: c.metadata?.find((m) => m.key === 'STRIDE')
-                  ?.value as string[],
+                filteringTags: c.metadata?.find((m) => m.key === 'STRIDE')?.value as string[],
               }))}
               filteringType="auto"
               placeholder="Choose a security control"
@@ -274,9 +252,7 @@ const ControlCreationCard: FC<ControlCreationCardProps> = ({
               <ThreatLinkView
                 linkedThreatIds={linkedThreatIds}
                 threatList={statementList}
-                onAddThreatLink={(id) =>
-                  setLinkedThreatIds((prev) => [...prev, id])
-                }
+                onAddThreatLink={(id) => setLinkedThreatIds((prev) => [...prev, id])}
                 onRemoveThreatLink={(id) =>
                   setLinkedThreatIds((prev) => prev.filter((p) => p !== id))
                 }

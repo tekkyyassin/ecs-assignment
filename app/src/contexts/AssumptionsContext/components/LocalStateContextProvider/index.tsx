@@ -22,14 +22,11 @@ import { AssumptionsContextProviderProps } from '../../types';
 import useAssumptions from '../../useAssumptions';
 
 const AssumptionsLocalStateContextProvider: FC<
-PropsWithChildren<
-AssumptionsContextProviderProps &
-LocalStateContextProviderBaseProps<Assumption[]>
->
+  PropsWithChildren<
+    AssumptionsContextProviderProps & LocalStateContextProviderBaseProps<Assumption[]>
+  >
 > = ({ children, initialValue }) => {
-  const [assumptionList, setAssumptionList] = useState<Assumption[]>(
-    initialValue || [],
-  );
+  const [assumptionList, setAssumptionList] = useState<Assumption[]>(initialValue || []);
 
   const { handleSaveAssumption, handlRemoveAssumption } = useAssumptions(
     assumptionList,

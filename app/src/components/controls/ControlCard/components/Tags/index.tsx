@@ -52,12 +52,7 @@ const styles = {
   }),
 };
 
-const Tags: FC<TagsProps> = ({
-  tags,
-  entityId,
-  onAddTagToEntity,
-  onRemoveTagFromEntity,
-}) => {
+const Tags: FC<TagsProps> = ({ tags, entityId, onAddTagToEntity, onRemoveTagFromEntity }) => {
   const [value, setValue] = useState('');
   const isMoblieView = useMobileMediaQuery();
 
@@ -97,9 +92,7 @@ const Tags: FC<TagsProps> = ({
           onChange={({ detail }) => setValue(detail.value)}
           validateData={TagSchema.safeParse}
           secondaryControl={
-            isMoblieView ? (
-              <Button onClick={handleAddTag}>Add Tag</Button>
-            ) : undefined
+            isMoblieView ? <Button onClick={handleAddTag}>Add Tag</Button> : undefined
           }
           placeholder="Add tag"
         />

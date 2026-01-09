@@ -74,9 +74,7 @@ const MitigationCard: FC<MitigationCardProps> = ({
       onRemove={() => onRemove?.(entity.id)}
       onEdit={() => setEditingMode(true)}
       onAddTagToEntity={(_entityId, tag) => onAddTagToEntity?.(entity, tag)}
-      onRemoveTagFromEntity={(_entityId, tag) =>
-        onRemoveTagFromEntity?.(entity, tag)
-      }
+      onRemoveTagFromEntity={(_entityId, tag) => onRemoveTagFromEntity?.(entity, tag)}
     >
       <SpaceBetween direction="vertical" size="s">
         <ColumnLayout columns={2}>
@@ -106,11 +104,7 @@ const MitigationCard: FC<MitigationCardProps> = ({
             <AssumptionLink linkedEntityId={entity.id} type="Mitigation" />
           </SpaceBetween>
         </ColumnLayout>
-        <MetadataEditor
-          variant="default"
-          entity={entity}
-          onEditEntity={handleMetadataEdit}
-        />
+        <MetadataEditor variant="default" entity={entity} onEditEntity={handleMetadataEdit} />
       </SpaceBetween>
     </GenericCard>
   );

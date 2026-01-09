@@ -23,12 +23,7 @@
     "threatAction": "trick our users into interacting with an illegitimate endpoint",
     "threatImpact": "interception of valid API requests",
     "impactedGoal": [],
-    "impactedAssets": [
-      "file upload",
-      "file listing",
-      "upload status",
-      "uploaded files"
-    ],
+    "impactedAssets": ["file upload", "file listing", "upload status", "uploaded files"],
     "metadata": [
       {
         "key": "STRIDE",
@@ -44,12 +39,7 @@
     "threatAction": "spoof an authenticated user",
     "threatImpact": "the actor being able to do anything the user can do",
     "impactedGoal": [],
-    "impactedAssets": [
-      "file upload",
-      "file listing",
-      "upload status",
-      "uploaded files"
-    ],
+    "impactedAssets": ["file upload", "file listing", "upload status", "uploaded files"],
     "metadata": [
       {
         "key": "STRIDE",
@@ -113,12 +103,7 @@
     "threatAction": "interact with the exposed API",
     "threatImpact": "",
     "impactedGoal": [],
-    "impactedAssets": [
-      "file upload",
-      "file listing",
-      "upload status",
-      "uploaded files"
-    ],
+    "impactedAssets": ["file upload", "file listing", "upload status", "uploaded files"],
     "metadata": [
       {
         "key": "STRIDE",
@@ -134,12 +119,7 @@
     "threatAction": "set up their own API endpoint",
     "threatImpact": "spoofing of our legitimate endpoint",
     "impactedGoal": [],
-    "impactedAssets": [
-      "file upload",
-      "file listing",
-      "upload status",
-      "uploaded files"
-    ],
+    "impactedAssets": ["file upload", "file listing", "upload status", "uploaded files"],
     "metadata": [
       {
         "key": "STRIDE",
@@ -187,12 +167,7 @@
     "threatAction": "deny taking a mutating action via the API",
     "threatImpact": "lack of knowledge/proof of who took the action",
     "impactedGoal": ["integrity", "availability"],
-    "impactedAssets": [
-      "file upload",
-      "file listing",
-      "upload status",
-      "uploaded files"
-    ],
+    "impactedAssets": ["file upload", "file listing", "upload status", "uploaded files"],
     "metadata": [
       {
         "key": "STRIDE",
@@ -230,12 +205,7 @@
     "threatAction": "read information they should not be authorized to read",
     "threatImpact": "",
     "impactedGoal": ["confidentiality"],
-    "impactedAssets": [
-      "file upload",
-      "file listing",
-      "upload status",
-      "uploaded files"
-    ],
+    "impactedAssets": ["file upload", "file listing", "upload status", "uploaded files"],
     "metadata": [
       {
         "key": "STRIDE",
@@ -251,12 +221,7 @@
     "threatAction": "coordinate a distributed denial of service attack against the exposed API",
     "threatImpact": "the API  being unresponsive to callers",
     "impactedGoal": ["availability"],
-    "impactedAssets": [
-      "file upload",
-      "file listing",
-      "upload status",
-      "uploaded files"
-    ],
+    "impactedAssets": ["file upload", "file listing", "upload status", "uploaded files"],
     "metadata": [
       {
         "key": "STRIDE",
@@ -272,12 +237,7 @@
     "threatAction": "deny service to the API by calling it as many times as possible from a single IP address",
     "threatImpact": "the API being unresponsive to callers",
     "impactedGoal": ["availability"],
-    "impactedAssets": [
-      "file upload",
-      "file listing",
-      "upload status",
-      "uploaded files"
-    ],
+    "impactedAssets": ["file upload", "file listing", "upload status", "uploaded files"],
     "metadata": [
       {
         "key": "STRIDE",
@@ -293,12 +253,7 @@
     "threatAction": "manipulate API parameter input",
     "threatImpact": "the API Gateway performing actions on another user's resources",
     "impactedGoal": [],
-    "impactedAssets": [
-      "file upload",
-      "file listing",
-      "upload status",
-      "uploaded files"
-    ],
+    "impactedAssets": ["file upload", "file listing", "upload status", "uploaded files"],
     "metadata": [
       {
         "key": "STRIDE",
@@ -314,12 +269,7 @@
     "threatAction": "leverage an error in authorization logic",
     "threatImpact": "them performing actions they should not be authorized to perform",
     "impactedGoal": [],
-    "impactedAssets": [
-      "file upload",
-      "file listing",
-      "upload status",
-      "uploaded files"
-    ],
+    "impactedAssets": ["file upload", "file listing", "upload status", "uploaded files"],
     "metadata": [
       {
         "key": "STRIDE",
@@ -351,12 +301,7 @@
     "threatAction": "leverage vulnerabilities in the code we wrote for our AWS Lambda function",
     "threatImpact": "the application behaving in unintended ways",
     "impactedGoal": [],
-    "impactedAssets": [
-      "file upload",
-      "file listing",
-      "upload status",
-      "uploaded files"
-    ],
+    "impactedAssets": ["file upload", "file listing", "upload status", "uploaded files"],
     "metadata": [
       {
         "key": "STRIDE",
@@ -420,12 +365,7 @@
     "threatAction": "may find sensitive data captured within the logs",
     "threatImpact": "",
     "impactedGoal": ["confidentiality"],
-    "impactedAssets": [
-      "file upload",
-      "file listing",
-      "upload status",
-      "uploaded files"
-    ],
+    "impactedAssets": ["file upload", "file listing", "upload status", "uploaded files"],
     "metadata": [
       {
         "key": "STRIDE",
@@ -553,12 +493,7 @@
     "threatAction": "tamper with valid and authenticated requests to the API",
     "threatImpact": "",
     "impactedGoal": [],
-    "impactedAssets": [
-      "file upload",
-      "file listing",
-      "upload status",
-      "uploaded files"
-    ],
+    "impactedAssets": ["file upload", "file listing", "upload status", "uploaded files"],
     "metadata": [
       {
         "key": "STRIDE",
@@ -590,12 +525,7 @@
     "threatAction": "tamper with valid communications",
     "threatImpact": "",
     "impactedGoal": ["integrity"],
-    "impactedAssets": [
-      "file upload",
-      "file listing",
-      "upload status",
-      "uploaded files"
-    ],
+    "impactedAssets": ["file upload", "file listing", "upload status", "uploaded files"],
     "metadata": [
       {
         "key": "STRIDE",
@@ -611,12 +541,7 @@
     "threatAction": "access sensitive data",
     "threatImpact": "",
     "impactedGoal": ["confidentiality"],
-    "impactedAssets": [
-      "file upload",
-      "file listing",
-      "upload status",
-      "uploaded files"
-    ],
+    "impactedAssets": ["file upload", "file listing", "upload status", "uploaded files"],
     "metadata": [
       {
         "key": "STRIDE",
@@ -632,12 +557,7 @@
     "threatAction": "interrupt access",
     "threatImpact": "",
     "impactedGoal": ["availability"],
-    "impactedAssets": [
-      "file upload",
-      "file listing",
-      "upload status",
-      "uploaded files"
-    ],
+    "impactedAssets": ["file upload", "file listing", "upload status", "uploaded files"],
     "metadata": [
       {
         "key": "STRIDE",

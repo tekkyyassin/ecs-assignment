@@ -60,10 +60,7 @@ export function dataFeaturesOptions(objectType: string): SelectProps.Options {
     },
     {
       label: 'Data exchange format',
-      disabled:
-        objectType === 'process' || objectType === 'biDirectional'
-          ? false
-          : true, // enable only for processes and links (data flows)
+      disabled: objectType === 'process' || objectType === 'biDirectional' ? false : true, // enable only for processes and links (data flows)
       options: [
         {
           label: 'JSON',
@@ -311,16 +308,12 @@ export function techFeaturesOptions(objectType: string): SelectProps.Options {
   return features.filter((f) => !f.disabled);
 }
 
-export function securityFeaturesOptions(
-  objectType: string,
-): SelectProps.Options {
+export function securityFeaturesOptions(objectType: string): SelectProps.Options {
   let features = [
     {
       label: 'Authentication',
       disabled:
-        objectType === 'datastore' ||
-        objectType === 'process' ||
-        objectType === 'actor'
+        objectType === 'datastore' || objectType === 'process' || objectType === 'actor'
           ? false
           : true, // enable only for datastores, processes, external actors
       options: [
@@ -342,8 +335,7 @@ export function securityFeaturesOptions(
         {
           label: 'None',
           value: 'authn_none',
-          description:
-            'This component does NOT use any authentication standard',
+          description: 'This component does NOT use any authentication standard',
         },
       ],
     },

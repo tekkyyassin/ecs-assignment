@@ -67,9 +67,7 @@ const GenericEntityCreationCard: FC<GenericEntityCreationCardProps> = ({
     [editingEntity, setEditingEntity],
   );
 
-  const handleEditMetadata = useEditMetadata(
-    setEditingEntity as (updated: EntityBase) => void,
-  );
+  const handleEditMetadata = useEditMetadata(setEditingEntity as (updated: EntityBase) => void);
 
   return (
     <GenericCard
@@ -77,18 +75,12 @@ const GenericEntityCreationCard: FC<GenericEntityCreationCardProps> = ({
       tags={editingEntity?.tags}
       entityId={DEFAULT_NEW_ENTITY_ID}
       onAddTagToEntity={(_entityId, tag) => handleAddTagToEntity?.(tag)}
-      onRemoveTagFromEntity={(_entityId, tag) =>
-        handleRemoveTagFromEntity?.(tag)
-      }
+      onRemoveTagFromEntity={(_entityId, tag) => handleRemoveTagFromEntity?.(tag)}
     >
       <SpaceBetween direction="vertical" size="s">
         <SpaceBetween direction="horizontal" size="s">
           <Button onClick={onReset}>Reset</Button>
-          <Button
-            variant="primary"
-            disabled={!editingEntity.content}
-            onClick={onSave}
-          >
+          <Button variant="primary" disabled={!editingEntity.content} onClick={onSave}>
             Save
           </Button>
         </SpaceBetween>

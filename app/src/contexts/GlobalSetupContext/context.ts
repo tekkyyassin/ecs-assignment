@@ -37,7 +37,6 @@ const initialState: GlobalSetupContextApi = {
   setFileImportModalVisible: () => {},
 };
 
-export const GlobalSetupContext =
-  createContext<GlobalSetupContextApi>(initialState);
+export const GlobalSetupContext = createContext<GlobalSetupContextApi>(initialState);
 
 export const useGlobalSetupContext = () => useContext(GlobalSetupContext);

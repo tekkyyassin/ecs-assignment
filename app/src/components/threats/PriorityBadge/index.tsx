@@ -39,15 +39,11 @@ const PRIORITY_COLOR_MAPPING: any = {
   NoSet: 'grey',
 };
 
-const PriorityBadge: FC<PriorityBadgeProps> = ({
-  editingStatement,
-  onEditMetadata,
-}) => {
+const PriorityBadge: FC<PriorityBadgeProps> = ({ editingStatement, onEditMetadata }) => {
   const ref = useRef<SelectProps.Ref>();
   const priority = useMemo(() => {
     return (
-      (editingStatement.metadata?.find((m) => m.key === 'Priority')
-        ?.value as string) || undefined
+      (editingStatement.metadata?.find((m) => m.key === 'Priority')?.value as string) || undefined
     );
   }, [editingStatement.metadata]);
 

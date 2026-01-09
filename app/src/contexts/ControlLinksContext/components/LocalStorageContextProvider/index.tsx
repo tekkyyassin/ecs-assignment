@@ -32,15 +32,14 @@ const getLocalStorageKey = (workspaceId: string | null) => {
 };
 
 const ControlLinksLocalStorageContextProvider: FC<
-PropsWithChildren<ControlLinksContextProviderProps>
+  PropsWithChildren<ControlLinksContextProviderProps>
 > = ({ children, workspaceId: currentWorkspaceId }) => {
-  const [controlLinkList, setControlLinkList, { removeItem }] =
-    useLocalStorageState<ControlLink[]>(
-      getLocalStorageKey(currentWorkspaceId),
-      {
-        defaultValue: [],
-      },
-    );
+  const [controlLinkList, setControlLinkList, { removeItem }] = useLocalStorageState<ControlLink[]>(
+    getLocalStorageKey(currentWorkspaceId),
+    {
+      defaultValue: [],
+    },
+  );
 
   const {
     handlRemoveControlLink,
@@ -73,8 +72,7 @@ PropsWithChildren<ControlLinksContextProviderProps>
         getMitigtaionThreatLinks: handleGetControlThreatLinks,
         removeControlLink: handlRemoveControlLink,
         removeControlLinksByControlId: handlRemoveControlLinksByControlId,
-        removeControlLinksByLinkedEntityId:
-          handlRemoveControlLinksByLinkedEntityId,
+        removeControlLinksByLinkedEntityId: handlRemoveControlLinksByLinkedEntityId,
         removeControlLinks: handleRemoveControlLinks,
         addControlLink: handleAddControlLink,
         addControlLinks: handleAddControlLinks,

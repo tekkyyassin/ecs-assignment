@@ -40,7 +40,6 @@ const initialState: MitigationsContextApi = {
   onDeleteWorkspace: () => Promise.resolve(),
 };
 
-export const MitigationsContext =
-  createContext<MitigationsContextApi>(initialState);
+export const MitigationsContext = createContext<MitigationsContextApi>(initialState);
 
 export const useMitigationsContext = () => useContext(MitigationsContext);

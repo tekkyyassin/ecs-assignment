@@ -1,8 +1,4 @@
-import {
-  dataFeaturesOptions,
-  techFeaturesOptions,
-  securityFeaturesOptions,
-} from './panel-config';
+import { dataFeaturesOptions, techFeaturesOptions, securityFeaturesOptions } from './panel-config';
 
 describe('dataFeaturesOptions', () => {
   it('should return an array of objects with a label and options', () => {

@@ -1,10 +1,5 @@
 import { memo } from 'react';
-import {
-  BoxIcon,
-  CircleIcon,
-  SectionIcon,
-  TransparencyGridIcon,
-} from '@radix-ui/react-icons';
+import { BoxIcon, CircleIcon, SectionIcon, TransparencyGridIcon } from '@radix-ui/react-icons';
 
 import styled from '@emotion/styled';
 

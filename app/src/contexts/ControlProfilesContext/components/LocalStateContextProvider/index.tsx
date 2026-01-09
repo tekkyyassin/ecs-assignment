@@ -22,17 +22,18 @@ import { ControlProfilesContextProviderProps } from '../../types';
 import useControlProfiles from '../../useControlProfiles';
 
 const ControlProfilesLocalStateContextProvider: FC<
-PropsWithChildren<
-ControlProfilesContextProviderProps &
-LocalStateContextProviderBaseProps<ControlProfile[]>
->
+  PropsWithChildren<
+    ControlProfilesContextProviderProps & LocalStateContextProviderBaseProps<ControlProfile[]>
+  >
 > = ({ children, initialValue }) => {
-  const [controlProfileList, setControlProfileList] = useState<
-  ControlProfile[]
-  >(initialValue || []);
+  const [controlProfileList, setControlProfileList] = useState<ControlProfile[]>(
+    initialValue || [],
+  );
 
-  const { handlRemoveControlProfile, handleSaveControlProfile } =
-    useControlProfiles(controlProfileList, setControlProfileList);
+  const { handlRemoveControlProfile, handleSaveControlProfile } = useControlProfiles(
+    controlProfileList,
+    setControlProfileList,
+  );
 
   const handleRemoveAllControlProfiles = useCallback(async () => {
     setControlProfileList([]);

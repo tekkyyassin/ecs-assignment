@@ -31,19 +31,14 @@ import {
   colorChartsPaletteCategorical1,
 } from '@cloudscape-design/design-tokens';
 import { useState, useMemo } from 'react';
-import {
-  ALL_LEVELS,
-  LEVEL_SELECTOR_OPTIONS_INCLUDING_ALL,
-} from '../../../../../configs';
+import { ALL_LEVELS, LEVEL_SELECTOR_OPTIONS_INCLUDING_ALL } from '../../../../../configs';
 import { useThreatsContext } from '../../../../../contexts/ThreatsContext';
 import filterThreatsByMetadata from '../../../../../utils/filterThreatsByMetadata';
 
 const ThreatGrammar = () => {
   const { statementList, addStatement } = useThreatsContext();
 
-  const [selectedPriority, setSelectedPriority] = useState<string | undefined>(
-    ALL_LEVELS,
-  );
+  const [selectedPriority, setSelectedPriority] = useState<string | undefined>(ALL_LEVELS);
 
   const filteredStatementList = useMemo(() => {
     return filterThreatsByMetadata(statementList, 'Priority', selectedPriority);
@@ -66,17 +61,12 @@ const ThreatGrammar = () => {
     [filteredStatementList],
   );
   const countImpactedGoal = useMemo(
-    () =>
-      filteredStatementList.filter(
-        (s) => s.impactedGoal && s.impactedGoal?.length != 0,
-      ).length,
+    () => filteredStatementList.filter((s) => s.impactedGoal && s.impactedGoal?.length != 0).length,
     [filteredStatementList],
   );
   const countImpactedAssets = useMemo(
     () =>
-      filteredStatementList.filter(
-        (s) => s.impactedAssets && s.impactedAssets?.length != 0,
-      ).length,
+      filteredStatementList.filter((s) => s.impactedAssets && s.impactedAssets?.length != 0).length,
     [filteredStatementList],
   );
   const notUsingGrammar = useMemo(
@@ -131,12 +121,7 @@ const ThreatGrammar = () => {
   return (
     <ColumnLayout columns={1} borders="horizontal">
       {!statementList.length ? (
-        <Box
-          margin="xxl"
-          padding="xxl"
-          color="text-body-secondary"
-          textAlign="center"
-        >
+        <Box margin="xxl" padding="xxl" color="text-body-secondary" textAlign="center">
           <b>No threats available</b>
           <Box variant="p" color="text-body-secondary">
             Start by adding a threat to this workspace
@@ -150,9 +135,8 @@ const ThreatGrammar = () => {
           <FormField label="Filter by threat priority">
             <Select
               selectedOption={
-                LEVEL_SELECTOR_OPTIONS_INCLUDING_ALL.find(
-                  (x) => x.value === selectedPriority,
-                ) || null
+                LEVEL_SELECTOR_OPTIONS_INCLUDING_ALL.find((x) => x.value === selectedPriority) ||
+                null
               }
               onChange={({ detail }) => {
                 setSelectedPriority(detail.selectedOption.value);
@@ -161,12 +145,7 @@ const ThreatGrammar = () => {
             />
           </FormField>
           {!filteredStatementList.length ? (
-            <Box
-              margin="xxl"
-              padding="xxl"
-              color="text-body-secondary"
-              textAlign="center"
-            >
+            <Box margin="xxl" padding="xxl" color="text-body-secondary" textAlign="center">
               <b>No threats meet the filter criteria</b>
             </Box>
           ) : (

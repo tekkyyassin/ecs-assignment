@@ -32,12 +32,14 @@ const getLocalStorageKey = (workspaceId: string | null) => {
 };
 
 const AssumptionsLocalStorageContextProvider: FC<
-PropsWithChildren<AssumptionsContextProviderProps>
+  PropsWithChildren<AssumptionsContextProviderProps>
 > = ({ children, workspaceId: currentWorkspaceId }) => {
-  const [assumptionList, setAssumptionList, { removeItem }] =
-    useLocalStorageState<Assumption[]>(getLocalStorageKey(currentWorkspaceId), {
+  const [assumptionList, setAssumptionList, { removeItem }] = useLocalStorageState<Assumption[]>(
+    getLocalStorageKey(currentWorkspaceId),
+    {
       defaultValue: [],
-    });
+    },
+  );
 
   const { handleSaveAssumption, handlRemoveAssumption } = useAssumptions(
     assumptionList,

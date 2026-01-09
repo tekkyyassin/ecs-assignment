@@ -23,11 +23,7 @@ export interface TagSelectorProps {
   setSelectedTags: React.Dispatch<React.SetStateAction<string[]>>;
 }
 
-const TagSelector: FC<TagSelectorProps> = ({
-  allTags,
-  selectedTags,
-  setSelectedTags,
-}) => {
+const TagSelector: FC<TagSelectorProps> = ({ allTags, selectedTags, setSelectedTags }) => {
   const sortedTags = useMemo(() => {
     return allTags.sort((a, b) => {
       return a.toLowerCase().localeCompare(b.toLowerCase());

@@ -44,17 +44,13 @@ const ControlLookupComponent: FC<ControlLookupProps> = ({
   }, [linkedControlIds, controlList]);
 
   const filteredControls = useMemo(() => {
-    const controls = controlList.filter(
-      (x) => !linkedControlIds.includes(x.id),
-    );
+    const controls = controlList.filter((x) => !linkedControlIds.includes(x.id));
 
     if (!searchValue) {
       return controls;
     }
 
-    return controls.filter(
-      (x) => x.content.toLowerCase().indexOf(searchValue.toLowerCase()) >= 0,
-    );
+    return controls.filter((x) => x.content.toLowerCase().indexOf(searchValue.toLowerCase()) >= 0);
   }, [searchValue, controlList, linkedControlIds]);
 
   return (

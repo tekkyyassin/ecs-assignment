@@ -8,10 +8,8 @@ type StyleProps = {
 };
 
 const TrustBoundaryStyle = styled.div`
-  border: 2px dashed
-    ${(props: StyleProps) => (props.selected ? '#56bdf9' : '#f00')};
-  background-color: ${(props: StyleProps) =>
-    props.selected ? '#dbf1fe' : '#fff'};
+  border: 2px dashed ${(props: StyleProps) => (props.selected ? '#56bdf9' : '#f00')};
+  background-color: ${(props: StyleProps) => (props.selected ? '#dbf1fe' : '#fff')};
   width: 99%;
   height: 99%;
   padding-left: 5px;

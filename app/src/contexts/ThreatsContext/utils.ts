@@ -20,16 +20,11 @@ export const addNewValueToStringArray = (arr: string[], newValue?: string) => {
   return newValue && !arr.includes(newValue) ? [...arr, newValue] : arr;
 };
 
-export const addNewValueArrayToStringArrayArray = (
-  arr: string[][],
-  newValue?: string[],
-) => {
+export const addNewValueArrayToStringArrayArray = (arr: string[][], newValue?: string[]) => {
   if (newValue && newValue.length > 0) {
     if (
       !arr.find(
-        (strArr) =>
-          strArr.length === newValue.length &&
-          newValue.every((v) => strArr.includes(v)),
+        (strArr) => strArr.length === newValue.length && newValue.every((v) => strArr.includes(v)),
       )
     ) {
       return [...arr, newValue];
@@ -39,10 +34,7 @@ export const addNewValueArrayToStringArrayArray = (
   return arr;
 };
 
-export const addNewValueArrayToStringArray = (
-  arr: string[],
-  newValue?: string[],
-) => {
+export const addNewValueArrayToStringArray = (arr: string[], newValue?: string[]) => {
   if (newValue && newValue.length > 0) {
     return [...arr, ...newValue.filter((v) => !arr.includes(v))];
   }
@@ -58,12 +50,12 @@ export const addNewValueToPerFieldExampleArray = (
 ) => {
   return newValue[field]
     ? [
-      ...arr,
-      {
-        example: newValue[field] as string,
-        fromId,
-        stride: [],
-      },
-    ]
+        ...arr,
+        {
+          example: newValue[field] as string,
+          fromId,
+          stride: [],
+        },
+      ]
     : arr;
 };

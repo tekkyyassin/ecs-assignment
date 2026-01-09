@@ -21,10 +21,7 @@ import Header from '@cloudscape-design/components/header';
 import Modal from '@cloudscape-design/components/modal';
 import SpaceBetween from '@cloudscape-design/components/space-between';
 import React, { FC, useMemo, useState } from 'react';
-import {
-  TemplateThreatStatement,
-  TemplateThreatStatementSchema,
-} from '../../../customTypes';
+import { TemplateThreatStatement, TemplateThreatStatementSchema } from '../../../customTypes';
 import renderThreatStatement from '../../../utils/renderThreatStatement';
 import Textarea from '../../generic/Textarea';
 
@@ -43,9 +40,7 @@ const CustomTemplate: FC<CustomTemplateProps> = ({
   defaultTemplate,
   onConfirm,
 }) => {
-  const [value, setValue] = useState(
-    statement?.customTemplate || defaultTemplate,
-  );
+  const [value, setValue] = useState(statement?.customTemplate || defaultTemplate);
 
   const renderedStatement = useMemo(() => {
     const { statement: updatedStatement } = renderThreatStatement({
@@ -62,14 +57,8 @@ const CustomTemplate: FC<CustomTemplateProps> = ({
           <Button variant="link" onClick={() => setVisible(false)}>
             Cancel
           </Button>
-          <Button onClick={() => setValue(defaultTemplate)}>
-            Reset to default
-          </Button>
-          <Button
-            variant="primary"
-            disabled={value.length < 3}
-            onClick={() => onConfirm(value)}
-          >
+          <Button onClick={() => setValue(defaultTemplate)}>Reset to default</Button>
+          <Button variant="primary" disabled={value.length < 3} onClick={() => onConfirm(value)}>
             Confirm
           </Button>
         </SpaceBetween>
@@ -89,11 +78,7 @@ const CustomTemplate: FC<CustomTemplateProps> = ({
       <SpaceBetween direction="vertical" size="l">
         <Alert
           type="info"
-          header={
-            isUsingDefaultTemplate
-              ? 'Default template is used'
-              : 'Custom template is used'
-          }
+          header={isUsingDefaultTemplate ? 'Default template is used' : 'Custom template is used'}
         >
           {isUsingDefaultTemplate
             ? 'You can create a custom template to control how your statement is renderer. It is only applicable to the currently editing statement.'
@@ -109,9 +94,7 @@ const CustomTemplate: FC<CustomTemplateProps> = ({
           value={value}
           onChange={({ detail }) => setValue(detail.value)}
           label="Template"
-          validateData={
-            TemplateThreatStatementSchema.shape.customTemplate.safeParse
-          }
+          validateData={TemplateThreatStatementSchema.shape.customTemplate.safeParse}
           constraintText="Tokens like [threat_source], [prerequisites], [threat_action], [threat_impact], [impacted_goal] or [impacted_assets] will be replaced by actual content. "
         />
       </SpaceBetween>

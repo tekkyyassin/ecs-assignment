@@ -19,15 +19,13 @@ const STRIDE = [
     label: 'Spoofing',
     value: 'S',
     violates: 'Authenticity',
-    description:
-      'Pretending to be something or somebody other than who you are',
+    description: 'Pretending to be something or somebody other than who you are',
   },
   {
     label: 'Tampering',
     value: 'T',
     violates: 'Integrity',
-    description:
-      'Changing data on disk, in memory, on the network, or elsewhere',
+    description: 'Changing data on disk, in memory, on the network, or elsewhere',
   },
   {
     label: 'Repudiation',
@@ -60,8 +58,7 @@ const STRIDE = [
     label: 'Lateral Movement',
     value: 'LM',
     violates: '',
-    description:
-      'Expanding control over the target network beyond the initial point of compromise',
+    description: 'Expanding control over the target network beyond the initial point of compromise',
   },
 ];
 

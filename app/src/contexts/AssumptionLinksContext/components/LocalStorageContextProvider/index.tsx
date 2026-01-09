@@ -32,15 +32,13 @@ const getLocalStorageKey = (workspaceId: string | null) => {
 };
 
 const AssumptionLinksLocalStorageContextProvider: FC<
-PropsWithChildren<AssumptionLinksContextProviderProps>
+  PropsWithChildren<AssumptionLinksContextProviderProps>
 > = ({ children, workspaceId: currentWorkspaceId }) => {
-  const [assumptionLinkList, setAssumptionLinkList, { removeItem }] =
-    useLocalStorageState<AssumptionLink[]>(
-      getLocalStorageKey(currentWorkspaceId),
-      {
-        defaultValue: [],
-      },
-    );
+  const [assumptionLinkList, setAssumptionLinkList, { removeItem }] = useLocalStorageState<
+    AssumptionLink[]
+  >(getLocalStorageKey(currentWorkspaceId), {
+    defaultValue: [],
+  });
 
   const {
     handlRemoveAssumptionLink,
@@ -72,10 +70,8 @@ PropsWithChildren<AssumptionLinksContextProviderProps>
         getLinkedAssumptionLinks: handleGetLinkedAssumptionLinks,
         getAssumptionEntityLinks: handleGetAssumptionEntityLinks,
         removeAssumptionLink: handlRemoveAssumptionLink,
-        removeAssumptionLinksByAssumptionId:
-          handlRemoveAssumptionLinksByAssumptionId,
-        removeAssumptionLinksByLinkedEntityId:
-          handlRemoveAssumptionLinksByLinkedEntityId,
+        removeAssumptionLinksByAssumptionId: handlRemoveAssumptionLinksByAssumptionId,
+        removeAssumptionLinksByLinkedEntityId: handlRemoveAssumptionLinksByLinkedEntityId,
         removeAssumptionLinks: handleRemoveAssumptionLinks,
         addAssumptionLink: handleAddAssumptionLink,
         addAssumptionLinks: handleAddAssumptionLinks,

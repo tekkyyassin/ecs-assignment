@@ -22,10 +22,9 @@ import { ArchitectureInfoContext } from '../../context';
 import { ArchitectureContextProviderProps } from '../../types';
 
 export const ArchitectureLocalStateContextProvider: FC<
-PropsWithChildren<
-ArchitectureContextProviderProps &
-LocalStateContextProviderBaseProps<ArchitectureInfo>
->
+  PropsWithChildren<
+    ArchitectureContextProviderProps & LocalStateContextProviderBaseProps<ArchitectureInfo>
+  >
 > = ({ children, initialValue }) => {
   const [architectureInfo, setArchitectureInfo] = useState<ArchitectureInfo>(
     initialValue || INFO_DEFAULT_VALUE,

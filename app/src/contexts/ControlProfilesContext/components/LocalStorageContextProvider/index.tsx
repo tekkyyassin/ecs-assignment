@@ -32,18 +32,18 @@ const getLocalStorageKey = (workspaceId: string | null) => {
 };
 
 const ControlProfilesLocalStorageContextProvider: FC<
-PropsWithChildren<ControlProfilesContextProviderProps>
+  PropsWithChildren<ControlProfilesContextProviderProps>
 > = ({ children, workspaceId: currentWorkspaceId }) => {
-  const [controlProfileList, setControlProfileList, { removeItem }] =
-    useLocalStorageState<ControlProfile[]>(
-      getLocalStorageKey(currentWorkspaceId),
-      {
-        defaultValue: [],
-      },
-    );
+  const [controlProfileList, setControlProfileList, { removeItem }] = useLocalStorageState<
+    ControlProfile[]
+  >(getLocalStorageKey(currentWorkspaceId), {
+    defaultValue: [],
+  });
 
-  const { handlRemoveControlProfile, handleSaveControlProfile } =
-    useControlProfiles(controlProfileList, setControlProfileList);
+  const { handlRemoveControlProfile, handleSaveControlProfile } = useControlProfiles(
+    controlProfileList,
+    setControlProfileList,
+  );
 
   const handleRemoveAllControlProfiles = useCallback(async () => {
     removeItem();

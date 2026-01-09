@@ -36,43 +36,29 @@ const getLocalStorageKey = (workspaceId: string | null) => {
   return LOCAL_STORAGE_KEY_STATEMENT_LIST;
 };
 
-const ThreatsContextProvider: FC<
-PropsWithChildren<ThreatsContextProviderProps>
-> = ({
+const ThreatsContextProvider: FC<PropsWithChildren<ThreatsContextProviderProps>> = ({
   children,
   workspaceId: currentWorkspaceId,
   onThreatListView,
   onThreatEditorView,
 }) => {
-  const [
-    editingStatement,
-    setEditingStatement,
-    { removeItem: removeEditingStatement },
-  ] = useLocalStorageState<TemplateThreatStatement | null>(
-    LOCAL_STORAGE_KEY_EDITING_STATEMENT,
-    {
+  const [editingStatement, setEditingStatement, { removeItem: removeEditingStatement }] =
+    useLocalStorageState<TemplateThreatStatement | null>(LOCAL_STORAGE_KEY_EDITING_STATEMENT, {
       defaultValue: null,
-    },
-  );
+    });
 
   const [statementList, setStatementList, { removeItem: removeStatementList }] =
-    useLocalStorageState<TemplateThreatStatement[]>(
-      getLocalStorageKey(currentWorkspaceId),
-      {
-        defaultValue: [],
-      },
-    );
+    useLocalStorageState<TemplateThreatStatement[]>(getLocalStorageKey(currentWorkspaceId), {
+      defaultValue: [],
+    });
 
   const [
     filteredStatementList,
     setFilteredStatementList,
     { removeItem: removeFilteredStatementList },
-  ] = useLocalStorageState<TemplateThreatStatement[]>(
-    getLocalStorageKey(currentWorkspaceId),
-    {
-      defaultValue: [],
-    },
-  );
+  ] = useLocalStorageState<TemplateThreatStatement[]>(getLocalStorageKey(currentWorkspaceId), {
+    defaultValue: [],
+  });
 
   const { composerMode, hasVisitBefore } = useGlobalSetupContext();
 
@@ -103,11 +89,7 @@ PropsWithChildren<ThreatsContextProviderProps>
     removeStatementList();
     removeFilteredStatementList();
     removeEditingStatement();
-  }, [
-    removeEditingStatement,
-    removeStatementList,
-    removeFilteredStatementList,
-  ]);
+  }, [removeEditingStatement, removeStatementList, removeFilteredStatementList]);
 
   const handleDeleteWorkspace = useCallback(
     async (workspaceId: string) => {
@@ -149,8 +131,7 @@ PropsWithChildren<ThreatsContextProviderProps>
         setStatementList,
         filteredStatementList,
         setFilteredStatementList,
-        threatStatementExamples:
-          threatStatementExamples as TemplateThreatStatement[],
+        threatStatementExamples: threatStatementExamples as TemplateThreatStatement[],
         perFieldExamples,
         previousInputs,
         setView,

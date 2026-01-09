@@ -68,10 +68,7 @@ export default memo(
     let labelY: number = 0;
 
     if (isBiDirectionEdge) {
-      [path, labelX, labelY] = getSpecialPath(
-        edgePathParams,
-        sourceX < targetX ? 25 : -25,
-      );
+      [path, labelX, labelY] = getSpecialPath(edgePathParams, sourceX < targetX ? 25 : -25);
     } else {
       [path, labelX, labelY] = getBezierPath(edgePathParams);
     }

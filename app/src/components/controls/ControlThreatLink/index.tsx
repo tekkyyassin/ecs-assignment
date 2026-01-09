@@ -24,9 +24,7 @@ export interface ControlThreatLinkProps {
   controlId: string;
 }
 
-const ControlThreatLinkComponent: FC<ControlThreatLinkProps> = ({
-  controlId,
-}) => {
+const ControlThreatLinkComponent: FC<ControlThreatLinkProps> = ({ controlId }) => {
   const { statementList } = useThreatsContext();
   const [controlLinks, setControlLinks] = useState<ControlLink[]>([]);
 

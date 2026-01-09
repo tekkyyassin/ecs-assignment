@@ -9,10 +9,8 @@ type StyleProps = {
 
 const ActorStyle = styled.div`
   padding: 10px 50px 10px 50px;
-  border: 2px solid
-    ${(props: StyleProps) => (props.selected ? '#56bdf9' : '#000')};
-  background-color: ${(props: StyleProps) =>
-    props.selected ? '#dbf1fe' : '#fff'};
+  border: 2px solid ${(props: StyleProps) => (props.selected ? '#56bdf9' : '#000')};
+  background-color: ${(props: StyleProps) => (props.selected ? '#dbf1fe' : '#fff')};
 `;
 
 export default memo(({ data, selected }: { data: any; selected: boolean }) => {

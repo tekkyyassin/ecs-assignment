@@ -22,14 +22,13 @@ import { AssumptionLinksContextProviderProps } from '../../types';
 import useAssumptionLinks from '../../useAssumptionLinks';
 
 const AssumptionLinksLocalStorageContextProvider: FC<
-PropsWithChildren<
-AssumptionLinksContextProviderProps &
-LocalStateContextProviderBaseProps<AssumptionLink[]>
->
+  PropsWithChildren<
+    AssumptionLinksContextProviderProps & LocalStateContextProviderBaseProps<AssumptionLink[]>
+  >
 > = ({ children, initialValue }) => {
-  const [assumptionLinkList, setAssumptionLinkList] = useState<
-  AssumptionLink[]
-  >(initialValue || []);
+  const [assumptionLinkList, setAssumptionLinkList] = useState<AssumptionLink[]>(
+    initialValue || [],
+  );
 
   const {
     handlRemoveAssumptionLink,
@@ -58,10 +57,8 @@ LocalStateContextProviderBaseProps<AssumptionLink[]>
         getLinkedAssumptionLinks: handleGetLinkedAssumptionLinks,
         getAssumptionEntityLinks: handleGetAssumptionEntityLinks,
         removeAssumptionLink: handlRemoveAssumptionLink,
-        removeAssumptionLinksByAssumptionId:
-          handlRemoveAssumptionLinksByAssumptionId,
-        removeAssumptionLinksByLinkedEntityId:
-          handlRemoveAssumptionLinksByLinkedEntityId,
+        removeAssumptionLinksByAssumptionId: handlRemoveAssumptionLinksByAssumptionId,
+        removeAssumptionLinksByLinkedEntityId: handlRemoveAssumptionLinksByLinkedEntityId,
         removeAssumptionLinks: handleRemoveAssumptionLinks,
         addAssumptionLink: handleAddAssumptionLink,
         addAssumptionLinks: handleAddAssumptionLinks,

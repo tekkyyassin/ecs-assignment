@@ -31,19 +31,18 @@ const getLocalStorageKey = (workspaceId: string | null) => {
   return LOCAL_STORAGE_KEY_CONTROL_LIST;
 };
 
-const ControlsLocalStorageContextProvider: FC<
-PropsWithChildren<ControlsContextProviderProps>
-> = ({ children, workspaceId: currentWorkspaceId }) => {
-  const [controlList, setControlList, { removeItem }] = useLocalStorageState<
-  Control[]
-  >(getLocalStorageKey(currentWorkspaceId), {
-    defaultValue: [],
-  });
-
-  const { handlRemoveControl, handleSaveControl } = useControls(
-    controlList,
-    setControlList,
+const ControlsLocalStorageContextProvider: FC<PropsWithChildren<ControlsContextProviderProps>> = ({
+  children,
+  workspaceId: currentWorkspaceId,
+}) => {
+  const [controlList, setControlList, { removeItem }] = useLocalStorageState<Control[]>(
+    getLocalStorageKey(currentWorkspaceId),
+    {
+      defaultValue: [],
+    },
   );
+
+  const { handlRemoveControl, handleSaveControl } = useControls(controlList, setControlList);
 
   const handleRemoveAllControls = useCallback(async () => {
     removeItem();

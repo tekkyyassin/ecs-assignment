@@ -36,26 +36,17 @@ export interface MetadataEditorProps {
   ) => void;
 }
 
-const MetadataEditor: FC<MetadataEditorProps> = ({
-  variant,
-  editingStatement,
-  onEditMetadata,
-}) => {
+const MetadataEditor: FC<MetadataEditorProps> = ({ variant, editingStatement, onEditMetadata }) => {
   const stride = useMemo(() => {
     return (
-      (editingStatement.metadata?.find((m) => m.key === 'STRIDE')
-        ?.value as string[]) || undefined
+      (editingStatement.metadata?.find((m) => m.key === 'STRIDE')?.value as string[]) || undefined
     );
   }, [editingStatement.metadata]);
 
   return (
     <ExpandableSection
       headerText={
-        <span
-          css={variant === 'default' ? expandablePanelHeaderStyles : undefined}
-        >
-          Metadata
-        </span>
+        <span css={variant === 'default' ? expandablePanelHeaderStyles : undefined}>Metadata</span>
       }
       headingTagOverride="h3"
       variant={variant}
@@ -67,16 +58,11 @@ const MetadataEditor: FC<MetadataEditorProps> = ({
           { colspan: { default: 12, xs: 12 } },
         ]}
       >
-        <PriorityEdit
-          editingStatement={editingStatement}
-          onEditMetadata={onEditMetadata}
-        />
+        <PriorityEdit editingStatement={editingStatement} onEditMetadata={onEditMetadata} />
         <STRIDESELECTOR
           label="STRIDE"
           selected={stride}
-          setSelected={(selected) =>
-            onEditMetadata(editingStatement, 'STRIDE', selected)
-          }
+          setSelected={(selected) => onEditMetadata(editingStatement, 'STRIDE', selected)}
         />
         <CommentsEdit entity={editingStatement} onEditEntity={onEditMetadata} />
       </Grid>

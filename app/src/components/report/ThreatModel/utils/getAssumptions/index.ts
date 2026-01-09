@@ -33,17 +33,15 @@ export const getAssumptionsContent = async (data: DataExchangeFormat) => {
   if (data.assumptions) {
     const promises = data.assumptions?.map(async (x) => {
       const threatLinks =
-        data.assumptionLinks?.filter(
-          (al) => al.assumptionId === x.id && al.type === 'Threat',
-        ) || [];
+        data.assumptionLinks?.filter((al) => al.assumptionId === x.id && al.type === 'Threat') ||
+        [];
       const mitigationLinks =
         data.assumptionLinks?.filter(
           (al) => al.assumptionId === x.id && al.type === 'Mitigation',
         ) || [];
       const controlLinks =
-        data.assumptionLinks?.filter(
-          (al) => al.assumptionId === x.id && al.type === 'Control',
-        ) || [];
+        data.assumptionLinks?.filter((al) => al.assumptionId === x.id && al.type === 'Control') ||
+        [];
 
       const threatsContent = threatLinks
         .map((tl) => {
@@ -59,9 +57,7 @@ export const getAssumptionsContent = async (data: DataExchangeFormat) => {
 
       const mitigationsContent = mitigationLinks
         .map((tl) => {
-          const mitigation = data.mitigations?.find(
-            (m) => m.id === tl.linkedId,
-          );
+          const mitigation = data.mitigations?.find((m) => m.id === tl.linkedId);
           if (mitigation) {
             const mitigationId = `M-${standardizeNumericId(mitigation.numericId)}`;
             return `[**${mitigationId}**](#${mitigationId}): ${escapeMarkdown(mitigation.content)}`;

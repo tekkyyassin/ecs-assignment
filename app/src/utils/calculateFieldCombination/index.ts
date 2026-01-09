@@ -15,10 +15,7 @@
  ******************************************************************************************************************** */
 
 import { TemplateThreatStatement } from '../../customTypes';
-import {
-  threatFieldTypeMapping,
-  ThreatFieldTypes,
-} from '../../customTypes/threatFieldTypes';
+import { threatFieldTypeMapping, ThreatFieldTypes } from '../../customTypes/threatFieldTypes';
 import threatFieldData from '../../data/threatFieldData';
 
 const calculateFieldCombination = (statement: TemplateThreatStatement) => {

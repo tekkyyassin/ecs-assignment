@@ -40,12 +40,12 @@ const styles = {
     zIndex: '1299',
   }),
   contentContainer: css({
-    'maxWidth': '800px',
-    'width': '100%',
-    'margin': 'auto',
-    'position': 'relative',
-    'borderRadius': '10px',
-    'background': 'rgba(0, 0, 0, 0.75)',
+    maxWidth: '800px',
+    width: '100%',
+    margin: 'auto',
+    position: 'relative',
+    borderRadius: '10px',
+    background: 'rgba(0, 0, 0, 0.75)',
     '@media screen and (max-width: 800px), screen and (max-height: 640px)': {
       borderRadius: '0px',
       width: '100%',
@@ -59,11 +59,11 @@ const styles = {
     maxHeight: 'calc(100vh - 40px)',
   }),
   closeButton: css({
-    'position': 'absolute',
-    'top': awsui.spaceScaledM,
-    'right': awsui.spaceScaledM,
-    'color': '#5f6b7a !important',
-    'zIndex': '1299',
+    position: 'absolute',
+    top: awsui.spaceScaledM,
+    right: awsui.spaceScaledM,
+    color: '#5f6b7a !important',
+    zIndex: '1299',
     '&:hover': {
       color: '#9ba7b6 !important',
     },
@@ -76,11 +76,7 @@ export interface ModalProps {
 }
 
 /** A modal is a pop-up dialog that can be used to prompt a user for confirmation. */
-const Modal: FC<PropsWithChildren<ModalProps>> = ({
-  visible = false,
-  children,
-  onDismiss,
-}) => {
+const Modal: FC<PropsWithChildren<ModalProps>> = ({ visible = false, children, onDismiss }) => {
   useEffect(() => {
     const handleKeyDown = (event: any) => {
       event.key === 'Escape' && onDismiss?.();
@@ -94,13 +90,7 @@ const Modal: FC<PropsWithChildren<ModalProps>> = ({
   }, [onDismiss]);
 
   return (
-    <div
-      css={
-        visible
-          ? [styles.main, styles.mainActive]
-          : [styles.main, styles.mainInactive]
-      }
-    >
+    <div css={visible ? [styles.main, styles.mainActive] : [styles.main, styles.mainInactive]}>
       <div css={styles.contentContainer}>
         <div css={styles.closeButton}>
           <Button variant="icon" iconName="close" onClick={onDismiss} />

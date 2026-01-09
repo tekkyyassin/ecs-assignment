@@ -24,11 +24,7 @@ import InfoModalBase from '../InfoModalBase';
 const InfoModalSelector: FC = () => {
   return (
     <InfoModalBase>
-      <img
-        css={css(styles.image)}
-        src={threatStatementEditor}
-        alt="ThreatStatementEditor"
-      />
+      <img css={css(styles.image)} src={threatStatementEditor} alt="ThreatStatementEditor" />
     </InfoModalBase>
   );
 };

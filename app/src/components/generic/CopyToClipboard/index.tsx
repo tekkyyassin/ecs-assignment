@@ -24,10 +24,7 @@ export interface CopyToClipbordProps {
   content?: string;
 }
 
-const CopyToClipbord: FC<PropsWithChildren<CopyToClipbordProps>> = ({
-  children,
-  content,
-}) => {
+const CopyToClipbord: FC<PropsWithChildren<CopyToClipbordProps>> = ({ children, content }) => {
   const handleClick = useCallback(async () => {
     if (content) {
       await navigator.clipboard.writeText(content);

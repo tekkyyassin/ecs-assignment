@@ -56,10 +56,7 @@ const SORTING_OPTIONS = [
   { value: 'descending', label: 'Descending' },
 ];
 
-const SortByComponent: FC<SortByProps> = ({
-  value = DEFAULT_SORT_BY,
-  setValue,
-}) => {
+const SortByComponent: FC<SortByProps> = ({ value = DEFAULT_SORT_BY, setValue }) => {
   return (
     <SpaceBetween direction="horizontal" size="s">
       <div css={styles.selector}>

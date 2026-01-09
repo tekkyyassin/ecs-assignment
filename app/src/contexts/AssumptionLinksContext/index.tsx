@@ -22,16 +22,13 @@ import { AssumptionLinksContextProviderProps } from './types';
 import { EXAMPLE_WORKSPACE_ID } from '../../configs/constants';
 import { useExampleContext } from '../ExampleContext';
 
-const AssumptionLinksContextProvider: FC<
-PropsWithChildren<AssumptionLinksContextProviderProps>
-> = (props) => {
+const AssumptionLinksContextProvider: FC<PropsWithChildren<AssumptionLinksContextProviderProps>> = (
+  props,
+) => {
   const { assumptionLinks } = useExampleContext();
 
   return props.workspaceId === EXAMPLE_WORKSPACE_ID ? (
-    <AssumptionLinksLocalStateContextProvider
-      initialValue={assumptionLinks}
-      {...props}
-    />
+    <AssumptionLinksLocalStateContextProvider initialValue={assumptionLinks} {...props} />
   ) : (
     <AssumptionLinksLocalStorageContextProvider {...props} />
   );

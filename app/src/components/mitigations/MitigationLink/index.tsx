@@ -24,9 +24,7 @@ export interface MitigationLinkProps {
   linkedEntityId: string;
 }
 
-const MitigationLinkComponent: FC<MitigationLinkProps> = ({
-  linkedEntityId,
-}) => {
+const MitigationLinkComponent: FC<MitigationLinkProps> = ({ linkedEntityId }) => {
   const { mitigationList, saveMitigation } = useMitigationsContext();
   const [mitigationLinks, setMitigationLinks] = useState<MitigationLink[]>([]);
 
@@ -37,8 +35,7 @@ const MitigationLinkComponent: FC<MitigationLinkProps> = ({
     setMitigationLinks(_mitigationLinks || []);
   }, [getLinkedMitigationLinks, linkedEntityId]);
 
-  const { addMitigationLink, removeMitigationLink } =
-    useMitigationLinksContext();
+  const { addMitigationLink, removeMitigationLink } = useMitigationLinksContext();
 
   const handleAddMitigationLink = useCallback(
     (mitigationIdOrNewMitigation: string) => {
@@ -67,9 +64,7 @@ const MitigationLinkComponent: FC<MitigationLinkProps> = ({
       mitigationList={mitigationList}
       linkedMitigationIds={mitigationLinks.map((ml) => ml.mitigationId)}
       onAddMitigationLink={handleAddMitigationLink}
-      onRemoveMitigationLink={(mitigationId) =>
-        removeMitigationLink(mitigationId, linkedEntityId)
-      }
+      onRemoveMitigationLink={(mitigationId) => removeMitigationLink(mitigationId, linkedEntityId)}
     />
   );
 };

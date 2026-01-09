@@ -17,14 +17,7 @@
 /** @jsxImportSource @emotion/react */
 import Button from '@cloudscape-design/components/button';
 import { TextareaProps } from '@cloudscape-design/components/textarea';
-import {
-  FC,
-  forwardRef,
-  useCallback,
-  useRef,
-  RefObject,
-  useImperativeHandle,
-} from 'react';
+import { FC, forwardRef, useCallback, useRef, RefObject, useImperativeHandle } from 'react';
 import { useThreatsContext } from '../../../contexts/ThreatsContext';
 import { TemplateThreatStatementSchema } from '../../../customTypes';
 import Textarea from '../../generic/Textarea';
@@ -33,81 +26,71 @@ import styles from '../EditorLayout/styles';
 import ExampleList from '../ExampleList';
 import { EditorProps } from '../ThreatStatementEditor/types';
 
-const EditorThreatImpact: FC<EditorProps> = forwardRef<
-TextareaProps.Ref,
-EditorProps
->(({ statement, setStatement, fieldData }, ref) => {
-  const inputRef = useRef<TextareaProps.Ref>();
-  const { perFieldExamples } = useThreatsContext();
+const EditorThreatImpact: FC<EditorProps> = forwardRef<TextareaProps.Ref, EditorProps>(
+  ({ statement, setStatement, fieldData }, ref) => {
+    const inputRef = useRef<TextareaProps.Ref>();
+    const { perFieldExamples } = useThreatsContext();
 
-  useImperativeHandle(ref, () => {
-    return {
-      focus() {
+    useImperativeHandle(ref, () => {
+      return {
+        focus() {
+          inputRef.current?.focus();
+        },
+      };
+    }, []);
+
+    const handleChange = useCallback(
+      (threatImpact: string) => {
+        setStatement(
+          (prevStatement) =>
+            prevStatement && {
+              ...prevStatement,
+              threatImpact: threatImpact,
+            },
+        );
+      },
+      [setStatement],
+    );
+
+    const handleSelect = useCallback(
+      (threatImpact: string) => {
+        handleChange(threatImpact);
         inputRef.current?.focus();
       },
-    };
-  }, []);
+      [handleChange],
+    );
 
-  const handleChange = useCallback(
-    (threatImpact: string) => {
-      setStatement(
-        (prevStatement) =>
-          prevStatement && {
-            ...prevStatement,
-            threatImpact: threatImpact,
-          },
-      );
-    },
-    [setStatement],
-  );
-
-  const handleSelect = useCallback(
-    (threatImpact: string) => {
-      handleChange(threatImpact);
-      inputRef.current?.focus();
-    },
-    [handleChange],
-  );
-
-  return (
-    <EditorLayout
-      title={fieldData.displayTitle}
-      description={fieldData.description}
-    >
-      <div css={styles.textEditorLayout}>
-        <div css={styles.input}>
-          <Textarea
-            ref={inputRef as RefObject<TextareaProps.Ref>}
-            spellcheck
-            onChange={({ detail }) => handleChange(detail.value)}
-            value={statement.threatImpact || ''}
-            placeholder="Enter threat impact"
-            validateData={
-              TemplateThreatStatementSchema.shape.threatImpact.safeParse
-            }
-            rows={2}
-            singleLine
-            stretch
-          />
-        </div>
-        {statement.threatImpact && (
-          <div css={styles.inputClear}>
-            <Button
-              variant="icon"
-              iconName="close"
-              onClick={() => handleChange('')}
+    return (
+      <EditorLayout title={fieldData.displayTitle} description={fieldData.description}>
+        <div css={styles.textEditorLayout}>
+          <div css={styles.input}>
+            <Textarea
+              ref={inputRef as RefObject<TextareaProps.Ref>}
+              spellcheck
+              onChange={({ detail }) => handleChange(detail.value)}
+              value={statement.threatImpact || ''}
+              placeholder="Enter threat impact"
+              validateData={TemplateThreatStatementSchema.shape.threatImpact.safeParse}
+              rows={2}
+              singleLine
+              stretch
             />
           </div>
+          {statement.threatImpact && (
+            <div css={styles.inputClear}>
+              <Button variant="icon" iconName="close" onClick={() => handleChange('')} />
+            </div>
+          )}
+        </div>
+        {perFieldExamples.threat_impact.length > 0 && (
+          <ExampleList
+            examples={perFieldExamples.threat_impact}
+            onSelect={handleSelect}
+          ></ExampleList>
         )}
-      </div>
-      {perFieldExamples.threat_impact.length > 0 && (
-        <ExampleList
-          examples={perFieldExamples.threat_impact}
-          onSelect={handleSelect}
-        ></ExampleList>
-      )}
-    </EditorLayout>
-  );
-});
+      </EditorLayout>
+    );
+  },
+);
 
 export default EditorThreatImpact;

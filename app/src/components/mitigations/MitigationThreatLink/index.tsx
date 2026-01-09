@@ -24,9 +24,7 @@ export interface MitigationThreatLinkProps {
   mitigationId: string;
 }
 
-const MitigationThreatLinkComponent: FC<MitigationThreatLinkProps> = ({
-  mitigationId,
-}) => {
+const MitigationThreatLinkComponent: FC<MitigationThreatLinkProps> = ({ mitigationId }) => {
   const { statementList } = useThreatsContext();
   const [mitigationLinks, setMitigationLinks] = useState<MitigationLink[]>([]);
 
@@ -37,8 +35,7 @@ const MitigationThreatLinkComponent: FC<MitigationThreatLinkProps> = ({
     setMitigationLinks(_mitigationLinks || []);
   }, [getMitigtaionThreatLinks, mitigationId]);
 
-  const { addMitigationLink, removeMitigationLink } =
-    useMitigationLinksContext();
+  const { addMitigationLink, removeMitigationLink } = useMitigationLinksContext();
 
   return (
     <ThreatLinkView
@@ -50,9 +47,7 @@ const MitigationThreatLinkComponent: FC<MitigationThreatLinkProps> = ({
           mitigationId,
         })
       }
-      onRemoveThreatLink={(threatId) =>
-        removeMitigationLink(mitigationId, threatId)
-      }
+      onRemoveThreatLink={(threatId) => removeMitigationLink(mitigationId, threatId)}
     />
   );
 };

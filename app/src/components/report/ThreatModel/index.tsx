@@ -26,10 +26,7 @@ export interface ThreatModelProps {
   isPreview?: boolean;
 }
 
-const ThreatModel: FC<ThreatModelProps> = ({
-  onPrintButtonClick,
-  ...props
-}) => {
+const ThreatModel: FC<ThreatModelProps> = ({ onPrintButtonClick, ...props }) => {
   const { getWorkspaceData } = useImportExport();
   const { composerMode } = useGlobalSetupContext();
   const [_, hasContentDetails] = useHasContent();

@@ -13,15 +13,8 @@
   See the License for the specific language governing permissions and
   limitations under the License.
  ******************************************************************************************************************** */
-import TopNavigation, {
-  TopNavigationProps,
-} from '@cloudscape-design/components/top-navigation';
-import {
-  applyMode,
-  Mode,
-  applyDensity,
-  Density,
-} from '@cloudscape-design/global-styles';
+import TopNavigation, { TopNavigationProps } from '@cloudscape-design/components/top-navigation';
+import { applyMode, Mode, applyDensity, Density } from '@cloudscape-design/global-styles';
 import { FC, useMemo, useState, useEffect } from 'react';
 
 /**
@@ -148,9 +141,9 @@ const NavHeader: FC<NavHeaderProps> = ({ title, href, logo, ...props }) => {
           href: href,
           logo: logo
             ? {
-              src: logo,
-              alt: title,
-            }
+                src: logo,
+                alt: title,
+              }
             : undefined,
         }}
       />

@@ -20,15 +20,7 @@ import SpaceBetween from '@cloudscape-design/components/space-between';
 import TextContent from '@cloudscape-design/components/text-content';
 import * as awsui from '@cloudscape-design/design-tokens';
 import { css } from '@emotion/react';
-import React, {
-  FC,
-  useCallback,
-  useMemo,
-  useState,
-  useRef,
-  useEffect,
-  ReactNode,
-} from 'react';
+import React, { FC, useCallback, useMemo, useState, useRef, useEffect, ReactNode } from 'react';
 import { v4 as uuidV4 } from 'uuid';
 import { EditorProps } from './types';
 import { DEFAULT_WORKSPACE_LABEL } from '../../../configs/constants';
@@ -85,9 +77,7 @@ const styles = {
 const defaultThreatStatementFormat = threatStatementFormat[63];
 
 const editorMapping: {
-  [key in ThreatFieldTypes]: React.ComponentType<
-  EditorProps & { ref?: React.ForwardedRef<any> }
-  >;
+  [key in ThreatFieldTypes]: React.ComponentType<EditorProps & { ref?: React.ForwardedRef<any> }>;
 } = {
   threat_source: EditorThreatSource,
   prerequisites: EditorPrerequisites,
@@ -110,35 +100,21 @@ const ThreatStatementEditorInner: FC<{
     getRecommendedEditor(editingStatement),
   );
   const [suggestions, setSuggestions] = useState<string[]>([]);
-  const [displayStatement, setDisplayStatement] = useState<
-  ReactNode[] | undefined
-  >([]);
-  const [customTemplateEditorVisible, setCustomTemplateEditorVisible] =
-    useState(false);
+  const [displayStatement, setDisplayStatement] = useState<ReactNode[] | undefined>([]);
+  const [customTemplateEditorVisible, setCustomTemplateEditorVisible] = useState(false);
 
-  const {
-    addAssumptionLinks,
-    getLinkedAssumptionLinks,
-    removeAssumptionLinks,
-  } = useAssumptionLinksContext();
-  const {
-    addMitigationLinks,
-    getLinkedMitigationLinks,
-    removeMitigationLinks,
-  } = useMitigationLinksContext();
-  const { addControlLinks, getLinkedControlLinks, removeControlLinks } =
-    useControlLinksContext();
+  const { addAssumptionLinks, getLinkedAssumptionLinks, removeAssumptionLinks } =
+    useAssumptionLinksContext();
+  const { addMitigationLinks, getLinkedMitigationLinks, removeMitigationLinks } =
+    useMitigationLinksContext();
+  const { addControlLinks, getLinkedControlLinks, removeControlLinks } = useControlLinksContext();
 
   const prevLinkedAssumptionIds = useMemo(() => {
-    return getLinkedAssumptionLinks(editingStatement.id).map(
-      (la) => la.assumptionId,
-    );
+    return getLinkedAssumptionLinks(editingStatement.id).map((la) => la.assumptionId);
   }, [getLinkedAssumptionLinks, editingStatement]);
 
   const prevLinkedMitigationIds = useMemo(() => {
-    return getLinkedMitigationLinks(editingStatement.id).map(
-      (lm) => lm.mitigationId,
-    );
+    return getLinkedMitigationLinks(editingStatement.id).map((lm) => lm.mitigationId);
   }, [getLinkedMitigationLinks, editingStatement]);
 
   const prevLinkedControlIds = useMemo(() => {
@@ -146,19 +122,13 @@ const ThreatStatementEditorInner: FC<{
   }, [getLinkedControlLinks, editingStatement]);
 
   const [linkedAssumptionIds, setLinkedAssumptionIds] = useState<string[]>(
-    editingStatement && editingStatement?.numericId === -1
-      ? []
-      : prevLinkedAssumptionIds,
+    editingStatement && editingStatement?.numericId === -1 ? [] : prevLinkedAssumptionIds,
   );
   const [linkedMitigationIds, setLinkedMitigationIds] = useState<string[]>(
-    editingStatement && editingStatement?.numericId === -1
-      ? []
-      : prevLinkedMitigationIds,
+    editingStatement && editingStatement?.numericId === -1 ? [] : prevLinkedMitigationIds,
   );
   const [linkedControlIds, setLinkedControlIds] = useState<string[]>(
-    editingStatement && editingStatement?.numericId === -1
-      ? []
-      : prevLinkedControlIds,
+    editingStatement && editingStatement?.numericId === -1 ? [] : prevLinkedControlIds,
   );
 
   const { composerMode } = useGlobalSetupContext();
@@ -385,9 +355,7 @@ const ThreatStatementEditorInner: FC<{
   const handleGiveExampleClicked = useCallback(() => {
     const len = threatStatementExamples.length;
     const randomNumber = Math.floor(Math.random() * len);
-    const example = threatStatementExamples[
-      randomNumber
-    ] as TemplateThreatStatement;
+    const example = threatStatementExamples[randomNumber] as TemplateThreatStatement;
     const statement = {
       ...example,
       tags: [],
@@ -436,10 +404,7 @@ const ThreatStatementEditorInner: FC<{
   const handleAddAssumptionLink = useCallback(
     (assumptionIdOrNewAssumption: string) => {
       if (assumptionList.find((a) => a.id === assumptionIdOrNewAssumption)) {
-        setLinkedAssumptionIds((prev) => [
-          ...prev,
-          assumptionIdOrNewAssumption,
-        ]);
+        setLinkedAssumptionIds((prev) => [...prev, assumptionIdOrNewAssumption]);
       } else {
         const newAssumption = saveAssumption({
           id: 'new',
@@ -455,10 +420,7 @@ const ThreatStatementEditorInner: FC<{
   const handleAddMitigationLink = useCallback(
     (mitigationIdOrNewMitigation: string) => {
       if (mitigationList.find((a) => a.id === mitigationIdOrNewMitigation)) {
-        setLinkedMitigationIds((prev) => [
-          ...prev,
-          mitigationIdOrNewMitigation,
-        ]);
+        setLinkedMitigationIds((prev) => [...prev, mitigationIdOrNewMitigation]);
       } else {
         const newMitigation = saveMitigation({
           id: 'new',
@@ -499,10 +461,7 @@ const ThreatStatementEditorInner: FC<{
             onComplete={handleComplete}
           />
         )}
-        <FinalStatement
-          statement={editingStatement}
-          displayStatement={displayStatement}
-        />
+        <FinalStatement statement={editingStatement} displayStatement={displayStatement} />
         <FieldSelector
           composerMode={composerMode}
           onStartOver={handleStartOver}
@@ -555,9 +514,7 @@ const ThreatStatementEditorInner: FC<{
                   mitigationList={mitigationList}
                   onAddMitigationLink={handleAddMitigationLink}
                   onRemoveMitigationLink={(id) =>
-                    setLinkedMitigationIds((prev) =>
-                      prev.filter((p) => p !== id),
-                    )
+                    setLinkedMitigationIds((prev) => prev.filter((p) => p !== id))
                   }
                 />
               </div>
@@ -570,9 +527,7 @@ const ThreatStatementEditorInner: FC<{
                   assumptionList={assumptionList}
                   onAddAssumptionLink={handleAddAssumptionLink}
                   onRemoveAssumptionLink={(id) =>
-                    setLinkedAssumptionIds((prev) =>
-                      prev.filter((p) => p !== id),
-                    )
+                    setLinkedAssumptionIds((prev) => prev.filter((p) => p !== id))
                   }
                 />
               </div>

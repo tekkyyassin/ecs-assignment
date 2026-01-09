@@ -22,16 +22,11 @@ import { ControlsContextProviderProps } from '../../types';
 import useControls from '../../useControls';
 
 const ControlsLocalStateContextProvider: FC<
-PropsWithChildren<
-ControlsContextProviderProps & LocalStateContextProviderBaseProps<Control[]>
->
+  PropsWithChildren<ControlsContextProviderProps & LocalStateContextProviderBaseProps<Control[]>>
 > = ({ children, initialValue }) => {
   const [controlList, setControlList] = useState<Control[]>(initialValue || []);
 
-  const { handlRemoveControl, handleSaveControl } = useControls(
-    controlList,
-    setControlList,
-  );
+  const { handlRemoveControl, handleSaveControl } = useControls(controlList, setControlList);
 
   const handleRemoveAllControls = useCallback(async () => {
     setControlList([]);

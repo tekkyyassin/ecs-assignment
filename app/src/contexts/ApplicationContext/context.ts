@@ -42,8 +42,6 @@ const initialState: ApplicationInfoContextApi = {
   onDeleteWorkspace: () => Promise.resolve(),
 };
 
-export const ApplicationInfoContext =
-  createContext<ApplicationInfoContextApi>(initialState);
+export const ApplicationInfoContext = createContext<ApplicationInfoContextApi>(initialState);
 
-export const useApplicationInfoContext = () =>
-  useContext(ApplicationInfoContext);
+export const useApplicationInfoContext = () => useContext(ApplicationInfoContext);

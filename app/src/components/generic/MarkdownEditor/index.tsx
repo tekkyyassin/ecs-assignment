@@ -49,10 +49,7 @@ const MarkdownEditor: FC<MarkdownEditorProps> = ({
 }) => {
   return (
     <Grid
-      gridDefinition={[
-        { colspan: { default: 12, xs: 6 } },
-        { colspan: { default: 12, xs: 6 } },
-      ]}
+      gridDefinition={[{ colspan: { default: 12, xs: 6 } }, { colspan: { default: 12, xs: 6 } }]}
     >
       <Textarea
         label={label}

@@ -33,13 +33,12 @@ export interface PriorityEditProps {
 }
 
 const PriorityEdit: FC<PriorityEditProps> = React.forwardRef<
-React.ForwardedRef<SelectProps.Ref>,
-PriorityEditProps
+  React.ForwardedRef<SelectProps.Ref>,
+  PriorityEditProps
 >(({ editingStatement, onEditMetadata, showLabel = true, ...props }, ref) => {
   const priority = useMemo(() => {
     return (
-      (editingStatement.metadata?.find((m) => m.key === 'Priority')
-        ?.value as string) || undefined
+      (editingStatement.metadata?.find((m) => m.key === 'Priority')?.value as string) || undefined
     );
   }, [editingStatement.metadata]);
 

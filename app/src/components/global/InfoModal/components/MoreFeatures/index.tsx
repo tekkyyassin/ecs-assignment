@@ -45,10 +45,8 @@ const InfoModalMoreFeatures: FC = () => {
               </svg>
             </div>
             <div>
-              <span css={css(styles.contentHighlight)}>
-                Data persisted only client-side
-              </span>{' '}
-              within the browser
+              <span css={css(styles.contentHighlight)}>Data persisted only client-side</span> within
+              the browser
             </div>
           </div>
           <div css={[css(styles.featureSet), css(styles.contentBaseText)]}>
@@ -64,10 +62,8 @@ const InfoModalMoreFeatures: FC = () => {
               </svg>
             </div>
             <div>
-              <span css={css(styles.contentHighlight)}>
-                Import/export capabilities
-              </span>{' '}
-              to enable persistent storage and sharing
+              <span css={css(styles.contentHighlight)}>Import/export capabilities</span> to enable
+              persistent storage and sharing
             </div>
           </div>
           <div css={[css(styles.featureSet), css(styles.contentBaseText)]}>
@@ -83,10 +79,8 @@ const InfoModalMoreFeatures: FC = () => {
               </svg>
             </div>
             <div>
-              <span css={css(styles.contentHighlight)}>
-                Workspace separation
-              </span>{' '}
-              to cater for multiple solution requirements
+              <span css={css(styles.contentHighlight)}>Workspace separation</span> to cater for
+              multiple solution requirements
             </div>
           </div>
         </Grid>

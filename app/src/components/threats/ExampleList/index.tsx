@@ -67,9 +67,7 @@ const ExampleList = <T extends string | PerFieldExample | string[]>({
           return re.some((e) => e.toLowerCase().indexOf(filterText) >= 0);
         }
 
-        return (
-          (re as PerFieldExample).example.toLowerCase().indexOf(filterText) >= 0
-        );
+        return (re as PerFieldExample).example.toLowerCase().indexOf(filterText) >= 0;
       });
     }
 
@@ -78,10 +76,7 @@ const ExampleList = <T extends string | PerFieldExample | string[]>({
 
   const showFullExampleToggle = useMemo(() => {
     if (examples && examples.length > 0) {
-      return (
-        typeof examples[0] !== 'string' &&
-        !!(examples[0] as PerFieldExample).example
-      );
+      return typeof examples[0] !== 'string' && !!(examples[0] as PerFieldExample).example;
     }
 
     return false;
@@ -97,11 +92,7 @@ const ExampleList = <T extends string | PerFieldExample | string[]>({
         );
       }
 
-      if (
-        Array.isArray(example) &&
-        example.length > 0 &&
-        typeof example[0] === 'string'
-      ) {
+      if (Array.isArray(example) && example.length > 0 && typeof example[0] === 'string') {
         const exampleStr = renderArrayField(example);
         return (
           <Button variant="link" onClick={() => onSelect(exampleStr)}>
@@ -117,33 +108,24 @@ const ExampleList = <T extends string | PerFieldExample | string[]>({
         typeof perFieldExamples.example !== 'undefined'
       ) {
         if (showFullExample) {
-          const fullExample =
-            threatStatementExamples[perFieldExamples.fromId].statement;
+          const fullExample = threatStatementExamples[perFieldExamples.fromId].statement;
 
           if (fullExample) {
             const index = fullExample.indexOf(perFieldExamples.example);
             return (
               <>
                 <span>{fullExample.slice(0, index)}</span>
-                <Button
-                  variant="link"
-                  onClick={() => onSelect(perFieldExamples.example)}
-                >
+                <Button variant="link" onClick={() => onSelect(perFieldExamples.example)}>
                   {perFieldExamples.example}
                 </Button>
-                <span>
-                  {fullExample.slice(index + perFieldExamples.example.length)}
-                </span>
+                <span>{fullExample.slice(index + perFieldExamples.example.length)}</span>
               </>
             );
           }
         }
 
         return (
-          <Button
-            variant="link"
-            onClick={() => onSelect(perFieldExamples.example)}
-          >
+          <Button variant="link" onClick={() => onSelect(perFieldExamples.example)}>
             {perFieldExamples.example}
           </Button>
         );
@@ -188,9 +170,7 @@ const ExampleList = <T extends string | PerFieldExample | string[]>({
         </ul>
         {randomDislayList.length > DEFAULT_NUM_DISPLAY && (
           <Button
-            iconName={
-              showMoreExamples ? 'treeview-collapse' : 'treeview-expand'
-            }
+            iconName={showMoreExamples ? 'treeview-collapse' : 'treeview-expand'}
             onClick={() => setShowMoreExamples((prev) => !prev)}
             variant="link"
           >

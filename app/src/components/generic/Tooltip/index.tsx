@@ -22,7 +22,7 @@ import { useMobileMediaQuery } from '../../../hooks/useMediaQuery';
 
 const styles = {
   tooltip: css({
-    'position': 'relative',
+    position: 'relative',
     ['&:hover .tooltipText']: {
       visibility: 'visible',
     },
@@ -41,9 +41,9 @@ const styles = {
     },
   }),
   tooltipAnchor: css({
-    'width': '110px',
-    'left': '50%',
-    'marginLeft': '-56px',
+    width: '110px',
+    left: '50%',
+    marginLeft: '-56px',
     '&.tooltipText::after': {
       content: '" "',
       position: 'absolute',
@@ -55,13 +55,13 @@ const styles = {
     },
   }),
   tooltipTop: css({
-    'bottom': '125%',
+    bottom: '125%',
     '&.tooltipText::after': {
       top: '100%',
     },
   }),
   tooltipBottom: css({
-    'top': '110%',
+    top: '110%',
     '&.tooltipText::after': {
       bottom: '100%',
     },
@@ -73,11 +73,7 @@ export interface TooltipProps {
   anchor?: 'top' | 'bottom';
 }
 
-const Tooltip: FC<PropsWithChildren<TooltipProps>> = ({
-  tooltip,
-  children,
-  anchor = 'top',
-}) => {
+const Tooltip: FC<PropsWithChildren<TooltipProps>> = ({ tooltip, children, anchor = 'top' }) => {
   const isMobileView = useMobileMediaQuery();
   return isMobileView ? (
     <>{children}</>
@@ -85,10 +81,7 @@ const Tooltip: FC<PropsWithChildren<TooltipProps>> = ({
     <span css={styles.tooltip}>
       {children}
       <span
-        css={[
-          styles.tooltipAnchor,
-          anchor === 'top' ? styles.tooltipTop : styles.tooltipBottom,
-        ]}
+        css={[styles.tooltipAnchor, anchor === 'top' ? styles.tooltipTop : styles.tooltipBottom]}
         className="tooltipText"
       >
         {tooltip}

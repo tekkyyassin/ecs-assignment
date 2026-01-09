@@ -22,16 +22,13 @@ import { ControlLinksContextProviderProps } from './types';
 import { EXAMPLE_WORKSPACE_ID } from '../../configs/constants';
 import { useExampleContext } from '../ExampleContext';
 
-const ControlLinksContextProvider: FC<
-PropsWithChildren<ControlLinksContextProviderProps>
-> = (props) => {
+const ControlLinksContextProvider: FC<PropsWithChildren<ControlLinksContextProviderProps>> = (
+  props,
+) => {
   const { controlLinks } = useExampleContext();
 
   return props.workspaceId === EXAMPLE_WORKSPACE_ID ? (
-    <ControlLinksLocalStateContextProvider
-      initialValue={controlLinks}
-      {...props}
-    />
+    <ControlLinksLocalStateContextProvider initialValue={controlLinks} {...props} />
   ) : (
     <ControlLinksLocalStorageContextProvider {...props} />
   );

@@ -100,8 +100,7 @@ const ControlCard: FC<ControlCardProps> = ({
   const [selectedControl, setSelectedControl] = useState<OptionDefinition>({
     label: entity.content,
     value: entity.id,
-    description: entity.metadata?.find((m) => m.key === 'Comments')
-      ?.value as string,
+    description: entity.metadata?.find((m) => m.key === 'Comments')?.value as string,
     tags: entity.tags,
   });
 
@@ -119,14 +118,11 @@ const ControlCard: FC<ControlCardProps> = ({
     setSelectedControl({
       label: entity.content,
       value: entity.id,
-      description: entity.metadata?.find((m) => m.key === 'Comments')
-        ?.value as string,
+      description: entity.metadata?.find((m) => m.key === 'Comments')?.value as string,
       tags: entity.tags,
     });
     setTags(entity.tags);
-    setMetadataComments(
-      entity.metadata?.find((m) => m.key === 'Comments')?.value as string,
-    );
+    setMetadataComments(entity.metadata?.find((m) => m.key === 'Comments')?.value as string);
     setEditingMode(false);
   }, [entity]);
 
@@ -149,20 +145,12 @@ const ControlCard: FC<ControlCardProps> = ({
       <SpaceBetween direction="horizontal" size="s">
         {onRemove && (
           <Tooltip tooltip="Remove From Workspace">
-            <Button
-              onClick={() => setRemoveDialogVisible(true)}
-              variant="icon"
-              iconName="remove"
-            />
+            <Button onClick={() => setRemoveDialogVisible(true)} variant="icon" iconName="remove" />
           </Tooltip>
         )}
         {onEdit && (
           <Tooltip tooltip="Edit">
-            <Button
-              onClick={() => setEditingMode(true)}
-              variant="icon"
-              iconName="edit"
-            />
+            <Button onClick={() => setEditingMode(true)} variant="icon" iconName="edit" />
           </Tooltip>
         )}
       </SpaceBetween>
@@ -181,12 +169,8 @@ const ControlCard: FC<ControlCardProps> = ({
                 <Tags
                   tags={tags}
                   entityId={controlId}
-                  onAddTagToEntity={(_entityId, tag) =>
-                    onAddTagToEntity?.(entity, tag)
-                  }
-                  onRemoveTagFromEntity={(_entityId, tag) =>
-                    onRemoveTagFromEntity?.(entity, tag)
-                  }
+                  onAddTagToEntity={(_entityId, tag) => onAddTagToEntity?.(entity, tag)}
+                  onRemoveTagFromEntity={(_entityId, tag) => onRemoveTagFromEntity?.(entity, tag)}
                 />
               </div>
             </div>
@@ -199,14 +183,11 @@ const ControlCard: FC<ControlCardProps> = ({
               <SpaceBetween direction="vertical" size="s">
                 <Select
                   selectedOption={selectedControl}
-                  onChange={({ detail }) =>
-                    handleControlChange(detail.selectedOption)
-                  }
+                  onChange={({ detail }) => handleControlChange(detail.selectedOption)}
                   options={controlList?.map((c) => ({
                     label: c.content,
                     value: c.id,
-                    description: c.metadata?.find((m) => m.key === 'Comments')
-                      ?.value as string,
+                    description: c.metadata?.find((m) => m.key === 'Comments')?.value as string,
                     tags: c.tags,
                   }))}
                   filteringType="auto"
@@ -221,9 +202,7 @@ const ControlCard: FC<ControlCardProps> = ({
             ) : (
               <div css={styles.metadataContainer}>
                 <TextContent>
-                  <CopyToClipbord content={entity.content}>
-                    {entity.content}
-                  </CopyToClipbord>
+                  <CopyToClipbord content={entity.content}>{entity.content}</CopyToClipbord>
                 </TextContent>
               </div>
             )}
@@ -233,9 +212,7 @@ const ControlCard: FC<ControlCardProps> = ({
             </SpaceBetween>
           </ColumnLayout>
           <TextContent>
-            <CopyToClipbord content={entity.content || ''}>
-              {metadataComments || ''}
-            </CopyToClipbord>
+            <CopyToClipbord content={entity.content || ''}>{metadataComments || ''}</CopyToClipbord>
           </TextContent>
         </SpaceBetween>
       </Container>

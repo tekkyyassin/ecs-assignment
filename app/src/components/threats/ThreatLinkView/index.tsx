@@ -46,9 +46,7 @@ const ThreatLinkComponent: FC<ThreatLinkProps> = ({
     }
 
     return threats.filter(
-      (x) =>
-        x.statement &&
-        x.statement.toLowerCase().indexOf(searchValue.toLowerCase()) >= 0,
+      (x) => x.statement && x.statement.toLowerCase().indexOf(searchValue.toLowerCase()) >= 0,
     );
   }, [searchValue, threatList, linkedThreatIds]);
 

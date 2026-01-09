@@ -46,7 +46,6 @@ const initialState: ControlLinksContextApi = {
   onDeleteWorkspace: () => Promise.resolve(),
 };
 
-export const ControlLinksContext =
-  createContext<ControlLinksContextApi>(initialState);
+export const ControlLinksContext = createContext<ControlLinksContextApi>(initialState);
 
 export const useControlLinksContext = () => useContext(ControlLinksContext);

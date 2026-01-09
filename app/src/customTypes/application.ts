@@ -15,10 +15,7 @@
  ******************************************************************************************************************** */
 
 import { z } from 'zod';
-import {
-  FREE_TEXT_INPUT_MAX_LENGTH,
-  SINGLE_FIELD_INPUT_MAX_LENGTH,
-} from '../configs';
+import { FREE_TEXT_INPUT_MAX_LENGTH, SINGLE_FIELD_INPUT_MAX_LENGTH } from '../configs';
 
 export const ApplicationInfoSchema = z
   .object({

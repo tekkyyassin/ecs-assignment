@@ -20,22 +20,12 @@ import MarkdownEditor from '../MarkdownEditor';
 
 export interface CommentsEditProps<T> {
   entity: T;
-  onEditEntity: (
-    entity: T,
-    key: string,
-    value: string | string[] | undefined,
-  ) => void;
+  onEditEntity: (entity: T, key: string, value: string | string[] | undefined) => void;
 }
 
-const CommentsEdit = <T extends EntityBase>({
-  entity,
-  onEditEntity,
-}: CommentsEditProps<T>) => {
+const CommentsEdit = <T extends EntityBase>({ entity, onEditEntity }: CommentsEditProps<T>) => {
   const comments = useMemo(() => {
-    return (
-      (entity.metadata?.find((m) => m.key === 'Comments')?.value as string) ||
-      ''
-    );
+    return (entity.metadata?.find((m) => m.key === 'Comments')?.value as string) || '';
   }, [entity.metadata]);
 
   return (

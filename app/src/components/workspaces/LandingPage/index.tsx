@@ -29,8 +29,7 @@ import SwitchToExample from '../../../assets/switch-to-example-workspace.gif';
 import { useGlobalSetupContext } from '../../../contexts';
 
 const LandingPage: FC = () => {
-  const { setFileImportModalVisible, onDefineWorkload } =
-    useGlobalSetupContext();
+  const { setFileImportModalVisible, onDefineWorkload } = useGlobalSetupContext();
   return (
     <ContentLayout
       header={
@@ -39,9 +38,7 @@ const LandingPage: FC = () => {
           description="A threat modeling tool to help humans to reduce time-to-value when threat modeling"
           actions={
             <SpaceBetween direction="horizontal" size="s">
-              <Button onClick={() => setFileImportModalVisible(true)}>
-                Import existing
-              </Button>
+              <Button onClick={() => setFileImportModalVisible(true)}>Import existing</Button>
               <Button variant="primary" onClick={onDefineWorkload}>
                 Define workload or feature
               </Button>
@@ -66,28 +63,25 @@ const LandingPage: FC = () => {
             />
           </Box>
         </Container>
-        <Container
-          header={<Header variant="h2">View an example threat model</Header>}
-        >
+        <Container header={<Header variant="h2">View an example threat model</Header>}>
           <ColumnLayout columns={2}>
             <TextContent>
               <p>
-                We've included a base threat model of the Threat Composer tool
-                itself as an example. The aim is to provide a common reference
-                point for people who are starting off with Threat Composer. You
-                may want to use this as the base threat model as a starting
-                point to generate a contextualised threat model for your own
-                specific needs and deployment of Threat Composer.
+                We've included a base threat model of the Threat Composer tool itself as an example.
+                The aim is to provide a common reference point for people who are starting off with
+                Threat Composer. You may want to use this as the base threat model as a starting
+                point to generate a contextualised threat model for your own specific needs and
+                deployment of Threat Composer.
               </p>
               <ul>
                 <li>
-                  To view the example threat model simply switch to the
-                  system-defined <b>Example</b> Workspace.
+                  To view the example threat model simply switch to the system-defined{' '}
+                  <b>Example</b> Workspace.
                 </li>
                 <li>
-                  No changes you make within Example workspace will be saved. If
-                  you wish to modify it or use is a base, it's recommended you
-                  Export it, create a new Workspace and Import it.
+                  No changes you make within Example workspace will be saved. If you wish to modify
+                  it or use is a base, it's recommended you Export it, create a new Workspace and
+                  Import it.
                 </li>
               </ul>
             </TextContent>
@@ -104,46 +98,44 @@ const LandingPage: FC = () => {
             <TextContent>
               <h3>Reduce time-to-value when performing threat modeling</h3>
               <p>
-                Helps you focus on brainstorming and collaboration. Guides you
-                through the threat model process. Inspires you with examples.
+                Helps you focus on brainstorming and collaboration. Guides you through the threat
+                model process. Inspires you with examples.
               </p>
             </TextContent>
             <TextContent>
               <h3>Threat models-as-code</h3>
               <p>
-                Produces threat models that can be exported and shared as
-                structured JSON, making it easy to version control your threat
-                models. Additionally supports Markdown and PDF (browser
-                dependant)
+                Produces threat models that can be exported and shared as structured JSON, making it
+                easy to version control your threat models. Additionally supports Markdown and PDF
+                (browser dependant)
               </p>
             </TextContent>
             <TextContent>
               <h3>Opinionated threat statement structure</h3>
               <p>
-                Helps you create useful threat statements that help you devise
-                mitigations and to prioritize.
+                Helps you create useful threat statements that help you devise mitigations and to
+                prioritize.
               </p>
             </TextContent>
             <TextContent>
               <h3>Client-side storage and workspace separation</h3>
               <p>
-                Data persisted only client-side with the browser, with workspace
-                separation to allow you to work across multiple threat models.
+                Data persisted only client-side with the browser, with workspace separation to allow
+                you to work across multiple threat models.
               </p>
             </TextContent>
             <TextContent>
               <h3>Self hosted</h3>
               <p>
-                AWS CDK project with optional continuous deployment and
-                continuous integration pipeline to self host in your AWS
-                account.
+                AWS CDK project with optional continuous deployment and continuous integration
+                pipeline to self host in your AWS account.
               </p>
             </TextContent>
             <TextContent>
               <h3>Open source</h3>
               <p>
-                Source code is available for your inspection, forking and
-                modifications to suit your specific organizational needs.
+                Source code is available for your inspection, forking and modifications to suit your
+                specific organizational needs.
               </p>
             </TextContent>
           </ColumnLayout>
@@ -154,10 +146,7 @@ const LandingPage: FC = () => {
               <Link external href="https://github.com/awslabs/threat-composer">
                 Threat Composer - GitHub Repository
               </Link>
-              <p>
-                Get access to the latest source code, raise bugs, and make
-                feature requests.
-              </p>
+              <p>Get access to the latest source code, raise bugs, and make feature requests.</p>
             </TextContent>
             <TextContent>
               <Link
@@ -166,9 +155,7 @@ const LandingPage: FC = () => {
               >
                 Threat modeling for builders - AWS Skills Builder eLearning
               </Link>
-              <p>
-                Learn how to threat model using this eLearning training course.
-              </p>
+              <p>Learn how to threat model using this eLearning training course.</p>
             </TextContent>
             <TextContent>
               <Link
@@ -177,10 +164,7 @@ const LandingPage: FC = () => {
               >
                 How to approach threat modeling - AWS Security Blog
               </Link>
-              <p>
-                Learn about approaches to integrate threat modeling into your
-                organization.
-              </p>
+              <p>Learn about approaches to integrate threat modeling into your organization.</p>
             </TextContent>
           </ColumnLayout>
         </Container>

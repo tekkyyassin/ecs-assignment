@@ -19,11 +19,7 @@ import { EntityBase } from '../../customTypes';
 export const addTagToEntity = (entity: EntityBase, tag: string) => {
   const updated: EntityBase = {
     ...entity,
-    tags: entity.tags
-      ? !entity.tags.includes(tag)
-        ? [...entity.tags, tag]
-        : entity.tags
-      : [tag],
+    tags: entity.tags ? (!entity.tags.includes(tag) ? [...entity.tags, tag] : entity.tags) : [tag],
   };
 
   return updated;

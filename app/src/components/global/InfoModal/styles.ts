@@ -151,9 +151,9 @@ const styles: any = {
     },
   },
   featureSet: {
-    'textAlign': 'center',
-    'boxSizing': 'border-box',
-    'overflow': 'hidden',
+    textAlign: 'center',
+    boxSizing: 'border-box',
+    overflow: 'hidden',
     '& svg': {
       width: '60px',
       height: '60px',

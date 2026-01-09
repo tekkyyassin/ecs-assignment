@@ -27,11 +27,7 @@ export interface FileTokenLabelProps {
   lastModified?: number;
 }
 
-const FileTokenLabel: FC<FileTokenLabelProps> = ({
-  name,
-  size,
-  lastModified,
-}) => {
+const FileTokenLabel: FC<FileTokenLabelProps> = ({ name, size, lastModified }) => {
   return (
     <Spacebetween direction="horizontal" size="xs">
       <StatusIndicator type="success" />
@@ -41,11 +37,7 @@ const FileTokenLabel: FC<FileTokenLabelProps> = ({
             <b>{name}</b>
           </span>
           <span key="size">{getDisplaySize(size)}</span>
-          {lastModified && (
-            <span key="lastModified">
-              {getDisplayLastModified(lastModified)}
-            </span>
-          )}
+          {lastModified && <span key="lastModified">{getDisplayLastModified(lastModified)}</span>}
         </Spacebetween>
       </TextContent>
     </Spacebetween>

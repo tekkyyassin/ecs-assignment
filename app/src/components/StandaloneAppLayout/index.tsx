@@ -58,13 +58,13 @@ const StandaloneAppLayout: FC<PropsWithChildren<StandaloneAppLayoutProps>> = ({
           style={
             isMobileView
               ? {
-                ...baseStyles,
-                paddingTop: `calc(24px + ${awsui.spaceScaledL})`,
-              }
+                  ...baseStyles,
+                  paddingTop: `calc(24px + ${awsui.spaceScaledL})`,
+                }
               : {
-                ...baseStyles,
-                paddingTop: `calc(36px + ${awsui.spaceScaledL})`,
-              }
+                  ...baseStyles,
+                  paddingTop: `calc(36px + ${awsui.spaceScaledL})`,
+                }
           }
         >
           {notifications && <div>{notifications}</div>}

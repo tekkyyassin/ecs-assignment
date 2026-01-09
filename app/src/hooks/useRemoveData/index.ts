@@ -32,42 +32,25 @@ import { useControlLinksContext } from '../../contexts/ControlLinksContext';
 const useRemoveData = () => {
   const { composerMode } = useGlobalSetupContext();
   const { removeWorkspace, switchWorkspace } = useWorkspacesContext();
-  const {
-    removeApplicationInfo,
-    onDeleteWorkspace: applicationInfoDeleteWorkspace,
-  } = useApplicationInfoContext();
-  const {
-    removeArchitectureInfo,
-    onDeleteWorkspace: architectureInfoDeleteWorkspace,
-  } = useArchitectureInfoContext();
+  const { removeApplicationInfo, onDeleteWorkspace: applicationInfoDeleteWorkspace } =
+    useApplicationInfoContext();
+  const { removeArchitectureInfo, onDeleteWorkspace: architectureInfoDeleteWorkspace } =
+    useArchitectureInfoContext();
   const { removeDataflowInfo, onDeleteWorkspace: dataflowInfoDeleteWorkspace } =
     useDataflowInfoContext();
-  const {
-    removeAllAssumptions,
-    onDeleteWorkspace: assumptionsDeleteWorkspace,
-  } = useAssumptionsContext();
-  const {
-    removeAllMitigations,
-    onDeleteWorkspace: mitigationsDeleteWorkspace,
-  } = useMitigationsContext();
-  const { removeAllStatements, onDeleteWorkspace: threatsDeleteWorkspace } =
-    useThreatsContext();
-  const {
-    removeAllAssumptionLinks,
-    onDeleteWorkspace: assumptionLinksDeleteWorkspace,
-  } = useAssumptionLinksContext();
-  const {
-    removeAllMitigationLinks,
-    onDeleteWorkspace: mitigationLinksDeleteWorkspace,
-  } = useMitigationLinksContext();
-  const { removeFlow, onDeleteWorkspace: flowDeleteWorkspace } =
-    useFlowContext();
-  const { removeAllControls, onDeleteWorkspace: controlsDeleteWorkspace } =
-    useControlsContext();
-  const {
-    removeAllControlLinks,
-    onDeleteWorkspace: controlLinksDeleteWorkspace,
-  } = useControlLinksContext();
+  const { removeAllAssumptions, onDeleteWorkspace: assumptionsDeleteWorkspace } =
+    useAssumptionsContext();
+  const { removeAllMitigations, onDeleteWorkspace: mitigationsDeleteWorkspace } =
+    useMitigationsContext();
+  const { removeAllStatements, onDeleteWorkspace: threatsDeleteWorkspace } = useThreatsContext();
+  const { removeAllAssumptionLinks, onDeleteWorkspace: assumptionLinksDeleteWorkspace } =
+    useAssumptionLinksContext();
+  const { removeAllMitigationLinks, onDeleteWorkspace: mitigationLinksDeleteWorkspace } =
+    useMitigationLinksContext();
+  const { removeFlow, onDeleteWorkspace: flowDeleteWorkspace } = useFlowContext();
+  const { removeAllControls, onDeleteWorkspace: controlsDeleteWorkspace } = useControlsContext();
+  const { removeAllControlLinks, onDeleteWorkspace: controlLinksDeleteWorkspace } =
+    useControlLinksContext();
 
   const removeData = useCallback(async () => {
     if (composerMode === 'Full') {

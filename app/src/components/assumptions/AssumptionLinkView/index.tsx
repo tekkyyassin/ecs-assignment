@@ -44,9 +44,7 @@ const AssumptionLinkComponent: FC<AssumptionLinkProps> = ({
   }, [linkedAssumptionIds, assumptionList]);
 
   const filteredAssumptions = useMemo(() => {
-    const assumptions = assumptionList.filter(
-      (x) => !linkedAssumptionIds.includes(x.id),
-    );
+    const assumptions = assumptionList.filter((x) => !linkedAssumptionIds.includes(x.id));
 
     if (!searchValue) {
       return assumptions;

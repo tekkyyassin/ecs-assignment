@@ -42,11 +42,7 @@ const Header: FC<HeaderProps> = ({
       <SpaceBetween direction="horizontal" size="xs">
         <Button onClick={onCancel}>Threat list</Button>
         <Button onClick={onStartOver}>Start over</Button>
-        <Button
-          variant="primary"
-          onClick={onComplete}
-          disabled={!statement.statement}
-        >
+        <Button variant="primary" onClick={onComplete} disabled={!statement.statement}>
           {saveButtonText}
         </Button>
       </SpaceBetween>

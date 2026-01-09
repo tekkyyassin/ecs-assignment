@@ -31,13 +31,16 @@ const getLocalStorageKey = (workspaceId: string | null) => {
   return LOCAL_STORAGE_KEY_DATAFLOW_INFO;
 };
 
-const DataflowLocalStorageContextProvider: FC<
-PropsWithChildren<DataflowContextProviderProps>
-> = ({ children, workspaceId: currentWorkspaceId }) => {
-  const [dataflowInfo, setDataflowInfo, { removeItem }] =
-    useLocalStorageState<DataflowInfo>(getLocalStorageKey(currentWorkspaceId), {
+const DataflowLocalStorageContextProvider: FC<PropsWithChildren<DataflowContextProviderProps>> = ({
+  children,
+  workspaceId: currentWorkspaceId,
+}) => {
+  const [dataflowInfo, setDataflowInfo, { removeItem }] = useLocalStorageState<DataflowInfo>(
+    getLocalStorageKey(currentWorkspaceId),
+    {
       defaultValue: INFO_DEFAULT_VALUE,
-    });
+    },
+  );
 
   const handleRemoveDataflowInfo = useCallback(async () => {
     removeItem();

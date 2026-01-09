@@ -24,21 +24,17 @@ import useThreats from '../../hooks/useThreats';
 import { ThreatsContextProviderProps } from '../../types';
 
 const ThreatsContextProvider: FC<
-PropsWithChildren<
-ThreatsContextProviderProps &
-LocalStateContextProviderBaseProps<TemplateThreatStatement[]>
->
+  PropsWithChildren<
+    ThreatsContextProviderProps & LocalStateContextProviderBaseProps<TemplateThreatStatement[]>
+  >
 > = ({ children, initialValue, onThreatListView, onThreatEditorView }) => {
-  const [editingStatement, setEditingStatement] =
-    useState<TemplateThreatStatement | null>(null);
+  const [editingStatement, setEditingStatement] = useState<TemplateThreatStatement | null>(null);
 
-  const [statementList, setStatementList] = useState<TemplateThreatStatement[]>(
+  const [statementList, setStatementList] = useState<TemplateThreatStatement[]>(initialValue || []);
+
+  const [filteredStatementList, setFilteredStatementList] = useState<TemplateThreatStatement[]>(
     initialValue || [],
   );
-
-  const [filteredStatementList, setFilteredStatementList] = useState<
-  TemplateThreatStatement[]
-  >(initialValue || []);
 
   const { composerMode } = useGlobalSetupContext();
 
@@ -82,8 +78,7 @@ LocalStateContextProviderBaseProps<TemplateThreatStatement[]>
         setStatementList,
         filteredStatementList,
         setFilteredStatementList,
-        threatStatementExamples:
-          threatStatementExamples as TemplateThreatStatement[],
+        threatStatementExamples: threatStatementExamples as TemplateThreatStatement[],
         perFieldExamples,
         previousInputs,
         setView,

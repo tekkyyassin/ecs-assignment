@@ -31,7 +31,6 @@ const initialState: DiagramInfoContextApi = {
   onDeleteWorkspace: () => Promise.resolve(),
 };
 
-export const DiagramInfoContext =
-  createContext<DiagramInfoContextApi>(initialState);
+export const DiagramInfoContext = createContext<DiagramInfoContextApi>(initialState);
 
 export const useDiagramInfoContext = () => useContext(DiagramInfoContext);

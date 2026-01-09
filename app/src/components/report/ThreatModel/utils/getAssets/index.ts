@@ -14,10 +14,7 @@
   limitations under the License.
  ******************************************************************************************************************** */
 
-import {
-  DataExchangeFormat,
-  TemplateThreatStatement,
-} from '../../../../../customTypes';
+import { DataExchangeFormat, TemplateThreatStatement } from '../../../../../customTypes';
 import escapeMarkdown from '../../../../../utils/escapeMarkdown';
 import standardizeNumericId from '../../../../../utils/standardizeNumericId';
 

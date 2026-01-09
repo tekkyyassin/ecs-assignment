@@ -40,7 +40,6 @@ const initialState: AssumptionsContextApi = {
   onDeleteWorkspace: () => Promise.resolve(),
 };
 
-export const AssumptionsContext =
-  createContext<AssumptionsContextApi>(initialState);
+export const AssumptionsContext = createContext<AssumptionsContextApi>(initialState);
 
 export const useAssumptionsContext = () => useContext(AssumptionsContext);

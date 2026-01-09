@@ -29,9 +29,7 @@ import WorkspacesMigration from '../../migrations/WorkspacesMigration';
 export interface WorkspacesContextProviderProps extends ViewNavigationEvent {
   workspaceId?: string;
   onWorkspaceChanged?: (workspaceId: string) => void;
-  children: (
-    workspace: string | null,
-  ) => ReactElement<{ workspaceId: string | null }>;
+  children: (workspace: string | null) => ReactElement<{ workspaceId: string | null }>;
 }
 
 const WorkspacesContextProvider: FC<WorkspacesContextProviderProps> = ({
@@ -40,13 +38,12 @@ const WorkspacesContextProvider: FC<WorkspacesContextProviderProps> = ({
   onWorkspaceChanged,
   ...props
 }) => {
-  const [currentWorkspace, setCurrentWorkspace] =
-    useLocalStorageState<Workspace | null>(
-      LOCAL_STORAGE_KEY_CURRENT_WORKSPACE,
-      {
-        defaultValue: null,
-      },
-    );
+  const [currentWorkspace, setCurrentWorkspace] = useLocalStorageState<Workspace | null>(
+    LOCAL_STORAGE_KEY_CURRENT_WORKSPACE,
+    {
+      defaultValue: null,
+    },
+  );
 
   const [workspaceList, setWorkspaceList] = useLocalStorageState<Workspace[]>(
     LOCAL_STORAGE_KEY_WORKSPACE_LIST,
@@ -85,9 +82,7 @@ const WorkspacesContextProvider: FC<WorkspacesContextProviderProps> = ({
         name: workspaceName,
       };
       setWorkspaceList((prev) =>
-        prev.find((p) => p.name === workspaceName)
-          ? [...prev]
-          : [...prev, newWorkspace],
+        prev.find((p) => p.name === workspaceName) ? [...prev] : [...prev, newWorkspace],
       );
       setCurrentWorkspace(newWorkspace);
       onWorkspaceChanged?.(newWorkspace.id);
@@ -138,9 +133,7 @@ const WorkspacesContextProvider: FC<WorkspacesContextProviderProps> = ({
         ...props,
       }}
     >
-      <WorkspacesMigration>
-        {children(currentWorkspace?.id || null)}
-      </WorkspacesMigration>
+      <WorkspacesMigration>{children(currentWorkspace?.id || null)}</WorkspacesMigration>
     </WorkspacesContext.Provider>
   );
 };

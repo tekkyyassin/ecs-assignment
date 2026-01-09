@@ -26,11 +26,7 @@ import CommentsEdit from '../CommentsEdit';
 export interface MetadataEditorProps<T> {
   variant: ExpandableSectionProps['variant'];
   entity: T;
-  onEditEntity: (
-    entity: T,
-    key: string,
-    value: string | string[] | undefined,
-  ) => void;
+  onEditEntity: (entity: T, key: string, value: string | string[] | undefined) => void;
   defaultExpanded?: boolean;
 }
 

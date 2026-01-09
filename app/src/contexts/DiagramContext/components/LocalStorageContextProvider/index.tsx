@@ -30,13 +30,16 @@ const getLocalStorageKey = (workspaceId: string | null) => {
   return LOCAL_STORAGE_KEY_DIAGRAM_INFO;
 };
 
-const DiagramLocalStorageContextProvider: FC<
-PropsWithChildren<DiagramContextProviderProps>
-> = ({ children, workspaceId: currentWorkspaceId }) => {
-  const [diagramInfo, setDiagramInfo, { removeItem }] =
-    useLocalStorageState<DiagramInfo>(getLocalStorageKey(currentWorkspaceId), {
+const DiagramLocalStorageContextProvider: FC<PropsWithChildren<DiagramContextProviderProps>> = ({
+  children,
+  workspaceId: currentWorkspaceId,
+}) => {
+  const [diagramInfo, setDiagramInfo, { removeItem }] = useLocalStorageState<DiagramInfo>(
+    getLocalStorageKey(currentWorkspaceId),
+    {
       defaultValue: {},
-    });
+    },
+  );
 
   const handleRemoveDiagramInfo = useCallback(async () => {
     removeItem();

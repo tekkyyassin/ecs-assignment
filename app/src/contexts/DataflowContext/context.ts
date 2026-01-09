@@ -31,7 +31,6 @@ const initialState: DataflowInfoContextApi = {
   onDeleteWorkspace: () => Promise.resolve(),
 };
 
-export const DataflowInfoContext =
-  createContext<DataflowInfoContextApi>(initialState);
+export const DataflowInfoContext = createContext<DataflowInfoContextApi>(initialState);
 
 export const useDataflowInfoContext = () => useContext(DataflowInfoContext);

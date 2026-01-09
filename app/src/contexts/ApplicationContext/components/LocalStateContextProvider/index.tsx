@@ -22,10 +22,9 @@ import { ApplicationInfoContext } from '../../context';
 import { ApplicationContextProviderProps } from '../../types';
 
 const ApplicationLocalStateContextProvider: FC<
-PropsWithChildren<
-ApplicationContextProviderProps &
-LocalStateContextProviderBaseProps<ApplicationInfo>
->
+  PropsWithChildren<
+    ApplicationContextProviderProps & LocalStateContextProviderBaseProps<ApplicationInfo>
+  >
 > = ({ children, initialValue }) => {
   const [applicationInfo, setApplicationInfo] = useState<ApplicationInfo>(
     initialValue || INFO_DEFAULT_VALUE,

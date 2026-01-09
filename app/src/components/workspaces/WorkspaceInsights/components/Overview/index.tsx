@@ -23,12 +23,7 @@ import Icon from '@cloudscape-design/components/icon';
 import Link, { LinkProps } from '@cloudscape-design/components/link';
 import { css } from '@emotion/react';
 import { useMemo, FC, ReactNode } from 'react';
-import {
-  LEVEL_HIGH,
-  LEVEL_LOW,
-  LEVEL_MEDIUM,
-  LEVEL_NOT_SET,
-} from '../../../../../configs';
+import { LEVEL_HIGH, LEVEL_LOW, LEVEL_MEDIUM, LEVEL_NOT_SET } from '../../../../../configs';
 import { useAssumptionLinksContext } from '../../../../../contexts';
 import { useMitigationLinksContext } from '../../../../../contexts/MitigationLinksContext';
 import { useControlLinksContext } from '../../../../../contexts/ControlLinksContext';
@@ -78,10 +73,7 @@ const LabelValuePair: FC<{
       <Box variant="awsui-key-label">{label}</Box>
       <div css={styles.contentContainer}>
         {showWarning ? (
-          <NumberWithWarningSign
-            displayedNumber={value}
-            onLinkClicked={onLinkFollow}
-          />
+          <NumberWithWarningSign displayedNumber={value} onLinkClicked={onLinkFollow} />
         ) : (
           <Link variant="awsui-value-large" href="#" onFollow={onLinkFollow}>
             {value}
@@ -109,15 +101,12 @@ const Overview: FC = () => {
   const handleLinkClicked = useLinkClicked();
 
   const missingMitigation = useMemo(() => {
-    return statementList.filter(
-      (s) => !mitigationLinkList.find((ml) => ml.linkedId === s.id),
-    ).length;
+    return statementList.filter((s) => !mitigationLinkList.find((ml) => ml.linkedId === s.id))
+      .length;
   }, [statementList, mitigationLinkList]);
 
   const missingControl = useMemo(() => {
-    return statementList.filter(
-      (s) => !controlLinkList.find((ml) => ml.linkedId === s.id),
-    ).length;
+    return statementList.filter((s) => !controlLinkList.find((ml) => ml.linkedId === s.id)).length;
   }, [statementList, controlLinkList]);
 
   const missingPriority = useMemo(() => {
@@ -125,8 +114,7 @@ const Overview: FC = () => {
   }, [statementList]);
 
   const countHigh = useMemo(() => {
-    return filterThreatsByMetadata(statementList, 'Priority', LEVEL_HIGH)
-      .length;
+    return filterThreatsByMetadata(statementList, 'Priority', LEVEL_HIGH).length;
   }, [statementList]);
 
   const countMed = useMemo(() => {

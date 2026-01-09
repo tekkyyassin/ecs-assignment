@@ -65,10 +65,7 @@ function Flow() {
   const { zoomTo, getZoom, setViewport } = useReactFlow();
 
   // Save and restore state
-  const [rfInstance, setRfInstance] = useState<ReactFlowInstance<
-  any,
-  any
-  > | null>(null);
+  const [rfInstance, setRfInstance] = useState<ReactFlowInstance<any, any> | null>(null);
   const [saveState, setSaveState] = useState(true);
   const [nodes, setNodes] = useNodesState([]);
   const [edges, setEdges] = useEdgesState([]);
@@ -103,9 +100,7 @@ function Flow() {
 
   // Nodes and edges state
   const [nodeDataValue, setNodeDataValue] = useState({});
-  const [selectedComponent, setSelectedComponent] = useState<
-  Node | Edge | null
-  >(null);
+  const [selectedComponent, setSelectedComponent] = useState<Node | Edge | null>(null);
 
   useEffect(() => {
     if (!selectedComponent) {
@@ -134,15 +129,7 @@ function Flow() {
       }),
     );
     setSaveState(false);
-  }, [
-    selectedComponent,
-    nodeDataValue,
-    setNodes,
-    setEdges,
-    getZoom,
-    zoomTo,
-    nodes.length,
-  ]);
+  }, [selectedComponent, nodeDataValue, setNodes, setEdges, getZoom, zoomTo, nodes.length]);
 
   const onNodesChange = useCallback(
     (changes) => {
@@ -155,9 +142,7 @@ function Flow() {
           c.type === 'remove',
       )) {
         if (selection.selected || selection.dragging === false) {
-          setSelectedComponent(
-            nodes.find((node) => node.id === selection.id) as Node | null,
-          );
+          setSelectedComponent(nodes.find((node) => node.id === selection.id) as Node | null);
         } else {
           setSelectedComponent(null);
         }
@@ -173,9 +158,7 @@ function Flow() {
       setSelectedComponent(null);
       for (let selection of changes.filter((c) => c.type === 'select')) {
         if (selection.selected) {
-          setSelectedComponent(
-            edges.find((edge) => edge.id === selection.id) as Edge | null,
-          );
+          setSelectedComponent(edges.find((edge) => edge.id === selection.id) as Edge | null);
         } else {
           setSelectedComponent(null);
         }
@@ -241,9 +224,7 @@ function Flow() {
   const onZIndexChange = useCallback(
     (direction: string) => {
       setNodes((nds) => {
-        const selectedNode = nds.find(
-          (node) => node.id === selectedComponent?.id,
-        );
+        const selectedNode = nds.find((node) => node.id === selectedComponent?.id);
         if (!selectedNode) {
           return nds;
         }
@@ -288,9 +269,7 @@ function Flow() {
     <SpaceBetween direction="vertical" size="s">
       <Container
         header={
-          <Header
-            actions={<SaveButton saveHandler={onSave} saveState={saveState} />}
-          >
+          <Header actions={<SaveButton saveHandler={onSave} saveState={saveState} />}>
             Data flow diagram
           </Header>
         }
@@ -322,10 +301,7 @@ function Flow() {
         </s.OuterContainer>
       </Container>
       <Container header={<Header>Properties</Header>}>
-        <PropertiesPanel
-          component={selectedComponent}
-          changeHandler={setNodeDataValue}
-        />
+        <PropertiesPanel component={selectedComponent} changeHandler={setNodeDataValue} />
       </Container>
       <ThreatList
         threats={threatList}

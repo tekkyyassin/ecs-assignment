@@ -18,7 +18,5 @@ import { DataExchangeFormat } from '../../../../../customTypes';
 import escapeMarkdown from '../../../../../utils/escapeMarkdown';
 
 export const getApplicationName = async (data: DataExchangeFormat) => {
-  return data.applicationInfo?.name
-    ? `# ${escapeMarkdown(data.applicationInfo?.name)}`
-    : '';
+  return data.applicationInfo?.name ? `# ${escapeMarkdown(data.applicationInfo?.name)}` : '';
 };

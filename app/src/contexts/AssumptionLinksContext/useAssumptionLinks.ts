@@ -17,10 +17,7 @@
 import { useCallback } from 'react';
 import { AssumptionLink } from '../../customTypes';
 
-export const isSameAssumptionLink = (
-  entity1: AssumptionLink,
-  entity2: AssumptionLink,
-) => {
+export const isSameAssumptionLink = (entity1: AssumptionLink, entity2: AssumptionLink) => {
   return (
     entity1.assumptionId === entity2.assumptionId &&
     entity1.linkedId === entity2.linkedId &&
@@ -35,10 +32,7 @@ const useAssumptionLinks = (
   const handlRemoveAssumptionLink = useCallback(
     (assumptionId: string, linkedEntityId: string) => {
       setAssumptionLinkList((prevList) =>
-        prevList.filter(
-          (x) =>
-            !(x.linkedId === linkedEntityId && x.assumptionId === assumptionId),
-        ),
+        prevList.filter((x) => !(x.linkedId === linkedEntityId && x.assumptionId === assumptionId)),
       );
     },
     [setAssumptionLinkList],
@@ -48,8 +42,7 @@ const useAssumptionLinks = (
     (assumptionLinks: AssumptionLink[]) => {
       setAssumptionLinkList((prevList) => {
         return prevList.filter(
-          (pl) =>
-            assumptionLinks.findIndex((al) => isSameAssumptionLink(al, pl)) < 0,
+          (pl) => assumptionLinks.findIndex((al) => isSameAssumptionLink(al, pl)) < 0,
         );
       });
     },
@@ -67,9 +60,7 @@ const useAssumptionLinks = (
 
   const handlRemoveAssumptionLinksByLinkedEntityId = useCallback(
     async (linkedEntityId: string) => {
-      setAssumptionLinkList((prevList) =>
-        prevList.filter((x) => !(x.linkedId === linkedEntityId)),
-      );
+      setAssumptionLinkList((prevList) => prevList.filter((x) => !(x.linkedId === linkedEntityId)));
     },
     [setAssumptionLinkList],
   );
@@ -114,9 +105,7 @@ const useAssumptionLinks = (
 
   const handleGetAssumptionEntityLinks = useCallback(
     (assumptionId: string, type: AssumptionLink['type']) => {
-      return assumptionLinkList.filter(
-        (x) => x.assumptionId === assumptionId && x.type === type,
-      );
+      return assumptionLinkList.filter((x) => x.assumptionId === assumptionId && x.type === type);
     },
     [assumptionLinkList],
   );

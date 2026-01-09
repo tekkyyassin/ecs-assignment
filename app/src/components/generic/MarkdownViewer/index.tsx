@@ -113,11 +113,7 @@ const components = {
 /**
  * MarkdownViewer renders content with Markdown format.
  */
-const MarkdownViewer: FC<MarkdownViewerProps> = ({
-  allowHtml = false,
-  children,
-  ...props
-}) => {
+const MarkdownViewer: FC<MarkdownViewerProps> = ({ allowHtml = false, children, ...props }) => {
   return (
     <div css={styles}>
       <TextContent {...props}>

@@ -61,16 +61,12 @@ const Metrics: FC<MetricsProps> = ({ statement, onClick }) => {
         <Status
           label={threatFieldData.impacted_goal.displayTitle}
           onClick={() => onClick('impacted_goal')}
-          completed={
-            !!statement.impactedGoal && statement.impactedGoal.length > 0
-          }
+          completed={!!statement.impactedGoal && statement.impactedGoal.length > 0}
         />
         <Status
           label={threatFieldData.impacted_assets.displayTitle}
           onClick={() => onClick('impacted_assets')}
-          completed={
-            !!statement.impactedAssets && statement.impactedAssets.length > 0
-          }
+          completed={!!statement.impactedAssets && statement.impactedAssets.length > 0}
         />
       </SpaceBetween>
     </Container>

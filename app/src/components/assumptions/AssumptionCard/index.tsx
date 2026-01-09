@@ -73,12 +73,8 @@ const AssumptionCard: FC<AssumptionCardProps> = ({
       onCopy={() => onCopy?.(assumption.id)}
       onRemove={() => onRemove?.(assumption.id)}
       onEdit={() => setEditingMode(true)}
-      onAddTagToEntity={(_entityId, tag) =>
-        onAddTagToAssumption?.(assumption, tag)
-      }
-      onRemoveTagFromEntity={(_entityId, tag) =>
-        onRemoveTagFromAssumption?.(assumption, tag)
-      }
+      onAddTagToEntity={(_entityId, tag) => onAddTagToAssumption?.(assumption, tag)}
+      onRemoveTagFromEntity={(_entityId, tag) => onRemoveTagFromAssumption?.(assumption, tag)}
     >
       <SpaceBetween direction="vertical" size="s">
         <ColumnLayout columns={2}>
@@ -108,11 +104,7 @@ const AssumptionCard: FC<AssumptionCardProps> = ({
             <AssumptionMitigationLink assumptionId={assumption.id} />
           </SpaceBetween>
         </ColumnLayout>
-        <MetadataEditor
-          variant="default"
-          entity={assumption}
-          onEditEntity={handleMetadataEdit}
-        />
+        <MetadataEditor variant="default" entity={assumption} onEditEntity={handleMetadataEdit} />
       </SpaceBetween>
     </GenericCard>
   );

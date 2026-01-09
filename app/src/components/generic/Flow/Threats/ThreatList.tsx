@@ -50,15 +50,7 @@ function EmptyState({ title, subtitle, action }) {
 }
 
 export default memo(
-  ({
-    threats,
-    component,
-    changeHandler,
-  }: {
-    threats: any;
-    component: any;
-    changeHandler: any;
-  }) => {
+  ({ threats, component, changeHandler }: { threats: any; component: any; changeHandler: any }) => {
     const [data, setData] = useState((component && component.data) || {});
 
     useEffect(() => {
@@ -74,12 +66,11 @@ export default memo(
 
     const { onThreatListView } = useThreatsContext();
 
-    const [preferences, setPreferences] =
-      useState<CollectionPreferencesProps.Preferences>({
-        pageSize: 10,
-        visibleContent: ['statement', 'priority', 'stride'],
-        wrapLines: true,
-      });
+    const [preferences, setPreferences] = useState<CollectionPreferencesProps.Preferences>({
+      pageSize: 10,
+      visibleContent: ['statement', 'priority', 'stride'],
+      wrapLines: true,
+    });
 
     const {
       items,
@@ -93,9 +84,7 @@ export default memo(
         const output: any = {};
         output.id = item.id;
         output.statement = item.statement;
-        output.priority = item.metadata?.find(
-          (m) => m.key === 'Priority',
-        )?.value;
+        output.priority = item.metadata?.find((m) => m.key === 'Priority')?.value;
         output.stride = item.metadata
           ?.find((m) => m.key === 'STRIDE')
           ?.value.sort()
@@ -109,22 +98,14 @@ export default memo(
             <EmptyState
               title="No threats defined"
               subtitle=""
-              action={
-                <Button onClick={() => onThreatListView?.()}>
-                  Add threats
-                </Button>
-              }
+              action={<Button onClick={() => onThreatListView?.()}>Add threats</Button>}
             />
           ),
           noMatch: (
             <EmptyState
               title="No matches"
               subtitle=""
-              action={
-                <Button onClick={() => actions.setFiltering('')}>
-                  Clear filter
-                </Button>
-              }
+              action={<Button onClick={() => actions.setFiltering('')}>Clear filter</Button>}
             />
           ),
         },
@@ -168,16 +149,12 @@ export default memo(
         items={items}
         trackBy="id"
         selectedItems={data.threats}
-        onSelectionChange={(e) =>
-          updateData('threats', e.detail.selectedItems, [])
-        }
+        onSelectionChange={(e) => updateData('threats', e.detail.selectedItems, [])}
         stickyHeader
         resizableColumns
         wrapLines
         stripedRows
-        pagination={
-          <Pagination {...paginationProps} ariaLabels={paginationLabels} />
-        }
+        pagination={<Pagination {...paginationProps} ariaLabels={paginationLabels} />}
         preferences={
           <CollectionPreferences
             {...collectionPreferencesProps}

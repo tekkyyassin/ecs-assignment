@@ -21,14 +21,9 @@ import { DiagramInfoContext } from '../../context';
 import { DiagramContextProviderProps } from '../../types';
 
 const DiagramLocalStateContextProvider: FC<
-PropsWithChildren<
-DiagramContextProviderProps &
-LocalStateContextProviderBaseProps<DiagramInfo>
->
+  PropsWithChildren<DiagramContextProviderProps & LocalStateContextProviderBaseProps<DiagramInfo>>
 > = ({ children, initialValue }) => {
-  const [diagramInfo, setDiagramInfo] = useState<DiagramInfo>(
-    initialValue || {},
-  );
+  const [diagramInfo, setDiagramInfo] = useState<DiagramInfo>(initialValue || {});
 
   const handleRemoveDiagramInfo = useCallback(async () => {
     setDiagramInfo({});

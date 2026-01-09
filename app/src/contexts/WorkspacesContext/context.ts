@@ -37,6 +37,5 @@ const initialState: WorkspacesContextApi = {
   renameWorkspace: () => {},
 };
 
-export const WorkspacesContext =
-  createContext<WorkspacesContextApi>(initialState);
+export const WorkspacesContext = createContext<WorkspacesContextApi>(initialState);
 export const useWorkspacesContext = () => useContext(WorkspacesContext);

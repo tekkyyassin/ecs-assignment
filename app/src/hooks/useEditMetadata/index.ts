@@ -17,9 +17,7 @@
 import { useCallback } from 'react';
 import { EntityBase } from '../../customTypes';
 
-const useEditMetadata = <T extends EntityBase>(
-  onSaveEntity?: (updated: T) => void,
-) => {
+const useEditMetadata = <T extends EntityBase>(onSaveEntity?: (updated: T) => void) => {
   return useCallback(
     (entity: T, key: string, value: string | string[] | undefined) => {
       const updatedEntity = {
@@ -27,9 +25,7 @@ const useEditMetadata = <T extends EntityBase>(
         metadata: [...(entity.metadata || [])],
       };
       if (value) {
-        const prevIndex = updatedEntity.metadata.findIndex(
-          (x) => x.key === key,
-        );
+        const prevIndex = updatedEntity.metadata.findIndex((x) => x.key === key);
         if (prevIndex >= 0) {
           updatedEntity.metadata = [
             ...updatedEntity.metadata.slice(0, prevIndex),
@@ -40,9 +36,7 @@ const useEditMetadata = <T extends EntityBase>(
           updatedEntity.metadata.push({ key, value });
         }
       } else {
-        updatedEntity.metadata = updatedEntity.metadata.filter(
-          (m) => m.key !== key,
-        );
+        updatedEntity.metadata = updatedEntity.metadata.filter((m) => m.key !== key);
       }
 
       onSaveEntity?.(updatedEntity);

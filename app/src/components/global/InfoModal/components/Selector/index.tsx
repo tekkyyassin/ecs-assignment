@@ -34,15 +34,10 @@ const InfoModalSelector: FC = () => {
         <span css={css(styles.contentHighlight)}>impacted assets</span>.
       </p>
       <p>
-        This tool empowers you to compose useful threat statements by providing
-        examples and suggestions for each section and generating the final
-        statement for you.
+        This tool empowers you to compose useful threat statements by providing examples and
+        suggestions for each section and generating the final statement for you.
       </p>
-      <img
-        css={css(styles.image)}
-        src={threatStatementElements}
-        alt="ThreatStatementElements"
-      />
+      <img css={css(styles.image)} src={threatStatementElements} alt="ThreatStatementElements" />
     </InfoModalBase>
   );
 };
