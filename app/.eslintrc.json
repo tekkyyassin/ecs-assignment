@@ -96,7 +96,7 @@
         "ignoreRegExpLiterals": true
       }
     ],
-    "quote-props": ["error", "consistent-as-needed"],
+    "quote-props": ["off"],
     "@typescript-eslint/no-require-imports": ["error"],
     "import/no-extraneous-dependencies": [
       "error",
