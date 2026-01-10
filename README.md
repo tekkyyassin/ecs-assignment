@@ -69,36 +69,131 @@ User Request (HTTPS)
 
 ---
 
+## 🏃 Running the Application Locally
+
+### Prerequisites
+
+- Node.js 20+
+- Yarn package manager
+- Docker (for containerised run)
+
+### Option 1: Without Docker (Development Mode)
+```bash
+cd app
+yarn install
+yarn start
+# Application runs at http://localhost:3000
+```
+
+### Option 2: With Docker (Production-like)
+```bash
+cd app
+docker build -t threatmod:local .
+docker run -d --rm -p 8080:80 threatmod:local
+# Application runs at http://localhost:8080
+```
+
+### Verified Local Deployment
+
+The application running locally in a Docker container:
+
+![Local Docker Container Running](docs/screenshots/01-local-docker-running.png)
+
+Health check endpoint verification:
+
+![Local Health Check Passed](docs/screenshots/02-local-health-check.png)
+
+---
+
+## 📦 Container Registry (ECR)
+
+Docker images are stored in Amazon Elastic Container Registry, providing secure, scalable image storage with IAM-based authentication.
+
+![ECR Repository with Images](docs/screenshots/03-ecr-push-image.png)
+
+---
+
+## 🔒 TLS Certificate (ACM)
+
+SSL/TLS certificate managed by AWS Certificate Manager with DNS validation via Cloudflare. The certificate covers `tm.tekkyyassin.co.uk` and is automatically renewed by AWS.
+
+![ACM Certificate Issued](docs/screenshots/04-acm-certificate-issued.png)
+
+---
+
+## 🌐 Production Deployment
+
+The application is deployed to ECS Fargate behind an Application Load Balancer with TLS termination.
+
+### Live Endpoint
+```
+https://tm.tekkyyassin.co.uk
+https://tm.tekkyyassin.co.uk/health
+```
+
+### Verified Production Deployment
+
+Application accessible via HTTPS on custom domain:
+
+![Application Running on HTTPS](docs/screenshots/05-app-https-live-1.png)
+
+Full application functionality verified in production:
+
+![Production App Dashboard](docs/screenshots/06-app-https-live-2.png)
+
+---
+
+## 🔐 OIDC Federation
+
+GitHub Actions authenticates to AWS using OpenID Connect — no static credentials stored anywhere.
+
+### How It Works
+
+1. GitHub generates a signed JWT token for the workflow run
+2. Token includes claims: repository, branch, workflow, actor
+3. AWS STS validates the token against the OIDC provider
+4. Temporary credentials are issued with scoped IAM permissions
+5. Credentials expire after the workflow completes
+
+### Verified OIDC Authentication
+
+![OIDC Authentication Test Passed](docs/screenshots/07-oidc-test-passed.png)
+
+---
+
 ## 🔄 CI/CD Workflows
 
-### 1. Pull Request → Plan (`tg-plan.yml`)
+### Pipeline Overview
 
-When a PR is opened against `main`:
-- Authenticates to AWS via OIDC (no stored credentials)
-- Runs `terragrunt run --all plan`
-- Posts the plan output as a comment on the PR for review
+| Workflow | Trigger | Purpose |
+|----------|---------|---------|
+| `tg-plan.yml` | Pull Request | Preview infrastructure changes |
+| `tg-deploy.yml` | Push to main | Build, push, and deploy |
+| `tg-destroy.yml` | Manual | Tear down with safety confirmation |
 
-![PR Plan Workflow](docs/screenshots/pr-plan-workflow.png)
+### Plan Workflow (Pull Request)
 
-### 2. Merge to Main → Deploy (`tg-deploy.yml`)
+Runs `terragrunt plan` on PRs to preview changes before merging:
 
-When code is merged to `main`:
-- Builds Docker image tagged with commit SHA
-- Pushes image to ECR
-- Runs `terragrunt run --all apply`
-- Performs smoke test on `/health` endpoint
-- Generates deployment summary
+![Plan Workflow on PR](docs/screenshots/08-plan-workflow-pr.png)
 
-![Deploy Workflow](docs/screenshots/deploy-workflow.png)
+### Deploy Workflow (Push to Main)
 
-### 3. Manual → Destroy (`tg-destroy.yml`)
+Full CI/CD pipeline: build Docker image, push to ECR, deploy infrastructure, smoke test:
 
-Manually triggered with safety confirmation:
-- Requires typing `DESTROY` exactly (case-sensitive)
-- Option to destroy specific module or all infrastructure
-- Two-job design: validation job must pass before destruction proceeds
+![Deploy Workflow Success](docs/screenshots/09-deploy-workflow-success.png)
 
-![Destroy Workflow](docs/screenshots/destroy-workflow.png)
+### Destroy Workflow (Manual with Safety)
+
+The destroy workflow requires typing `DESTROY` exactly (case-sensitive) to prevent accidental infrastructure deletion.
+
+**Safety check working correctly** — lowercase `destroy` rejected:
+
+![Destroy Safety Check - Failed Correctly](docs/screenshots/10-destroy-safety-failed.png)
+
+**Successful destruction** after correct confirmation:
+
+![Destroy Workflow Successful](docs/screenshots/11-destroy-workflow-success.png)
 
 ---
 
@@ -113,81 +208,6 @@ Manually triggered with safety confirmation:
 | State file security | S3 bucket with encryption + DynamoDB locking |
 | Destructive action protection | Manual workflow with explicit `DESTROY` confirmation |
 | Code quality gates | Pre-commit hooks with ESLint, Prettier, Checkov, TFLint, Trivy |
-
----
-
-## 📸 Evidence of Working Deployment
-
-### Live Endpoint
-```
-https://tm.tekkyyassin.co.uk
-https://tm.tekkyyassin.co.uk/health
-```
-
-### Health Check Response
-
-![Health Check](docs/screenshots/health-check.png)
-```bash
-$ curl -I https://tm.tekkyyassin.co.uk/health
-HTTP/2 200
-content-type: application/json
-server: nginx/1.29.4
-```
-
-### Successful Pipeline Run
-
-![Pipeline Success](docs/screenshots/pipeline-success.png)
-
----
-
-## 🏃 Running the Application Locally
-
-### Prerequisites
-
-- Node.js 20+
-- Yarn package manager
-- Docker (for containerised run)
-
-### Option 1: Without Docker (Development Mode)
-```bash
-# Navigate to app directory
-cd app
-
-# Install dependencies
-yarn install
-
-# Start development server
-yarn start
-
-# Application runs at http://localhost:3000
-```
-
-### Option 2: With Docker (Production-like)
-```bash
-# Navigate to app directory
-cd app
-
-# Build the Docker image
-docker build -t threatmod:local .
-
-# Run the container
-docker run -p 8080:80 threatmod:local
-
-# Application runs at http://localhost:8080
-# Health check at http://localhost:8080/health
-```
-
-### Verifying the Health Endpoint
-```bash
-# Without Docker
-curl http://localhost:3000/health
-
-# With Docker
-curl http://localhost:8080/health
-
-# Expected response
-{"status":"ok"}
-```
 
 ---
 
@@ -253,9 +273,9 @@ curl http://localhost:8080/health
 
 ### 2. Pre-commit Hook Conflicts (ESLint vs Prettier)
 
-**Problem:** ESLint's `@typescript-eslint/indent` rule conflicted with Prettier's formatting, causing an infinite loop of fixes.
+**Problem:** ESLint's `@typescript-eslint/indent` and `quote-props` rules conflicted with Prettier's formatting, causing an infinite loop of fixes.
 
-**Solution:** Disabled the indent rule in ESLint (`["off"]`) and let Prettier handle all formatting. Created `.prettierrc` with matching rules for quotes and trailing commas.
+**Solution:** Disabled the conflicting rules in ESLint (`["off"]`) and let Prettier handle all formatting. Created `.prettierrc` with matching rules for quotes and trailing commas.
 
 ### 3. IMAGE_TAG Environment Variable Not Passed to ECS
 
